@@ -21,22 +21,15 @@ Pod::Spec.new do |s|
 Ticket management SDK provided by Ticketmaster. Used to manage tickets for your team accounts or ticketmaster accounts!
                        DESC
 
-  s.homepage         = 'https://github.com/ticketmaster/iOS-PSDK-Pod'
+  s.homepage         = 'https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'TylerHartzheim' => 'Tyler.Hartzheim@Ticketmaster.com' }
-  s.source           = { :git => 'https://github.com/TylerHartzheim/PSDKPod.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ticketmaster/iOS-PSDK-Pod', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.0'
+  s.swift_version = '5'
 
   s.vendored_frameworks = 'vendor/*.framework'
-
-  # s.resource_bundles = {
-  #   'PSDKPod' => ['PSDKPod/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
