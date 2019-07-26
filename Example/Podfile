@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PSDKPod_Example' do
+  pod 'PSDKPod', :path => '../'
+
+  target 'PSDKPod_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
