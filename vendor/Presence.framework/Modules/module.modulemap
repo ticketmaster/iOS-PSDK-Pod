@@ -1,0 +1,17 @@
+
+framework module Presence {
+	
+	umbrella header "SecureEntryView.h"
+	
+	export *
+	module * {export *}
+}
+module Presence.Private {
+	
+	// ObjC headers here (e.g. Lottie Framework)
+}
+
+module Presence.Swift {
+    header "Presence-Swift.h"
+    requires objc
+}

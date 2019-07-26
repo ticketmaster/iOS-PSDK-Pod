@@ -1,0 +1,11 @@
+framework module iosExperienceSDK {
+  umbrella header "iosExperienceSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module iosExperienceSDK.Swift {
+    header "iosExperienceSDK-Swift.h"
+    requires objc
+}

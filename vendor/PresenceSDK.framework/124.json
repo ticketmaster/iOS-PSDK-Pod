@@ -1,0 +1,69 @@
+	{
+	  "regions" : [
+	    {
+	      "name" : "Alberta",
+	      "id" : 66,
+	      "abbrev" : "AB"
+	    },
+	    {
+	      "name" : "British Columbia",
+	      "id" : 67,
+	      "abbrev" : "BC"
+	    },
+	    {
+	      "name" : "Manitoba",
+	      "id" : 68,
+	      "abbrev" : "MB"
+	    },
+	    {
+	      "name" : "New Brunswick",
+	      "id" : 69,
+	      "abbrev" : "NB"
+	    },
+	    {
+	      "name" : "Newfoundland",
+	      "id" : 70,
+	      "abbrev" : "NL"
+	    },
+	    {
+	      "name" : "Northwest Territories",
+	      "id" : 71,
+	      "abbrev" : "NT"
+	    },
+	    {
+	      "name" : "Nova Scotia",
+	      "id" : 72,
+	      "abbrev" : "NS"
+	    },
+	    {
+	      "name" : "Nunavut",
+	      "id" : 73,
+	      "abbrev" : "NU"
+	    },
+	    {
+	      "name" : "Ontario",
+	      "id" : 74,
+	      "abbrev" : "ON"
+	    },
+	    {
+	      "name" : "Prince Edward Island",
+	      "id" : 75,
+	      "abbrev" : "PE"
+	    },
+	    {
+	      "name" : "Quebec",
+	      "id" : 76,
+	      "abbrev" : "QC"
+	    },
+	    {
+	      "name" : "Saskatchewan",
+	      "id" : 77,
+	      "abbrev" : "SK"
+	    },
+	    {
+	      "name" : "Yukon",
+	      "id" : 78,
+	      "abbrev" : "YT"
+	    }
+	  ]
+	}
