@@ -25,7 +25,7 @@ Ticket management SDK provided by Ticketmaster. Used to manage tickets for your 
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'TylerHartzheim' => 'Tyler.Hartzheim@Ticketmaster.com' }
-  s.source           = { :git => 'https://github.com/ticketmaster/iOS-PSDK-Pod', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ticketmaster/iOS-PSDK-Pod.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.0'
