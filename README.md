@@ -1,3 +1,14 @@
+[![Version](https://img.shields.io/cocoapods/v/TM-PSDK.svg?style=for-the-badge)](http://cocoapods.org/pods/TM-PSDK)
+![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=for-the-badge)
+![iOS](https://img.shields.io/badge/iOS-11-green.svg?style=for-the-badge)
+[![License](https://img.shields.io/cocoapods/l/TM-PSDK.svg?style=for-the-badge)](http://cocoapods.org/pods/TM-PSDK)
+
+## Installation
+### CocoaPods
+```
+pod 'TM-PSDK', '~> 1.18.2'
+```
+
 # PSDKPod
 
 [![CI Status](https://img.shields.io/travis/TylerHartzheim/PSDKPod.svg?style=flat)](https://travis-ci.org/TylerHartzheim/PSDKPod)
