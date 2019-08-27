@@ -190,8 +190,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
-
-
 @class ExperienceConfigurationBuilder;
 
 /// Convenience class to configure the Experience SDK package.
@@ -303,8 +301,8 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
 @protocol PresenceCountry
 /// Host country id, -1 for Account Manager
 @property (nonatomic, readonly) NSInteger id;
-/// Host country standart, nil for Account Manager
-@property (nonatomic, readonly, copy) NSString * _Nullable standart;
+/// Host country standard, nil for Account Manager
+@property (nonatomic, readonly, copy) NSString * _Nullable standard;
 /// AccountManager country code, nil for Host
 @property (nonatomic, readonly, copy) NSString * _Nullable code;
 /// AccountManager country name, nil for Host
@@ -452,6 +450,20 @@ SWIFT_CLASS("_TtC11PresenceSDK11PresenceSDK")
 
 
 @interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method for configuring Experience SDK
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     experienceConfiguration: ExperienceSDK configuration object containing all the required experience configuration.
+///   </li>
+/// </ul>
+- (void)setExperienceConfiguration:(ExperienceConfiguration * _Nonnull)experienceConfiguration;
+@end
+
+
+@interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
 @end
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", closed) {
@@ -464,20 +476,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", closed) {
 };
 
 
-
-
-@interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method for configuring Experience SDK
-/// <ul>
-///   <li>
-///     Parameters:
-///   </li>
-///   <li>
-///     experienceConfiguration: ExperienceSDK configuration object containing all the required experience configuration.
-///   </li>
-/// </ul>
-- (void)setExperienceConfiguration:(ExperienceConfiguration * _Nonnull)experienceConfiguration;
-@end
 
 
 
@@ -515,8 +513,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", closed) {
 - (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type;
 @end
 
-
-
 enum PresenceSDKLoginButtons : NSInteger;
 
 @interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -529,6 +525,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", clo
   PresenceSDKLoginButtonsForgotPassword = 0,
   PresenceSDKLoginButtonsCreateAccount = 1,
 };
+
+
 
 @class PresenceSDKView;
 @class UIColor;
@@ -685,8 +683,6 @@ typedef SWIFT_ENUM(NSInteger, SDKTheme, closed) {
 /// Important UI elements will be colored black.
   SDKThemeDark = 1,
 };
-
-
 
 
 

@@ -6,10 +6,6 @@ framework module Presence {
 	export *
 	module * {export *}
 }
-module Presence.Private {
-	
-	// ObjC headers here (e.g. Lottie Framework)
-}
 
 module Presence.Swift {
     header "Presence-Swift.h"

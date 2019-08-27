@@ -185,14 +185,67 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class UIColor;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC8Presence15SecureEntryView")
 @interface SecureEntryView : UIView
+/// Allows the pdf417’s animation and subtitle to be colored.
+/// The default value for this property is a <em>blue</em> color (set through the <em>blue</em> class property of UIColor)
+@property (nonatomic, strong) UIColor * _Nonnull brandingColor;
+/// Subtitle for the QR variant of the SafeTix ticket.
+/// The default value for this property is <em>“Screenshots are not accepted for entry”</em>.
+/// note:
+///
+/// Set an <em>empty</em> string to hide subtitle.
+@property (nonatomic, copy) NSString * _Nonnull qrSubtitle;
+/// Subtitle for the PDF417 variant of the SafeTix ticket.
+/// The default value for this property is <em>“Screenshots are not accepted for entry”</em>.
+/// note:
+///
+/// Set an <em>empty</em> string to hide subtitle.
+@property (nonatomic, copy) NSString * _Nonnull pdf417Subtitle;
+/// Set true to use <em>brandingColor</em> instead of <em>#262626</em> for subtitles.
+/// The default value for this property is <em>false</em>.
+@property (nonatomic) BOOL isSubtitleBrandingEnabled;
+/// Error message to display in case of ivalid token
+/// The default value for this property is <em>“Reload ticket”</em>.
+@property (nonatomic, copy) NSString * _Nonnull errorMessage;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)startAnimation;
+- (void)awakeFromNib;
+- (void)prepareForInterfaceBuilder;
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@interface SecureEntryView (SWIFT_EXTENSION(Presence))
+@property (nonatomic) BOOL livePreview SWIFT_UNAVAILABLE;
+@property (nonatomic) BOOL staticPreview SWIFT_UNAVAILABLE;
+@property (nonatomic, copy) NSString * _Nonnull qrBarcodeSubtitle SWIFT_UNAVAILABLE;
+@property (nonatomic, copy) NSString * _Nonnull pdf417BarcodeSubtitle SWIFT_UNAVAILABLE;
+@property (nonatomic) BOOL brandSubtitleText SWIFT_UNAVAILABLE;
+@end
+
+
+
+
+
+
+
+
 
 
 
