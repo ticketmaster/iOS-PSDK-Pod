@@ -6,7 +6,7 @@
 ## Installation
 ### CocoaPods
 ```
-pod 'TM-PSDK', '~> 1.18.2'
+pod 'TM-PSDK'
 ```
 
 # PSDKPod
