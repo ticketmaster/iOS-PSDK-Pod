@@ -5,10 +5,19 @@
 
 ## Installation
 ### CocoaPods
+Swift 5.1:
 ```
 pod 'TM-PSDK'
 ```
+Swift 5.0.1:
+```
+pod 'TM_PSDK', '~> 5.0.1'
+```
 
+Swift 4.2.1:
+```
+pod 'TM_PSDK', '~> 4.2.1'
+```
 # PSDKPod
 
 [![CI Status](https://img.shields.io/travis/TylerHartzheim/PSDKPod.svg?style=flat)](https://travis-ci.org/TylerHartzheim/PSDKPod)
