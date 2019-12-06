@@ -29,7 +29,7 @@ Ticket management SDK provided by Ticketmaster. Used to manage tickets for your 
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.0'
-  s.swift_version = '5.1'
+  s.swift_version = '5.0.1'
 
   s.vendored_frameworks = 'vendor/*.framework'
 end
