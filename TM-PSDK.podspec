@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TM-PSDK'
-  s.version          = 'v1.20.0-Swift-5.0.1'
+  s.version          = '1.20.0.5.0.1'
   s.summary          = 'PresenceSDK is the ticket management SDK supplied by Ticketmaster.'
 
 # This description is used to generate tags and improve search results.
