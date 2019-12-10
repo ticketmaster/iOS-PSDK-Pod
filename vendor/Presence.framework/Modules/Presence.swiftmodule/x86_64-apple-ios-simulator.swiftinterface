@@ -1,0 +1,101 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Presence
+import Darwin
+import Foundation
+import ImageIO
+@_exported import Presence
+import Security
+import Swift
+import UIKit
+extension SecureEntryView {
+  public static var timePool: Swift.String
+  public static func syncTime(force: Swift.Bool = false, timePool: Swift.String = timePool, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @available(*, deprecated, renamed: "syncTime(force:completion:)")
+  public static func syncTime(completed: ((Swift.Bool) -> Swift.Void)?)
+}
+extension SecureEntryView {
+  @available(*, deprecated, message: "Use brandingColor property instead")
+  final public func setBrandingColor(color: UIKit.UIColor!)
+  @available(*, deprecated, message: "Use pdf417Subtitle property instead")
+  final public func setPdf417Subtitle(subtitleText: Swift.String)
+  @available(*, deprecated, message: "setQrCodeSubtitle has been deprecated and no longer has any functionality")
+  final public func setQrCodeSubtitle(subtitleText: Swift.String)
+  @available(*, deprecated, message: "Use isSubtitleBrandingEnabled property instead")
+  final public func enableBrandedSubtitle(enable: Swift.Bool)
+  @available(*, deprecated, renamed: "showError(message:icon:)")
+  final public func showError(text: Swift.String?, icon: UIKit.UIImage? = nil)
+  @available(*, deprecated, message: "Use token and errorMessage properties instead")
+  final public func setToken(token: Swift.String!, errorText: Swift.String? = nil)
+  @available(*, unavailable)
+  final public func startAnimation()
+  @available(*, deprecated, message: "Use SecureEntryView.syncTime() instead")
+  final public func syncTime(completed: ((Swift.Bool) -> Swift.Void)? = nil)
+}
+extension SecureEntryView {
+  @available(*, unavailable)
+  @objc final public var livePreview: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @available(*, unavailable)
+  @objc final public var staticPreview: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @available(*, unavailable)
+  @objc final public var qrBarcodeSubtitle: Swift.String {
+    @objc get
+    @objc set
+  }
+  @available(*, unavailable)
+  @objc final public var pdf417BarcodeSubtitle: Swift.String {
+    @objc get
+    @objc set
+  }
+  @available(*, unavailable)
+  @objc final public var brandSubtitleText: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @available(*, deprecated, message: "qrSubtitle has been deprecated and no longer has any functionality")
+  @objc final public var qrSubtitle: Swift.String {
+    @objc get
+    @objc set
+  }
+  @available(*, deprecated, message: "brandingColor has been deprecated and no longer has any functionality")
+  @objc final public var brandingColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @available(*, deprecated, message: "isSubtitleBrandingEnabled has been deprecated and no longer has any functionality")
+  @objc final public var isSubtitleBrandingEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+}
+@objc @IBDesignable final public class SecureEntryView : UIKit.UIView {
+  @objc @IBInspectable final public var pdf417Subtitle: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable final public var errorMessage: Swift.String {
+    @objc get
+    @objc set
+  }
+  final public var token: Swift.String? {
+    get
+    set
+  }
+  @objc override final public var intrinsicContentSize: CoreGraphics.CGSize {
+    @objc get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc override final public func awakeFromNib()
+  @objc override final public func prepareForInterfaceBuilder()
+}
+extension SecureEntryView {
+  final public func showError(message: Swift.String, icon: UIKit.UIImage? = nil)
+}
