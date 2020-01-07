@@ -7,6 +7,7 @@
 ### CocoaPods
 ```
 pod 'TM-PSDK'
+```
 # PSDKPod
 
 [![CI Status](https://img.shields.io/travis/TylerHartzheim/PSDKPod.svg?style=flat)](https://travis-ci.org/TylerHartzheim/PSDKPod)
