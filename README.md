@@ -5,18 +5,18 @@
 
 ## Installation
 ### CocoaPods
-Swift 5.1.2+:
+Swift 5.1.3+:
 ```
-pod 'TM-PSDK', '~> 1.20.0-5.1.2'
+pod 'TM-PSDK', '~> 5.1.3-1.22.0'
 ```
-Swift 5.1.0:
+Swift 5.1.2:
 ```
-pod 'TM-PSDK', '~> 1.20.0-5.1.0'
+pod 'TM-PSDK', '~> 5.1.2-1.22.0'
 ```
 
-Swift 5.0.1:
+Swift 5.1.0:
 ```
-pod 'TM-PSDK', '~> 1.20.0-5.0.1'
+pod 'TM-PSDK', '~> 5.1.0-1.22.0'
 ```
 # PSDKPod
 
