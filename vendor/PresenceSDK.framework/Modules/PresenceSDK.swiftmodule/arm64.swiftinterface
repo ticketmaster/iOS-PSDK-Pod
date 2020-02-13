@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
+// swift-compiler-version: Apple Swift version 5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PresenceSDK
+import AuthenticationServices
 import Contacts
 import ContactsUI
 import Darwin
@@ -55,7 +56,9 @@ extension PresenceSDK {
   @objc final public func setConfig(consumerKey: Swift.String, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = false)
   @objc final public func checkConfig(success: @escaping PresenceSDK.PresenceSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PresenceSDK.ConfigFailureHandler)
   @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: PresenceSDK.PresenceLoginDelegate)
+  @available(*, deprecated, message: "Use `setBrandingColors` method instead.")
   @objc final public func setBrandingColor(color: UIKit.UIColor)
+  @objc final public func setBrandingColors(_ brandingColors: PresenceSDK.BrandingColors)
   @objc final public func setLogo(_ image: UIKit.UIImage?)
   @objc final public func setTheme(theme: PresenceSDK.SDKTheme)
   @objc final public func setEnvironment(sdkEnvironment: PresenceSDK.SDKEnvironment)
@@ -112,6 +115,9 @@ extension PresenceSDK {
   @objc final public func build() -> PresenceSDK.ExperienceConfiguration
   @objc deinit
 }
+@available(iOS 12.0, *)
+extension ASWebAuthenticationSession {
+}
 extension String : Swift.Error {
 }
 public class PresenceLogin {
@@ -153,6 +159,12 @@ public class PresenceLogin {
       get
     }
   }
+  @objc deinit
+}
+@objc public class BrandingColors : ObjectiveC.NSObject {
+  @objc public init(navBarColor: UIKit.UIColor, ticketColor: UIKit.UIColor, buttonColor: UIKit.UIColor)
+  @objc public init(oneColor: UIKit.UIColor)
+  @objc override dynamic public init()
   @objc deinit
 }
 @objc public enum SDKEnvironment : Swift.Int {
@@ -263,6 +275,7 @@ extension UIViewController {
   @objc var market: Swift.String { get }
   @objc var country: PresenceSDK.PresenceCountry? { get }
   @objc var doNotSellFlag: Swift.Bool { get }
+  @objc var idToken: Swift.String { get }
   @objc @available(*, deprecated, renamed: "email")
   var emailAddress: Swift.String { get }
   @objc @available(*, deprecated, renamed: "id")
