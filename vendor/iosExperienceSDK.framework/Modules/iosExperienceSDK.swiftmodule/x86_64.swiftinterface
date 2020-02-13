@@ -1,0 +1,1581 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name iosExperienceSDK
+import AVFoundation
+import AudioToolbox
+import CoreImage
+import CoreLocation
+import Darwin
+import Foundation
+import JavaScriptCore
+import MessageUI
+import PassKit
+import QuartzCore
+import Swift
+import UIKit
+@_exported import iosExperienceSDK
+@objc public class ESUserInfo : ObjectiveC.NSObject {
+  @objc public var name: Swift.String?
+  @objc public var email: Swift.String?
+  @objc public var phoneNumber: Swift.String?
+  @objc public var eventId: Swift.String?
+  @objc public var orderId: Swift.String?
+  @objc public var userAccountId: Swift.String? {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc public var ticketSystemId: iosExperienceSDK.ESExternalTicketSystem
+  @objc public var nonce: Swift.String?
+  @objc public var paymentProcessorUserId: Swift.String?
+  @objc public var paymentProcessorId: iosExperienceSDK.ESPaymentProcessor
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol ESApiResponseProtocol {
+  init(fromJson: iosExperienceSDK.JSON)
+}
+public struct HKDF {
+  public enum Error : Swift.Error {
+    case invalidInput
+    case derivedKeyTooLong
+    public static func == (a: iosExperienceSDK.HKDF.Error, b: iosExperienceSDK.HKDF.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>? = nil, info: Swift.Array<Swift.UInt8>? = nil, keyLength: Swift.Int? = nil, variant: iosExperienceSDK.HMAC.Variant = .sha256) throws
+  public func calculate() throws -> Swift.Array<Swift.UInt8>
+}
+public enum SwiftyJSONError : Swift.Int, Swift.Error {
+  case unsupportedType
+  case indexOutOfBounds
+  case elementTooDeep
+  case wrongType
+  case notExist
+  case invalidJSON
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension SwiftyJSONError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public enum Type : Swift.Int {
+  case number
+  case string
+  case bool
+  case array
+  case dictionary
+  case null
+  case unknown
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct JSON {
+  public init(data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions = []) throws
+  public init(_ object: Any)
+  public init(parseJSON jsonString: Swift.String)
+  public mutating func merge(with other: iosExperienceSDK.JSON) throws
+  public func merged(with other: iosExperienceSDK.JSON) throws -> iosExperienceSDK.JSON
+  public var type: iosExperienceSDK.Type {
+    get
+    }
+  public var error: iosExperienceSDK.SwiftyJSONError? {
+    get
+    }
+  public var object: Any {
+    get
+    set(newValue)
+  }
+  @available(*, unavailable, renamed: "null")
+  public static var nullJSON: iosExperienceSDK.JSON {
+    get
+  }
+  public static var null: iosExperienceSDK.JSON {
+    get
+  }
+}
+public enum Index<T> : Swift.Comparable {
+  case array(Swift.Int)
+  case dictionary(Swift.DictionaryIndex<Swift.String, T>)
+  case null
+  public static func == (lhs: iosExperienceSDK.Index<T>, rhs: iosExperienceSDK.Index<T>) -> Swift.Bool
+  public static func < (lhs: iosExperienceSDK.Index<T>, rhs: iosExperienceSDK.Index<T>) -> Swift.Bool
+}
+public typealias JSONIndex = iosExperienceSDK.Index<iosExperienceSDK.JSON>
+public typealias JSONRawIndex = iosExperienceSDK.Index<Any>
+extension JSON : Swift.Collection {
+  public typealias Index = iosExperienceSDK.JSONRawIndex
+  public var startIndex: iosExperienceSDK.JSON.Index {
+    get
+  }
+  public var endIndex: iosExperienceSDK.JSON.Index {
+    get
+  }
+  public func index(after i: iosExperienceSDK.JSON.Index) -> iosExperienceSDK.JSON.Index
+  public subscript(position: iosExperienceSDK.JSON.Index) -> (Swift.String, iosExperienceSDK.JSON) {
+    get
+  }
+  public typealias Element = (Swift.String, iosExperienceSDK.JSON)
+  public typealias Iterator = Swift.IndexingIterator<iosExperienceSDK.JSON>
+  public typealias SubSequence = Swift.Slice<iosExperienceSDK.JSON>
+  public typealias Indices = Swift.DefaultIndices<iosExperienceSDK.JSON>
+}
+public enum JSONKey {
+  case index(Swift.Int)
+  case key(Swift.String)
+}
+public protocol JSONSubscriptType {
+  var jsonKey: iosExperienceSDK.JSONKey { get }
+}
+extension Int : iosExperienceSDK.JSONSubscriptType {
+  public var jsonKey: iosExperienceSDK.JSONKey {
+    get
+  }
+}
+extension String : iosExperienceSDK.JSONSubscriptType {
+  public var jsonKey: iosExperienceSDK.JSONKey {
+    get
+  }
+}
+extension JSON {
+  public subscript(path: [iosExperienceSDK.JSONSubscriptType]) -> iosExperienceSDK.JSON {
+    get
+    set(newValue)
+  }
+  public subscript(path: iosExperienceSDK.JSONSubscriptType...) -> iosExperienceSDK.JSON {
+    get
+    set(newValue)
+  }
+}
+extension JSON : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
+  public init(unicodeScalarLiteral value: Swift.StringLiteralType)
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension JSON : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension JSON : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Swift.BooleanLiteralType)
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension JSON : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.FloatLiteralType)
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension JSON : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Any)...)
+  public typealias Key = Swift.String
+  public typealias Value = Any
+}
+extension JSON : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Any...)
+  public typealias ArrayLiteralElement = Any
+}
+extension JSON : Swift.RawRepresentable {
+  public init?(rawValue: Any)
+  public var rawValue: Any {
+    get
+  }
+  public func rawData(options opt: Foundation.JSONSerialization.WritingOptions = JSONSerialization.WritingOptions(rawValue: 0)) throws -> Foundation.Data
+  public func rawString(_ encoding: Swift.String.Encoding = .utf8, options opt: Foundation.JSONSerialization.WritingOptions = .prettyPrinted) -> Swift.String?
+  public func rawString(_ options: [iosExperienceSDK.writingOptionsKeys : Any]) -> Swift.String?
+  public typealias RawValue = Any
+}
+extension JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension JSON {
+  public var array: [iosExperienceSDK.JSON]? {
+    get
+  }
+  public var arrayValue: [iosExperienceSDK.JSON] {
+    get
+  }
+  public var arrayObject: [Any]? {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var dictionary: [Swift.String : iosExperienceSDK.JSON]? {
+    get
+  }
+  public var dictionaryValue: [Swift.String : iosExperienceSDK.JSON] {
+    get
+  }
+  public var dictionaryObject: [Swift.String : Any]? {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var bool: Swift.Bool? {
+    get
+    set(newValue)
+  }
+  public var boolValue: Swift.Bool {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var string: Swift.String? {
+    get
+    set(newValue)
+  }
+  public var stringValue: Swift.String {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var number: Foundation.NSNumber? {
+    get
+    set(newValue)
+  }
+  public var numberValue: Foundation.NSNumber {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var null: Foundation.NSNull? {
+    get
+    set(newValue)
+  }
+  public func exists() -> Swift.Bool
+}
+extension JSON {
+  public var url: Foundation.URL? {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var double: Swift.Double? {
+    get
+    set(newValue)
+  }
+  public var doubleValue: Swift.Double {
+    get
+    set(newValue)
+  }
+  public var float: Swift.Float? {
+    get
+    set(newValue)
+  }
+  public var floatValue: Swift.Float {
+    get
+    set(newValue)
+  }
+  public var int: Swift.Int? {
+    get
+    set(newValue)
+  }
+  public var intValue: Swift.Int {
+    get
+    set(newValue)
+  }
+  public var uInt: Swift.UInt? {
+    get
+    set(newValue)
+  }
+  public var uIntValue: Swift.UInt {
+    get
+    set(newValue)
+  }
+  public var int8: Swift.Int8? {
+    get
+    set(newValue)
+  }
+  public var int8Value: Swift.Int8 {
+    get
+    set(newValue)
+  }
+  public var uInt8: Swift.UInt8? {
+    get
+    set(newValue)
+  }
+  public var uInt8Value: Swift.UInt8 {
+    get
+    set(newValue)
+  }
+  public var int16: Swift.Int16? {
+    get
+    set(newValue)
+  }
+  public var int16Value: Swift.Int16 {
+    get
+    set(newValue)
+  }
+  public var uInt16: Swift.UInt16? {
+    get
+    set(newValue)
+  }
+  public var uInt16Value: Swift.UInt16 {
+    get
+    set(newValue)
+  }
+  public var int32: Swift.Int32? {
+    get
+    set(newValue)
+  }
+  public var int32Value: Swift.Int32 {
+    get
+    set(newValue)
+  }
+  public var uInt32: Swift.UInt32? {
+    get
+    set(newValue)
+  }
+  public var uInt32Value: Swift.UInt32 {
+    get
+    set(newValue)
+  }
+  public var int64: Swift.Int64? {
+    get
+    set(newValue)
+  }
+  public var int64Value: Swift.Int64 {
+    get
+    set(newValue)
+  }
+  public var uInt64: Swift.UInt64? {
+    get
+    set(newValue)
+  }
+  public var uInt64Value: Swift.UInt64 {
+    get
+    set(newValue)
+  }
+}
+extension JSON : Swift.Comparable {
+}
+public func == (lhs: iosExperienceSDK.JSON, rhs: iosExperienceSDK.JSON) -> Swift.Bool
+public func <= (lhs: iosExperienceSDK.JSON, rhs: iosExperienceSDK.JSON) -> Swift.Bool
+public func >= (lhs: iosExperienceSDK.JSON, rhs: iosExperienceSDK.JSON) -> Swift.Bool
+public func > (lhs: iosExperienceSDK.JSON, rhs: iosExperienceSDK.JSON) -> Swift.Bool
+public func < (lhs: iosExperienceSDK.JSON, rhs: iosExperienceSDK.JSON) -> Swift.Bool
+public enum writingOptionsKeys {
+  case jsonSerialization
+  case castNilToNSNull
+  case maxObjextDepth
+  case encoding
+  public static func == (a: iosExperienceSDK.writingOptionsKeys, b: iosExperienceSDK.writingOptionsKeys) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension JSON : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension PKCS5 {
+  public struct PBKDF2 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: iosExperienceSDK.PKCS5.PBKDF2.Error, b: iosExperienceSDK.PKCS5.PBKDF2.Error) -> Swift.Bool
+      public var hashValue: Swift.Int {
+        get
+      }
+      public func hash(into hasher: inout Swift.Hasher)
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil, variant: iosExperienceSDK.HMAC.Variant = .sha256) throws
+    public func calculate() throws -> Swift.Array<Swift.UInt8>
+  }
+}
+public struct CTR {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: iosExperienceSDK.CTR.Error, b: iosExperienceSDK.CTR.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let options: iosExperienceSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>, counter: Swift.Int = 0)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+public class ESRequestUtil {
+  public class func buildWebViewUrlComponents(url: Foundation.URL, config: iosExperienceSDK.ESConfig) -> Foundation.URLComponents
+  public class func buildWebViewUrlComponents(request: iosExperienceSDK.ESWebViewRequest, config: iosExperienceSDK.ESConfig) -> Foundation.URLComponents
+  public class func addExpHeaders(urlRequest: Foundation.URLRequest, userInfo: iosExperienceSDK.ESUserInfo?) -> Foundation.URLRequest
+  public class func buildWebViewRequest(url: Foundation.URL, config: iosExperienceSDK.ESConfig, userInfo: iosExperienceSDK.ESUserInfo?) -> Foundation.URLRequest
+  public class func buildWebViewRequest(request: iosExperienceSDK.ESWebViewRequest, config: iosExperienceSDK.ESConfig, userInfo: iosExperienceSDK.ESUserInfo?) -> Foundation.URLRequest!
+  @objc deinit
+}
+public protocol Cryptor {
+  mutating func seek(to: Swift.Int) throws
+}
+@objc public class ESTeamPassRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc public convenience init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+@objc public class ExperienceSDK : ObjectiveC.NSObject {
+  @objc public static var ssoSigningKey: Swift.String?
+  @objc public static var hasUpdates: Swift.Bool
+  @objc public static var fanDetails: iosExperienceSDK.ESFanDetails?
+  @objc public class func getSdkVersion() -> Swift.String
+  public class func addExperienceObserver(_ expSdkObserver: iosExperienceSDK.ExpSdkObserver)
+  public class func removeExperienceObserver(_ expSdkObserver: iosExperienceSDK.ExpSdkObserver)
+  @objc public class func getSharedExperienceSdk(config: iosExperienceSDK.ESConfig) -> iosExperienceSDK.ExperienceSDK
+  @objc public class func getSharedExperienceSdk() -> iosExperienceSDK.ExperienceSDK?
+  @objc public class func logout()
+  @objc public func launchExpViewFromDeepLink(queryUrl: Foundation.URL, userInfo: iosExperienceSDK.ESUserInfo?)
+  @objc public func launchExpViewInModal(fromView: UIKit.UIViewController, userInfo: iosExperienceSDK.ESUserInfo, doorRequest: iosExperienceSDK.ESWebViewRequest)
+  @objc public class func getExpApiClient() -> iosExperienceSDK.ESApiClient?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public var RSBarcodesTypeExtendedCode39Code: Swift.String
+open class RSExtendedCode39Generator : iosExperienceSDK.RSCode39Generator {
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+extension NSNotification.Name {
+  public static var purchase: Foundation.Notification.Name
+}
+@objc public class ESPerkRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc public init(perkProgramId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
+  @objc deinit
+}
+extension String {
+  public func decryptBase64ToString(cipher: iosExperienceSDK.Cipher) throws -> Swift.String
+  public func decryptBase64(cipher: iosExperienceSDK.Cipher) throws -> Swift.Array<Swift.UInt8>
+}
+open class RSCode39Mod43Generator : iosExperienceSDK.RSCode39Generator, iosExperienceSDK.RSCheckDigitGenerator {
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  open func checkDigit(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+@objc open class RSCornersLayer : QuartzCore.CALayer {
+  @objc open var strokeColor: CoreGraphics.CGColor
+  @objc open var strokeWidth: CoreGraphics.CGFloat
+  @objc open var drawingCornersArray: Swift.Array<Swift.Array<CoreGraphics.CGPoint>>
+  @objc open var cornersArray: Swift.Array<[Any]> {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc override dynamic open func draw(in ctx: CoreGraphics.CGContext)
+  @objc override dynamic public init()
+  @objc override dynamic public init(layer: Any)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+open class RSUnifiedCodeGenerator : iosExperienceSDK.RSCodeGenerator {
+  open var isBuiltInCode128GeneratorSelected: Swift.Bool
+  open var fillColor: UIKit.UIColor
+  open var strokeColor: UIKit.UIColor
+  open class var shared: iosExperienceSDK.RSUnifiedCodeGenerator {
+    get
+  }
+  open func isValid(_ contents: Swift.String) -> Swift.Bool
+  open func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
+  open func generateCode(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
+  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel) -> UIKit.UIImage?
+  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject) -> UIKit.UIImage?
+  @objc deinit
+}
+@objc public class ESPassOneHandshakeRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc public init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
+  @objc deinit
+}
+@objc public class ESFanHubRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+extension String {
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func md5() -> Swift.String
+  public func sha1() -> Swift.String
+  public func sha224() -> Swift.String
+  public func sha256() -> Swift.String
+  public func sha384() -> Swift.String
+  public func sha512() -> Swift.String
+  public func sha3(_ variant: iosExperienceSDK.SHA3.Variant) -> Swift.String
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.String
+  public func encrypt(cipher: iosExperienceSDK.Cipher) throws -> Swift.String
+  public func encryptToBase64(cipher: iosExperienceSDK.Cipher) throws -> Swift.String?
+  public func authenticate<A>(with authenticator: A) throws -> Swift.String where A : iosExperienceSDK.Authenticator
+}
+extension HMAC {
+  public convenience init(key: Swift.String, variant: iosExperienceSDK.HMAC.Variant = .md5) throws
+}
+extension AES : iosExperienceSDK.Cryptors {
+  final public func makeEncryptor() throws -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
+  final public func makeDecryptor() throws -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
+}
+@objc public class ESWebViewRequest : ObjectiveC.NSObject {
+  @objc public var headers: [Swift.String : Swift.String]?
+  @objc public init(fromTicketSystemSDK: Swift.Bool)
+  @objc public func getPath() -> Swift.String
+  @objc public func addQueryParam(name: Swift.String, value: Swift.String, override: Swift.Bool = true)
+  @objc public func getQueryParams() -> [Swift.String : Swift.String]
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum CipherError : Swift.Error {
+  case encrypt
+  case decrypt
+  public static func == (a: iosExperienceSDK.CipherError, b: iosExperienceSDK.CipherError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol Cipher : AnyObject {
+  var keySize: Swift.Int { get }
+  func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension Cipher {
+  public func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public protocol Updatable {
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool) throws -> Swift.Array<Swift.UInt8>
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+extension Updatable {
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish() throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+final public class SHA1 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension SHA1 : iosExperienceSDK.Updatable {
+  @discardableResult
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+public enum PKCS5 {
+}
+public class ESStringUtil {
+  public class func isNotEmptyOrNil(stringToCheck: Swift.String?) -> Swift.Bool
+  @objc deinit
+}
+extension Array {
+  public init(reserveCapacity: Swift.Int)
+}
+extension Array where Element == Swift.UInt8 {
+  public init(hex: Swift.String)
+  public func toHexString() -> Swift.String
+}
+extension Array where Element == Swift.UInt8 {
+  @available(*, deprecated)
+  public func chunks(size chunksize: Swift.Int) -> Swift.Array<Swift.Array<Element>>
+  public func md5() -> [Element]
+  public func sha1() -> [Element]
+  public func sha224() -> [Element]
+  public func sha256() -> [Element]
+  public func sha384() -> [Element]
+  public func sha512() -> [Element]
+  public func sha2(_ variant: iosExperienceSDK.SHA2.Variant) -> [Element]
+  public func sha3(_ variant: iosExperienceSDK.SHA3.Variant) -> [Element]
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.UInt16
+  public func encrypt(cipher: iosExperienceSDK.Cipher) throws -> [Element]
+  public func decrypt(cipher: iosExperienceSDK.Cipher) throws -> [Element]
+  public func authenticate<A>(with authenticator: A) throws -> [Element] where A : iosExperienceSDK.Authenticator
+}
+final public class Scrypt {
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, dkLen: Swift.Int, N: Swift.Int, r: Swift.Int, p: Swift.Int) throws
+  final public func calculate() throws -> [Swift.UInt8]
+  @objc deinit
+}
+@objc open class RSCodeLayer : QuartzCore.CALayer {
+  @objc override dynamic open func draw(in ctx: CoreGraphics.CGContext)
+  @objc override dynamic public init()
+  @objc override dynamic public init(layer: Any)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public struct BlockModeOption : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public init(rawValue: Swift.Int)
+  public typealias Element = iosExperienceSDK.BlockModeOption
+  public typealias ArrayLiteralElement = iosExperienceSDK.BlockModeOption
+  public typealias RawValue = Swift.Int
+}
+open class ExpDeeplinkController {
+  public static var WEB_HOST: Swift.String
+  public static var VIEWBARCODE_HOST: Swift.String
+  public static var URL_QUERY_PARAM: Swift.String
+  public static var TICKET_EVENT_ID_QUERY_PARAM: Swift.String
+  public static var TICKET_CLIENT_ID_QUERY_PARAM: Swift.String
+  public init()
+  @objc public func isExperienceDeeplink(deeplink: Foundation.URL) -> Swift.Bool
+  @objc public func getQueryParam(deeplink: Foundation.URL, queryParamName: Swift.String) -> Swift.String?
+  @objc open func handleExperienceDeeplink(deeplink: Foundation.URL, userInfo: iosExperienceSDK.ESUserInfo = ESUserInfo())
+  open func handleWebDeeplink(destinationUrl: Swift.String, userInfo: iosExperienceSDK.ESUserInfo)
+  open func handleBarcodeDeeplink(eventId: Swift.String)
+  @objc deinit
+}
+@available(*, deprecated, message: "Use door requests")
+public enum ESDoor : Swift.Int {
+  case UPGRADES
+  case MEMORIES
+  case NOTGOING
+  case SITWITHFRIENDS
+  case FANHQ
+  case PASSES
+  case PASSESOFFERFIRST
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+final public class ChaCha20 {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    case notSupported
+    public static func == (a: iosExperienceSDK.ChaCha20.Error, b: iosExperienceSDK.ChaCha20.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public static var blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, iv nonce: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+extension ChaCha20 : iosExperienceSDK.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension ChaCha20 {
+  public struct ChaChaEncryptor : iosExperienceSDK.Cryptor, iosExperienceSDK.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension ChaCha20 {
+  public struct ChaChaDecryptor : iosExperienceSDK.Cryptor, iosExperienceSDK.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = true) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension ChaCha20 : iosExperienceSDK.Cryptors {
+  final public func makeEncryptor() -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
+  final public func makeDecryptor() -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
+}
+@objc public class ESModelWebViewController : UIKit.UIViewController {
+  public convenience init(url: Swift.String, title: Swift.String, customStyles: [iosExperienceSDK.ESCustomStyleKeys : Swift.String]?)
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol Authenticator {
+  func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public class CBCMAC : iosExperienceSDK.Authenticator {
+  public enum Error : Swift.Error {
+    case wrongKeyLength
+    public static func == (a: iosExperienceSDK.CBCMAC.Error, b: iosExperienceSDK.CBCMAC.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public init(key: Swift.Array<Swift.UInt8>) throws
+  public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension PKCS5 {
+  public struct PBKDF1 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: iosExperienceSDK.PKCS5.PBKDF1.Error, b: iosExperienceSDK.PKCS5.PBKDF1.Error) -> Swift.Bool
+      public var hashValue: Swift.Int {
+        get
+      }
+      public func hash(into hasher: inout Swift.Hasher)
+    }
+    public enum Variant {
+      case md5
+      case sha1
+      public static func == (a: iosExperienceSDK.PKCS5.PBKDF1.Variant, b: iosExperienceSDK.PKCS5.PBKDF1.Variant) -> Swift.Bool
+      public var hashValue: Swift.Int {
+        get
+      }
+      public func hash(into hasher: inout Swift.Hasher)
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, variant: iosExperienceSDK.PKCS5.PBKDF1.Variant = .sha1, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil) throws
+    public func calculate() -> Swift.Array<Swift.UInt8>
+  }
+}
+public struct ECB : iosExperienceSDK.BlockMode {
+  public let options: iosExperienceSDK.BlockModeOption
+  public init()
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+final public class Poly1305 : iosExperienceSDK.Authenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    public static func == (a: iosExperienceSDK.Poly1305.Error, b: iosExperienceSDK.Poly1305.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public static var blockSize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+final public class SHA3 {
+  final public let blockSize: Swift.Int
+  final public let digestLength: Swift.Int
+  final public let markByte: Swift.UInt8
+  public enum Variant {
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    case keccak224
+    case keccak256
+    case keccak384
+    case keccak512
+    public var outputLength: Swift.Int {
+      get
+    }
+    public static func == (a: iosExperienceSDK.SHA3.Variant, b: iosExperienceSDK.SHA3.Variant) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public init(variant: iosExperienceSDK.SHA3.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension SHA3 : iosExperienceSDK.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+@objc public class ESEventInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+  @objc public var eventId: Swift.String?
+  @objc public var gameId: Swift.String?
+  @objc public var userInfoResponse: iosExperienceSDK.ESUserInfoResponse?
+  @objc public var productInfosResponse: iosExperienceSDK.ESProductInfosResponse?
+  required public init(fromJson: iosExperienceSDK.JSON)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum ESExternalTicketSystem : Swift.Int {
+  case TICKETMASTER = 0
+  case OUTBOX = 1
+  case PACIOLAN = 2
+  case VERITIX = 3
+  case TICKETS_DOTCOM = 4
+  case TICKETMASTER_TAP = 5
+  case TICKETMASTER_DC = 6
+  case PACIOLAN_MODERN = 7
+  case EMPTY = 1000
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public var RSBarcodesTypeISBN13Code: Swift.String
+public var RSBarcodesTypeISSN13Code: Swift.String
+open class RSEANGenerator : iosExperienceSDK.RSAbstractCodeGenerator {
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  override open func initiator() -> Swift.String
+  override open func terminator() -> Swift.String
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+@objc open class RSCodeReaderViewController : UIKit.UIViewController, AVFoundation.AVCaptureMetadataOutputObjectsDelegate {
+  @objc open var device: AVFoundation.AVCaptureDevice?
+  @objc open var output: AVFoundation.AVCaptureMetadataOutput
+  @objc open var session: AVFoundation.AVCaptureSession
+  @objc open var focusMarkLayer: iosExperienceSDK.RSFocusMarkLayer
+  @objc open var cornersLayer: iosExperienceSDK.RSCornersLayer
+  @objc open var tapHandler: ((CoreGraphics.CGPoint) -> Swift.Void)?
+  @objc open var barcodesHandler: ((Swift.Array<AVFoundation.AVMetadataMachineReadableCodeObject>) -> Swift.Void)?
+  @objc open var isCrazyMode: Swift.Bool
+  @objc open func hasFlash() -> Swift.Bool
+  @objc open func hasTorch() -> Swift.Bool
+  @objc open func switchCamera() -> AVFoundation.AVCaptureDevice.Position
+  @discardableResult
+  @objc open func toggleTorch() -> Swift.Bool
+  @objc deinit
+  @objc override dynamic open func viewDidLayoutSubviews()
+  @objc override dynamic open func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @objc public func metadataOutput(_ output: AVFoundation.AVCaptureMetadataOutput, didOutput metadataObjects: [AVFoundation.AVMetadataObject], from connection: AVFoundation.AVCaptureConnection)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public class BlockDecryptor : iosExperienceSDK.Cryptor, iosExperienceSDK.Updatable {
+  public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public func seek(to position: Swift.Int) throws
+  @objc deinit
+}
+public enum UIColorInputError : Swift.Error {
+  case missingHashMarkAsPrefix
+  case unableToScanHexValue
+  case mismatchedHexStringLength
+  public static func == (a: iosExperienceSDK.UIColorInputError, b: iosExperienceSDK.UIColorInputError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension UIColor {
+  @objc dynamic public convenience init(hex3: Swift.UInt16, alpha: CoreGraphics.CGFloat = 1)
+  @objc dynamic public convenience init(hex4: Swift.UInt16)
+  @objc dynamic public convenience init(hex6: Swift.UInt32, alpha: CoreGraphics.CGFloat = 1)
+  @objc dynamic public convenience init(hex8: Swift.UInt32)
+  @objc dynamic public convenience init(rgba_throws rgba: Swift.String) throws
+  @objc dynamic public convenience init(_ rgba: Swift.String, defaultColor: UIKit.UIColor = UIColor.clear)
+  @objc dynamic public func hexString(_ includeAlpha: Swift.Bool = true) -> Swift.String
+}
+public enum RSCode128GeneratorCodeTable : Swift.Int {
+  case auto
+  case a
+  case b
+  case c
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+open class RSCode128Generator : iosExperienceSDK.RSAbstractCodeGenerator, iosExperienceSDK.RSCheckDigitGenerator {
+  public init(codeTable: iosExperienceSDK.RSCode128GeneratorCodeTable)
+  override public convenience init()
+  override open func initiator() -> Swift.String
+  override open func terminator() -> Swift.String
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  open func checkDigit(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+open class RSCode93Generator : iosExperienceSDK.RSAbstractCodeGenerator, iosExperienceSDK.RSCheckDigitGenerator {
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  override open func initiator() -> Swift.String
+  override open func terminator() -> Swift.String
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  open func checkDigit(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+@objc public class ESPassRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc public init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
+  @objc deinit
+}
+public enum Bit : Swift.Int {
+  case zero
+  case one
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class ESSignupRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+public struct CBC : iosExperienceSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: iosExperienceSDK.CBC.Error, b: iosExperienceSDK.CBC.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let options: iosExperienceSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+@objc public class ESConfig : ObjectiveC.NSObject {
+  @objc public var subdomain: Swift.String!
+  @objc public var appId: Swift.String
+  @objc public var appName: Swift.String
+  @objc public var appSource: Swift.String
+  @objc public var canEditAccount: Swift.Bool
+  @objc public var openExternalLinksInApp: Swift.Bool
+  @objc public var apiKey: Swift.String?
+  @objc public var apiVersion: Swift.String!
+  @objc public var baseUrl: Swift.String!
+  @objc public var baseApiUrl: Swift.String?
+  @objc public init(subdomain: Swift.String, appId: Swift.String, appName: Swift.String, appSource: Swift.String)
+  @objc public func initApi(apiKey: Swift.String, apiSubdomain: Swift.String = "toad", apiVersion: Swift.String = "v1")
+  @objc public func addCustomStyle(styleKey: iosExperienceSDK.ESCustomStyleKeys, value: Swift.String)
+  public func getCustomStyles() -> [iosExperienceSDK.ESCustomStyleKeys : Swift.String]?
+  @objc public func getCustomStyleValue(styleKey: iosExperienceSDK.ESCustomStyleKeys) -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+final public class AEADChaCha20Poly1305 : iosExperienceSDK.AEAD {
+  public static var kLen: Swift.Int
+  public static var ivRange: Swift.Range<Swift.Int>
+  public static func encrypt(_ plainText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>) throws -> (cipherText: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>)
+  public static func decrypt(_ cipherText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>) throws -> (plainText: Swift.Array<Swift.UInt8>, success: Swift.Bool)
+  @objc deinit
+}
+@objc public class ESFanDetails : ObjectiveC.NSObject {
+  @objc public var experienceId: Swift.String?
+  @objc public var externalAccountId: Swift.String?
+  required public init(fromJson: iosExperienceSDK.JSON)
+  @objc override dynamic public init()
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc open class RSFocusMarkLayer : QuartzCore.CALayer {
+  @objc open var size: CoreGraphics.CGSize
+  @objc open var sight: CoreGraphics.CGFloat
+  @objc open var strokeColor: CoreGraphics.CGColor
+  @objc open var strokeWidth: CoreGraphics.CGFloat
+  @objc open var delay: CoreFoundation.CFTimeInterval
+  @objc open var canDraw: Swift.Bool
+  @objc open var point: CoreGraphics.CGPoint {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc override dynamic open func draw(in ctx: CoreGraphics.CGContext)
+  @objc override dynamic public init()
+  @objc override dynamic public init(layer: Any)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+open class RSCode39Generator : iosExperienceSDK.RSAbstractCodeGenerator {
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  override open func initiator() -> Swift.String
+  override open func terminator() -> Swift.String
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+@objc public class ESUserInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+  public var productNumsUsed: Swift.Array<iosExperienceSDK.ESProduct>?
+  required public init(fromJson: iosExperienceSDK.JSON)
+  @objc override dynamic public init()
+  @objc public func objc_productNumsUsed() -> Swift.Array<Swift.Int>
+  public func setProductsUsed(productNumsUsed: Swift.Array<iosExperienceSDK.ESProduct>)
+  @objc public func hasSeatUpgrades() -> Swift.Bool
+  @objc public func hasNonSeatUpgrades() -> Swift.Bool
+  @objc public func hasReturned() -> Swift.Bool
+  @objc public func hasModified() -> Swift.Bool
+  @objc public func hasPass() -> Swift.Bool
+  @objc deinit
+}
+open class RSUnifiedCodeValidator {
+  open class var shared: iosExperienceSDK.RSUnifiedCodeValidator {
+    get
+  }
+  open func isValid(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+extension Data {
+  public func checksum() -> Swift.UInt16
+  public func md5() -> Foundation.Data
+  public func sha1() -> Foundation.Data
+  public func sha224() -> Foundation.Data
+  public func sha256() -> Foundation.Data
+  public func sha384() -> Foundation.Data
+  public func sha512() -> Foundation.Data
+  public func sha3(_ variant: iosExperienceSDK.SHA3.Variant) -> Foundation.Data
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc16(seed: Swift.UInt16? = nil) -> Foundation.Data
+  public func encrypt(cipher: iosExperienceSDK.Cipher) throws -> Foundation.Data
+  public func decrypt(cipher: iosExperienceSDK.Cipher) throws -> Foundation.Data
+  public func authenticate(with authenticator: iosExperienceSDK.Authenticator) throws -> Foundation.Data
+}
+extension Data {
+  public init(hex: Swift.String)
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func toHexString() -> Swift.String
+}
+final public class Blowfish {
+  public enum Error : Swift.Error {
+    case dataPaddingRequired
+    case invalidKeyOrInitializationVector
+    case invalidInitializationVector
+    case invalidBlockMode
+    public static func == (a: iosExperienceSDK.Blowfish.Error, b: iosExperienceSDK.Blowfish.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public static var blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: iosExperienceSDK.BlockMode = CBC(iv: Array<UInt8>(repeating: 0, count: Blowfish.blockSize)), padding: iosExperienceSDK.Padding) throws
+  @objc deinit
+}
+extension Blowfish : iosExperienceSDK.Cipher {
+  final public func encrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+  final public func decrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+}
+final public class MD5 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension MD5 : iosExperienceSDK.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+final public class GCM : iosExperienceSDK.BlockMode {
+  public enum Mode {
+    case combined
+    case detached
+    public static func == (a: iosExperienceSDK.GCM.Mode, b: iosExperienceSDK.GCM.Mode) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  final public let options: iosExperienceSDK.BlockModeOption
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case fail
+    public static func == (a: iosExperienceSDK.GCM.Error, b: iosExperienceSDK.GCM.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  final public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, tagLength: Swift.Int = 16, mode: iosExperienceSDK.GCM.Mode = .detached)
+  public convenience init(iv: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, mode: iosExperienceSDK.GCM.Mode = .detached)
+  final public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+  @objc deinit
+}
+public class ExpSdkObserver {
+  public init(onCompletionHandler: @escaping (Swift.String) -> Swift.Void, name: Foundation.Notification.Name)
+  @objc deinit
+}
+@objc public enum ESCustomStyleKeys : Swift.Int {
+  case PRIMARY_COLOR = 0
+  case SECONDARY_COLOR
+  case LEFT_BAR_BUTTON_COLOR
+  case RIGHT_BAR_BUTTON_COLOR
+  case FULL_SCREEN
+  case WEB_VIEW_TOP_SPACER
+  case WEB_VIEW_BOTTOM_SPACER
+  case WEB_VIEW_BACKGROUND_COLOR
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension Array where Element == Swift.UInt8 {
+  public func toBase64() -> Swift.String?
+  public init(base64: Swift.String)
+}
+@objc public class ESBarcodeScannerController : iosExperienceSDK.RSCodeReaderViewController {
+  public typealias CompleteHandler = (Swift.Set<Swift.String>) -> Swift.Void
+  @objc public var completeHandler: iosExperienceSDK.ESBarcodeScannerController.CompleteHandler?
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @objc override dynamic public var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol _UInt8Type {
+}
+extension UInt8 : iosExperienceSDK._UInt8Type {
+}
+extension UInt8 {
+  public func bits() -> [iosExperienceSDK.Bit]
+  public func bits() -> Swift.String
+}
+extension ChaCha20 {
+  public convenience init(key: Swift.String, iv: Swift.String) throws
+}
+open class RSITFGenerator : iosExperienceSDK.RSAbstractCodeGenerator {
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  override open func initiator() -> Swift.String
+  override open func terminator() -> Swift.String
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+open class RSITF14Generator : iosExperienceSDK.RSITFGenerator {
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+public class ESSecurityUtil {
+  public class func generateSsoToken(forUser: iosExperienceSDK.ESUserInfo, cnonce: Swift.String) -> Swift.String?
+  public class func generateClientNonce() -> Swift.String!
+  public class func getServerNonce(forUser: iosExperienceSDK.ESUserInfo, baseUrl: Swift.String) -> Swift.String?
+  @objc deinit
+}
+final public class CMAC : iosExperienceSDK.CBCMAC {
+  override public init(key: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+public struct CCM {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case invalidParameter
+    case fail
+    public static func == (a: iosExperienceSDK.CCM.Error, b: iosExperienceSDK.CCM.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let options: iosExperienceSDK.BlockModeOption
+  public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+public protocol Cryptors : AnyObject {
+  func makeEncryptor() throws -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
+  func makeDecryptor() throws -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
+  static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+extension Cryptors {
+  public static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+@objc public class ESReturnTicketsRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+public protocol CipherModeWorker {
+  var cipherOperation: iosExperienceSDK.CipherOperationOnBlock { get }
+  var additionalBufferSize: Swift.Int { get }
+  mutating func encrypt(block plaintext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  mutating func decrypt(block ciphertext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+}
+public protocol BlockModeWorker : iosExperienceSDK.CipherModeWorker {
+  var blockSize: Swift.Int { get }
+}
+public protocol CounterModeWorker : iosExperienceSDK.CipherModeWorker {
+  associatedtype Counter
+  var counter: Self.Counter { get set }
+}
+public protocol SeekableModeWorker : iosExperienceSDK.CipherModeWorker {
+  mutating func seek(to position: Swift.Int) throws
+}
+public protocol StreamModeWorker : iosExperienceSDK.CipherModeWorker {
+}
+public protocol FinalizingEncryptModeWorker : iosExperienceSDK.CipherModeWorker {
+  mutating func finalize(encrypt ciphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+public protocol FinalizingDecryptModeWorker : iosExperienceSDK.CipherModeWorker {
+  @discardableResult
+  mutating func willDecryptLast(bytes ciphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func didDecryptLast(bytes plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func finalize(decrypt plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+@objc public class ESPassOneRegistrationRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc public init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
+  @objc deinit
+}
+@objc public class ESPassSelectRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc public convenience init(partnerShortCode: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+@objc public class ESAddTicketsRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+@objc public class ESProductInfosResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+  @objc public var upgrades: iosExperienceSDK.ESProductInfoResponse?
+  @objc public var sitWithFriends: iosExperienceSDK.ESProductInfoResponse?
+  @objc public var notGoing: iosExperienceSDK.ESProductInfoResponse?
+  required public init(fromJson: iosExperienceSDK.JSON)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct PCBC : iosExperienceSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: iosExperienceSDK.PCBC.Error, b: iosExperienceSDK.PCBC.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let options: iosExperienceSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+final public class SHA2 {
+  public enum Variant : Swift.RawRepresentable {
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public var digestLength: Swift.Int {
+      get
+    }
+    public var blockSize: Swift.Int {
+      get
+    }
+    public typealias RawValue = Swift.Int
+    public var rawValue: iosExperienceSDK.SHA2.Variant.RawValue {
+      get
+    }
+    public init?(rawValue: iosExperienceSDK.SHA2.Variant.RawValue)
+  }
+  public init(variant: iosExperienceSDK.SHA2.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension SHA2 : iosExperienceSDK.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+public typealias CipherOperationOnBlock = (Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>?
+public protocol BlockMode {
+  var options: iosExperienceSDK.BlockModeOption { get }
+  func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+public protocol PaddingProtocol {
+  func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+}
+public enum Padding : iosExperienceSDK.PaddingProtocol {
+  case noPadding
+  case zeroPadding
+  case pkcs7
+  case pkcs5
+  public func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  public func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+  public static func == (a: iosExperienceSDK.Padding, b: iosExperienceSDK.Padding) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension Rabbit {
+  public convenience init(key: Swift.String) throws
+  public convenience init(key: Swift.String, iv: Swift.String) throws
+}
+public enum InputCorrectionLevel : Swift.String {
+  case Low
+  case Medium
+  case Quarter
+  case High
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol RSCodeGenerator {
+  var fillColor: UIKit.UIColor { get set }
+  var strokeColor: UIKit.UIColor { get set }
+  func isValid(_ contents: Swift.String) -> Swift.Bool
+  func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel) -> UIKit.UIImage?
+  func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject) -> UIKit.UIImage?
+  func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
+  func generateCode(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
+}
+public protocol RSCheckDigitGenerator {
+  func checkDigit(_ contents: Swift.String) -> Swift.String
+}
+open class RSAbstractCodeGenerator : iosExperienceSDK.RSCodeGenerator {
+  open var fillColor: UIKit.UIColor
+  open var strokeColor: UIKit.UIColor
+  open func isValid(_ contents: Swift.String) -> Swift.Bool
+  open func initiator() -> Swift.String
+  open func terminator() -> Swift.String
+  open func barcode(_ contents: Swift.String) -> Swift.String
+  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel) -> UIKit.UIImage?
+  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject) -> UIKit.UIImage?
+  open func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
+  open func generateCode(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
+  open class func filterName(_ machineReadableCodeObjectType: Swift.String) -> Swift.String
+  open class func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, filterName: Swift.String) -> UIKit.UIImage?
+  open class func generateCode(_ contents: Swift.String, filterName: Swift.String) -> UIKit.UIImage?
+  open class func resizeImage(_ source: UIKit.UIImage, scale: CoreGraphics.CGFloat) -> UIKit.UIImage?
+  open class func resizeImage(_ source: UIKit.UIImage, targetSize: CoreGraphics.CGSize, contentMode: UIKit.UIView.ContentMode) -> UIKit.UIImage?
+  @objc deinit
+}
+extension Blowfish {
+  public convenience init(key: Swift.String, iv: Swift.String, padding: iosExperienceSDK.Padding = .pkcs7) throws
+}
+final public class Checksum {
+  @objc deinit
+}
+extension Checksum {
+  public static func crc32(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc32c(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc16(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt16? = nil) -> Swift.UInt16
+}
+final public class Rabbit {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    public static func == (a: iosExperienceSDK.Rabbit.Error, b: iosExperienceSDK.Rabbit.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public static var ivSize: Swift.Int
+  public static var keySize: Swift.Int
+  public static var blockSize: Swift.Int
+  final public var keySize: Swift.Int {
+    get
+  }
+  public convenience init(key: Swift.Array<Swift.UInt8>) throws
+  public init(key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>?) throws
+  @objc deinit
+}
+extension Rabbit : iosExperienceSDK.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public struct OFB : iosExperienceSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: iosExperienceSDK.OFB.Error, b: iosExperienceSDK.OFB.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let options: iosExperienceSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+public enum PKCS7 {
+}
+@objc public enum ESPaymentProcessor : Swift.Int {
+  case STRIPE = 0
+  case BRAINTREE
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+open class RSUPCEGenerator : iosExperienceSDK.RSAbstractCodeGenerator, iosExperienceSDK.RSCheckDigitGenerator {
+  override open func isValid(_ contents: Swift.String) -> Swift.Bool
+  override open func initiator() -> Swift.String
+  override open func terminator() -> Swift.String
+  override open func barcode(_ contents: Swift.String) -> Swift.String
+  open func checkDigit(_ contents: Swift.String) -> Swift.String
+  @objc deinit
+}
+extension AES {
+  public convenience init(key: Swift.String, iv: Swift.String, padding: iosExperienceSDK.Padding = .pkcs7) throws
+}
+public struct CFB : iosExperienceSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: iosExperienceSDK.CFB.Error, b: iosExperienceSDK.CFB.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public let options: iosExperienceSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
+}
+@objc public class ESApiClient : ObjectiveC.NSObject {
+  @objc public static var sharedInstance: iosExperienceSDK.ESApiClient
+  @objc public func getEventUserInfo(userInfo: iosExperienceSDK.ESUserInfo, eventIds: Swift.Array<Swift.String>, ticketSystemId: iosExperienceSDK.ESExternalTicketSystem, onCompletion: @escaping (Swift.Array<iosExperienceSDK.ESEventInfoResponse>?) -> Swift.Void)
+  @objc public func getEventProductInfo(userInfo: iosExperienceSDK.ESUserInfo, eventIds: Swift.Array<Swift.String>, ticketSystemId: iosExperienceSDK.ESExternalTicketSystem, onCompletion: @escaping (Swift.Array<iosExperienceSDK.ESEventInfoResponse>?) -> Swift.Void)
+  @objc public func getEventInfo(userInfo: iosExperienceSDK.ESUserInfo, eventIds: Swift.Array<Swift.String>, ticketSystemId: iosExperienceSDK.ESExternalTicketSystem, onCompletion: @escaping (Swift.Array<iosExperienceSDK.ESEventInfoResponse>?) -> Swift.Void)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class ESEventsDoorRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+@objc public class ESProductInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+  @objc public var openDate: Foundation.Date?
+  @objc public var closeDate: Foundation.Date?
+  required public init(fromJson: iosExperienceSDK.JSON)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class ESFanExperienceRequest : iosExperienceSDK.ESWebViewRequest {
+  @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
+  @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc public convenience init(ticketSystem: iosExperienceSDK.ESExternalTicketSystem, ticketSystemEventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
+  @objc override public func getPath() -> Swift.String
+  @objc deinit
+}
+@available(*, renamed: "Digest")
+public typealias Hash = iosExperienceSDK.Digest
+public struct Digest {
+  public static func md5(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha1(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha224(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha256(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha384(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha512(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha2(_ bytes: Swift.Array<Swift.UInt8>, variant: iosExperienceSDK.SHA2.Variant) -> Swift.Array<Swift.UInt8>
+  public static func sha3(_ bytes: Swift.Array<Swift.UInt8>, variant: iosExperienceSDK.SHA3.Variant) -> Swift.Array<Swift.UInt8>
+}
+public protocol AEAD {
+  static var kLen: Swift.Int { get }
+  static var ivRange: Swift.Range<Swift.Int> { get }
+}
+public enum ESProduct : Swift.Int, Swift.CaseIterable {
+  case UPGRADE
+  case EXPERIENTIAL
+  case MERCHANDISE
+  case PASS
+  case SWF
+  case BAF
+  case GENIE
+  case AUCTION
+  case NOTGOING
+  case MEMORY
+  case UPGRADES_DONTUSE
+  case MEMORIES_DONTUSE
+  case PASS_ONE
+  case PASS_SELECT
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+  public typealias AllCases = [iosExperienceSDK.ESProduct]
+  public static var allCases: [iosExperienceSDK.ESProduct] {
+    get
+  }
+}
+final public class AES {
+  public enum Error : Swift.Error {
+    case invalidKeySize
+    case dataPaddingRequired
+    case invalidData
+    public static func == (a: iosExperienceSDK.AES.Error, b: iosExperienceSDK.AES.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public enum Variant : Swift.Int {
+    case aes128
+    case aes192
+    case aes256
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public static var blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  final public let variant: iosExperienceSDK.AES.Variant
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: iosExperienceSDK.BlockMode, padding: iosExperienceSDK.Padding = .pkcs7) throws
+  @objc deinit
+}
+extension AES : iosExperienceSDK.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+final public class HMAC : iosExperienceSDK.Authenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    case invalidInput
+    public static func == (a: iosExperienceSDK.HMAC.Error, b: iosExperienceSDK.HMAC.Error) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public enum Variant {
+    case sha1
+    case sha256
+    case sha384
+    case sha512
+    case md5
+    public static func == (a: iosExperienceSDK.HMAC.Variant, b: iosExperienceSDK.HMAC.Variant) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public init(key: Swift.Array<Swift.UInt8>, variant: iosExperienceSDK.HMAC.Variant = .md5)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension iosExperienceSDK.CTR : iosExperienceSDK.BlockMode {}
+extension iosExperienceSDK.CCM : iosExperienceSDK.BlockMode {}
