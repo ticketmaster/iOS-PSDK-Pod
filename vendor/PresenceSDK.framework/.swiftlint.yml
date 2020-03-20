@@ -1,0 +1,20 @@
+disabled_rules:
+  - file_length
+  - line_length
+  - function_body_length
+  - type_body_length
+  - identifier_name
+  - nesting
+  - cyclomatic_complexity
+  - large_tuple
+  - todo
+  - function_parameter_count
+included:
+  - PresenceSDK
+excluded:
+  - PresenceSDK/3rdParty
+reporter: "xcode"
+
+type_name:
+    min_length: 2
+    max_length: 50

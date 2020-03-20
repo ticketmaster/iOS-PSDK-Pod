@@ -7,17 +7,13 @@
 ### CocoaPods
 Swift 5.1.3+:
 ```
-pod 'TM-PSDK', '~> 5.1.3-1.22.0'
+pod 'TM-PSDK', '~> 5.1.3-1.23.0'
 ```
 Swift 5.1.2:
 ```
-pod 'TM-PSDK', '~> 5.1.2-1.22.0'
+pod 'TM-PSDK', '~> 5.1.2-1.23.0'
 ```
 
-Swift 5.1.0:
-```
-pod 'TM-PSDK', '~> 5.1.0-1.22.0'
-```
 # PSDKPod
 
 [![CI Status](https://img.shields.io/travis/TylerHartzheim/PSDKPod.svg?style=flat)](https://travis-ci.org/TylerHartzheim/PSDKPod)

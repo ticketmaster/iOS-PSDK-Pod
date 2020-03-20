@@ -1,18 +1,14 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name iosExperienceSDK
-import AVFoundation
 import AudioToolbox
-import CoreImage
 import CoreLocation
 import Darwin
 import Foundation
-import JavaScriptCore
-import MessageUI
 import PassKit
-import QuartzCore
 import Swift
 import UIKit
+import WebKit
 @_exported import iosExperienceSDK
 @objc public class ESUserInfo : ObjectiveC.NSObject {
   @objc public var name: Swift.String?
@@ -457,12 +453,6 @@ public protocol Cryptor {
   @objc override dynamic public init()
   @objc deinit
 }
-public var RSBarcodesTypeExtendedCode39Code: Swift.String
-open class RSExtendedCode39Generator : iosExperienceSDK.RSCode39Generator {
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  @objc deinit
-}
 extension NSNotification.Name {
   public static var purchase: Foundation.Notification.Name
 }
@@ -475,39 +465,6 @@ extension NSNotification.Name {
 extension String {
   public func decryptBase64ToString(cipher: iosExperienceSDK.Cipher) throws -> Swift.String
   public func decryptBase64(cipher: iosExperienceSDK.Cipher) throws -> Swift.Array<Swift.UInt8>
-}
-open class RSCode39Mod43Generator : iosExperienceSDK.RSCode39Generator, iosExperienceSDK.RSCheckDigitGenerator {
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  open func checkDigit(_ contents: Swift.String) -> Swift.String
-  @objc deinit
-}
-@objc open class RSCornersLayer : QuartzCore.CALayer {
-  @objc open var strokeColor: CoreGraphics.CGColor
-  @objc open var strokeWidth: CoreGraphics.CGFloat
-  @objc open var drawingCornersArray: Swift.Array<Swift.Array<CoreGraphics.CGPoint>>
-  @objc open var cornersArray: Swift.Array<[Any]> {
-    @objc get
-    @objc set(newValue)
-  }
-  @objc override dynamic open func draw(in ctx: CoreGraphics.CGContext)
-  @objc override dynamic public init()
-  @objc override dynamic public init(layer: Any)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-open class RSUnifiedCodeGenerator : iosExperienceSDK.RSCodeGenerator {
-  open var isBuiltInCode128GeneratorSelected: Swift.Bool
-  open var fillColor: UIKit.UIColor
-  open var strokeColor: UIKit.UIColor
-  open class var shared: iosExperienceSDK.RSUnifiedCodeGenerator {
-    get
-  }
-  open func isValid(_ contents: Swift.String) -> Swift.Bool
-  open func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
-  open func generateCode(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
-  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel) -> UIKit.UIImage?
-  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject) -> UIKit.UIImage?
-  @objc deinit
 }
 @objc public class ESPassOneHandshakeRequest : iosExperienceSDK.ESWebViewRequest {
   @objc public init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
@@ -633,13 +590,6 @@ extension Array where Element == Swift.UInt8 {
 final public class Scrypt {
   public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, dkLen: Swift.Int, N: Swift.Int, r: Swift.Int, p: Swift.Int) throws
   final public func calculate() throws -> [Swift.UInt8]
-  @objc deinit
-}
-@objc open class RSCodeLayer : QuartzCore.CALayer {
-  @objc override dynamic open func draw(in ctx: CoreGraphics.CGContext)
-  @objc override dynamic public init()
-  @objc override dynamic public init(layer: Any)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 public struct BlockModeOption : Swift.OptionSet {
@@ -833,90 +783,9 @@ extension SHA3 : iosExperienceSDK.Updatable {
     get
   }
 }
-public var RSBarcodesTypeISBN13Code: Swift.String
-public var RSBarcodesTypeISSN13Code: Swift.String
-open class RSEANGenerator : iosExperienceSDK.RSAbstractCodeGenerator {
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  override open func initiator() -> Swift.String
-  override open func terminator() -> Swift.String
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  @objc deinit
-}
-@objc open class RSCodeReaderViewController : UIKit.UIViewController, AVFoundation.AVCaptureMetadataOutputObjectsDelegate {
-  @objc open var device: AVFoundation.AVCaptureDevice?
-  @objc open var output: AVFoundation.AVCaptureMetadataOutput
-  @objc open var session: AVFoundation.AVCaptureSession
-  @objc open var focusMarkLayer: iosExperienceSDK.RSFocusMarkLayer
-  @objc open var cornersLayer: iosExperienceSDK.RSCornersLayer
-  @objc open var tapHandler: ((CoreGraphics.CGPoint) -> Swift.Void)?
-  @objc open var barcodesHandler: ((Swift.Array<AVFoundation.AVMetadataMachineReadableCodeObject>) -> Swift.Void)?
-  @objc open var isCrazyMode: Swift.Bool
-  @objc open func hasFlash() -> Swift.Bool
-  @objc open func hasTorch() -> Swift.Bool
-  @objc open func switchCamera() -> AVFoundation.AVCaptureDevice.Position
-  @discardableResult
-  @objc open func toggleTorch() -> Swift.Bool
-  @objc deinit
-  @objc override dynamic open func viewDidLayoutSubviews()
-  @objc override dynamic open func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
-  @objc override dynamic open func viewDidLoad()
-  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
-  @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
-  @objc public func metadataOutput(_ output: AVFoundation.AVCaptureMetadataOutput, didOutput metadataObjects: [AVFoundation.AVMetadataObject], from connection: AVFoundation.AVCaptureConnection)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
-}
 public class BlockDecryptor : iosExperienceSDK.Cryptor, iosExperienceSDK.Updatable {
   public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
   public func seek(to position: Swift.Int) throws
-  @objc deinit
-}
-public enum UIColorInputError : Swift.Error {
-  case missingHashMarkAsPrefix
-  case unableToScanHexValue
-  case mismatchedHexStringLength
-  public static func == (a: iosExperienceSDK.UIColorInputError, b: iosExperienceSDK.UIColorInputError) -> Swift.Bool
-  public var hashValue: Swift.Int {
-    get
-  }
-  public func hash(into hasher: inout Swift.Hasher)
-}
-extension UIColor {
-  @objc dynamic public convenience init(hex3: Swift.UInt16, alpha: CoreGraphics.CGFloat = 1)
-  @objc dynamic public convenience init(hex4: Swift.UInt16)
-  @objc dynamic public convenience init(hex6: Swift.UInt32, alpha: CoreGraphics.CGFloat = 1)
-  @objc dynamic public convenience init(hex8: Swift.UInt32)
-  @objc dynamic public convenience init(rgba_throws rgba: Swift.String) throws
-  @objc dynamic public convenience init(_ rgba: Swift.String, defaultColor: UIKit.UIColor = UIColor.clear)
-  @objc dynamic public func hexString(_ includeAlpha: Swift.Bool = true) -> Swift.String
-}
-public enum RSCode128GeneratorCodeTable : Swift.Int {
-  case auto
-  case a
-  case b
-  case c
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-open class RSCode128Generator : iosExperienceSDK.RSAbstractCodeGenerator, iosExperienceSDK.RSCheckDigitGenerator {
-  public init(codeTable: iosExperienceSDK.RSCode128GeneratorCodeTable)
-  override public convenience init()
-  override open func initiator() -> Swift.String
-  override open func terminator() -> Swift.String
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  open func checkDigit(_ contents: Swift.String) -> Swift.String
-  @objc deinit
-}
-open class RSCode93Generator : iosExperienceSDK.RSAbstractCodeGenerator, iosExperienceSDK.RSCheckDigitGenerator {
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  override open func initiator() -> Swift.String
-  override open func terminator() -> Swift.String
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  open func checkDigit(_ contents: Swift.String) -> Swift.String
   @objc deinit
 }
 @objc public class ESPassRequest : iosExperienceSDK.ESWebViewRequest {
@@ -989,30 +858,6 @@ final public class AEADChaCha20Poly1305 : iosExperienceSDK.AEAD {
   }
   @objc deinit
 }
-@objc open class RSFocusMarkLayer : QuartzCore.CALayer {
-  @objc open var size: CoreGraphics.CGSize
-  @objc open var sight: CoreGraphics.CGFloat
-  @objc open var strokeColor: CoreGraphics.CGColor
-  @objc open var strokeWidth: CoreGraphics.CGFloat
-  @objc open var delay: CoreFoundation.CFTimeInterval
-  @objc open var canDraw: Swift.Bool
-  @objc open var point: CoreGraphics.CGPoint {
-    @objc get
-    @objc set(newValue)
-  }
-  @objc override dynamic open func draw(in ctx: CoreGraphics.CGContext)
-  @objc override dynamic public init()
-  @objc override dynamic public init(layer: Any)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-open class RSCode39Generator : iosExperienceSDK.RSAbstractCodeGenerator {
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  override open func initiator() -> Swift.String
-  override open func terminator() -> Swift.String
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  @objc deinit
-}
 @objc public class ESUserInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
   public var productNumsUsed: Swift.Array<iosExperienceSDK.ESProduct>?
   required public init(fromJson: iosExperienceSDK.JSON)
@@ -1024,13 +869,6 @@ open class RSCode39Generator : iosExperienceSDK.RSAbstractCodeGenerator {
   @objc public func hasReturned() -> Swift.Bool
   @objc public func hasModified() -> Swift.Bool
   @objc public func hasPass() -> Swift.Bool
-  @objc deinit
-}
-open class RSUnifiedCodeValidator {
-  open class var shared: iosExperienceSDK.RSUnifiedCodeValidator {
-    get
-  }
-  open func isValid(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> Swift.Bool
   @objc deinit
 }
 extension Data {
@@ -1134,21 +972,6 @@ extension Array where Element == Swift.UInt8 {
   public func toBase64() -> Swift.String?
   public init(base64: Swift.String)
 }
-@objc public class ESBarcodeScannerController : iosExperienceSDK.RSCodeReaderViewController {
-  public typealias CompleteHandler = (Swift.Set<Swift.String>) -> Swift.Void
-  @objc public var completeHandler: iosExperienceSDK.ESBarcodeScannerController.CompleteHandler?
-  @objc override dynamic public func viewDidLoad()
-  @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
-  @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
-    @objc get
-  }
-  @objc override dynamic public var shouldAutorotate: Swift.Bool {
-    @objc get
-  }
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
 public protocol _UInt8Type {
 }
 extension UInt8 : iosExperienceSDK._UInt8Type {
@@ -1159,17 +982,6 @@ extension UInt8 {
 }
 extension ChaCha20 {
   public convenience init(key: Swift.String, iv: Swift.String) throws
-}
-open class RSITFGenerator : iosExperienceSDK.RSAbstractCodeGenerator {
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  override open func initiator() -> Swift.String
-  override open func terminator() -> Swift.String
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  @objc deinit
-}
-open class RSITF14Generator : iosExperienceSDK.RSITFGenerator {
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  @objc deinit
 }
 public class ESSecurityUtil {
   public class func generateSsoToken(forUser: iosExperienceSDK.ESUserInfo, cnonce: Swift.String) -> Swift.String?
@@ -1329,47 +1141,6 @@ extension Rabbit {
   public convenience init(key: Swift.String) throws
   public convenience init(key: Swift.String, iv: Swift.String) throws
 }
-public enum InputCorrectionLevel : Swift.String {
-  case Low
-  case Medium
-  case Quarter
-  case High
-  public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
-  public var rawValue: Swift.String {
-    get
-  }
-}
-public protocol RSCodeGenerator {
-  var fillColor: UIKit.UIColor { get set }
-  var strokeColor: UIKit.UIColor { get set }
-  func isValid(_ contents: Swift.String) -> Swift.Bool
-  func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel) -> UIKit.UIImage?
-  func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject) -> UIKit.UIImage?
-  func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
-  func generateCode(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
-}
-public protocol RSCheckDigitGenerator {
-  func checkDigit(_ contents: Swift.String) -> Swift.String
-}
-open class RSAbstractCodeGenerator : iosExperienceSDK.RSCodeGenerator {
-  open var fillColor: UIKit.UIColor
-  open var strokeColor: UIKit.UIColor
-  open func isValid(_ contents: Swift.String) -> Swift.Bool
-  open func initiator() -> Swift.String
-  open func terminator() -> Swift.String
-  open func barcode(_ contents: Swift.String) -> Swift.String
-  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel) -> UIKit.UIImage?
-  open func generateCode(_ machineReadableCodeObject: AVFoundation.AVMetadataMachineReadableCodeObject) -> UIKit.UIImage?
-  open func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
-  open func generateCode(_ contents: Swift.String, machineReadableCodeObjectType: Swift.String) -> UIKit.UIImage?
-  open class func filterName(_ machineReadableCodeObjectType: Swift.String) -> Swift.String
-  open class func generateCode(_ contents: Swift.String, inputCorrectionLevel: iosExperienceSDK.InputCorrectionLevel, filterName: Swift.String) -> UIKit.UIImage?
-  open class func generateCode(_ contents: Swift.String, filterName: Swift.String) -> UIKit.UIImage?
-  open class func resizeImage(_ source: UIKit.UIImage, scale: CoreGraphics.CGFloat) -> UIKit.UIImage?
-  open class func resizeImage(_ source: UIKit.UIImage, targetSize: CoreGraphics.CGSize, contentMode: UIKit.UIView.ContentMode) -> UIKit.UIImage?
-  @objc deinit
-}
 extension Blowfish {
   public convenience init(key: Swift.String, iv: Swift.String, padding: iosExperienceSDK.Padding = .pkcs7) throws
 }
@@ -1427,14 +1198,6 @@ public enum PKCS7 {
   public var rawValue: Swift.Int {
     get
   }
-}
-open class RSUPCEGenerator : iosExperienceSDK.RSAbstractCodeGenerator, iosExperienceSDK.RSCheckDigitGenerator {
-  override open func isValid(_ contents: Swift.String) -> Swift.Bool
-  override open func initiator() -> Swift.String
-  override open func terminator() -> Swift.String
-  override open func barcode(_ contents: Swift.String) -> Swift.String
-  open func checkDigit(_ contents: Swift.String) -> Swift.String
-  @objc deinit
 }
 extension AES {
   public convenience init(key: Swift.String, iv: Swift.String, padding: iosExperienceSDK.Padding = .pkcs7) throws
