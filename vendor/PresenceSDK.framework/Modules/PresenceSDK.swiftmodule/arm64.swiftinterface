@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PresenceSDK
 import AuthenticationServices
 import Contacts
@@ -64,9 +64,9 @@ extension PresenceSDK {
   @objc final public func setEnvironment(sdkEnvironment: PresenceSDK.SDKEnvironment)
 }
 extension PresenceSDK {
-  @objc final public func logOut()
-  @objc final public func logOutHost()
-  @objc final public func logOutTeam()
+  @objc final public func logOut(completion: @escaping (Swift.Bool, Swift.Error?, Swift.Bool, Swift.Error?) -> Swift.Void = { _, _, _, _ in })
+  @objc final public func logOutHost(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
+  @objc final public func logOutTeam(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
   @objc final public func resetPasswordForHost(success: @escaping PresenceSDK.PresenceSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PresenceSDK.AccessTokenFailureCompletionHandler, token: Swift.String? = nil)
   @objc final public func loginToHost(completion: ((Swift.Bool) -> Swift.Void)? = nil)
   @objc final public func login(to backendName: PresenceSDK.PresenceLogin.BackendName, completion: ((Swift.Bool) -> Swift.Void)? = nil)
@@ -588,6 +588,7 @@ extension String {
   @objc optional func onLoginForgotPasswordClicked(backendName: PresenceSDK.PresenceLogin.BackendName)
   @objc optional func onCacheCleared()
   @objc optional func onLogoutSuccessful(backendName: PresenceSDK.PresenceLogin.BackendName)
+  @objc optional func onLogoutFailed(backendName: PresenceSDK.PresenceLogin.BackendName, error: Swift.Error)
   @objc optional func onHostRefreshTokenExpired()
   @objc optional func onLogoutAllSuccessful()
   @objc optional func onLoginMethodUsed(backendName: PresenceSDK.PresenceLogin.BackendName, loginMethod: PresenceSDK.PresenceLogin.LoginMethod)
