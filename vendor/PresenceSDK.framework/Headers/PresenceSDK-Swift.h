@@ -187,6 +187,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import ObjectiveC;
 @import SafariServices;
 @import UIKit;
+@import WebKit;
 @import iosExperienceSDK;
 #endif
 
@@ -493,6 +494,21 @@ SWIFT_CLASS("_TtC11PresenceSDK11PresenceSDK")
 
 
 @interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
+/// Search for event with the given identifier
+  PresenceSDKIdTypeEvent = 0,
+/// Search for order with the given identifier
+  PresenceSDKIdTypeOrder = 1,
+/// Search for event or order with the given identifier
+  PresenceSDKIdTypeAny = 2,
+};
+
+
+
+
+@interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method for configuring Experience SDK
 /// <ul>
 ///   <li>
@@ -508,21 +524,12 @@ SWIFT_CLASS("_TtC11PresenceSDK11PresenceSDK")
 
 
 
+
+@class UIViewController;
+
 @interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
+- (void)startMFAValidationOn:(UIViewController * _Nonnull)controller additionalProperties:(NSDictionary<NSString *, NSString *> * _Nonnull)additionalProperties success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
-/// Search for event with the given identifier
-  PresenceSDKIdTypeEvent = 0,
-/// Search for order with the given identifier
-  PresenceSDKIdTypeOrder = 1,
-/// Search for event or order with the given identifier
-  PresenceSDKIdTypeAny = 2,
-};
-
-
-
-
 
 
 
@@ -536,7 +543,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
 /// The version number for PresenceSDK.
 - (NSString * _Nonnull)getVersionNumber SWIFT_WARN_UNUSED_RESULT;
 /// Method to get the logged in user’s information.
-/// \param backendname The specified backend name where the SDK will retrive member information from.
+/// \param backendName The specified backend name where the SDK will retrive member information from.
 ///
 /// \param completion Completion block to be called containing possible member and error imformation.
 ///
@@ -626,6 +633,8 @@ enum SDKEnvironment : NSInteger;
 @interface PresenceSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method to log out user from all the logged-in accounts
 - (void)logOutWithCompletion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
+/// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
+- (void)logOut;
 /// Method to log out user from Ticketmaster account
 - (void)logOutHostWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 /// Method to log out user from Team account
@@ -634,6 +643,7 @@ enum SDKEnvironment : NSInteger;
 /// Method to login into Host without going via the Login Selector screen
 /// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
 - (void)loginToHostWithCompletion:(void (^ _Nullable)(BOOL))completion;
+- (void)loginToHostWithMaQueryParams:(NSDictionary<NSString *, NSString *> * _Nonnull)maQueryParams completion:(void (^ _Nullable)(BOOL))completion;
 /// Method to login via Webview Login
 /// <ul>
 ///   <li>
@@ -647,6 +657,7 @@ enum SDKEnvironment : NSInteger;
 /// </ul>
 /// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
 - (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+- (void)loginTo:(enum BackendName)backendName maQueryParams:(NSDictionary<NSString *, NSString *> * _Nonnull)maQueryParams completion:(void (^ _Nullable)(BOOL))completion;
 /// Method for getting a valid OAUTH Access Token
 /// \param backendName Token for Host or AccountManager
 ///
@@ -655,6 +666,7 @@ enum SDKEnvironment : NSInteger;
 /// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
 ///
 - (void)getAccessTokenWithBackendName:(enum BackendName)backendName success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
+- (void)getAccessTokenWithBackendName:(enum BackendName)backendName maQueryParams:(NSDictionary<NSString *, NSString *> * _Nonnull)maQueryParams success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
 /// Method to check if user is logged in any of the services i.e Host or Accounts Manager, and has a valid access token available.
 ///
 /// returns:
@@ -731,6 +743,8 @@ typedef SWIFT_ENUM(NSInteger, SDKTheme, open) {
 /// Important UI elements will be colored black.
   SDKThemeDark = 1,
 };
+
+
 
 
 

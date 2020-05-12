@@ -87,7 +87,7 @@ public struct JSON {
   public init(parseJSON jsonString: Swift.String)
   public mutating func merge(with other: iosExperienceSDK.JSON) throws
   public func merged(with other: iosExperienceSDK.JSON) throws -> iosExperienceSDK.JSON
-  public var type: iosExperienceSDK.Type {
+  public var type: iosExperienceSDK.`Type` {
     get
     }
   public var error: iosExperienceSDK.SwiftyJSONError? {
