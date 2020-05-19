@@ -1,45 +1,35 @@
-[![Version](https://img.shields.io/cocoapods/v/TM-PSDK.svg?style=for-the-badge)](http://cocoapods.org/pods/TM-PSDK)
-![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=for-the-badge)
-![iOS](https://img.shields.io/badge/iOS-11-green.svg?style=for-the-badge)
-[![License](https://img.shields.io/cocoapods/l/TM-PSDK.svg?style=for-the-badge)](http://cocoapods.org/pods/TM-PSDK)
+[![Version](https://img.shields.io/cocoapods/v/TM-PSDK.svg?style=flat)](http://cocoapods.org/pods/TM-PSDK)
+![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=flat)
+![iOS](https://img.shields.io/badge/iOS-11-green.svg?style=flat)
+[![License](https://img.shields.io/cocoapods/l/TM-PSDK.svg?style=flat)](http://cocoapods.org/pods/TM-PSDK)
+[![Platform](https://img.shields.io/cocoapods/p/TM-PSDK.svg?style=flat)](https://cocoapods.org/pods/TM-PSDK)
+
+# TM-PSDK
+
+The Ticketmaster Presence SDK provides a simple way to add Ticketmaster features
+in your 3rd party iOS apps. More information about the Presence SDK can be found
+at https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/.
+
+Have a question about Presence SDK? [Contact us!](https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/#presence-feedback-form-anchor)
 
 ## Installation
+
 ### CocoaPods
+
 Swift 5.2.2+:
-```
+```ruby
 pod 'TM-PSDK', '~> 5.2.2-1.25.0'
 ```
+
 Swift 5.1.3:
-```
+```ruby
 pod 'TM-PSDK', '~> 5.1.3-1.25.0'
 ```
 
-# PSDKPod
+## Integration Guide
 
-[![CI Status](https://img.shields.io/travis/TylerHartzheim/PSDKPod.svg?style=flat)](https://travis-ci.org/TylerHartzheim/PSDKPod)
-[![Version](https://img.shields.io/cocoapods/v/PSDKPod.svg?style=flat)](https://cocoapods.org/pods/PSDKPod)
-[![License](https://img.shields.io/cocoapods/l/PSDKPod.svg?style=flat)](https://cocoapods.org/pods/PSDKPod)
-[![Platform](https://img.shields.io/cocoapods/p/PSDKPod.svg?style=flat)](https://cocoapods.org/pods/PSDKPod)
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
-## Installation
-
-PSDKPod is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'PSDKPod'
-```
-
-## Author
-
-TylerHartzheim, Tyler.Hartzheim@Ticketmaster.com
+See our [integration guide and demo project](https://developer.ticketmaster.com/products-and-docs/tutorials/sample-apps/presenceSDK_sampleApp/iOS/) for insight on how to properly integrate the Presence SDK.
 
 ## License
 
-PSDKPod is available under the MIT license. See the LICENSE file for more info.
+TM-PSDK is available under the MIT license. See the LICENSE file for more info.
