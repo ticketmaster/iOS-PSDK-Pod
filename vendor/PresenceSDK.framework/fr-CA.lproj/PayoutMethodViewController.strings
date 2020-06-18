@@ -2,9 +2,6 @@
 /* Class = "UILabel"; text = "SELECT YOUR PAYOUT METHOD"; ObjectID = "Oe2-Gk-ixI"; */
 "Oe2-Gk-ixI.text" = "SÉLECTIONNEZ VOTRE MÉTHODE DE PAIEMENT";
 
-/* Class = "UILabel"; text = "Get paid to the selected account when your tickets sell. "; ObjectID = "f2v-b8-cx7"; */
-"f2v-b8-cx7.text" = "Faites-vous payer sur le compte sélectionné lors de la vente de vos billets.";
-
 /* Class = "UILabel"; text = "Seller Credit"; ObjectID = "j00-5E-QQU"; */
 "j00-5E-QQU.text" = "Crédit au vendeur";
 

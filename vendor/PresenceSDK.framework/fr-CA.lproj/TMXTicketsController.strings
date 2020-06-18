@@ -191,8 +191,8 @@
 /* Class = "UILabel"; accessibilityLabel = "State Title"; ObjectID = "L8x-F7-QfW"; */
 "L8x-F7-QfW.accessibilityLabel" = "State Title";
 
-/* Class = "UILabel"; text = "2 tickets posted for resale @ $50 each"; ObjectID = "L8x-F7-QfW"; */
-"L8x-F7-QfW.text" = "2 tickets posted for resale @ $50 each";
+/* Class = "UILabel"; text = "2 tickets listed for resale @ $50 each"; ObjectID = "L8x-F7-QfW"; */
+"L8x-F7-QfW.text" = "2 tickets listed for resale @ $50 each";
 
 /* Class = "UILabel"; accessibilityLabel = "Ticket Count"; ObjectID = "LWY-Xp-hEP"; */
 "LWY-Xp-hEP.accessibilityLabel" = "Ticket Count";
@@ -326,8 +326,8 @@
 /* Class = "UIButton"; accessibilityLabel = "Edit Button"; ObjectID = "Ys2-1Y-9uV"; */
 "Ys2-1Y-9uV.accessibilityLabel" = "Edit Button";
 
-/* Class = "UIButton"; normalTitle = "Edit Posting"; ObjectID = "Ys2-1Y-9uV"; */
-"Ys2-1Y-9uV.normalTitle" = "Edit Posting";
+/* Class = "UIButton"; normalTitle = "Edit Listing"; ObjectID = "Ys2-1Y-9uV"; */
+"Ys2-1Y-9uV.normalTitle" = "Edit Listing";
 
 /* Class = "UILabel"; accessibilityLabel = "Ticket Title Label"; ObjectID = "ZQg-yS-CBO"; */
 "ZQg-yS-CBO.accessibilityLabel" = "Ticket Title Label";
@@ -434,8 +434,8 @@
 /* Class = "UIButton"; accessibilityLabel = "Cancel Button"; ObjectID = "gZc-hA-TMd"; */
 "gZc-hA-TMd.accessibilityLabel" = "Cancel Button";
 
-/* Class = "UIButton"; normalTitle = "Cancel Posting"; ObjectID = "gZc-hA-TMd"; */
-"gZc-hA-TMd.normalTitle" = "Cancel Posting";
+/* Class = "UIButton"; normalTitle = "Cancel Listing"; ObjectID = "gZc-hA-TMd"; */
+"gZc-hA-TMd.normalTitle" = "Cancel Listing";
 
 /* Class = "UILabel"; accessibilityLabel = "Event Name Label"; ObjectID = "hnA-1g-I9G"; */
 "hnA-1g-I9G.accessibilityLabel" = "Event Name Label";
