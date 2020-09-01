@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PresenceSDK
 import AuthenticationServices
 import Contacts
@@ -17,7 +17,7 @@ import SystemConfiguration
 import UIKit
 import WebKit
 import iosExperienceSDK
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class PresenceSDK : ObjectiveC.NSObject {
+@objc final public class PSDK : ObjectiveC.NSObject {
   public typealias ConfigSuccessHandler = () -> Swift.Void
   public typealias ConfigFailureHandler = (Swift.Error?) -> Swift.Void
   public typealias AccessTokenSuccessCompletionHandler = (Swift.String) -> Swift.Void
@@ -25,9 +25,9 @@ import iosExperienceSDK
   @objc final public var hostLoginQueryParams: [Swift.String : Swift.String]
   @objc final public var archticsLoginQueryParams: [Swift.String : Swift.String]
   @objc deinit
-  @objc public static func getPresenceSDK() -> PresenceSDK.PresenceSDK
+  @objc public static func getPresenceSDK() -> PresenceSDK.PSDK
 }
-extension PresenceSDK {
+extension PSDK {
   @objc(PresenceSDKLoginButtons) public enum LoginButtons : Swift.Int {
     case forgotPassword
     case createAccount
@@ -37,12 +37,12 @@ extension PresenceSDK {
       get
     }
   }
-  @objc final public var loginButton: PresenceSDK.PresenceSDK.LoginButtons {
+  @objc final public var loginButton: PresenceSDK.PSDK.LoginButtons {
     @objc get
     @objc set
   }
 }
-extension PresenceSDK {
+extension PSDK {
   @objc(PresenceSDKIdType) public enum IdType : Swift.Int {
     case event
     case order
@@ -63,9 +63,9 @@ extension PresenceSDK {
     }
   }
 }
-extension PresenceSDK {
+extension PSDK {
   @objc final public func setConfig(consumerKey: Swift.String, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = false)
-  @objc final public func checkConfig(success: @escaping PresenceSDK.PresenceSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PresenceSDK.ConfigFailureHandler)
+  @objc final public func checkConfig(success: @escaping PresenceSDK.PSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PSDK.ConfigFailureHandler)
   @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: PresenceSDK.PresenceLoginDelegate)
   @available(*, deprecated, message: "Use `setBrandingColors` method instead.")
   @objc final public func setBrandingColor(color: UIKit.UIColor)
@@ -74,15 +74,15 @@ extension PresenceSDK {
   @objc final public func setTheme(theme: PresenceSDK.SDKTheme)
   @objc final public func setEnvironment(sdkEnvironment: PresenceSDK.SDKEnvironment)
 }
-extension PresenceSDK {
+extension PSDK {
   @objc final public func logOut(completion: @escaping (Swift.Bool, Swift.Error?, Swift.Bool, Swift.Error?) -> Swift.Void = { _, _, _, _ in })
   @objc final public func logOut()
   @objc final public func logOutHost(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
   @objc final public func logOutTeam(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
-  @objc final public func resetPasswordForHost(success: @escaping PresenceSDK.PresenceSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PresenceSDK.AccessTokenFailureCompletionHandler, token: Swift.String? = nil)
+  @objc final public func resetPasswordForHost(success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler, token: Swift.String? = nil)
   @objc final public func loginToHost(completion: ((Swift.Bool) -> Swift.Void)? = nil)
   @objc final public func login(to backendName: PresenceSDK.PresenceLogin.BackendName, completion: ((Swift.Bool) -> Swift.Void)? = nil)
-  @objc final public func getAccessToken(backendName: PresenceSDK.PresenceLogin.BackendName, success: @escaping PresenceSDK.PresenceSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PresenceSDK.AccessTokenFailureCompletionHandler)
+  @objc final public func getAccessToken(backendName: PresenceSDK.PresenceLogin.BackendName, success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler)
   @objc final public func isLoggedIn() -> Swift.Bool
   @objc final public func isLoggedIntoHost() -> Swift.Bool
   @objc final public func isLoggedIntoTeam() -> Swift.Bool
@@ -90,27 +90,27 @@ extension PresenceSDK {
   @objc final public func hasUserSignedInHost() -> Swift.Bool
   @objc final public func hasUserSignedInTeam() -> Swift.Bool
 }
-extension PresenceSDK {
+extension PSDK {
   @objc final public func getVersionNumber() -> Swift.String
   @objc final public func getMemberInfo(backendName: PresenceSDK.PresenceLogin.BackendName, completion: @escaping (PresenceSDK.PresenceMember?, Swift.Error?) -> Swift.Void)
   @available(*, deprecated, renamed: "jumpToOrderOrEvent(id:)")
   @objc final public func displayOrder(orderId: Swift.String)
   @objc final public func jumpToOrderOrEvent(id: Swift.String)
-  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PresenceSDK.IdType)
-  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PresenceSDK.IdType, action: PresenceSDK.PresenceSDK.ActionType)
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType)
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType)
 }
-extension PresenceSDK {
+extension PSDK {
   @objc final public func setExperienceConfiguration(_ experienceConfiguration: PresenceSDK.ExperienceConfiguration)
 }
-extension PresenceSDK {
+extension PSDK {
   @objc final public func startMFAValidation(on controller: UIKit.UIViewController, additionalProperties: [Swift.String : Any] = [String: Any](), success: @escaping (Swift.String) -> Swift.Void, failure: @escaping (Foundation.NSError) -> Swift.Void)
 }
-@objc @_hasMissingDesignatedInitializers final public class ExperienceConfiguration : ObjectiveC.NSObject {
+@objc final public class ExperienceConfiguration : ObjectiveC.NSObject {
   @objc public static let Builder: PresenceSDK.ExperienceConfigurationBuilder.Type
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
-@objc @_inheritsConvenienceInitializers final public class ExperienceConfigurationBuilder : ObjectiveC.NSObject {
+@objc final public class ExperienceConfigurationBuilder : ObjectiveC.NSObject {
   @objc override dynamic public init()
   @discardableResult
   @objc final public func setAppId(_ appId: Swift.String) -> PresenceSDK.ExperienceConfigurationBuilder
@@ -131,10 +131,7 @@ extension PresenceSDK {
   @objc final public func build() -> PresenceSDK.ExperienceConfiguration
   @objc deinit
 }
-@available(iOS 12.0, *)
-extension ASWebAuthenticationSession {
-}
-@_hasMissingDesignatedInitializers public class PresenceLogin {
+public class PresenceLogin {
   @objc public enum BackendName : Swift.Int, Swift.CustomStringConvertible {
     case host
     case accountManager
@@ -175,7 +172,7 @@ extension ASWebAuthenticationSession {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc public class BrandingColors : ObjectiveC.NSObject {
+@objc public class BrandingColors : ObjectiveC.NSObject {
   @objc public init(navBarColor: UIKit.UIColor, ticketColor: UIKit.UIColor, buttonColor: UIKit.UIColor)
   @objc public init(oneColor: UIKit.UIColor)
   @objc override dynamic public init()
@@ -192,18 +189,18 @@ extension ASWebAuthenticationSession {
     get
   }
 }
-@_inheritsConvenienceInitializers public class PresenceDeeplinkController : iosExperienceSDK.ExpDeeplinkController {
+public class PresenceDeeplinkController : iosExperienceSDK.ExpDeeplinkController {
   @objc override public func handleExperienceDeeplink(deeplink: Foundation.URL, userInfo: iosExperienceSDK.ESUserInfo = ESUserInfo())
   override public func handleWebDeeplink(destinationUrl: Swift.String, userInfo: iosExperienceSDK.ESUserInfo)
   override public func handleBarcodeDeeplink(eventId: Swift.String)
-  @objc deinit
   override public init()
+  @objc deinit
 }
 extension UIViewController {
   public static func swizzle()
 }
-@objc @_inheritsConvenienceInitializers final public class PresenceEventAnalytics : ObjectiveC.NSObject {
-  @objc @_inheritsConvenienceInitializers @objcMembers final public class Action : ObjectiveC.NSObject {
+@objc final public class PresenceEventAnalytics : ObjectiveC.NSObject {
+  @objc @objcMembers final public class Action : ObjectiveC.NSObject {
     @objc public static let ACTION_MYTICKETSCREENSHOWED: Swift.String
     @objc public static let ACTION_MANAGETICKETSCREENSHOWED: Swift.String
     @objc public static let ACTION_ADDPAYMENTINFOSCREENSHOWED: Swift.String
@@ -232,10 +229,10 @@ extension UIViewController {
     @objc public static let ACTION_ADD_TO_WALLET_INITIATE: Swift.String
     @objc public static let ACTION_ADD_TO_WALLET_CANCEL: Swift.String
     @objc public static let ACTION_ADD_TO_WALLET_FINISH: Swift.String
-    @objc deinit
     @objc override dynamic public init()
+    @objc deinit
   }
-  @objc @_inheritsConvenienceInitializers @objcMembers final public class Data : ObjectiveC.NSObject {
+  @objc @objcMembers final public class Data : ObjectiveC.NSObject {
     @objc public static let EVENT_ID: Swift.String
     @objc public static let EVENT_NAME: Swift.String
     @objc public static let EVENT_DATE: Swift.String
@@ -267,11 +264,11 @@ extension UIViewController {
     @objc public static let RESALE_SELLER_PAYOUT: Swift.String
     @objc public static let RESALE_SELLER_FEES: Swift.String
     @objc public static let CANCEL_RESALE_POSTING_ID: Swift.String
-    @objc deinit
     @objc override dynamic public init()
+    @objc deinit
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @objc public protocol PresenceCountry {
   @objc var id: Swift.Int { get }
@@ -300,297 +297,14 @@ extension UIViewController {
 }
 extension String : Swift.Error {
 }
-extension String {
-  public var a: Swift.String {
-    get
-  }
-  public var b: Swift.String {
-    get
-  }
-  public var c: Swift.String {
-    get
-  }
-  public var d: Swift.String {
-    get
-  }
-  public var e: Swift.String {
-    get
-  }
-  public var f: Swift.String {
-    get
-  }
-  public var g: Swift.String {
-    get
-  }
-  public var h: Swift.String {
-    get
-  }
-  public var i: Swift.String {
-    get
-  }
-  public var j: Swift.String {
-    get
-  }
-  public var k: Swift.String {
-    get
-  }
-  public var l: Swift.String {
-    get
-  }
-  public var m: Swift.String {
-    get
-  }
-  public var n: Swift.String {
-    get
-  }
-  public var o: Swift.String {
-    get
-  }
-  public var p: Swift.String {
-    get
-  }
-  public var q: Swift.String {
-    get
-  }
-  public var r: Swift.String {
-    get
-  }
-  public var s: Swift.String {
-    get
-  }
-  public var t: Swift.String {
-    get
-  }
-  public var u: Swift.String {
-    get
-  }
-  public var v: Swift.String {
-    get
-  }
-  public var w: Swift.String {
-    get
-  }
-  public var x: Swift.String {
-    get
-  }
-  public var y: Swift.String {
-    get
-  }
-  public var z: Swift.String {
-    get
-  }
-}
-extension String {
-  public var A: Swift.String {
-    get
-  }
-  public var B: Swift.String {
-    get
-  }
-  public var C: Swift.String {
-    get
-  }
-  public var D: Swift.String {
-    get
-  }
-  public var E: Swift.String {
-    get
-  }
-  public var F: Swift.String {
-    get
-  }
-  public var G: Swift.String {
-    get
-  }
-  public var H: Swift.String {
-    get
-  }
-  public var I: Swift.String {
-    get
-  }
-  public var J: Swift.String {
-    get
-  }
-  public var K: Swift.String {
-    get
-  }
-  public var L: Swift.String {
-    get
-  }
-  public var M: Swift.String {
-    get
-  }
-  public var N: Swift.String {
-    get
-  }
-  public var O: Swift.String {
-    get
-  }
-  public var P: Swift.String {
-    get
-  }
-  public var Q: Swift.String {
-    get
-  }
-  public var R: Swift.String {
-    get
-  }
-  public var S: Swift.String {
-    get
-  }
-  public var T: Swift.String {
-    get
-  }
-  public var U: Swift.String {
-    get
-  }
-  public var V: Swift.String {
-    get
-  }
-  public var W: Swift.String {
-    get
-  }
-  public var X: Swift.String {
-    get
-  }
-  public var Y: Swift.String {
-    get
-  }
-  public var Z: Swift.String {
-    get
-  }
-}
-extension String {
-  public var _1: Swift.String {
-    get
-  }
-  public var _2: Swift.String {
-    get
-  }
-  public var _3: Swift.String {
-    get
-  }
-  public var _4: Swift.String {
-    get
-  }
-  public var _5: Swift.String {
-    get
-  }
-  public var _6: Swift.String {
-    get
-  }
-  public var _7: Swift.String {
-    get
-  }
-  public var _8: Swift.String {
-    get
-  }
-  public var _9: Swift.String {
-    get
-  }
-  public var _0: Swift.String {
-    get
-  }
-}
-extension String {
-  public var space: Swift.String {
-    get
-  }
-  public var point: Swift.String {
-    get
-  }
-  public var dash: Swift.String {
-    get
-  }
-  public var comma: Swift.String {
-    get
-  }
-  public var semicolon: Swift.String {
-    get
-  }
-  public var colon: Swift.String {
-    get
-  }
-  public var apostrophe: Swift.String {
-    get
-  }
-  public var quotation: Swift.String {
-    get
-  }
-  public var plus: Swift.String {
-    get
-  }
-  public var equals: Swift.String {
-    get
-  }
-  public var paren_left: Swift.String {
-    get
-  }
-  public var paren_right: Swift.String {
-    get
-  }
-  public var asterisk: Swift.String {
-    get
-  }
-  public var ampersand: Swift.String {
-    get
-  }
-  public var caret: Swift.String {
-    get
-  }
-  public var percent: Swift.String {
-    get
-  }
-  public var $: Swift.String {
-    get
-  }
-  public var pound: Swift.String {
-    get
-  }
-  public var at: Swift.String {
-    get
-  }
-  public var exclamation: Swift.String {
-    get
-  }
-  public var question_mark: Swift.String {
-    get
-  }
-  public var back_slash: Swift.String {
-    get
-  }
-  public var forward_slash: Swift.String {
-    get
-  }
-  public var curly_left: Swift.String {
-    get
-  }
-  public var curly_right: Swift.String {
-    get
-  }
-  public var bracket_left: Swift.String {
-    get
-  }
-  public var bracket_right: Swift.String {
-    get
-  }
-  public var bar: Swift.String {
-    get
-  }
-  public var less_than: Swift.String {
-    get
-  }
-  public var greater_than: Swift.String {
-    get
-  }
-  public var underscore: Swift.String {
-    get
-  }
-}
-extension String {
-  public var dot: Swift.String {
-    get
-  }
+@objc @objcMembers @IBDesignable final public class PresenceSDKView : UIKit.UIView {
+  @objc override dynamic public init(frame rect: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override final public func awakeFromNib()
+  @objc override final public func willMove(toWindow newWindow: UIKit.UIWindow?)
+  @objc override final public func didMoveToWindow()
+  @objc final public func refreshView()
+  @objc deinit
 }
 @objc public protocol PresenceLoginDelegate {
   @available(*, unavailable, renamed: "onLoginWindowDidDisplay(backendName:)")
@@ -621,36 +335,24 @@ extension String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers @objcMembers @IBDesignable final public class PresenceSDKView : UIKit.UIView {
-  @objc override dynamic public init(frame rect: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override final public func awakeFromNib()
-  @objc override final public func willMove(toWindow newWindow: UIKit.UIWindow?)
-  @objc override final public func didMoveToWindow()
-  @objc final public func refreshView()
-  @objc deinit
-}
-extension PresenceSDK.PresenceSDK.LoginButtons : Swift.Equatable {}
-extension PresenceSDK.PresenceSDK.LoginButtons : Swift.Hashable {}
-extension PresenceSDK.PresenceSDK.LoginButtons : Swift.RawRepresentable {}
-extension PresenceSDK.PresenceSDK.IdType : Swift.Equatable {}
-extension PresenceSDK.PresenceSDK.IdType : Swift.Hashable {}
-extension PresenceSDK.PresenceSDK.IdType : Swift.RawRepresentable {}
-extension PresenceSDK.PresenceSDK.ActionType : Swift.Equatable {}
-extension PresenceSDK.PresenceSDK.ActionType : Swift.Hashable {}
-extension PresenceSDK.PresenceSDK.ActionType : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.LoginButtons : Swift.Equatable {}
+extension PresenceSDK.PSDK.LoginButtons : Swift.Hashable {}
+extension PresenceSDK.PSDK.LoginButtons : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.IdType : Swift.Equatable {}
+extension PresenceSDK.PSDK.IdType : Swift.Hashable {}
+extension PresenceSDK.PSDK.IdType : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.ActionType : Swift.Equatable {}
+extension PresenceSDK.PSDK.ActionType : Swift.Hashable {}
+extension PresenceSDK.PSDK.ActionType : Swift.RawRepresentable {}
 extension PresenceSDK.PresenceLogin.IdentityTheme : Swift.Equatable {}
 extension PresenceSDK.PresenceLogin.IdentityTheme : Swift.Hashable {}
 extension PresenceSDK.PresenceLogin.IdentityTheme : Swift.RawRepresentable {}
-extension PresenceSDK.PresenceLogin.BackendName : Swift.Equatable {}
 extension PresenceSDK.PresenceLogin.BackendName : Swift.Hashable {}
 extension PresenceSDK.PresenceLogin.BackendName : Swift.RawRepresentable {}
 extension PresenceSDK.PresenceLogin.LoginMethod : Swift.Equatable {}
 extension PresenceSDK.PresenceLogin.LoginMethod : Swift.Hashable {}
 extension PresenceSDK.PresenceLogin.LoginMethod : Swift.RawRepresentable {}
-extension PresenceSDK.SDKEnvironment : Swift.Equatable {}
 extension PresenceSDK.SDKEnvironment : Swift.Hashable {}
 extension PresenceSDK.SDKEnvironment : Swift.RawRepresentable {}
-extension PresenceSDK.SDKTheme : Swift.Equatable {}
 extension PresenceSDK.SDKTheme : Swift.Hashable {}
 extension PresenceSDK.SDKTheme : Swift.RawRepresentable {}
