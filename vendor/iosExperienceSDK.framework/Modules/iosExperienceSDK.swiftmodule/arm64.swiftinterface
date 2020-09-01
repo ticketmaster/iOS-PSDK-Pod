@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-compiler-version: Apple Swift version 5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name iosExperienceSDK
 import AudioToolbox
 import CoreLocation
@@ -10,7 +10,7 @@ import Swift
 import UIKit
 import WebKit
 @_exported import iosExperienceSDK
-@objc public class ESUserInfo : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @objc public class ESUserInfo : ObjectiveC.NSObject {
   @objc public var name: Swift.String?
   @objc public var email: Swift.String?
   @objc public var phoneNumber: Swift.String?
@@ -89,10 +89,10 @@ public struct JSON {
   public func merged(with other: iosExperienceSDK.JSON) throws -> iosExperienceSDK.JSON
   public var type: iosExperienceSDK.`Type` {
     get
-    }
+  }
   public var error: iosExperienceSDK.SwiftyJSONError? {
     get
-    }
+  }
   public var object: Any {
     get
     set(newValue)
@@ -420,7 +420,7 @@ public struct CTR {
   public init(iv: Swift.Array<Swift.UInt8>, counter: Swift.Int = 0)
   public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
 }
-public class ESRequestUtil {
+@_hasMissingDesignatedInitializers public class ESRequestUtil {
   public class func buildWebViewUrlComponents(url: Foundation.URL, config: iosExperienceSDK.ESConfig) -> Foundation.URLComponents
   public class func buildWebViewUrlComponents(request: iosExperienceSDK.ESWebViewRequest, config: iosExperienceSDK.ESConfig) -> Foundation.URLComponents
   public class func addExpHeaders(urlRequest: Foundation.URLRequest, userInfo: iosExperienceSDK.ESUserInfo?) -> Foundation.URLRequest
@@ -431,13 +431,13 @@ public class ESRequestUtil {
 public protocol Cryptor {
   mutating func seek(to: Swift.Int) throws
 }
-@objc public class ESTeamPassRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESTeamPassRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc public convenience init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
   @objc deinit
 }
-@objc public class ExperienceSDK : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers public class ExperienceSDK : ObjectiveC.NSObject {
   @objc public static var ssoSigningKey: Swift.String?
   @objc public static var hasUpdates: Swift.Bool
   @objc public static var fanDetails: iosExperienceSDK.ESFanDetails?
@@ -450,8 +450,8 @@ public protocol Cryptor {
   @objc public func launchExpViewFromDeepLink(queryUrl: Foundation.URL, userInfo: iosExperienceSDK.ESUserInfo?)
   @objc public func launchExpViewInModal(fromView: UIKit.UIViewController, userInfo: iosExperienceSDK.ESUserInfo, doorRequest: iosExperienceSDK.ESWebViewRequest)
   @objc public class func getExpApiClient() -> iosExperienceSDK.ESApiClient?
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 extension NSNotification.Name {
   public static var purchase: Foundation.Notification.Name
@@ -459,8 +459,8 @@ extension NSNotification.Name {
 @objc public class ESPerkRequest : iosExperienceSDK.ESWebViewRequest {
   @objc public init(perkProgramId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
-  @objc override public init(fromTicketSystemSDK: Swift.Bool)
   @objc deinit
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
 }
 extension String {
   public func decryptBase64ToString(cipher: iosExperienceSDK.Cipher) throws -> Swift.String
@@ -469,10 +469,10 @@ extension String {
 @objc public class ESPassOneHandshakeRequest : iosExperienceSDK.ESWebViewRequest {
   @objc public init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
-  @objc override public init(fromTicketSystemSDK: Swift.Bool)
   @objc deinit
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
 }
-@objc public class ESFanHubRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESFanHubRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
   @objc deinit
@@ -558,7 +558,7 @@ extension SHA1 : iosExperienceSDK.Updatable {
 }
 public enum PKCS5 {
 }
-public class ESStringUtil {
+@_hasMissingDesignatedInitializers public class ESStringUtil {
   public class func isNotEmptyOrNil(stringToCheck: Swift.String?) -> Swift.Bool
   @objc deinit
 }
@@ -600,8 +600,6 @@ public struct BlockModeOption : Swift.OptionSet {
   public typealias RawValue = Swift.Int
 }
 open class ExpDeeplinkController {
-  public static var WEB_HOST: Swift.String
-  public static var VIEWBARCODE_HOST: Swift.String
   public static var URL_QUERY_PARAM: Swift.String
   public static var TICKET_EVENT_ID_QUERY_PARAM: Swift.String
   public static var TICKET_CLIENT_ID_QUERY_PARAM: Swift.String
@@ -663,12 +661,12 @@ extension ChaCha20 : iosExperienceSDK.Cryptors {
   final public func makeEncryptor() -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
   final public func makeDecryptor() -> iosExperienceSDK.Cryptor & iosExperienceSDK.Updatable
 }
-@objc public class ESModelWebViewController : UIKit.UIViewController {
+@objc @_inheritsConvenienceInitializers public class ESModelWebViewController : UIKit.UIViewController {
   public convenience init(url: Swift.String, title: Swift.String, customStyles: [iosExperienceSDK.ESCustomStyleKeys : Swift.String]?)
   @objc override dynamic public func viewDidLoad()
+  @objc deinit
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
 }
 public protocol Authenticator {
   func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
@@ -758,7 +756,7 @@ final public class SHA3 {
 extension SHA3 : iosExperienceSDK.Updatable {
   final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
 }
-@objc public class ESEventInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+@_inheritsConvenienceInitializers @objc public class ESEventInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
   @objc public var eventId: Swift.String?
   @objc public var gameId: Swift.String?
   @objc public var userInfoResponse: iosExperienceSDK.ESUserInfoResponse?
@@ -783,7 +781,7 @@ extension SHA3 : iosExperienceSDK.Updatable {
     get
   }
 }
-public class BlockDecryptor : iosExperienceSDK.Cryptor, iosExperienceSDK.Updatable {
+@_hasMissingDesignatedInitializers public class BlockDecryptor : iosExperienceSDK.Cryptor, iosExperienceSDK.Updatable {
   public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
   public func seek(to position: Swift.Int) throws
   @objc deinit
@@ -791,8 +789,8 @@ public class BlockDecryptor : iosExperienceSDK.Cryptor, iosExperienceSDK.Updatab
 @objc public class ESPassRequest : iosExperienceSDK.ESWebViewRequest {
   @objc public init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
-  @objc override public init(fromTicketSystemSDK: Swift.Bool)
   @objc deinit
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
 }
 public enum Bit : Swift.Int {
   case zero
@@ -803,7 +801,7 @@ public enum Bit : Swift.Int {
     get
   }
 }
-@objc public class ESSignupRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESSignupRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
@@ -838,17 +836,17 @@ public struct CBC : iosExperienceSDK.BlockMode {
   @objc public func addCustomStyle(styleKey: iosExperienceSDK.ESCustomStyleKeys, value: Swift.String)
   public func getCustomStyles() -> [iosExperienceSDK.ESCustomStyleKeys : Swift.String]?
   @objc public func getCustomStyleValue(styleKey: iosExperienceSDK.ESCustomStyleKeys) -> Swift.String?
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
-final public class AEADChaCha20Poly1305 : iosExperienceSDK.AEAD {
+@_hasMissingDesignatedInitializers final public class AEADChaCha20Poly1305 : iosExperienceSDK.AEAD {
   public static var kLen: Swift.Int
   public static var ivRange: Swift.Range<Swift.Int>
   public static func encrypt(_ plainText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>) throws -> (cipherText: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>)
   public static func decrypt(_ cipherText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>) throws -> (plainText: Swift.Array<Swift.UInt8>, success: Swift.Bool)
   @objc deinit
 }
-@objc public class ESFanDetails : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @objc public class ESFanDetails : ObjectiveC.NSObject {
   @objc public var experienceId: Swift.String?
   @objc public var externalAccountId: Swift.String?
   required public init(fromJson: iosExperienceSDK.JSON)
@@ -858,7 +856,7 @@ final public class AEADChaCha20Poly1305 : iosExperienceSDK.AEAD {
   }
   @objc deinit
 }
-@objc public class ESUserInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+@_inheritsConvenienceInitializers @objc public class ESUserInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
   public var productNumsUsed: Swift.Array<iosExperienceSDK.ESProduct>?
   required public init(fromJson: iosExperienceSDK.JSON)
   @objc override dynamic public init()
@@ -983,15 +981,15 @@ extension UInt8 {
 extension ChaCha20 {
   public convenience init(key: Swift.String, iv: Swift.String) throws
 }
-public class ESSecurityUtil {
+@_hasMissingDesignatedInitializers public class ESSecurityUtil {
   public class func generateSsoToken(forUser: iosExperienceSDK.ESUserInfo, cnonce: Swift.String) -> Swift.String?
   public class func generateClientNonce() -> Swift.String!
   public class func getServerNonce(forUser: iosExperienceSDK.ESUserInfo, baseUrl: Swift.String) -> Swift.String?
   @objc deinit
 }
-final public class CMAC : iosExperienceSDK.CBCMAC {
-  override public init(key: Swift.Array<Swift.UInt8>) throws
+@_inheritsConvenienceInitializers final public class CMAC : iosExperienceSDK.CBCMAC {
   @objc deinit
+  override public init(key: Swift.Array<Swift.UInt8>) throws
 }
 public struct CCM {
   public enum Error : Swift.Error {
@@ -1018,7 +1016,7 @@ public protocol Cryptors : AnyObject {
 extension Cryptors {
   public static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
 }
-@objc public class ESReturnTicketsRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESReturnTicketsRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
@@ -1054,22 +1052,22 @@ public protocol FinalizingDecryptModeWorker : iosExperienceSDK.CipherModeWorker 
 @objc public class ESPassOneRegistrationRequest : iosExperienceSDK.ESWebViewRequest {
   @objc public init(programId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
-  @objc override public init(fromTicketSystemSDK: Swift.Bool)
   @objc deinit
+  @objc override public init(fromTicketSystemSDK: Swift.Bool)
 }
-@objc public class ESPassSelectRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESPassSelectRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc public convenience init(partnerShortCode: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
   @objc deinit
 }
-@objc public class ESAddTicketsRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESAddTicketsRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
   @objc deinit
 }
-@objc public class ESProductInfosResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+@_inheritsConvenienceInitializers @objc public class ESProductInfosResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
   @objc public var upgrades: iosExperienceSDK.ESProductInfoResponse?
   @objc public var sitWithFriends: iosExperienceSDK.ESProductInfoResponse?
   @objc public var notGoing: iosExperienceSDK.ESProductInfoResponse?
@@ -1144,7 +1142,7 @@ extension Rabbit {
 extension Blowfish {
   public convenience init(key: Swift.String, iv: Swift.String, padding: iosExperienceSDK.Padding = .pkcs7) throws
 }
-final public class Checksum {
+@_hasMissingDesignatedInitializers final public class Checksum {
   @objc deinit
 }
 extension Checksum {
@@ -1215,27 +1213,27 @@ public struct CFB : iosExperienceSDK.BlockMode {
   public init(iv: Swift.Array<Swift.UInt8>)
   public func worker(blockSize: Swift.Int, cipherOperation: @escaping iosExperienceSDK.CipherOperationOnBlock) throws -> iosExperienceSDK.CipherModeWorker
 }
-@objc public class ESApiClient : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @objc public class ESApiClient : ObjectiveC.NSObject {
   @objc public static var sharedInstance: iosExperienceSDK.ESApiClient
   @objc public func getEventUserInfo(userInfo: iosExperienceSDK.ESUserInfo, eventIds: Swift.Array<Swift.String>, ticketSystemId: iosExperienceSDK.ESExternalTicketSystem, onCompletion: @escaping (Swift.Array<iosExperienceSDK.ESEventInfoResponse>?) -> Swift.Void)
   @objc public func getEventProductInfo(userInfo: iosExperienceSDK.ESUserInfo, eventIds: Swift.Array<Swift.String>, ticketSystemId: iosExperienceSDK.ESExternalTicketSystem, onCompletion: @escaping (Swift.Array<iosExperienceSDK.ESEventInfoResponse>?) -> Swift.Void)
   @objc public func getEventInfo(userInfo: iosExperienceSDK.ESUserInfo, eventIds: Swift.Array<Swift.String>, ticketSystemId: iosExperienceSDK.ESExternalTicketSystem, onCompletion: @escaping (Swift.Array<iosExperienceSDK.ESEventInfoResponse>?) -> Swift.Void)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
-@objc public class ESEventsDoorRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESEventsDoorRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc override public func getPath() -> Swift.String
   @objc deinit
 }
-@objc public class ESProductInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
+@_inheritsConvenienceInitializers @objc public class ESProductInfoResponse : ObjectiveC.NSObject, iosExperienceSDK.ESApiResponseProtocol {
   @objc public var openDate: Foundation.Date?
   @objc public var closeDate: Foundation.Date?
   required public init(fromJson: iosExperienceSDK.JSON)
   @objc override dynamic public init()
   @objc deinit
 }
-@objc public class ESFanExperienceRequest : iosExperienceSDK.ESWebViewRequest {
+@objc @_inheritsConvenienceInitializers public class ESFanExperienceRequest : iosExperienceSDK.ESWebViewRequest {
   @objc override public init(fromTicketSystemSDK: Swift.Bool = false)
   @objc public convenience init(eventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
   @objc public convenience init(ticketSystem: iosExperienceSDK.ESExternalTicketSystem, ticketSystemEventId: Swift.String, fromTicketSystemSDK: Swift.Bool = false)
