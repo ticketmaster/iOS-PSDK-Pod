@@ -21,7 +21,7 @@ Swift 5.3.0+:
 pod 'TM-PSDK', '~> 5.3.0-1.29.0'
 ```
 
-Swift 5.2.4+:
+Swift 5.2.4:
 ```ruby
 pod 'TM-PSDK', '~> 5.2.4-1.29.0'
 ```
