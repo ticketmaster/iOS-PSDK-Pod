@@ -340,7 +340,6 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 
 
 
-
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method for configuring Experience SDK
 /// <ul>
@@ -353,6 +352,15 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 /// </ul>
 - (void)setExperienceConfiguration:(ExperienceConfiguration * _Nonnull)experienceConfiguration;
 @end
+
+
+@class UIViewController;
+@class NSError;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+- (void)startMFAValidationOn:(UIViewController * _Nonnull)controller additionalProperties:(NSDictionary<NSString *, id> * _Nonnull)additionalProperties success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@end
+
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -375,13 +383,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKActionType, "ActionType", open) {
 };
 
 
-@class UIViewController;
-@class NSError;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-- (void)startMFAValidationOn:(UIViewController * _Nonnull)controller additionalProperties:(NSDictionary<NSString *, id> * _Nonnull)additionalProperties success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
 enum PresenceSDKLoginButtons : NSInteger;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -399,6 +400,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 
 enum BackendName : NSInteger;
 @protocol PresenceMember;
+@protocol PresenceOrderDelegate;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Helper function to get SDK version string
@@ -430,6 +432,9 @@ enum BackendName : NSInteger;
 /// Display modally a View Controller with order/event information for the given identifier and perform the action
 /// Shows events if the particular order/event is not found.
 - (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nonnull)orderDelegate;
 @end
 
 @class PresenceSDKView;
@@ -661,6 +666,25 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK14PresenceMember_")
 @property (nonatomic, readonly, copy) NSString * _Nonnull HostMemberID SWIFT_DEPRECATED_MSG("", "id");
 /// The user’s AccountManager ID or empty if user is not logged in Team account
 @property (nonatomic, readonly, copy) NSString * _Nonnull AccountManagerMemberID SWIFT_DEPRECATED_MSG("", "id");
+@end
+
+
+/// PresenceOrderDelegate Protocol reports TicketmasterCore to handle event / artist / venue related actions
+SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
+@protocol PresenceOrderDelegate
+@optional
+/// Method is invoked if the core app need to display artist detail page..
+/// \param artistId Identidier of the artist to be launched in ADP.
+///
+- (void)presentArtistDetailsPageWith:(NSString * _Nonnull)artistId;
+/// Method is invoked if the core app need to display event detail page..
+/// \param eventId Identidier of the event to be launched in EDP.
+///
+- (void)presentEventDetailsPageWith:(NSString * _Nonnull)eventId;
+/// Method is invoked if the core app need to display venue detail page..
+/// \param venueId Identidier of the venue to be launched inVADP.
+///
+- (void)presentVenueDetailsPageWith:(NSString * _Nonnull)venueId;
 @end
 
 @class NSCoder;

@@ -1,0 +1,53 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ResaleSdk
+import Foundation
+@_exported import ResaleSdk
+import SafariServices
+import Swift
+import TicketmasterFoundation
+import UIKit
+import WebKit
+public protocol ResaleSdkNavigationDelegateProtocol : AnyObject {
+  func redirectToMyListingSellTab()
+  func presentArtistDetailsPage(with artistId: Swift.String)
+  func presentEventDetailsPage(with eventId: Swift.String)
+  func presentVenueDetailsPage(with venueId: Swift.String)
+  func resaleWebViewDismissed()
+}
+@objc @_inheritsConvenienceInitializers public class SellTicketsWebViewController : UIKit.UIViewController {
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension SellTicketsWebViewController : WebKit.WKUIDelegate, WebKit.WKNavigationDelegate {
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, didFinish navigation: WebKit.WKNavigation!)
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, didFail navigation: WebKit.WKNavigation!, withError error: Swift.Error)
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, createWebViewWith configuration: WebKit.WKWebViewConfiguration, for navigationAction: WebKit.WKNavigationAction, windowFeatures: WebKit.WKWindowFeatures) -> WebKit.WKWebView?
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, didFailProvisionalNavigation navigation: WebKit.WKNavigation!, withError error: Swift.Error)
+}
+public protocol ResaleSdkDataSourceProtocol {
+  var brandingColor: UIKit.UIColor { get }
+  var edpDomainHost: Swift.String { get }
+  func acceptLanguageCode() -> Swift.String
+  func customEDPURLParameters() -> Swift.String
+  func fetchUserLogin(completion: @escaping (Swift.Bool, TicketmasterFoundation.UFCToken?) -> Swift.Void)
+}
+extension ResaleSdkDataSourceProtocol {
+  public var brandingColor: UIKit.UIColor {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class ResaleFeatureSdk {
+  public static var shared: ResaleSdk.ResaleFeatureSdk
+  public func initSellTicketsViewController(discoveryEventId: Swift.String, dataSource: ResaleSdk.ResaleSdkDataSourceProtocol, navigationDelegate: ResaleSdk.ResaleSdkNavigationDelegateProtocol) -> ResaleSdk.SellTicketsWebViewController
+  public func initSellTicketsViewController(orderId: Swift.String, dataSource: ResaleSdk.ResaleSdkDataSourceProtocol, navigationDelegate: ResaleSdk.ResaleSdkNavigationDelegateProtocol) -> ResaleSdk.SellTicketsWebViewController
+  public func initOrderEditListingViewController(orderId: Swift.String, postingId: Swift.String, dataSource: ResaleSdk.ResaleSdkDataSourceProtocol, navigationDelegate: ResaleSdk.ResaleSdkNavigationDelegateProtocol) -> ResaleSdk.SellTicketsWebViewController
+  @objc deinit
+}

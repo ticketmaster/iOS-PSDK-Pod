@@ -1,0 +1,11 @@
+framework module ResaleSdk {
+  umbrella header "ResaleSdk.h"
+
+  export *
+  module * { export * }
+}
+
+module ResaleSdk.Swift {
+    header "ResaleSdk-Swift.h"
+    requires objc
+}
