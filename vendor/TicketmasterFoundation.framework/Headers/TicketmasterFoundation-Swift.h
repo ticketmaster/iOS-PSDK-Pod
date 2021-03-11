@@ -437,6 +437,55 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation13MessageLogger")
 @end
 
 
+SWIFT_CLASS("_TtC22TicketmasterFoundation16StringObfuscator")
+@interface StringObfuscator : NSObject
+/// convert a <code>String</code> into a compressed, obfuscated <code>UInt16</code> array
+/// \param inputString <code>String</code> to convert
+///
+/// \param password <code>String</code> used for encryption (<code>nil</code> = no encryption)
+///
+///
+/// returns:
+///
+/// <ul>
+///   <li>
+///     inputString as a compressed, encrypted array of <code>UInt16</code> values
+///   </li>
+/// </ul>
++ (NSArray<NSNumber *> * _Nonnull)obfuscateWithInputString:(NSString * _Nonnull)inputString password:(NSString * _Nullable)password SWIFT_WARN_UNUSED_RESULT;
+/// convert a compressed. encrypted <code>UInt16</code> array into a <code>String</code>
+/// \param intArray a previously compressed, encrypted <code>String</code> (as an <code>UInt16</code> array)
+///
+/// \param password <code>String</code> used for decryption (<code>nil</code> = no decryption)
+///
+///
+/// returns:
+///
+/// <ul>
+///   <li>
+///     intArray as a decompressed and decrypted <code>String</code>
+///   </li>
+/// </ul>
++ (NSString * _Nonnull)deobfuscateWithIntArray:(NSArray<NSNumber *> * _Nonnull)intArray password:(NSString * _Nullable)password SWIFT_WARN_UNUSED_RESULT;
+/// generate a random  <code>String</code>
+/// \param length character length of random <code>String</code>
+///
+///
+/// returns:
+///
+/// <ul>
+///   <li>
+///     random <code>String</code> of desired length
+///   </li>
+/// </ul>
++ (NSString * _Nonnull)randomStringOfLength:(NSInteger)length SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
 /// A class that encapsulates the multiple date formatting options for
 /// for Ticketmaster.
 /// note:

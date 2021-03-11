@@ -220,7 +220,6 @@ SWIFT_CLASS("_TtC11PresenceSDK14BrandingColors")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
 @class ExperienceConfigurationBuilder;
 
 /// Convenience class to configure the Experience SDK package.
@@ -241,7 +240,7 @@ SWIFT_CLASS("_TtC11PresenceSDK14BrandingColors")
 /// PresenceSDK.getPresenceSDK().setExperienceConfiguration(experienceConfiguration)
 ///
 /// \endcode
-SWIFT_CLASS("_TtC11PresenceSDK23ExperienceConfiguration")
+SWIFT_CLASS("_TtC11PresenceSDK23ExperienceConfiguration") SWIFT_DEPRECATED_MSG("No longer has any functionality and will be removed soon")
 @interface ExperienceConfiguration : NSObject
 /// Helper class for building ExperienceSDK configuration object
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) SWIFT_METATYPE(ExperienceConfigurationBuilder) _Nonnull Builder;)
@@ -350,7 +349,7 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 ///     experienceConfiguration: ExperienceSDK configuration object containing all the required experience configuration.
 ///   </li>
 /// </ul>
-- (void)setExperienceConfiguration:(ExperienceConfiguration * _Nonnull)experienceConfiguration;
+- (void)setExperienceConfiguration:(ExperienceConfiguration * _Nonnull)experienceConfiguration SWIFT_DEPRECATED_MSG("No longer has any functionality and will be removed soon");
 @end
 
 
@@ -382,7 +381,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKActionType, "ActionType", open) {
   PresenceSDKActionTypeTransfer = 1,
 };
 
-
 enum PresenceSDKLoginButtons : NSInteger;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -395,6 +393,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
   PresenceSDKLoginButtonsForgotPassword = 0,
   PresenceSDKLoginButtonsCreateAccount = 1,
 };
+
 
 
 
@@ -567,6 +566,12 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
 @property (nonatomic, readonly, copy) NSString * _Nullable code;
 /// AccountManager country name, nil for Host
 @property (nonatomic, readonly, copy) NSString * _Nullable name;
+@end
+
+
+SWIFT_CLASS("_TtC11PresenceSDK26PresenceDeeplinkController")
+@interface PresenceDeeplinkController : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 

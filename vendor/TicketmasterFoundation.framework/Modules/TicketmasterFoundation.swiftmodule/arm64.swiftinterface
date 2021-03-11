@@ -45,6 +45,7 @@ public protocol TMPixelConfig {
   var enableBatchSending: Swift.Bool { get }
   var batchSendingInterval: Foundation.TimeInterval { get }
   var environment: TicketmasterFoundation.ConnectionEnvironment { get }
+  var serviceLoggingDetails: TicketmasterFoundation.URLLoggingDetails { get }
 }
 public protocol ImageCache {
   func add(_ image: UIKit.UIImage, withIdentifier identifier: Swift.String)
@@ -594,6 +595,10 @@ public enum URLLoggingDetails {
   }
   public func hash(into hasher: inout Swift.Hasher)
 }
+extension URLRequest {
+  public func logSendRequest(loggingDetails: TicketmasterFoundation.URLLoggingDetails)
+  public func logRecieveRequest(response: Foundation.URLResponse?, data: Foundation.Data?, error: Swift.Error?, duration: Foundation.TimeInterval, loggingDetails: TicketmasterFoundation.URLLoggingDetails)
+}
 @objc public enum MarketDomain : Swift.Int, Swift.CaseIterable, Swift.Hashable, Swift.Equatable, Swift.Codable {
   case US = 0
   case CA
@@ -618,6 +623,9 @@ extension MarketDomain {
     get
   }
   public var isoCountryCode: Swift.String {
+    get
+  }
+  public var languageCountryCode: Swift.String {
     get
   }
   public var urlHost: [Swift.String] {
@@ -1471,6 +1479,13 @@ extension HTTPCookie {
     get
   }
   public static func mfaCookie(forToken token: Swift.String, domain: Swift.String) -> Foundation.HTTPCookie
+}
+@_inheritsConvenienceInitializers @objc public class StringObfuscator : ObjectiveC.NSObject {
+  @objc public static func obfuscate(inputString: Swift.String, password: Swift.String?) -> [Swift.UInt16]
+  @objc public static func deobfuscate(intArray: [Swift.UInt16], password: Swift.String?) -> Swift.String
+  @objc public static func randomString(ofLength length: Swift.Int) -> Swift.String
+  @objc deinit
+  @objc override dynamic public init()
 }
 extension HTTPCookie {
   public func isTMMarketDomain() -> Swift.Bool

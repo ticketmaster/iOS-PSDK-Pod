@@ -18,7 +18,6 @@ import SystemConfiguration
 import TicketmasterFoundation
 import UIKit
 import WebKit
-import iosExperienceSDK
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class PSDK : ObjectiveC.NSObject {
   public typealias ConfigSuccessHandler = () -> Swift.Void
   public typealias ConfigFailureHandler = (Swift.Error?) -> Swift.Void
@@ -58,6 +57,9 @@ extension PSDK {
   @objc(PresenceSDKActionType) public enum ActionType : Swift.Int {
     case posting
     case transfer
+    public var description: Swift.String {
+      get
+    }
     public typealias RawValue = Swift.Int
     public init?(rawValue: Swift.Int)
     public var rawValue: Swift.Int {
@@ -103,12 +105,14 @@ extension PSDK {
   @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType, orderDelegate: PresenceSDK.PresenceOrderDelegate)
 }
 extension PSDK {
+  @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
   @objc final public func setExperienceConfiguration(_ experienceConfiguration: PresenceSDK.ExperienceConfiguration)
 }
 extension PSDK {
   @objc final public func startMFAValidation(on controller: UIKit.UIViewController, additionalProperties: [Swift.String : Any] = [String: Any](), success: @escaping (Swift.String) -> Swift.Void, failure: @escaping (Foundation.NSError) -> Swift.Void)
 }
-@objc @_hasMissingDesignatedInitializers final public class ExperienceConfiguration : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
+final public class ExperienceConfiguration : ObjectiveC.NSObject {
   @objc public static let Builder: PresenceSDK.ExperienceConfigurationBuilder.Type
   @objc deinit
   @objc override dynamic public init()
@@ -186,18 +190,22 @@ extension PSDK {
   case PreProduction
   case Staging
   case Production
+  public var description: Swift.String {
+    get
+  }
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
 }
-@_inheritsConvenienceInitializers public class PresenceDeeplinkController : iosExperienceSDK.ExpDeeplinkController {
-  @objc override public func handleExperienceDeeplink(deeplink: Foundation.URL, userInfo: iosExperienceSDK.ESUserInfo = ESUserInfo())
-  override public func handleWebDeeplink(destinationUrl: Swift.String, userInfo: iosExperienceSDK.ESUserInfo)
-  override public func handleBarcodeDeeplink(eventId: Swift.String)
+@objc @_inheritsConvenienceInitializers public class PresenceDeeplinkController : ObjectiveC.NSObject {
+  @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
+  public func isExperienceDeeplink(deeplink: Foundation.URL) -> Swift.Bool
+  @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
+  public func handleExperienceDeeplink(deeplink: Foundation.URL)
   @objc deinit
-  override public init()
+  @objc override dynamic public init()
 }
 extension UIViewController {
   public static func swizzle()
@@ -211,6 +219,9 @@ extension UIViewController {
     @objc public static let ACTION_TICKETDETAILSSCREENSHOWED: Swift.String
     @objc public static let ACTION_FINDNEWTICKETSPRESSED: Swift.String
     @objc public static let ACTION_MYTICKETBARCODESCREENSHOT: Swift.String
+    @objc public static let ACTION_HEALTH_CHECK_MORE_INFO_CLICK: Swift.String
+    @objc public static let ACTION_HEALTH_CHECK_LEARN_MORE_CLICK: Swift.String
+    @objc public static let ACTION_HEALTH_CHECK_GOT_IT_CLICK: Swift.String
     @objc public static let ACTION_TRANSFERINITIATED: Swift.String
     @objc public static let ACTION_TRANSFERCANCELLED: Swift.String
     @objc public static let MIXPANEL_ACTION_TRANSFERINITIATED: Swift.String
@@ -332,6 +343,9 @@ extension String : Swift.Error {
 @objc public enum SDKTheme : Swift.Int {
   case Light
   case Dark
+  public var description: Swift.String {
+    get
+  }
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
