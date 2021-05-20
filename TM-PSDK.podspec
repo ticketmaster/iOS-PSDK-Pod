@@ -30,4 +30,5 @@ Ticket management SDK provided by Ticketmaster. Used to manage tickets for your 
   s.swift_version = '5.3.0'
 
   s.vendored_frameworks = 'vendor/*.framework'
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
