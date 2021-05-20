@@ -220,103 +220,6 @@ SWIFT_CLASS("_TtC11PresenceSDK14BrandingColors")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class ExperienceConfigurationBuilder;
-
-/// Convenience class to configure the Experience SDK package.
-/// The <code>ExperienceConfigutarion</code> class has a static property <code>Builder</code> to help compose a proper configuration.
-/// <h2>Build your ExperienceSDK configuration</h2>
-/// \code
-/// let experienceConfiguration = ExperienceConfiguration.Builder.init()
-///     .setAppId("yourAppId")
-///     .setAppSource("yourAppSource")
-///     .setSubdomain("subdomainForYourApp")
-///     .setApiKey("yourApiKey")
-///     .setApiSubdomain("apiSubdomainForYourApp")
-///     .setSsooSigningKey("SsoSingingKey")
-///     .build()
-///
-/// \endcodePass your Experience Configuration to the PresenceSDK
-/// \code
-/// PresenceSDK.getPresenceSDK().setExperienceConfiguration(experienceConfiguration)
-///
-/// \endcode
-SWIFT_CLASS("_TtC11PresenceSDK23ExperienceConfiguration") SWIFT_DEPRECATED_MSG("No longer has any functionality and will be removed soon")
-@interface ExperienceConfiguration : NSObject
-/// Helper class for building ExperienceSDK configuration object
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) SWIFT_METATYPE(ExperienceConfigurationBuilder) _Nonnull Builder;)
-+ (SWIFT_METATYPE(ExperienceConfigurationBuilder) _Nonnull)Builder SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Helper class for building ExperienceSDK configuration object.
-SWIFT_CLASS("_TtC11PresenceSDK30ExperienceConfigurationBuilder")
-@interface ExperienceConfigurationBuilder : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-/// Set the App ID for Experience Configuratin Builder
-/// \param appId The App ID associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setAppId:(NSString * _Nonnull)appId;
-/// Set the App Name for Experience Configuratin Builder
-/// \param appName The App Name associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setAppName:(NSString * _Nonnull)appName;
-/// Set the App Source for Experience Configuratin Builder
-/// \param appSource The App Source associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setAppSource:(NSString * _Nonnull)appSource;
-/// Sets the Subdomain for Experience Configuratin Builder
-/// \param subdomain The App Subdomain associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setSubdomain:(NSString * _Nonnull)subdomain;
-/// Sets the API Key for Experience Configuratin Builder
-/// \param apiKey The API Key associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setApiKey:(NSString * _Nonnull)apiKey;
-/// Sets the API Subdomain for Experience Configuratin Builder
-/// \param apiSubdomain The App Name associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setApiSubdomain:(NSString * _Nullable)apiSubdomain;
-/// Sets the API Version for Experience Configuratin Builder
-/// \param apiVersion The API Version associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setApiVersion:(NSString * _Nullable)apiVersion;
-/// Sets the SSO Signing Key for Experience Configuratin Builder
-/// \param ssoSigningKey The SSO Signing Key associated with Experience.
-///
-///
-/// returns:
-/// The current Experience Configuration Builder
-- (ExperienceConfigurationBuilder * _Nonnull)setSsoSigningKey:(NSString * _Nullable)ssoSigningKey;
-/// Build the configuration object for ExperienceSDK.
-///
-/// returns:
-/// <code>ExperienceConfiguration</code> object
-- (ExperienceConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 
 
@@ -329,57 +232,62 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 @property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull archticsLoginQueryParams;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-/// Retrives <code>PresenceSDK</code>’s singleton given access to all of its public methods.
-///
-/// returns:
-/// PresenceSDK’s singleton
-+ (PSDK * _Nonnull)getPresenceSDK SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
+
+@class PresenceSDKView;
+@protocol PresenceLoginDelegate;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method for initializing and launching PresenceSDK.
+/// \param presenceSDKView Reference to main PresenceSDKView which will display user tickets.
+///
+/// \param loginDelegate Reference to object of the class that is implementing PresenceLoginDelegate.
+///
+- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nonnull)loginDelegate;
+@end
+
+
+enum BackendName : NSInteger;
+@protocol PresenceMember;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to get the logged in user’s information.
+/// \param backendName The specified backend name where the SDK will retrive member information from.
+///
+/// \param completion Completion block to be called containing possible member and error imformation.
+///
+/// \param member An optional PresenceMember object returned in the completion block callback.
+///
+/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
+///
+- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
+@end
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method for configuring Experience SDK
-/// <ul>
-///   <li>
-///     Parameters:
-///   </li>
-///   <li>
-///     experienceConfiguration: ExperienceSDK configuration object containing all the required experience configuration.
-///   </li>
-/// </ul>
-- (void)setExperienceConfiguration:(ExperienceConfiguration * _Nonnull)experienceConfiguration SWIFT_DEPRECATED_MSG("No longer has any functionality and will be removed soon");
+- (void)resetPasswordForHostWithSuccess:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure token:(NSString * _Nullable)token;
 @end
+
 
 
 @class UIViewController;
 @class NSError;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to get the logged in user’s information.
+/// \param controller UIViewController to present MFA webviews on top of.
+///
+/// \param additionalProperties Required MFA configuration settings
+///
+/// \param success Completion block to be called containing MFA token.
+///
+/// \param failure Completion block to be called containing error information.
+///
 - (void)startMFAValidationOn:(UIViewController * _Nonnull)controller additionalProperties:(NSDictionary<NSString *, id> * _Nonnull)additionalProperties success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
-/// Search for event with the given identifier
-  PresenceSDKIdTypeEvent = 0,
-/// Search for order with the given identifier
-  PresenceSDKIdTypeOrder = 1,
-/// Search for event or order with the given identifier
-  PresenceSDKIdTypeAny = 2,
-};
-
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKActionType, "ActionType", open) {
-/// automatically show posting flow
-  PresenceSDKActionTypePosting = 0,
-/// automatically show transfer flow
-  PresenceSDKActionTypeTransfer = 1,
-};
 
 enum PresenceSDKLoginButtons : NSInteger;
 
@@ -395,112 +303,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 };
 
 
-
-
-enum BackendName : NSInteger;
-@protocol PresenceMember;
-@protocol PresenceOrderDelegate;
-
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Helper function to get SDK version string
-/// important:
-/// An empty string will be returned if the version is unknown.
-///
-/// returns:
-/// The version number for PresenceSDK.
-- (NSString * _Nonnull)getVersionNumber SWIFT_WARN_UNUSED_RESULT;
-/// Method to get the logged in user’s information.
-/// \param backendName The specified backend name where the SDK will retrive member information from.
-///
-/// \param completion Completion block to be called containing possible member and error imformation.
-///
-/// \param member An optional PresenceMember object returned in the completion block callback.
-///
-/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
-///
-- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
-/// Display modally a View Controller with order information for the given identifier.
-/// Shows events if the particular order is not found.
-- (void)displayOrderWithOrderId:(NSString * _Nonnull)orderId SWIFT_DEPRECATED_MSG("", "jumpToOrderOrEventWithId:");
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nonnull)orderDelegate;
-@end
-
-@class PresenceSDKView;
-@protocol PresenceLoginDelegate;
-@class UIImage;
-enum SDKTheme : NSInteger;
-enum SDKEnvironment : NSInteger;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method for configuring PresenceSDK for Teams.
-/// \param consumerKey This is the Consumer Key associated with you App on developer.ticketmaster.com
-///
-/// \param displayName The name that will be displayed on the login page in the SDK for the Team, this is optional for Host only apps
-///
-/// \param useNewAccountsManager Configures the SDK to use new accounts manager for password reset flow if your Team has switched to new acccounts manager.
-///
-- (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager;
-/// Method for checking configuration of PresenceSDK for Teams
-/// \param success Called if configuration was readed from cache or returned from Apigee, main queue, start(…) should be called after this call
-///
-/// \param failure Called if configuration failed (e.g. no Internet on first launch), Should be taken into account during SDK integration.
-///
-- (void)checkConfigWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nullable))failure;
-/// Method for initializing and launching PresenceSDK.
-/// \param presenceSDKView Reference to main PresenceSDKView which will display user tickets.
-///
-/// \param loginDelegate Reference to object of the class that is implementing PresenceLoginDelegate.
-///
-- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nonnull)loginDelegate;
-/// Method for configuring Team Apps branding color in PresenceSDK. This branding color will be used
-/// on various UI elements of the SDK to provide a custom look for Team apps.
-/// For customizing colors of specific UI elements use the <code>setBrandingColors(_:BrandingColors)</code> method.
-/// \param color Branding color to be used in the SDK.
-///
-- (void)setBrandingColorWithColor:(UIColor * _Nonnull)color SWIFT_DEPRECATED_MSG("Use `setBrandingColors` method instead.");
-/// Method for configuring Team Apps branding colors in PresenceSDK. These branding colors will be used
-/// on various UI elements of the SDK to provide a custom look for Team apps.
-/// \param brandingColors Customize colors by overriding properties of the <code>BrandingColors</code> class.
-///
-- (void)setBrandingColors:(BrandingColors * _Nonnull)brandingColors;
-/// Method for configuring Team Apps logo in PresenceSDK.
-/// \param image Image to be used in the SDK as logo.
-///
-- (void)setLogo:(UIImage * _Nullable)image;
-/// Method for configuring Team Apps theme color in PresenceSDK. This theme color will be used
-/// on various UI elements of the SDK to provide a custom look for Team apps.
-/// \param theme Theme to be used in the SDK.
-///
-- (void)setThemeWithTheme:(enum SDKTheme)theme;
-- (void)setEnvironmentWithSdkEnvironment:(enum SDKEnvironment)sdkEnvironment;
-@end
-
-
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to log out user from all the logged-in accounts
-- (void)logOutWithCompletion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
-/// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
-- (void)logOut;
-/// Method to log out user from Ticketmaster account
-- (void)logOutHostWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-/// Method to log out user from Team account
-- (void)logOutTeamWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-- (void)resetPasswordForHostWithSuccess:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure token:(NSString * _Nullable)token;
-/// Method to login into Host without going via the Login Selector screen
-/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
-- (void)loginToHostWithCompletion:(void (^ _Nullable)(BOOL))completion;
 /// Method to login via Webview Login
 /// <ul>
 ///   <li>
@@ -514,7 +317,7 @@ enum SDKEnvironment : NSInteger;
 /// </ul>
 /// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
 - (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
-/// Method for getting a valid OAUTH Access Token
+/// Method for getting a valid OAUTH Access Token. Note that this will present login UI if the user is not logged in.
 /// \param backendName Token for Host or AccountManager
 ///
 /// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
@@ -522,6 +325,24 @@ enum SDKEnvironment : NSInteger;
 /// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
 ///
 - (void)getAccessTokenWithBackendName:(enum BackendName)backendName success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
+@end
+
+
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
+- (void)logOut;
+/// Method to log out user from all the logged-in accounts
+- (void)logOutWithCompletion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
+/// Method to log out user from Ticketmaster account
+- (void)logOutHostWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Method to log out user from Team account
+- (void)logOutTeamWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@end
+
+
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method to check if user is logged in any of the services i.e Host or Accounts Manager, and has a valid access token available.
 ///
 /// returns:
@@ -554,6 +375,94 @@ enum SDKEnvironment : NSInteger;
 - (BOOL)hasUserSignedInTeam SWIFT_WARN_UNUSED_RESULT;
 @end
 
+enum PresenceSDKIdType : NSInteger;
+enum PresenceSDKActionType : NSInteger;
+@protocol PresenceOrderDelegate;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nonnull)orderDelegate;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
+/// Search for event with the given identifier
+  PresenceSDKIdTypeEvent = 0,
+/// Search for order with the given identifier
+  PresenceSDKIdTypeOrder = 1,
+/// Search for event or order with the given identifier
+  PresenceSDKIdTypeAny = 2,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKActionType, "ActionType", open) {
+/// automatically show posting flow
+  PresenceSDKActionTypePosting = 0,
+/// automatically show transfer flow
+  PresenceSDKActionTypeTransfer = 1,
+};
+
+@class UIImage;
+enum SDKTheme : NSInteger;
+enum SDKEnvironment : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Retrives <code>PresenceSDK</code>’s singleton given access to all of its public methods.
+///
+/// returns:
+/// PresenceSDK’s singleton
++ (PSDK * _Nonnull)getPresenceSDK SWIFT_WARN_UNUSED_RESULT;
+/// Helper function to get SDK version string
+/// important:
+/// An empty string will be returned if the version is unknown.
+///
+/// returns:
+/// The version number for PresenceSDK.
+- (NSString * _Nonnull)getVersionNumber SWIFT_WARN_UNUSED_RESULT;
+/// Method for configuring PresenceSDK for Teams.
+/// \param consumerKey This is the Consumer Key associated with you App on developer.ticketmaster.com
+///
+/// \param displayName The name that will be displayed on the login page in the SDK for the Team, this is optional for Host only apps
+///
+/// \param useNewAccountsManager Configures the SDK to use new accounts manager for password reset flow if your Team has switched to new acccounts manager.
+///
+/// \param quickLogin Configures the SDK to use the new, quick login (new accounts manager only).
+///
+/// \param autoLogin Configures the SDK to automatically present login screen (quickLogin only, new accounts manager only)
+///
+- (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin;
+/// Method for checking configuration of PresenceSDK for Teams
+/// \param success Called if configuration was readed from cache or returned from Apigee, main queue, start(…) should be called after this call
+///
+/// \param failure Called if configuration failed (e.g. no Internet on first launch), Should be taken into account during SDK integration.
+///
+- (void)checkConfigWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nullable))failure;
+/// Method for configuring Team Apps branding colors in PresenceSDK. These branding colors will be used
+/// on various UI elements of the SDK to provide a custom look for Team apps.
+/// \param brandingColors Customize colors by overriding properties of the <code>BrandingColors</code> class.
+///
+- (void)setBrandingColors:(BrandingColors * _Nonnull)brandingColors;
+/// Method for configuring Team Apps logo in PresenceSDK.
+/// \param image Image to be used in the SDK as logo.
+///
+- (void)setLogo:(UIImage * _Nullable)image;
+/// Method for configuring Team Apps theme color in PresenceSDK. This theme color will be used
+/// on various UI elements of the SDK to provide a custom look for Team apps.
+/// \param theme Theme to be used in the SDK.
+///
+- (void)setThemeWithTheme:(enum SDKTheme)theme;
+- (void)setEnvironmentWithSdkEnvironment:(enum SDKEnvironment)sdkEnvironment;
+@end
+
+
 
 /// Country protocol representing country of currently logged in user
 SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
@@ -566,12 +475,6 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
 @property (nonatomic, readonly, copy) NSString * _Nullable code;
 /// AccountManager country name, nil for Host
 @property (nonatomic, readonly, copy) NSString * _Nullable name;
-@end
-
-
-SWIFT_CLASS("_TtC11PresenceSDK26PresenceDeeplinkController")
-@interface PresenceDeeplinkController : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -665,12 +568,6 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK14PresenceMember_")
 @property (nonatomic, readonly) BOOL doNotSellFlag;
 /// JWT id token
 @property (nonatomic, readonly, copy) NSString * _Nonnull idToken;
-/// The user’s email address
-@property (nonatomic, readonly, copy) NSString * _Nonnull emailAddress SWIFT_DEPRECATED_MSG("", "email");
-/// The user’s Host Member ID or empty if user is not logged in TM account
-@property (nonatomic, readonly, copy) NSString * _Nonnull HostMemberID SWIFT_DEPRECATED_MSG("", "id");
-/// The user’s AccountManager ID or empty if user is not logged in Team account
-@property (nonatomic, readonly, copy) NSString * _Nonnull AccountManagerMemberID SWIFT_DEPRECATED_MSG("", "id");
 @end
 
 

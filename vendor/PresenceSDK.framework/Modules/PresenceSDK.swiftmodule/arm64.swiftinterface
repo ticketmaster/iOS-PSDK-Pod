@@ -26,7 +26,6 @@ import WebKit
   @objc final public var hostLoginQueryParams: [Swift.String : Swift.String]
   @objc final public var archticsLoginQueryParams: [Swift.String : Swift.String]
   @objc deinit
-  @objc public static func getPresenceSDK() -> PresenceSDK.PSDK
 }
 extension PSDK {
   @objc(PresenceSDKLoginButtons) public enum LoginButtons : Swift.Int {
@@ -44,6 +43,52 @@ extension PSDK {
   }
 }
 extension PSDK {
+  @objc public static func getPresenceSDK() -> PresenceSDK.PSDK
+  @objc final public func getVersionNumber() -> Swift.String
+  @objc final public func setConfig(consumerKey: Swift.String, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = false, quickLogin: Swift.Bool = true, autoLogin: Swift.Bool = true)
+  @objc final public func checkConfig(success: @escaping PresenceSDK.PSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PSDK.ConfigFailureHandler)
+  @objc final public func setBrandingColors(_ brandingColors: PresenceSDK.BrandingColors)
+  @objc final public func setLogo(_ image: UIKit.UIImage?)
+  @objc final public func setTheme(theme: PresenceSDK.SDKTheme)
+  @objc final public func setEnvironment(sdkEnvironment: PresenceSDK.SDKEnvironment)
+}
+extension PSDK {
+  @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: PresenceSDK.PresenceLoginDelegate)
+}
+extension PSDK {
+  @objc final public func login(to backendName: PresenceSDK.PresenceLogin.BackendName, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc final public func getAccessToken(backendName: PresenceSDK.PresenceLogin.BackendName, success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler)
+}
+extension PSDK {
+}
+extension PSDK {
+  @objc final public func isLoggedIn() -> Swift.Bool
+  @objc final public func isLoggedIntoHost() -> Swift.Bool
+  @objc final public func isLoggedIntoTeam() -> Swift.Bool
+  @objc final public func hasUserSignedIn() -> Swift.Bool
+  @objc final public func hasUserSignedInHost() -> Swift.Bool
+  @objc final public func hasUserSignedInTeam() -> Swift.Bool
+}
+extension PSDK {
+  @objc final public func getMemberInfo(backendName: PresenceSDK.PresenceLogin.BackendName, completion: @escaping (PresenceSDK.PresenceMember?, Swift.Error?) -> Swift.Void)
+}
+extension PSDK {
+  @objc final public func resetPasswordForHost(success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler, token: Swift.String? = nil)
+}
+extension PSDK {
+  @objc final public func startMFAValidation(on controller: UIKit.UIViewController, additionalProperties: [Swift.String : Any] = [String: Any](), success: @escaping (Swift.String) -> Swift.Void, failure: @escaping (Foundation.NSError) -> Swift.Void)
+}
+extension PSDK {
+  @objc final public func logOut()
+  @objc final public func logOut(completion: @escaping (Swift.Bool, Swift.Error?, Swift.Bool, Swift.Error?) -> Swift.Void = { _, _, _, _ in })
+  @objc final public func logOutHost(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
+  @objc final public func logOutTeam(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
+}
+extension PSDK {
+  @objc final public func jumpToOrderOrEvent(id: Swift.String)
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType)
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType)
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType, orderDelegate: PresenceSDK.PresenceOrderDelegate)
   @objc(PresenceSDKIdType) public enum IdType : Swift.Int {
     case event
     case order
@@ -66,77 +111,6 @@ extension PSDK {
       get
     }
   }
-}
-extension PSDK {
-  @objc final public func setConfig(consumerKey: Swift.String, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = false)
-  @objc final public func checkConfig(success: @escaping PresenceSDK.PSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PSDK.ConfigFailureHandler)
-  @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: PresenceSDK.PresenceLoginDelegate)
-  @available(*, deprecated, message: "Use `setBrandingColors` method instead.")
-  @objc final public func setBrandingColor(color: UIKit.UIColor)
-  @objc final public func setBrandingColors(_ brandingColors: PresenceSDK.BrandingColors)
-  @objc final public func setLogo(_ image: UIKit.UIImage?)
-  @objc final public func setTheme(theme: PresenceSDK.SDKTheme)
-  @objc final public func setEnvironment(sdkEnvironment: PresenceSDK.SDKEnvironment)
-}
-extension PSDK {
-  @objc final public func logOut(completion: @escaping (Swift.Bool, Swift.Error?, Swift.Bool, Swift.Error?) -> Swift.Void = { _, _, _, _ in })
-  @objc final public func logOut()
-  @objc final public func logOutHost(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
-  @objc final public func logOutTeam(success: @escaping () -> Swift.Void = { }, failure: @escaping (Swift.Error) -> Swift.Void = { _ in })
-  @objc final public func resetPasswordForHost(success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler, token: Swift.String? = nil)
-  @objc final public func loginToHost(completion: ((Swift.Bool) -> Swift.Void)? = nil)
-  @objc final public func login(to backendName: PresenceSDK.PresenceLogin.BackendName, completion: ((Swift.Bool) -> Swift.Void)? = nil)
-  @objc final public func getAccessToken(backendName: PresenceSDK.PresenceLogin.BackendName, success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler)
-  @objc final public func isLoggedIn() -> Swift.Bool
-  @objc final public func isLoggedIntoHost() -> Swift.Bool
-  @objc final public func isLoggedIntoTeam() -> Swift.Bool
-  @objc final public func hasUserSignedIn() -> Swift.Bool
-  @objc final public func hasUserSignedInHost() -> Swift.Bool
-  @objc final public func hasUserSignedInTeam() -> Swift.Bool
-}
-extension PSDK {
-  @objc final public func getVersionNumber() -> Swift.String
-  @objc final public func getMemberInfo(backendName: PresenceSDK.PresenceLogin.BackendName, completion: @escaping (PresenceSDK.PresenceMember?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, renamed: "jumpToOrderOrEvent(id:)")
-  @objc final public func displayOrder(orderId: Swift.String)
-  @objc final public func jumpToOrderOrEvent(id: Swift.String)
-  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType)
-  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType)
-  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType, orderDelegate: PresenceSDK.PresenceOrderDelegate)
-}
-extension PSDK {
-  @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
-  @objc final public func setExperienceConfiguration(_ experienceConfiguration: PresenceSDK.ExperienceConfiguration)
-}
-extension PSDK {
-  @objc final public func startMFAValidation(on controller: UIKit.UIViewController, additionalProperties: [Swift.String : Any] = [String: Any](), success: @escaping (Swift.String) -> Swift.Void, failure: @escaping (Foundation.NSError) -> Swift.Void)
-}
-@objc @_hasMissingDesignatedInitializers @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
-final public class ExperienceConfiguration : ObjectiveC.NSObject {
-  @objc public static let Builder: PresenceSDK.ExperienceConfigurationBuilder.Type
-  @objc deinit
-  @objc override dynamic public init()
-}
-@objc @_inheritsConvenienceInitializers final public class ExperienceConfigurationBuilder : ObjectiveC.NSObject {
-  @objc override dynamic public init()
-  @discardableResult
-  @objc final public func setAppId(_ appId: Swift.String) -> PresenceSDK.ExperienceConfigurationBuilder
-  @discardableResult
-  @objc final public func setAppName(_ appName: Swift.String) -> PresenceSDK.ExperienceConfigurationBuilder
-  @discardableResult
-  @objc final public func setAppSource(_ appSource: Swift.String) -> PresenceSDK.ExperienceConfigurationBuilder
-  @discardableResult
-  @objc final public func setSubdomain(_ subdomain: Swift.String) -> PresenceSDK.ExperienceConfigurationBuilder
-  @discardableResult
-  @objc final public func setApiKey(_ apiKey: Swift.String) -> PresenceSDK.ExperienceConfigurationBuilder
-  @discardableResult
-  @objc final public func setApiSubdomain(_ apiSubdomain: Swift.String?) -> PresenceSDK.ExperienceConfigurationBuilder
-  @discardableResult
-  @objc final public func setApiVersion(_ apiVersion: Swift.String?) -> PresenceSDK.ExperienceConfigurationBuilder
-  @discardableResult
-  @objc final public func setSsoSigningKey(_ ssoSigningKey: Swift.String?) -> PresenceSDK.ExperienceConfigurationBuilder
-  @objc final public func build() -> PresenceSDK.ExperienceConfiguration
-  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class PresenceLogin {
   @objc public enum BackendName : Swift.Int, Swift.CustomStringConvertible {
@@ -198,14 +172,6 @@ final public class ExperienceConfiguration : ObjectiveC.NSObject {
   public var rawValue: Swift.Int {
     get
   }
-}
-@objc @_inheritsConvenienceInitializers public class PresenceDeeplinkController : ObjectiveC.NSObject {
-  @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
-  public func isExperienceDeeplink(deeplink: Foundation.URL) -> Swift.Bool
-  @available(*, deprecated, message: "No longer has any functionality and will be removed soon")
-  public func handleExperienceDeeplink(deeplink: Foundation.URL)
-  @objc deinit
-  @objc override dynamic public init()
 }
 extension UIViewController {
   public static func swizzle()
@@ -302,12 +268,6 @@ extension UIViewController {
   @objc var hmacId: Swift.String { get }
   @objc var doNotSellFlag: Swift.Bool { get }
   @objc var idToken: Swift.String { get }
-  @objc @available(*, deprecated, renamed: "email")
-  var emailAddress: Swift.String { get }
-  @objc @available(*, deprecated, renamed: "id")
-  var HostMemberID: Swift.String { get }
-  @objc @available(*, deprecated, renamed: "id")
-  var AccountManagerMemberID: Swift.String { get }
 }
 extension String : Swift.Error {
 }
