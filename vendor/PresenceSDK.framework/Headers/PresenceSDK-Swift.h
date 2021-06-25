@@ -434,9 +434,9 @@ enum SDKEnvironment : NSInteger;
 ///
 /// \param useNewAccountsManager Configures the SDK to use new accounts manager for password reset flow if your Team has switched to new acccounts manager.
 ///
-/// \param quickLogin Configures the SDK to use the new, quick login (new accounts manager only).
+/// \param quickLogin Configures the SDK to use the new, quick login screen (new accounts manager only).
 ///
-/// \param autoLogin Configures the SDK to automatically present login screen (quickLogin only, new accounts manager only)
+/// \param autoLogin Configures the SDK to automatically present login prompt (quickLogin only, new accounts manager only)
 ///
 - (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin;
 /// Method for checking configuration of PresenceSDK for Teams
