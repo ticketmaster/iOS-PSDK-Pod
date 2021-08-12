@@ -320,11 +320,13 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 /// Method for getting a valid OAUTH Access Token. Note that this will present login UI if the user is not logged in.
 /// \param backendName Token for Host or AccountManager
 ///
+/// \param presentLoginUI upon failure (not logged in or refresh token expired), automatically present login UI to user
+///
 /// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
 ///
 /// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
 ///
-- (void)getAccessTokenWithBackendName:(enum BackendName)backendName success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
+- (void)getAccessTokenWithBackendName:(enum BackendName)backendName presentLoginUI:(BOOL)presentLoginUI success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
 @end
 
 

@@ -57,7 +57,7 @@ extension PSDK {
 }
 extension PSDK {
   @objc final public func login(to backendName: PresenceSDK.PresenceLogin.BackendName, completion: ((Swift.Bool) -> Swift.Void)? = nil)
-  @objc final public func getAccessToken(backendName: PresenceSDK.PresenceLogin.BackendName, success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler)
+  @objc final public func getAccessToken(backendName: PresenceSDK.PresenceLogin.BackendName, presentLoginUI: Swift.Bool = true, success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler)
 }
 extension PSDK {
 }
