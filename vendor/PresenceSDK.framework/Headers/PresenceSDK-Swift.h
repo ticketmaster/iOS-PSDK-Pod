@@ -288,7 +288,6 @@ enum BackendName : NSInteger;
 - (void)startMFAValidationOn:(UIViewController * _Nonnull)controller additionalProperties:(NSDictionary<NSString *, id> * _Nonnull)additionalProperties success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-
 enum PresenceSDKLoginButtons : NSInteger;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -301,6 +300,20 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
   PresenceSDKLoginButtonsForgotPassword = 0,
   PresenceSDKLoginButtonsCreateAccount = 1,
 };
+
+
+
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
+- (void)logOut;
+/// Method to log out user from all the logged-in accounts
+- (void)logOutWithCompletion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
+/// Method to log out user from Ticketmaster account
+- (void)logOutHostWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Method to log out user from Team account
+- (void)logOutTeamWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@end
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -320,6 +333,14 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 /// Method for getting a valid OAUTH Access Token. Note that this will present login UI if the user is not logged in.
 /// \param backendName Token for Host or AccountManager
 ///
+/// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
+///
+/// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
+///
+- (void)getAccessTokenWithBackendName:(enum BackendName)backendName success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
+/// Method for getting a valid OAUTH Access Token.
+/// \param backendName Token for Host or AccountManager
+///
 /// \param presentLoginUI upon failure (not logged in or refresh token expired), automatically present login UI to user
 ///
 /// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
@@ -327,19 +348,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 /// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
 ///
 - (void)getAccessTokenWithBackendName:(enum BackendName)backendName presentLoginUI:(BOOL)presentLoginUI success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
-@end
-
-
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
-- (void)logOut;
-/// Method to log out user from all the logged-in accounts
-- (void)logOutWithCompletion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
-/// Method to log out user from Ticketmaster account
-- (void)logOutHostWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-/// Method to log out user from Team account
-- (void)logOutTeamWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 
