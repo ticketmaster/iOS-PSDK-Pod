@@ -1,9 +1,0 @@
-//
-//  ResaleSdk.xcconfig
-//  ResaleSdk
-//
-//  Created by Harout Grigoryan on 10/12/20.
-//  Copyright © 2020 Ticketmaster. All rights reserved.
-//
-
-#include "FrameworksStandalone.xcconfig"

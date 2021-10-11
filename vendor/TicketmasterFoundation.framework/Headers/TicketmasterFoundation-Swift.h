@@ -432,8 +432,8 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation13MessageLogger")
 
 
 @interface NSURL (SWIFT_EXTENSION(TicketmasterFoundation))
-/// URL query paramaters as a dictionary.
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull queryDictionary;
+@property (nonatomic, readonly, copy) NSArray<NSURLQueryItem *> * _Nullable queryItems;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull queryParameters;
 @end
 
 
@@ -499,6 +499,8 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation15TMDateFormatter")
 @interface TMDateFormatter : NSObject
 - (nonnull instancetype)init;
 @end
+
+
 
 
 

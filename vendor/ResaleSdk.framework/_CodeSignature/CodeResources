@@ -8,10 +8,6 @@
 		<data>
 		l6XWmpEs0GJdIj3u8NXACIbmWQo=
 		</data>
-		<key>FrameworksStandalone.xcconfig</key>
-		<data>
-		LpY1jCMoiEI8EVcdMbjtjimARUA=
-		</data>
 		<key>Headers/ResaleSdk-Swift.h</key>
 		<data>
 		MubL9tHzp2ToMlHhkJCSnYOs+V0=
@@ -22,15 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		REBs1c9mUADnh9egI3ck6BChV44=
+		6SBFn3+0FCYyDwSnCoWAAtv67u0=
 		</data>
 		<key>Modules/ResaleSdk.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		/Z1bYiUpQ7K2kB1NTLBPUtOyL8I=
+		hHdfQkjWCx2Vrx6F+/UGtxaMNqU=
 		</data>
 		<key>Modules/ResaleSdk.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		/Z1bYiUpQ7K2kB1NTLBPUtOyL8I=
+		hHdfQkjWCx2Vrx6F+/UGtxaMNqU=
 		</data>
 		<key>Modules/ResaleSdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -42,7 +38,7 @@
 		</data>
 		<key>Modules/ResaleSdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		ii/5haWu2CMnRVTvd9/gj5+9GwU=
+		m/JHN2bchhV80OG/Sf8whLzpd18=
 		</data>
 		<key>Modules/ResaleSdk.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -54,7 +50,7 @@
 		</data>
 		<key>Modules/ResaleSdk.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		ii/5haWu2CMnRVTvd9/gj5+9GwU=
+		m/JHN2bchhV80OG/Sf8whLzpd18=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -66,27 +62,19 @@
 		</data>
 		<key>Resale.storyboardc/SellTicketsWebViewController.nib/objects-13.0+.nib</key>
 		<data>
-		rYZoMF94Zj4s7PvJWhNZZU/7HCk=
+		+DouiZ+TxKFvH3f/YUA6X4L9HAQ=
 		</data>
 		<key>Resale.storyboardc/SellTicketsWebViewController.nib/runtime.nib</key>
 		<data>
-		KCySGLnJ+/6EJVVJhEzgUj5NltI=
+		AmZlWCrcKP5xPNRNXmfkERcxWDk=
 		</data>
 		<key>Resale.storyboardc/XVh-Wb-S8J-view-ZLL-GD-5cA.nib/objects-13.0+.nib</key>
 		<data>
-		tEeNOJDBv870vxSHV2H9I9gV4Po=
+		NbVbyIirsQmdVL1u03s2D6LjW9o=
 		</data>
 		<key>Resale.storyboardc/XVh-Wb-S8J-view-ZLL-GD-5cA.nib/runtime.nib</key>
 		<data>
-		kVy3MYL1YqTU64fY8OYa30123pk=
-		</data>
-		<key>ResaleSdk.xcconfig</key>
-		<data>
-		HkTXCFMgVs3+f4FJmbBqb2wxB/k=
-		</data>
-		<key>SharedSettings.xcconfig</key>
-		<data>
-		/Tvc0hWKVpCZtHXEaSPnypMVf7I=
+		Y4fzpkYouIIZvcfXCudy/CZnWu4=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -96,13 +84,6 @@
 			<key>hash2</key>
 			<data>
 			p1HMUZAR/MxupPFDjOiEYDqNRPXi2lxlP07pUHdzwKc=
-			</data>
-		</dict>
-		<key>FrameworksStandalone.xcconfig</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			vxlDqndN5xdbJ9MTvwQs3L6J8e2PN+bsRdnuCLKb8zM=
 			</data>
 		</dict>
 		<key>Headers/ResaleSdk-Swift.h</key>
@@ -123,14 +104,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			X2IRKKXAKGZEmgYsL6DnqF8qKjgfBe3Kfs7VMA0m+C8=
+			GaG0sr8W96L1dnaSFVJqBHOZnyROjVPtqzZnyv45Fjk=
 			</data>
 		</dict>
 		<key>Modules/ResaleSdk.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			X2IRKKXAKGZEmgYsL6DnqF8qKjgfBe3Kfs7VMA0m+C8=
+			GaG0sr8W96L1dnaSFVJqBHOZnyROjVPtqzZnyv45Fjk=
 			</data>
 		</dict>
 		<key>Modules/ResaleSdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -151,7 +132,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GtYe9E9U75SmriEKOyxi5kun9D681n0N1KjlcvoEkIM=
+			Xb1g5GxFTDUrA3bh8pwjKpn2khlWPCf38PKkVU5JZlE=
 			</data>
 		</dict>
 		<key>Modules/ResaleSdk.swiftmodule/arm64.swiftdoc</key>
@@ -172,7 +153,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GtYe9E9U75SmriEKOyxi5kun9D681n0N1KjlcvoEkIM=
+			Xb1g5GxFTDUrA3bh8pwjKpn2khlWPCf38PKkVU5JZlE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -193,42 +174,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hA+5dNZQgH7RhJkONutiIPPl5yt1OpXitmCd85tZtvc=
+			TzUy5ef45N9BUNqtsYL10gcHzO+wvXJ68roZwuySoLo=
 			</data>
 		</dict>
 		<key>Resale.storyboardc/SellTicketsWebViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1IVMRd52OAOjoAC4RhAR9/D5hte0u+Cl9fsJmgny8uo=
+			Miu0wJS/YyMKjbw26zMyOHcooHJdySaLIrgUxToaiIU=
 			</data>
 		</dict>
 		<key>Resale.storyboardc/XVh-Wb-S8J-view-ZLL-GD-5cA.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FH6pQMtk2NKxkoQ8ZVVVNPd03sBsULD4DXdTu4Cs5uM=
+			KZuVkyLA5A1LtSmjKFWa2oNxdytlV0/85ygOAuYbt1k=
 			</data>
 		</dict>
 		<key>Resale.storyboardc/XVh-Wb-S8J-view-ZLL-GD-5cA.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LMfCOATDvI95emQ6Gqgn1TMgNvHmA8h6HxDCrapV54o=
-			</data>
-		</dict>
-		<key>ResaleSdk.xcconfig</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			nFiam/Xd84N/5jprQYx33FnFGPBJpc5f3xH7QoQ32fQ=
-			</data>
-		</dict>
-		<key>SharedSettings.xcconfig</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			tmlKhKIabue/tre0bi44luT9s/n0y4356h86HatUP6o=
+			NbrcCBOXWoHvTJARJDC9gXQa0mzyAkVQDNQMNKSqKL4=
 			</data>
 		</dict>
 	</dict>

@@ -234,19 +234,14 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+typedef SWIFT_ENUM(NSInteger, VenueConcessionsButtonType, open) {
+  VenueConcessionsButtonTypeOrder = 0,
+  VenueConcessionsButtonTypeWallet = 1,
+};
 
 
-@class PresenceSDKView;
-@protocol PresenceLoginDelegate;
 
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method for initializing and launching PresenceSDK.
-/// \param presenceSDKView Reference to main PresenceSDKView which will display user tickets.
-///
-/// \param loginDelegate Reference to object of the class that is implementing PresenceLoginDelegate.
-///
-- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nonnull)loginDelegate;
-@end
+
 
 
 enum BackendName : NSInteger;
@@ -264,6 +259,26 @@ enum BackendName : NSInteger;
 ///
 - (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
 @end
+
+
+@class PresenceSDKView;
+@protocol PresenceLoginDelegate;
+@protocol PresenceOrderDelegate;
+@protocol PresenceVenueDelegate;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method for initializing and launching PresenceSDK.
+/// \param presenceSDKView Reference to main PresenceSDKView which will display user tickets.
+///
+/// \param loginDelegate Reference to object of the class that is implementing PresenceLoginDelegate.
+///
+/// \param orderDelegate Reference to object of the class that is implementing PresenceOrderDelegate.
+///
+/// \param venueDelegate Reference to object of the class that is implementing PresenceVenueDelegate.
+///
+- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
+@end
+
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -300,7 +315,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
   PresenceSDKLoginButtonsForgotPassword = 0,
   PresenceSDKLoginButtonsCreateAccount = 1,
 };
-
 
 
 
@@ -352,6 +366,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 
 
 
+
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method to check if user is logged in any of the services i.e Host or Accounts Manager, and has a valid access token available.
 ///
@@ -384,41 +399,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 /// True if user is signed into Accounts Manager, but that does not mean that access tokens are valid, otherwise returns false.
 - (BOOL)hasUserSignedInTeam SWIFT_WARN_UNUSED_RESULT;
 @end
-
-enum PresenceSDKIdType : NSInteger;
-enum PresenceSDKActionType : NSInteger;
-@protocol PresenceOrderDelegate;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nonnull)orderDelegate;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
-/// Search for event with the given identifier
-  PresenceSDKIdTypeEvent = 0,
-/// Search for order with the given identifier
-  PresenceSDKIdTypeOrder = 1,
-/// Search for event or order with the given identifier
-  PresenceSDKIdTypeAny = 2,
-};
-
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKActionType, "ActionType", open) {
-/// automatically show posting flow
-  PresenceSDKActionTypePosting = 0,
-/// automatically show transfer flow
-  PresenceSDKActionTypeTransfer = 1,
-};
 
 @class UIImage;
 enum SDKTheme : NSInteger;
@@ -471,6 +451,55 @@ enum SDKEnvironment : NSInteger;
 - (void)setThemeWithTheme:(enum SDKTheme)theme;
 - (void)setEnvironmentWithSdkEnvironment:(enum SDKEnvironment)sdkEnvironment;
 @end
+
+enum PresenceSDKIdType : NSInteger;
+enum PresenceSDKActionType : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
+/// present an Action Button in the top-right Navbar on the Tickets page
+/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
+/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
+/// \param title title of Action Button, <code>nil</code> = no button (default)
+///
+- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
+/// Search for event with the given identifier
+  PresenceSDKIdTypeEvent = 0,
+/// Search for order with the given identifier
+  PresenceSDKIdTypeOrder = 1,
+/// Search for event or order with the given identifier
+  PresenceSDKIdTypeAny = 2,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKActionType, "ActionType", open) {
+/// automatically show posting flow
+  PresenceSDKActionTypePosting = 0,
+/// automatically show transfer flow
+  PresenceSDKActionTypeTransfer = 1,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKPage, "PresencePage", open) {
+  PresenceSDKPageNone = 0,
+  PresenceSDKPageMyEvents = 1,
+  PresenceSDKPageMyTickets = 2,
+};
 
 
 
@@ -597,6 +626,14 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 /// \param venueId Identidier of the venue to be launched inVADP.
 ///
 - (void)presentVenueDetailsPageWith:(NSString * _Nonnull)venueId;
+/// Called when the list of events changes
+- (void)didUpdateOrderedEvents;
+/// Called when the list of tickets change for a particular event ID
+/// \param eventId Identifier of the event with ticket updates.
+///
+- (void)didUpdateTicketsWithEventId:(NSString * _Nonnull)eventId;
+/// Method is invoked if the core app need to handle bar button action
+- (void)handleBarButtonActionWithPage:(enum PresenceSDKPage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventID:(NSString * _Nullable)eventID orderIDs:(NSArray<NSString *> * _Nullable)orderIDs;
 @end
 
 @class NSCoder;
@@ -615,6 +652,35 @@ SWIFT_CLASS("_TtC11PresenceSDK15PresenceSDKView")
 - (void)refreshView;
 @end
 
+
+
+/// PresenceVenueDelegate Protocol allows Venue Upgrades and Concessions integration
+SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceVenueDelegate_")
+@protocol PresenceVenueDelegate
+/// Method is invoked upon opening an Event
+/// <ul>
+///   <li>
+///     Task: fetch and return Venue SDK Identifier
+///   </li>
+/// </ul>
+/// \param identifier venue identifier (from Ticketmaster)
+///
+/// \param completion 
+///
+/// \param sdkIdentifier venue identifier (from venue concessions SDK)
+///
+/// \param error an error occured
+///
+- (void)venueConcessionsSdkIdentifierForIdentifier:(NSString * _Nonnull)identifier completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
+/// Method is invoked when the user presses a Venue Concessions button
+/// \param identifier Identifier of the venue (from Ticketmaster)
+///
+/// \param sdkIdentifier Identifier of the venue (from venue concessions SDK)
+///
+/// \param concessionsButtonPressed User pressed <code>Orders</code> or <code>Wallet</code> button
+///
+- (void)venueWithIdentifier:(NSString * _Nonnull)identifier sdkIdentifier:(NSString * _Nonnull)sdkIdentifier concessionsButtonPressed:(enum VenueConcessionsButtonType)concessionsButtonPressed;
+@end
 
 /// Switches between Testing and release builds/options
 typedef SWIFT_ENUM(NSInteger, SDKEnvironment, open) {
@@ -643,7 +709,6 @@ typedef SWIFT_ENUM(NSInteger, SDKTheme, open) {
 /// Important UI elements will be colored black.
   SDKThemeDark = 1,
 };
-
 
 
 

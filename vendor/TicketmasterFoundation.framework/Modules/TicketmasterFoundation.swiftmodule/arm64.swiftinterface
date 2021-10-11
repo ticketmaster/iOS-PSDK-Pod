@@ -85,6 +85,11 @@ extension Data {
   public func encrypted(withKey: Swift.String?) -> Foundation.Data
   public func decrypted(withKey: Swift.String?) -> Foundation.Data?
 }
+extension Locale {
+  public var uses24hourTime: Swift.Bool {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers public class TMPixelDivolte : TicketmasterFoundation.NetworkService {
   @objc deinit
   override public init(connectionDriver: TicketmasterFoundation.ConnectionDriver)
@@ -310,9 +315,6 @@ public struct EncryptedArchiverFile {
 }
 extension TMDateFormatter {
   public func string(withFormatStyle formatStyle: TicketmasterFoundation.TMDateFormatter.DateFormatStyle) -> Swift.String
-  public func singleDayStyleString(from date: Foundation.Date, inTimeZone timeZone: Foundation.TimeZone) -> Swift.String
-  public func singleDayStyleWithYearOnlyString(from date: Foundation.Date, inTimeZone timeZone: Foundation.TimeZone) -> Swift.String
-  public func singleDayStyleWithTimeOnlyString(from date: Foundation.Date, inTimeZone timeZone: Foundation.TimeZone) -> Swift.String
 }
 extension Locale {
   public var acceptLanguageCode: Swift.String? {
@@ -323,20 +325,6 @@ extension UIView {
   public func constrainToEqualHeightAndWidth(of length: CoreGraphics.CGFloat)
   public func constrainToEdgesOfSuperview()
   public func constrainToCenterOfSuperview()
-}
-extension URL {
-  public var isTicketmasterOrLiveNation: Swift.Bool {
-    get
-  }
-  public var isTicketmaster: Swift.Bool {
-    get
-  }
-  public var isLivenation: Swift.Bool {
-    get
-  }
-  public var isMarketing: Swift.Bool {
-    get
-  }
 }
 @objc @_hasMissingDesignatedInitializers open class ImageRequestTask : ObjectiveC.NSObject {
   @objc deinit
@@ -460,6 +448,8 @@ extension Dictionary where Key == Swift.String, Value == Any {
   public func decimalNumber(_ key: Swift.String) -> Foundation.NSDecimalNumber?
   public func decimalNumber(path: Swift.String) -> Foundation.NSDecimalNumber?
 }
+infix operator <==> : ComparisonPrecedence
+public func <==> (lhs: Foundation.URL, rhs: Foundation.URL) -> Swift.Bool
 public enum DateShape {
   case singleDay(startDate: Foundation.Date)
   case dateRange(startDate: Foundation.Date, endDate: Foundation.Date)
@@ -608,6 +598,9 @@ extension URLRequest {
   case IE
   case MX
   public init?(rawValue: Swift.String)
+  public var stringValue: Swift.String {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
@@ -643,6 +636,9 @@ extension MarketDomain {
   public func isValid(forMarketLocation: TicketmasterFoundation.MarketLocation) -> Swift.Bool
   public func isValid(forUserLocation: TicketmasterFoundation.UserLocation) -> Swift.Bool
   public func isValid(forDomain: TicketmasterFoundation.MarketDomain) -> Swift.Bool
+}
+extension URL {
+  public init?(scheme: Swift.String? = nil, host: Swift.String?, path: Swift.String? = nil, queryParameters: TicketmasterFoundation.URLQueryParameters? = nil)
 }
 @objc final public class TMUser : ObjectiveC.NSObject {
   final public let email: Swift.String
@@ -895,6 +891,9 @@ extension EncryptedArchiver {
   case network
   case trace
   public init?(rawValue: Swift.String)
+  public var stringValue: Swift.String {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
@@ -939,11 +938,12 @@ extension WKWebView {
   @objc deinit
 }
 extension URLRequest {
-  public mutating func addValue(_ value: Swift.String, forParameterField key: Swift.String, allowedCharacters: Swift.String? = nil)
+  public mutating func replace(queryParameters: TicketmasterFoundation.URLQueryParameters?)
+  public mutating func replace(queryItems: [Foundation.URLQueryItem]?)
+  public mutating func replace(httpHeaders: TicketmasterFoundation.URLQueryParameters?)
 }
 extension URL {
   public func mutableRequest(method: TicketmasterFoundation.HTTPMethod) -> Foundation.URLRequest
-  public mutating func addValue(_ value: Swift.String, forParameterField key: Swift.String, allowedCharacters: Swift.String? = nil)
 }
 extension String {
   public func mutableRequest(method: TicketmasterFoundation.HTTPMethod) -> Foundation.URLRequest?
@@ -1150,8 +1150,8 @@ open class NetworkService {
     set
   }
   public init(connectionDriver: TicketmasterFoundation.ConnectionDriver)
-  open func defaultHttpHeadersForRequest() -> TicketmasterFoundation.URLQueryParamaters?
-  final public func urlRequest(forPath pathString: Swift.String, queryParameters: TicketmasterFoundation.URLQueryParamaters? = nil, queryAllowedCharacters: Swift.String? = nil, pathHttpHeaders: TicketmasterFoundation.URLQueryParamaters? = nil, requestBody: Foundation.Data? = nil, httpMethod: TicketmasterFoundation.HTTPMethod = .GET, cachePolicy: Foundation.URLRequest.CachePolicy? = nil) -> TicketmasterFoundation.APIResponse<Foundation.URLRequest>
+  open func defaultHttpHeadersForRequest() -> TicketmasterFoundation.URLQueryParameters?
+  final public func urlRequest(httpMethod: TicketmasterFoundation.HTTPMethod = .GET, path: Swift.String, queryParameters: TicketmasterFoundation.URLQueryParameters? = nil, pathHttpHeaders: TicketmasterFoundation.URLQueryParameters? = nil, requestBody: Foundation.Data? = nil, cachePolicy: Foundation.URLRequest.CachePolicy = .useProtocolCachePolicy) -> TicketmasterFoundation.APIResponse<Foundation.URLRequest>
   @discardableResult
   final public func sendJSON(request: Foundation.URLRequest, completion: @escaping (TicketmasterFoundation.JSONResponse) -> Swift.Void) -> Foundation.URLSessionTask?
   @discardableResult
@@ -1183,6 +1183,9 @@ open class NetworkService {
   case websiteDiscovery
   case websiteFavorites
   public init?(rawValue: Swift.String)
+  public var stringValue: Swift.String {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
@@ -1499,6 +1502,30 @@ open class URLDataSession {
   @discardableResult
   open func sendDataTask(request: Foundation.URLRequest, completion: @escaping (Foundation.Data?, Foundation.HTTPURLResponse?, Swift.Error?) -> Swift.Void) -> Foundation.URLSessionTask
 }
+extension URL {
+  public var queryItems: [Foundation.URLQueryItem]? {
+    get
+  }
+  public var queryParameters: TicketmasterFoundation.URLQueryParameters {
+    get
+  }
+}
+@objc extension NSURL {
+  @objc dynamic public var queryItems: [Foundation.URLQueryItem]? {
+    @objc get
+  }
+  @objc dynamic public var queryParameters: TicketmasterFoundation.URLQueryParameters {
+    @objc get
+  }
+}
+extension URL {
+  public mutating func replace(queryParameters: TicketmasterFoundation.URLQueryParameters)
+  public mutating func replace(queryItems: [Foundation.URLQueryItem])
+  public func replacing(_ queryParameters: TicketmasterFoundation.URLQueryParameters) -> Foundation.URL
+  public func replacing(_ queryItems: [Foundation.URLQueryItem]) -> Foundation.URL
+  @available(*, deprecated, message: "Will append duplicate queryItems, use replacing() instead")
+  public func appending(_ queryItems: [Foundation.URLQueryItem]) -> Foundation.URL
+}
 public typealias ArrayResponse = TicketmasterFoundation.APIResponse<[Any]>
 public typealias DataResponse = TicketmasterFoundation.APIResponse<Foundation.Data>
 public typealias JSONResponse = TicketmasterFoundation.APIResponse<TicketmasterFoundation.JSONDictionary>
@@ -1513,9 +1540,6 @@ public typealias ImageResponse = TicketmasterFoundation.APIResponse<UIKit.UIImag
   public let pageCount: Swift.Int
   public let totalItems: Swift.Int
   public init(data: [T], pageNumber: Swift.Int, pageCount: Swift.Int, totalItems: Swift.Int)
-}
-extension URL {
-  public init?(scheme: Swift.String? = nil, host: Swift.String, path: Swift.String? = nil, queryParameters: TicketmasterFoundation.URLQueryParamaters? = nil)
 }
 extension WKWebView {
   public func setKeyboardRequiresUserInteraction(_ value: Swift.Bool)
@@ -1576,34 +1600,28 @@ extension Data {
   public func prettyString() -> Swift.String
   public init?(jsonObject: Any, options: Foundation.JSONSerialization.WritingOptions = [])
 }
-public typealias URLQueryParamater = TicketmasterFoundation.ElementValue<Swift.String, Swift.String>
-public typealias URLQueryParamaters = [Swift.String : Swift.String]
+public typealias URLQueryParameter = TicketmasterFoundation.ElementValue<Swift.String, Swift.String>
+public typealias URLQueryParameters = [Swift.String : Swift.String]
+extension Dictionary where Key == Swift.String, Value == Swift.String {
+  public init(queryItems: [Foundation.URLQueryItem])
+  public var queryItems: [Foundation.URLQueryItem] {
+    get
+  }
+  public mutating func replace(_ param: TicketmasterFoundation.URLQueryParameter?)
+  public mutating func replace(_ array: TicketmasterFoundation.URLQueryParameters?)
+  public mutating func replace(_ item: Foundation.URLQueryItem?)
+  public mutating func replace(_ array: [Foundation.URLQueryItem]?)
+}
 extension Dictionary where Key == Swift.String, Value == Swift.String {
   public static let encodingError: Swift.String
-  public func percentEncodedString(allowedCharacters: Swift.String? = nil) -> Swift.String?
-  public func percentEncodedArray(allowedCharacters: Swift.String? = nil) -> [Swift.String]
-  public mutating func append(array: TicketmasterFoundation.URLQueryParamaters?)
+  public func percentEncodedString() -> Swift.String?
+  public func percentEncodedArray() -> [Swift.String]
   public mutating func applyBasicAuth(username: Swift.String, password: Swift.String)
 }
 extension String {
-  public func stringByAddingPercentEncodingForURLQuery() -> Swift.String?
-  public func stringByAddingPercentEncodingForURLQueryParamValues(allowedCharacters: Swift.String? = nil) -> Swift.String?
+  public func stringByAddingPercentEncodingForURLQueryParamValues() -> Swift.String?
   public static func separated(fromArray array: [Foundation.NSNumber], withToken token: Swift.String) -> Swift.String
   public static func separated(fromArray array: [Swift.String], withToken token: Swift.String) -> Swift.String
-}
-extension URLQueryItem {
-  public static func toParamater(value: Foundation.URLQueryItem) -> TicketmasterFoundation.URLQueryParamater
-  public static func paramaters(queryItems: [Foundation.URLQueryItem]) -> TicketmasterFoundation.URLQueryParamaters
-}
-extension URL {
-  public var queryDictionary: TicketmasterFoundation.URLQueryParamaters {
-    get
-  }
-}
-@objc extension NSURL {
-  @objc dynamic public var queryDictionary: TicketmasterFoundation.URLQueryParamaters {
-    @objc get
-  }
 }
 extension Array {
   public func map<Key, Value>(toDictionary: (Element) -> Swift.Dictionary<Key, Value>.Element) -> Swift.Dictionary<Key, Value> where Key : Swift.Hashable
@@ -1633,29 +1651,26 @@ extension Array {
   @objc deinit
 }
 extension URLRequest {
-  public static func buildRequest(hostString: Swift.String? = nil, pathString: Swift.String? = nil, queryParameters: TicketmasterFoundation.URLQueryParamaters? = nil, queryAllowedCharacters: Swift.String? = nil, httpHeaders: TicketmasterFoundation.URLQueryParamaters? = nil, requestBody: Foundation.Data? = nil, httpMethod: TicketmasterFoundation.HTTPMethod = .GET, cachePolicy: Foundation.URLRequest.CachePolicy? = nil) -> TicketmasterFoundation.APIResponse<Foundation.URLRequest>
-  public mutating func set(httpHeaders: TicketmasterFoundation.URLQueryParamaters?)
+  public static func buildRequest(httpMethod: TicketmasterFoundation.HTTPMethod = .GET, scheme: Swift.String? = nil, host: Swift.String? = nil, path: Swift.String? = nil, queryParameters: TicketmasterFoundation.URLQueryParameters? = nil, httpHeaders: TicketmasterFoundation.URLQueryParameters? = nil, requestBody: Foundation.Data? = nil, cachePolicy: Foundation.URLRequest.CachePolicy = .useProtocolCachePolicy) -> TicketmasterFoundation.APIResponse<Foundation.URLRequest>
 }
 extension NSError {
   convenience public init(data: Foundation.Data?, domain: Swift.String)
 }
 extension URL {
-  public func addingShellViewParameters() -> Foundation.URL
   public var cookieDomain: Swift.String? {
     get
   }
-  public var queryItems: [Foundation.URLQueryItem]? {
-    get
-  }
-  public func appendingQueryItems(_ queryItems: [Foundation.URLQueryItem]) -> Foundation.URL
   public var isHTTPOrHTTPS: Swift.Bool {
     get
   }
   public var isHTTPS: Swift.Bool {
     get
   }
+  public var hasEmptyPathOrEquivalent: Swift.Bool {
+    get
+  }
 }
-public enum ConnectionEnvironment : Swift.String, Swift.CaseIterable {
+public enum ConnectionEnvironment : Swift.String, Swift.CaseIterable, Swift.Codable {
   case production
   case productionLiveNation
   case localHost
@@ -1705,9 +1720,6 @@ public enum ConnectionError : Swift.Error {
   case unknownResponse(statusCode: Swift.Int)
   case server(error: Swift.Error)
   case requestCanceled
-  case malformedParameters
-  case missingHostPath
-  case malformedURL(reason: Swift.String)
   case malformedBody
   case badObjectSerialization
   case badJSONFormat(reason: Swift.String)
