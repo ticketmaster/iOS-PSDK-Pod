@@ -36,7 +36,7 @@ extension SecureEntryView {
 }
 extension SecureEntryView {
   @available(*, deprecated, message: "Use brandingColor property instead")
-  final public func setBrandingColor(color: UIKit.UIColor!)
+  final public func setBrandingColor(color: UIKit.UIColor)
   @available(*, deprecated, message: "Use pdf417Subtitle property instead")
   final public func setPdf417Subtitle(subtitleText: Swift.String)
   @available(*, deprecated, message: "setQrCodeSubtitle has been deprecated and no longer has any functionality")

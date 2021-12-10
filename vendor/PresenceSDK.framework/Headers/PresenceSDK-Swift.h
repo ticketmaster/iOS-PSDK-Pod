@@ -188,6 +188,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AuthenticationServices;
 @import CoreGraphics;
 @import ObjectiveC;
 @import UIKit;
@@ -210,79 +211,110 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
-@class UIColor;
-
-/// Pass to <code>PresenceSDK setBrandingColors</code> to customize the color of UI elements by overridding their respective properties.
-SWIFT_CLASS("_TtC11PresenceSDK14BrandingColors")
-@interface BrandingColors : NSObject
-- (nonnull instancetype)initWithNavBarColor:(UIColor * _Nonnull)navBarColor ticketColor:(UIColor * _Nonnull)ticketColor buttonColor:(UIColor * _Nonnull)buttonColor OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithOneColor:(UIColor * _Nonnull)oneColor OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
 
 
 
 
 
 
-
+/// Main class for the SDK.
+/// <h2>Accessing the PresenceSDK</h2>
+/// All public methods are accessible by calling the PresenceSDK class singleton:
+/// \code
+/// PSDK.shared
+///
+/// \endcode<h2>Configuring the PresenceSDK</h2>
+/// The PresenceSDK requires an API key (consumer key) to function. Configure the PresenceSDK before calling any other methods on it:
+/// \code
+/// PSDK.shared.setConfig(consumerKey: "<yourConsumerKey>")
+///
+/// \endcode<h2>Setting Branding and Theme color</h2>
+/// The branding color can be simply set by passing the preferred color as an argument when calling:
+/// \code
+/// let colors = PSDK.BrandingColors(oneColor: UIColor.red)
+/// PSDK.shared.setBrandingColors(colors)
+///
+/// \endcodeWhen setting a light branding color like white, it can problematic for the user to see vital UI elements such as Navigation Bar Buttons, Button Titles, and Section:Row:Seat information. Setting the theme color to dark is recommended when a light branding color is defined.
+/// \code
+/// PSDK.shared.setTheme(theme: PSDK.SDKTheme.Dark)
+///
+/// \endcode<h2>Viewing Orders and Tickets</h2>
+/// Present the <code>PresenceSDKView</code> somewhere in your UI, then start the PresenceSDK can be done by calling:
+/// \code
+/// var presenceSDKView = PresenceSDKView()
+/// PSDK.shared.start(presenceSDKView: presenceSDKView)
+///
+/// \endcodeYou can directly open a known Event or Order by calling:
+/// \code
+/// PSDK.shared.jumpToOrderOrEvent(id: "<knownOrderOrEventID>")
+///
+/// \endcode<h2>Manual Login / Logout</h2>
+/// Presence SDK automatically presents login UI when trying to view Orders or Tickets. However, login may be presented manually by calling:
+/// \code
+/// PSDK.shared.login(to: .AccountManager)
+///
+/// \endcodeLogin state may fetched at any time:
+/// \code
+/// let userLoggedIn = PSDK.shared.isLoggedIn()
+///
+/// \endcodeLogout may also be forced manually:
+/// \code
+/// PSDK.shared.logout()
+///
+/// \endcode<h2>Get User Info</h2>
+/// Once logged in, user information may be fetched from PresenceSDK by calling:
+/// \code
+/// PSDK.shared.getMemberInfo(backendName: .AccountManager,
+///                           completion { (member: PresenceMember?, error: Error?) })
+///
+/// \endcode<h2>Get OAuth Token</h2>
+/// If your app communicates with other Ticketmaster SDKs or services, you may want the user’s OAuth token:
+/// \code
+/// PSDK.shared.getAccessToken(backendName: .AccountManager,
+///                            presentLoginUI: true,
+///                            success: { (accessToken: String) },
+///                            failure: { (error: Error?, canceled: Bool) })
+///
+/// \endcodeNote that by setting <code>presentLoginUI</code> to <code>false</code>, you can try and fetch an access token without triggering the login UI popup.
+/// Access tokens that are expired (or about to expire) will be automatically refreshed if possible.
+/// <h2>Be Informed</h2>
+/// If your app wants to know about operations inside the Presence SDK, your class can optionally conform to the <code>PresenceLoginDelegate</code> or <code>PresenceOrderDelegate</code>:
+/// \code
+/// PSDK.shared.loginDelegate = self
+/// PSDK.shared.orderDelegate = self
+///
+/// \endcode<h2>Event-Specific Action Button</h2>
+/// You can display an action button (such as “Help”) on the navigation bar inside the “My Tickets” view:
+/// \code
+/// PSDK.shared.setTicketsActionButtonText(title: "Help")
+/// PSDK.shared.orderDelegate = self
+///
+/// \endcodeBy conforming to the <code>PresenceOrderDelegate.handleBarButtonAction</code> you will be informed if the user pressed the action button and which Event/Order they pressed it on.
+/// <h2>Venue Concessions</h2>
+/// If your app implements venue concessions, you present an upsell module right inside the “My Tickets” view by conforming to the <code>PresenceVenueDelegate</code>:
+/// \code
+/// PSDK.shared.venueDelegate = self
+///
+/// \endcode<h2>More Info</h2>
+/// For more information, please visit our <a href="https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/">Devportal for Presence SDK</a>.
+/// You can also find a demo integration project to quickly learn how to integrate the Presence SDK <a href="https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/iOS/index.html">Demo Integration Project</a>.
 SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 @interface PSDK : NSObject
-@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull hostLoginQueryParams;
-@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull archticsLoginQueryParams;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, VenueConcessionsButtonType, open) {
-  VenueConcessionsButtonTypeOrder = 0,
-  VenueConcessionsButtonTypeWallet = 1,
-};
-
-
-
-
-
 
 enum BackendName : NSInteger;
-@protocol PresenceMember;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to get the logged in user’s information.
-/// \param backendName The specified backend name where the SDK will retrive member information from.
+/// Method to login via Webview Login
+/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
+/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
 ///
-/// \param completion Completion block to be called containing possible member and error imformation.
+/// \param completion success: Bool, login was completed successfully
 ///
-/// \param member An optional PresenceMember object returned in the completion block callback.
-///
-/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
-///
-- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
-@end
-
-
-@class PresenceSDKView;
-@protocol PresenceLoginDelegate;
-@protocol PresenceOrderDelegate;
-@protocol PresenceVenueDelegate;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method for initializing and launching PresenceSDK.
-/// \param presenceSDKView Reference to main PresenceSDKView which will display user tickets.
-///
-/// \param loginDelegate Reference to object of the class that is implementing PresenceLoginDelegate.
-///
-/// \param orderDelegate Reference to object of the class that is implementing PresenceOrderDelegate.
-///
-/// \param venueDelegate Reference to object of the class that is implementing PresenceVenueDelegate.
-///
-- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
-@end
-
-
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-- (void)resetPasswordForHostWithSuccess:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure token:(NSString * _Nullable)token;
+- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
 @end
 
 
@@ -298,52 +330,81 @@ enum BackendName : NSInteger;
 ///
 /// \param success Completion block to be called containing MFA token.
 ///
+/// \param token MFA token
+///
 /// \param failure Completion block to be called containing error information.
+///
+/// \param error MFA error
 ///
 - (void)startMFAValidationOn:(UIViewController * _Nonnull)controller additionalProperties:(NSDictionary<NSString *, id> * _Nonnull)additionalProperties success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-enum PresenceSDKLoginButtons : NSInteger;
+
+
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// present an Action Button in the top-right Navbar on the Tickets page
+/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
+/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
+/// \param title title of Action Button, <code>nil</code> = no button (default)
+///
+- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
+@end
+
+@protocol PresenceMember;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to get the logged in user’s information.
+/// \param backendName The specified backend name where the SDK will retrive member information from.
+///
+/// \param completion 
+///
+/// \param member An optional PresenceMember object returned in the completion block callback.
+///
+/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
+///
+- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
+@end
+
+@class PresenceSDKView;
+@protocol PresenceLoginDelegate;
+@protocol PresenceOrderDelegate;
+@protocol PresenceVenueDelegate;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method for initializing and launching PresenceSDK.
+/// Note that you may also set these delegates directly on <code>PSDK.shared</code>
+/// \param presenceSDKView Reference to main <code>PresenceSDKView</code> which will display user tickets.
+///
+/// \param loginDelegate optional delegate to report status of user login
+///
+/// \param orderDelegate optional delegate to report order status or handle event / artist / venue related actions
+///
+/// \param venueDelegate optional delegate to handle Venue Upgrades and Concessions integration
+///
+- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
+@end
+
+
+
+enum LoginButtons : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to reser password for a Host Account
+/// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
+///
+/// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
+///
+/// \param token Password reset token (if any), used to quickly identify which account is being reset
+///
+- (void)resetPasswordForHostWithSuccess:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure token:(NSString * _Nullable)token;
 /// Property to choose an available action button for Team account on the Login Screen.
-/// Defauilt value is LoginButtons.forgotPassword
-@property (nonatomic) enum PresenceSDKLoginButtons loginButton;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", open) {
-  PresenceSDKLoginButtonsForgotPassword = 0,
-  PresenceSDKLoginButtonsCreateAccount = 1,
-};
-
-
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
-- (void)logOut;
-/// Method to log out user from all the logged-in accounts
-- (void)logOutWithCompletion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
-/// Method to log out user from Ticketmaster account
-- (void)logOutHostWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-/// Method to log out user from Team account
-- (void)logOutTeamWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Default value is LoginButtons.forgotPassword
+@property (nonatomic) enum LoginButtons loginButton;
 @end
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to login via Webview Login
-/// <ul>
-///   <li>
-///     Parameter:
-///     <ul>
-///       <li>
-///         backendName: Host or AccountManager
-///       </li>
-///     </ul>
-///   </li>
-/// </ul>
-/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
-- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
 /// Method for getting a valid OAUTH Access Token. Note that this will present login UI if the user is not logged in.
 /// \param backendName Token for Host or AccountManager
 ///
@@ -368,48 +429,133 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKLoginButtons, "LoginButtons", ope
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to check if user is logged in any of the services i.e Host or Accounts Manager, and has a valid access token available.
+/// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
+- (void)logOut SWIFT_DEPRECATED_MSG("Use logout(completion:) instead for proper OAuth2 logout handling");
+/// Method to log out user from all the logged-in accounts
+/// \param forceLogout true = logout locally, regardless of response from server
 ///
-/// returns:
-/// True if user is logged in any of the services i.e Host or Accounts Manager and has valid access token available, otherwise returns false.
-- (BOOL)isLoggedIn SWIFT_WARN_UNUSED_RESULT;
-/// Method to check if user is logged in Host, and has a valid access token available.
+/// \param completion 
 ///
-/// returns:
-/// True if user is logged in Host and has a valid access token available, otherwise returns false.
-- (BOOL)isLoggedIntoHost SWIFT_WARN_UNUSED_RESULT;
-/// Method to check if user is logged in Accounts Manager, and has a valid access token available.
+/// \param hostSuccess Bool, user logged out of Host
 ///
-/// returns:
-/// True if user is logged in Accounts Manager and has a valid access token available, otherwise returns false.
-- (BOOL)isLoggedIntoTeam SWIFT_WARN_UNUSED_RESULT;
-/// Method to check if user has signed into any of the backend services i.e Host or Accounts Manager.
+/// \param hostError Error, error logging out of Host
 ///
-/// returns:
-/// True if user is signed into any of the services, but that does not mean that access tokens are valid, otherwise returns false.
-- (BOOL)hasUserSignedIn SWIFT_WARN_UNUSED_RESULT;
-/// Method to check if user is signed into Host.
+/// \param teamSuccess Bool, user logged out of AccountManager
 ///
-/// returns:
-/// True if user is signed into Host, but that does not mean that access tokens are valid, otherwise returns false.
-- (BOOL)hasUserSignedInHost SWIFT_WARN_UNUSED_RESULT;
-/// Method to check if user is signed into Accounts Manager.
+/// \param teamError Error, error logging out of AccountManager
 ///
-/// returns:
-/// True if user is signed into Accounts Manager, but that does not mean that access tokens are valid, otherwise returns false.
-- (BOOL)hasUserSignedInTeam SWIFT_WARN_UNUSED_RESULT;
+/// \param sportXRSuccess Bool, user logged out of SportXR
+///
+/// \param sportXRError Error, error logging out of SportXR
+///
+- (void)logOutWithForceLogout:(BOOL)forceLogout completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
+/// Method to log out user from Ticketmaster account
+/// \param forceLogout true = logout locally, regardless of response from server
+///
+/// \param success This block will be called when logout was completed successfully.
+///
+/// \param failure This block will be called when there is some error logging out.
+///
+/// \param error Logout error
+///
+- (void)logOutHostWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Method to log out user from Team account
+/// \param forceLogout true = logout locally, regardless of response from server
+///
+/// \param success This block will be called when logout was completed successfully.
+///
+/// \param failure This block will be called when there is some error logging out.
+///
+/// \param error Logout error
+///
+- (void)logOutTeamWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Method to log out user from SportXR account
+/// \param forceLogout true = logout locally, regardless of response from server
+///
+/// \param success This block will be called when logout was completed successfully.
+///
+/// \param failure This block will be called when there is some error logging out.
+///
+/// \param error Logout error
+///
+- (void)logOutSportXRWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
+enum IdType : NSInteger;
+enum ActionType : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate SWIFT_DEPRECATED_MSG("Use jumpToOrderOrEvent(id:type:action:) and set orderDelegate directly on PSDK.shared");
+@end
+
+
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to check if user is logged into any backend services, and has a valid (un-expired) access token available.
+///
+/// returns:
+/// True if user is logged in any backend services and has valid access token available, otherwise returns false.
+- (BOOL)isLoggedIn SWIFT_WARN_UNUSED_RESULT;
+/// Method to check if user is logged into <code>Host</code> backend service, and has a valid (un-expired) access token available.
+///
+/// returns:
+/// True if user is logged into <code>Host</code> and has a valid access token available, otherwise returns false.
+- (BOOL)isLoggedIntoHost SWIFT_WARN_UNUSED_RESULT;
+/// Method to check if user is logged into Team <code>AccountsManager</code> backend service, and has a valid (un-expired) access token available.
+///
+/// returns:
+/// True if user is logged into Team <code>AccountsManager</code> and has a valid access token available, otherwise returns false.
+- (BOOL)isLoggedIntoTeam SWIFT_WARN_UNUSED_RESULT;
+/// Method to check if user is logged into <code>SportXR</code> backend service, and has a valid (un-expired) access token available.
+///
+/// returns:
+/// True if user is logged into <code>SportXR</code> and has a valid access token available, otherwise returns false.
+- (BOOL)isLoggedIntoSportXR SWIFT_WARN_UNUSED_RESULT;
+/// Method to check if user has signed into any backend services, but may or may not have a valid (un-expired) access token.
+///
+/// returns:
+/// True if user is signed into any backend services, but may or may not have a valid access token, otherwise returns false.
+- (BOOL)hasUserSignedIn SWIFT_WARN_UNUSED_RESULT;
+/// Method to check if user is signed into <code>Host</code> backend service, but may or may not have a valid (un-expired) access token.
+///
+/// returns:
+/// True if user is signed into <code>Host</code>, but may or may not have a valid access token, otherwise returns false.
+- (BOOL)hasUserSignedInHost SWIFT_WARN_UNUSED_RESULT;
+/// Method to check if user is signed into Team <code>AccountsManager</code> backend service, but may or may not have a valid (un-expired) access token.
+///
+/// returns:
+/// True if user is signed into Team <code>AccountsManager</code>, but may or may not have a valid access token, otherwise returns false.
+- (BOOL)hasUserSignedInTeam SWIFT_WARN_UNUSED_RESULT;
+/// Method to check if user is signed into <code>SportXR</code> backend service, but may or may not have a valid (un-expired) access token.
+///
+/// returns:
+/// True if user is signed into <code>SportXR</code>, but may or may not have a valid access token, otherwise returns false.
+- (BOOL)hasUserSignedInSportXR SWIFT_WARN_UNUSED_RESULT;
+@end
+
+enum HostEnvironment : NSInteger;
+enum SDKEnvironment : NSInteger;
+@class BrandingColors;
 @class UIImage;
 enum SDKTheme : NSInteger;
-enum SDKEnvironment : NSInteger;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Retrives <code>PresenceSDK</code>’s singleton given access to all of its public methods.
 ///
 /// returns:
 /// PresenceSDK’s singleton
-+ (PSDK * _Nonnull)getPresenceSDK SWIFT_WARN_UNUSED_RESULT;
++ (PSDK * _Nonnull)getPresenceSDK SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use PSDK.shared instead to access singleton");
 /// Helper function to get SDK version string
 /// important:
 /// An empty string will be returned if the version is unknown.
@@ -420,17 +566,23 @@ enum SDKEnvironment : NSInteger;
 /// Method for configuring PresenceSDK for Teams.
 /// \param consumerKey This is the Consumer Key associated with you App on developer.ticketmaster.com
 ///
-/// \param displayName The name that will be displayed on the login page in the SDK for the Team, this is optional for Host only apps
+/// \param hostEnvironment Account and Ticket source backend server stack, default = .US
 ///
-/// \param useNewAccountsManager Configures the SDK to use new accounts manager for password reset flow if your Team has switched to new acccounts manager.
+/// \param sdkEnvironment Production or other test build environments, default = .Production
 ///
-/// \param quickLogin Configures the SDK to use the new, quick login screen (new accounts manager only).
+/// \param displayName Team/App name that will be displayed on the login page in the SDK
 ///
-/// \param autoLogin Configures the SDK to automatically present login prompt (quickLogin only, new accounts manager only)
+/// \param useNewAccountsManager Use new Team AccountsManager, default = true
 ///
-- (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin;
+/// \param disableModernAccounts Manually disable ModernAccounts login, default = false
+///
+/// \param quickLogin Use the new, quick login screen (ModernAccounts only), default = true
+///
+/// \param autoLogin Automatically present login prompt (quickLogin only, ModernAccounts only), default = true
+///
+- (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin;
 /// Method for checking configuration of PresenceSDK for Teams
-/// \param success Called if configuration was readed from cache or returned from Apigee, main queue, start(…) should be called after this call
+/// \param success Called if configuration was readed from cache or returned from Apigee, main queue. The start(presenceSDKView…) method should be called in this success block.
 ///
 /// \param failure Called if configuration failed (e.g. no Internet on first launch), Should be taken into account during SDK integration.
 ///
@@ -449,57 +601,117 @@ enum SDKEnvironment : NSInteger;
 /// \param theme Theme to be used in the SDK.
 ///
 - (void)setThemeWithTheme:(enum SDKTheme)theme;
-- (void)setEnvironmentWithSdkEnvironment:(enum SDKEnvironment)sdkEnvironment;
 @end
 
-enum PresenceSDKIdType : NSInteger;
-enum PresenceSDKActionType : NSInteger;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum PresenceSDKIdType)type action:(enum PresenceSDKActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
-/// present an Action Button in the top-right Navbar on the Tickets page
-/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
-/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
-/// \param title title of Action Button, <code>nil</code> = no button (default)
-///
-- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKIdType, "IdType", open) {
+/// Name of the backend in which an action was perform
+typedef SWIFT_ENUM(NSInteger, BackendName, open) {
+/// US or UK Ticketmaster Host
+  BackendNameHost = 0,
+/// Team Archtics Account Manager
+  BackendNameAccountManager = 1,
+/// Team Sport XR
+  BackendNameSportXR = 2,
+};
+
+/// Name of methods used to log in
+typedef SWIFT_ENUM(NSInteger, LoginMethod, open) {
+/// Get access token by username and password
+  LoginMethodConventional = 0,
+/// Get access token automatically by using refresh token
+  LoginMethodAutomatic = 1,
+/// Get access token by finger print
+  LoginMethodFingerprint = 2,
+};
+
+/// Account and Ticket source environments (backend servers)
+typedef SWIFT_ENUM(NSInteger, HostEnvironment, open) {
+/// US (North American) Host
+  HostEnvironmentUS = 0,
+/// UK Host
+  HostEnvironmentUK = 1,
+};
+
+/// Production and other build environments (backend servers)
+typedef SWIFT_ENUM(NSInteger, SDKEnvironment, open) {
+/// Production
+  SDKEnvironmentProduction = 0,
+/// Staging
+  SDKEnvironmentStaging = 1,
+/// Pre Production
+  SDKEnvironmentPreProduction = 2,
+/// Development
+  SDKEnvironmentDevelopment = 3,
+};
+
+/// Switches between app themes
+/// <ul>
+///   <li>
+///     Light: Important UI elements will be colored white.
+///   </li>
+///   <li>
+///     Dark: Important UI elements will be colored black.
+///   </li>
+/// </ul>
+typedef SWIFT_ENUM(NSInteger, SDKTheme, open) {
+/// Important UI elements will be colored white.
+  SDKThemeLight = 0,
+/// Important UI elements will be colored black.
+  SDKThemeDark = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, VenueConcessionsButtonType, open) {
+  VenueConcessionsButtonTypeOrder = 0,
+  VenueConcessionsButtonTypeWallet = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, IdType, open) {
 /// Search for event with the given identifier
-  PresenceSDKIdTypeEvent = 0,
+  IdTypeEvent = 0,
 /// Search for order with the given identifier
-  PresenceSDKIdTypeOrder = 1,
+  IdTypeOrder = 1,
 /// Search for event or order with the given identifier
-  PresenceSDKIdTypeAny = 2,
+  IdTypeAny = 2,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKActionType, "ActionType", open) {
+typedef SWIFT_ENUM(NSInteger, ActionType, open) {
 /// automatically show posting flow
-  PresenceSDKActionTypePosting = 0,
+  ActionTypePosting = 0,
 /// automatically show transfer flow
-  PresenceSDKActionTypeTransfer = 1,
+  ActionTypeTransfer = 1,
 };
 
-typedef SWIFT_ENUM_NAMED(NSInteger, PresenceSDKPage, "PresencePage", open) {
-  PresenceSDKPageNone = 0,
-  PresenceSDKPageMyEvents = 1,
-  PresenceSDKPageMyTickets = 2,
+typedef SWIFT_ENUM(NSInteger, LoginButtons, open) {
+  LoginButtonsForgotPassword = 0,
+  LoginButtonsCreateAccount = 1,
 };
+
+typedef SWIFT_ENUM(NSInteger, PresencePage, open) {
+  PresencePageNone = 0,
+  PresencePageMyEvents = 1,
+  PresencePageMyTickets = 2,
+};
+
+@class UIColor;
+
+/// Pass to <code>PSDK.shared.setBrandingColors</code> to customize the color of UI elements by overridding their respective properties.
+SWIFT_CLASS("_TtCC11PresenceSDK4PSDK14BrandingColors")
+@interface BrandingColors : NSObject
+- (nonnull instancetype)initWithNavBarColor:(UIColor * _Nonnull)navBarColor ticketColor:(UIColor * _Nonnull)ticketColor buttonColor:(UIColor * _Nonnull)buttonColor OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithOneColor:(UIColor * _Nonnull)oneColor OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+/// theme visual style of Identity page
+typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
+  IdentityThemeTicketmaster = 0,
+  IdentityThemeTicketmasterNew = 1,
+  IdentityThemeLivenation = 2,
+};
+
 
 
 
@@ -523,61 +735,63 @@ SWIFT_CLASS("_TtC11PresenceSDK22PresenceEventAnalytics")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-enum LoginMethod : NSInteger;
 
-/// TMXLoginDelegate Protocol reports status of TicketmasterCore user login sessions
+/// optional delegate to report status of user login
 SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceLoginDelegate_")
 @protocol PresenceLoginDelegate
 @optional
-- (void)loginWindowDidDisplay SWIFT_UNAVAILABLE_MSG("'loginWindowDidDisplay' has been renamed to 'onLoginWindowDidDisplayWithBackendName:'");
-/// Called when the LoginWindow is made visible to the user.
+- (void)loginWindowDidDisplay;
+/// Method is invoked when the LoginWindow is made visible to the user.
 - (void)onLoginWindowDidDisplayWithBackendName:(enum BackendName)backendName;
 /// Method is invoked if the user granted app access/logged in.
 /// \param backendName Name of the backend this callback event is associated with.
 ///
 - (void)onLoginSuccessfulWithBackendName:(enum BackendName)backendName accessToken:(NSString * _Nonnull)accessToken;
-/// User dismissed login window via the Cancel button
+/// Method is invoked if the user dismissed login window via the Cancel button
 - (void)onLoginCancelledWithBackendName:(enum BackendName)backendName;
-/// Called when results are returned for a Member info request after login or after updates
+/// Method is invoked when results are returned for a Member info request after login or after updates
 /// \param backendName Name of the backend this callback event is associated with.
 ///
 /// \param member Member object.
 ///
 - (void)onMemberUpdatedWithBackendName:(enum BackendName)backendName member:(id <PresenceMember> _Nonnull)member;
+/// Method is invoked if the backend service fails with an Error
 /// \param backendName Name of the backend this callback event is associated with.
 ///
 /// \param error If available, an <code>NSError</code> object is returned. Defaults is <code>nil</code>.
 ///
 - (void)onLoginFailedWithBackendName:(enum BackendName)backendName error:(NSError * _Nonnull)error;
-- (void)onLoginForgotPasswordClicked SWIFT_UNAVAILABLE_MSG("'onLoginForgotPasswordClicked' has been renamed to 'onLoginForgotPasswordClickedWithBackendName:'");
-/// Notify when user clicks on “forgot password” link
+/// Method is invoked if the user clicks on “forgot password” link
 /// \param backendName Name of the backend this callback event is associated with.
 ///
 - (void)onLoginForgotPasswordClickedWithBackendName:(enum BackendName)backendName;
-/// Notify when all cache is cleared
+/// Method is invoked when all cache is cleared
 - (void)onCacheCleared;
-/// Notify when successfully logged-out
+/// Method is invoked when user has successfully logged-out
 /// \param backendName Name of the backend this callback event is associated with.
 ///
 - (void)onLogoutSuccessfulWithBackendName:(enum BackendName)backendName;
-/// Notify when something went wrong during logout
+/// Method is invoked when backend service fails to logout (as part of OAuth2 spec)
 /// \param backendName Name of the backend this callback event is associated with.
 ///
 /// \param error Error describing the problem
 ///
 - (void)onLogoutFailedWithBackendName:(enum BackendName)backendName error:(NSError * _Nonnull)error;
-- (void)onHostRefreshTokenExpired;
-/// Notify when successfully logged-out from both backends
+/// Method is invoked when the refresh token has expired, the user will be forced to login again to aquire a new refresh token
+/// \param backendName Name of the backend this callback event is associated with.
+///
+- (void)onRefreshTokenExpiredWithBackendName:(enum BackendName)backendName;
+/// Method is invoked when user successfully logged-out from all backends
 - (void)onLogoutAllSuccessful;
-/// Notify what login method was used to get an access token
+/// Method is invoked when a login method was used to get an access token
 /// \param backendName Name of the backend this callback event is associated with.
 ///
 /// \param loginMethod Name of methods used to log in.
 ///
 - (void)onLoginMethodUsedWithBackendName:(enum BackendName)backendName loginMethod:(enum LoginMethod)loginMethod;
-/// Notify whenever SDK refreshes the access token.
+/// Method is invoked whenever Presence SDK refreshes an access token
 - (void)onTokenRefreshedWithBackendName:(enum BackendName)backendName accessToken:(NSString * _Nonnull)accessToken;
-/// Notify when SDK is not able to refresh access token.
+/// Method is invoked whenever Presence SDK cannot refresh an access token
 - (void)onRefreshTokenFailedWithBackendName:(enum BackendName)backendName;
 @end
 
@@ -610,30 +824,30 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK14PresenceMember_")
 @end
 
 
-/// PresenceOrderDelegate Protocol reports TicketmasterCore to handle event / artist / venue related actions
+/// optional delegate to report order status or handle event / artist / venue related actions
 SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 @protocol PresenceOrderDelegate
 @optional
-/// Method is invoked if the core app need to display artist detail page..
+/// Method is invoked if the client app needs to display an artist detail page
 /// \param artistId Identidier of the artist to be launched in ADP.
 ///
 - (void)presentArtistDetailsPageWith:(NSString * _Nonnull)artistId;
-/// Method is invoked if the core app need to display event detail page..
+/// Method is invoked if the client app needs to display an event detail page
 /// \param eventId Identidier of the event to be launched in EDP.
 ///
 - (void)presentEventDetailsPageWith:(NSString * _Nonnull)eventId;
-/// Method is invoked if the core app need to display venue detail page..
+/// Method is invoked if the client app needs to display a venue detail page
 /// \param venueId Identidier of the venue to be launched inVADP.
 ///
 - (void)presentVenueDetailsPageWith:(NSString * _Nonnull)venueId;
-/// Called when the list of events changes
+/// Method is invoked when the list of events changes
 - (void)didUpdateOrderedEvents;
-/// Called when the list of tickets change for a particular event ID
+/// Method is invoked when the list of tickets change for a particular event ID
 /// \param eventId Identifier of the event with ticket updates.
 ///
 - (void)didUpdateTicketsWithEventId:(NSString * _Nonnull)eventId;
-/// Method is invoked if the core app need to handle bar button action
-- (void)handleBarButtonActionWithPage:(enum PresenceSDKPage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventID:(NSString * _Nullable)eventID orderIDs:(NSArray<NSString *> * _Nullable)orderIDs;
+/// Method is invoked if the client app needs to handle the bar button action
+- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventID:(NSString * _Nullable)eventID orderIDs:(NSArray<NSString *> * _Nullable)orderIDs;
 @end
 
 @class NSCoder;
@@ -654,13 +868,13 @@ SWIFT_CLASS("_TtC11PresenceSDK15PresenceSDKView")
 
 
 
-/// PresenceVenueDelegate Protocol allows Venue Upgrades and Concessions integration
+/// optional delegate to handle Venue Upgrades and Concessions integration
 SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceVenueDelegate_")
 @protocol PresenceVenueDelegate
-/// Method is invoked upon opening an Event
+/// Method is invoked when an Event is opened (the “My Tickets” page)
 /// <ul>
 ///   <li>
-///     Task: fetch and return Venue SDK Identifier
+///     Task: fetch and return venue concessions SDK Identifier (if any)
 ///   </li>
 /// </ul>
 /// \param identifier venue identifier (from Ticketmaster)
@@ -672,7 +886,7 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceVenueDelegate_")
 /// \param error an error occured
 ///
 - (void)venueConcessionsSdkIdentifierForIdentifier:(NSString * _Nonnull)identifier completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
-/// Method is invoked when the user presses a Venue Concessions button
+/// Method is invoked if the user presses a Venue Concessions button
 /// \param identifier Identifier of the venue (from Ticketmaster)
 ///
 /// \param sdkIdentifier Identifier of the venue (from venue concessions SDK)
@@ -682,33 +896,6 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceVenueDelegate_")
 - (void)venueWithIdentifier:(NSString * _Nonnull)identifier sdkIdentifier:(NSString * _Nonnull)sdkIdentifier concessionsButtonPressed:(enum VenueConcessionsButtonType)concessionsButtonPressed;
 @end
 
-/// Switches between Testing and release builds/options
-typedef SWIFT_ENUM(NSInteger, SDKEnvironment, open) {
-/// Development
-  SDKEnvironmentDevelopment = 0,
-/// Pre Production
-  SDKEnvironmentPreProduction = 1,
-/// Staging
-  SDKEnvironmentStaging = 2,
-/// Production
-  SDKEnvironmentProduction = 3,
-};
-
-/// Switches between app themes
-/// <ul>
-///   <li>
-///     Light: Important UI elements will be colored white.
-///   </li>
-///   <li>
-///     Dark: Important UI elements will be colored black.
-///   </li>
-/// </ul>
-typedef SWIFT_ENUM(NSInteger, SDKTheme, open) {
-/// Important UI elements will be colored white.
-  SDKThemeLight = 0,
-/// Important UI elements will be colored black.
-  SDKThemeDark = 1,
-};
 
 
 
@@ -744,6 +931,11 @@ typedef SWIFT_ENUM(NSInteger, SDKTheme, open) {
 
 
 
+@class ASWebAuthenticationSession;
+
+@interface UIViewController (SWIFT_EXTENSION(PresenceSDK)) <ASWebAuthenticationPresentationContextProviding>
+- (ASPresentationAnchor _Nonnull)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession * _Nonnull)session SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 

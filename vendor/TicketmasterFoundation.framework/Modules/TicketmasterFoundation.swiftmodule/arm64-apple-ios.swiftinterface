@@ -94,6 +94,12 @@ extension Locale {
   @objc deinit
   override public init(connectionDriver: TicketmasterFoundation.ConnectionDriver)
 }
+extension Data {
+  public func sha256String() -> Swift.String
+  public func sha256Data() -> Foundation.Data
+  public func base64URLEncodedString() -> Swift.String
+  public func hexStringFromData() -> Swift.String
+}
 public typealias PathPattern = Swift.String
 extension String {
   public func matches(with pathComponents: [Swift.String]) -> Swift.Bool
@@ -952,6 +958,18 @@ extension UIViewController {
   public func dismissSelf(animated: Swift.Bool, completion: (() -> Swift.Void)?)
   public func dismissViewControllersOnTopOfSelf(animated: Swift.Bool, completion: (() -> Swift.Void)?)
 }
+@objc extension UIColor {
+  @objc dynamic public func color(betweenColor color: UIKit.UIColor) -> UIKit.UIColor
+  @objc dynamic public func color(byAdjustingBrightnessPercentage percentage: CoreGraphics.CGFloat) -> UIKit.UIColor
+  @objc dynamic public func clampValue(_ value: CoreGraphics.CGFloat, from fromValue: CoreGraphics.CGFloat, to toValue: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat
+  @objc public static func pacific() -> UIKit.UIColor
+  @objc public static func sierra() -> UIKit.UIColor
+  @objc public static func yosemite() -> UIKit.UIColor
+  @objc public static func ticketmasterWhite() -> UIKit.UIColor
+  @objc public static func blackPearl() -> UIKit.UIColor
+  @objc public static func tmBlue() -> UIKit.UIColor
+  @objc public static func popoverPurple() -> UIKit.UIColor
+}
 extension MarketLocation {
   public static func UnitedStates_All() -> TicketmasterFoundation.MarketLocation
   public static func Alabama_Birmingham() -> TicketmasterFoundation.MarketLocation
@@ -1222,6 +1240,9 @@ extension String : TicketmasterFoundation.ConvertibleToUTF8Data {
   @objc deinit
   @objc override dynamic public init()
 }
+extension String {
+  public static func randomAlphaNumeric(_ length: Swift.Int) -> Swift.String
+}
 extension URLRequest {
   public mutating func applyBasicAuth(username: Swift.String, password: Swift.String)
 }
@@ -1434,6 +1455,13 @@ extension UALCommerceEvent.ProductData {
   public var productClass: Swift.String? {
     get
   }
+}
+extension String {
+  public func base64URLEncodedSHA256String() -> Swift.String?
+  public func sha256Data() -> Foundation.Data?
+  public func sha256String() -> Swift.String?
+  public func base64URLString() -> Swift.String
+  public func fromBase64URLString() -> Swift.String?
 }
 @_hasMissingDesignatedInitializers public class PiecemealEventDateFormatter {
   public class func stringForMonthDay(from eventDate: TicketmasterFoundation.EventDate) -> Swift.String?

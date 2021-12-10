@@ -725,6 +725,20 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation8UFCToken")
 
 
 
+@interface UIColor (SWIFT_EXTENSION(TicketmasterFoundation))
+- (UIColor * _Nonnull)colorWithBetweenColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
+- (UIColor * _Nonnull)colorByAdjustingBrightnessPercentage:(CGFloat)percentage SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)clampValue:(CGFloat)value from:(CGFloat)fromValue to:(CGFloat)toValue SWIFT_WARN_UNUSED_RESULT;
++ (UIColor * _Nonnull)pacific SWIFT_WARN_UNUSED_RESULT;
++ (UIColor * _Nonnull)sierra SWIFT_WARN_UNUSED_RESULT;
++ (UIColor * _Nonnull)yosemite SWIFT_WARN_UNUSED_RESULT;
++ (UIColor * _Nonnull)ticketmasterWhite SWIFT_WARN_UNUSED_RESULT;
++ (UIColor * _Nonnull)blackPearl SWIFT_WARN_UNUSED_RESULT;
++ (UIColor * _Nonnull)tmBlue SWIFT_WARN_UNUSED_RESULT;
++ (UIColor * _Nonnull)popoverPurple SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 
 @interface UIImageView (SWIFT_EXTENSION(TicketmasterFoundation))
 /// Downloads an image and sets it to the imageView’s image property
