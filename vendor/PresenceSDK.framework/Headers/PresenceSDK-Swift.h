@@ -572,7 +572,7 @@ enum SDKTheme : NSInteger;
 ///
 /// \param displayName Team/App name that will be displayed on the login page in the SDK
 ///
-/// \param useNewAccountsManager Use new Team AccountsManager, default = true
+/// \param useNewAccountsManager Use new Team AccountsManager: true (am.ticketmaster.com), false (oss.ticketmaster.com), default = true
 ///
 /// \param disableModernAccounts Manually disable ModernAccounts login, default = false
 ///
