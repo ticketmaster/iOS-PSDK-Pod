@@ -564,7 +564,7 @@ enum SDKTheme : NSInteger;
 /// The version number for PresenceSDK.
 - (NSString * _Nonnull)getVersionNumber SWIFT_WARN_UNUSED_RESULT;
 /// Method for configuring PresenceSDK for Teams.
-/// \param consumerKey This is the Consumer Key associated with you App on developer.ticketmaster.com
+/// \param consumerKey The Consumer Key associated with your App on developer.ticketmaster.com
 ///
 /// \param hostEnvironment Account and Ticket source backend server stack, default = .US
 ///
