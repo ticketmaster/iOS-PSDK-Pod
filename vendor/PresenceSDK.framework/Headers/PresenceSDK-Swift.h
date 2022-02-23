@@ -304,8 +304,54 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class PresenceSDKView;
+@protocol PresenceLoginDelegate;
+@protocol PresenceOrderDelegate;
+@protocol PresenceVenueDelegate;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method for initializing and launching PresenceSDK.
+/// Note that you may also set these delegates directly on <code>PSDK.shared</code>
+/// \param presenceSDKView Reference to main <code>PresenceSDKView</code> which will display user tickets.
+///
+/// \param loginDelegate optional delegate to report status of user login
+///
+/// \param orderDelegate optional delegate to report order status or handle event / artist / venue related actions
+///
+/// \param venueDelegate optional delegate to handle Venue Upgrades and Concessions integration
+///
+- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
+@end
+
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// present an Action Button in the top-right Navbar on the Tickets page
+/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
+/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
+/// \param title title of Action Button, <code>nil</code> = no button (default)
+///
+- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
+@end
+
 
 enum BackendName : NSInteger;
+@protocol PresenceMember;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to get the logged in user’s information.
+/// \param backendName The specified backend name where the SDK will retrive member information from.
+///
+/// \param completion 
+///
+/// \param member An optional PresenceMember object returned in the completion block callback.
+///
+/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
+///
+- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
+@end
+
+
+
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method to login via Webview Login
@@ -316,7 +362,6 @@ enum BackendName : NSInteger;
 ///
 - (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
 @end
-
 
 
 @class UIViewController;
@@ -341,48 +386,17 @@ enum BackendName : NSInteger;
 
 
 
-
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// present an Action Button in the top-right Navbar on the Tickets page
-/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
-/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
-/// \param title title of Action Button, <code>nil</code> = no button (default)
-///
-- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
 @end
 
-@protocol PresenceMember;
+enum HostEnvironment : NSInteger;
+enum SDKEnvironment : NSInteger;
 
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to get the logged in user’s information.
-/// \param backendName The specified backend name where the SDK will retrive member information from.
-///
-/// \param completion 
-///
-/// \param member An optional PresenceMember object returned in the completion block callback.
-///
-/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
-///
-- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
-@end
-
-@class PresenceSDKView;
-@protocol PresenceLoginDelegate;
-@protocol PresenceOrderDelegate;
-@protocol PresenceVenueDelegate;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method for initializing and launching PresenceSDK.
-/// Note that you may also set these delegates directly on <code>PSDK.shared</code>
-/// \param presenceSDKView Reference to main <code>PresenceSDKView</code> which will display user tickets.
-///
-/// \param loginDelegate optional delegate to report status of user login
-///
-/// \param orderDelegate optional delegate to report order status or handle event / artist / venue related actions
-///
-/// \param venueDelegate optional delegate to handle Venue Upgrades and Concessions integration
-///
-- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
+SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
+@interface Configuration : NSObject
+- (nonnull instancetype)initWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -544,8 +558,6 @@ enum ActionType : NSInteger;
 - (BOOL)hasUserSignedInSportXR SWIFT_WARN_UNUSED_RESULT;
 @end
 
-enum HostEnvironment : NSInteger;
-enum SDKEnvironment : NSInteger;
 @class BrandingColors;
 @class UIImage;
 enum SDKTheme : NSInteger;
@@ -563,7 +575,7 @@ enum SDKTheme : NSInteger;
 /// returns:
 /// The version number for PresenceSDK.
 - (NSString * _Nonnull)getVersionNumber SWIFT_WARN_UNUSED_RESULT;
-/// Method for configuring PresenceSDK for Teams.
+/// Method for configuring PresenceSDK.
 /// \param consumerKey The Consumer Key associated with your App on developer.ticketmaster.com
 ///
 /// \param hostEnvironment Account and Ticket source backend server stack, default = .US
@@ -581,6 +593,10 @@ enum SDKTheme : NSInteger;
 /// \param autoLogin Automatically present login prompt (quickLogin only, ModernAccounts only), default = true
 ///
 - (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin;
+/// Method for configuring PresenceSDK.
+/// \param configuration PSDK.Configuration object containing various integrator-customizable settings
+///
+- (void)setConfiguration:(Configuration * _Nonnull)configuration;
 /// Method for checking configuration of PresenceSDK for Teams
 /// \param success Called if configuration was readed from cache or returned from Apigee, main queue. The start(presenceSDKView…) method should be called in this success block.
 ///

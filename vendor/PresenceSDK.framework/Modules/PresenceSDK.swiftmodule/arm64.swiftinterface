@@ -387,10 +387,26 @@ extension PSDK {
   @objc public static func getPresenceSDK() -> PresenceSDK.PSDK
   @objc final public func getVersionNumber() -> Swift.String
   @objc final public func setConfig(consumerKey: Swift.String, hostEnvironment: PresenceSDK.PSDK.HostEnvironment = .US, sdkEnvironment: PresenceSDK.PSDK.SDKEnvironment = .Production, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = true, disableModernAccounts: Swift.Bool = false, quickLogin: Swift.Bool = true, autoLogin: Swift.Bool = true)
+  @objc final public func setConfiguration(_ configuration: PresenceSDK.PSDK.Configuration)
   @objc final public func checkConfig(success: @escaping PresenceSDK.PSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PSDK.ConfigFailureHandler)
   @objc final public func setBrandingColors(_ brandingColors: PresenceSDK.PSDK.BrandingColors)
   @objc final public func setLogo(_ image: UIKit.UIImage?)
   @objc final public func setTheme(theme: PresenceSDK.PSDK.SDKTheme)
+}
+extension PSDK {
+  @objc public class Configuration : ObjectiveC.NSObject {
+    final public let consumerKey: Swift.String
+    final public let hostEnvironment: PresenceSDK.PSDK.HostEnvironment
+    final public let sdkEnvironment: PresenceSDK.PSDK.SDKEnvironment
+    final public let displayName: Swift.String?
+    final public let useNewAccountsManager: Swift.Bool
+    final public let disableModernAccounts: Swift.Bool
+    final public let quickLogin: Swift.Bool
+    final public let autoLogin: Swift.Bool
+    @objc public init(consumerKey: Swift.String, hostEnvironment: PresenceSDK.PSDK.HostEnvironment = .US, sdkEnvironment: PresenceSDK.PSDK.SDKEnvironment = .Production, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = true, disableModernAccounts: Swift.Bool = false, quickLogin: Swift.Bool = true, autoLogin: Swift.Bool = true)
+    @objc deinit
+    @objc override dynamic public init()
+  }
 }
 @objc @_inheritsConvenienceInitializers final public class PresenceEventAnalytics : ObjectiveC.NSObject {
   @objc @_inheritsConvenienceInitializers @objcMembers final public class Action : ObjectiveC.NSObject {

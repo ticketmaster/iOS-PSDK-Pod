@@ -290,6 +290,9 @@ extension Collection where Self.Element == Swift.UInt8, Self.Index == Swift.Int 
 @usableFromInline
 internal func strideCount(from: Swift.Int, to: Swift.Int, by: Swift.Int) -> Swift.Int
 @objc @_inheritsConvenienceInitializers @IBDesignable final public class SecureEntryView : UIKit.UIView {
+  public static var version: Swift.String {
+    get
+  }
   @objc @IBInspectable final public var pdf417Subtitle: Swift.String {
     @objc get
     @objc set
