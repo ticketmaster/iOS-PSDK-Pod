@@ -936,7 +936,9 @@ extension WKWebView {
   public static let shared: TicketmasterFoundation.UFCCookieManager
   final public let processPool: WebKit.WKProcessPool
   final public func add(cookie: Foundation.HTTPCookie, completion: (() -> Swift.Void)? = nil)
+  final public func add(cookies: [Foundation.HTTPCookie], completion: (() -> Swift.Void)? = nil)
   final public func remove(cookie: Foundation.HTTPCookie, completion: (() -> Swift.Void)? = nil)
+  final public func remove(cookies: [Foundation.HTTPCookie], completion: (() -> Swift.Void)? = nil)
   final public func getAllWebsiteCookies(completion: @escaping (([Foundation.HTTPCookie]) -> Swift.Void))
   final public func getAllNetworkCookies(completion: @escaping (([Foundation.HTTPCookie]) -> Swift.Void))
   final public func removeAllCookies(completion: (() -> Swift.Void)? = nil)

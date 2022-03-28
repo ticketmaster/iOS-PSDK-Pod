@@ -1,6 +1,6 @@
 
-/* Class = "UITextField"; accessibilityLabel = "Phone Value"; ObjectID = "20G-3o-Ywn"; */
-"20G-3o-Ywn.accessibilityLabel" = "Phone Value";
+/* Class = "UITextField"; accessibilityLabel = "Phone Number"; ObjectID = "20G-3o-Ywn"; */
+"20G-3o-Ywn.accessibilityLabel" = "Phone Number";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "20G-3o-Ywn"; */
 "20G-3o-Ywn.placeholder" = "Required";
@@ -17,17 +17,14 @@
 /* Class = "UITableViewController"; title = "Add Deposit Account"; ObjectID = "4bM-5v-sqO"; */
 "4bM-5v-sqO.title" = "Add Deposit Account";
 
-/* Class = "UILabel"; text = "Add Deposit Account"; ObjectID = "52u-DD-8lD"; */
-"52u-DD-8lD.text" = "Add Deposit Account";
-
-/* Class = "UILabel"; text = "2 of 4"; ObjectID = "6YS-PC-Vn6"; */
-"6YS-PC-Vn6.text" = "2 of 4";
-
 /* Class = "UITableViewController"; title = "Add Deposit Account"; ObjectID = "6zg-d3-5WR"; */
 "6zg-d3-5WR.title" = "Add Deposit Account";
 
-/* Class = "UITableViewCell"; accessibilityLabel = "Savings Account"; ObjectID = "7v0-ry-4V4"; */
-"7v0-ry-4V4.accessibilityLabel" = "Savings Account";
+/* Class = "UITableViewCell"; accessibilityLabel = "Savings Account Deselected"; ObjectID = "7v0-ry-4V4"; */
+"7v0-ry-4V4.accessibilityLabel" = "Savings Account Deselected";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8E7-Kz-O9R"; */
+"8E7-Kz-O9R.text" = "Label";
 
 /* Class = "UIViewController"; title = "Add Deposit Account"; ObjectID = "8xB-sW-zpp"; */
 "8xB-sW-zpp.title" = "Add Deposit Account";
@@ -38,17 +35,23 @@
 /* Class = "UIButton"; normalTitle = "5"; ObjectID = "A2j-Mq-xHi"; */
 "A2j-Mq-xHi.normalTitle" = "5";
 
-/* Class = "UITextField"; accessibilityLabel = "Address Value"; ObjectID = "AIE-qt-bTf"; */
-"AIE-qt-bTf.accessibilityLabel" = "Address Value";
+/* Class = "UITextField"; accessibilityLabel = "Address"; ObjectID = "AIE-qt-bTf"; */
+"AIE-qt-bTf.accessibilityLabel" = "Address";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "AIE-qt-bTf"; */
 "AIE-qt-bTf.placeholder" = "Required";
 
-/* Class = "UITextField"; accessibilityLabel = "Suite Value"; ObjectID = "AK2-n6-Ilk"; */
-"AK2-n6-Ilk.accessibilityLabel" = "Suite Value";
+/* Class = "UITextField"; accessibilityLabel = "Suite"; ObjectID = "AK2-n6-Ilk"; */
+"AK2-n6-Ilk.accessibilityLabel" = "Suite";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "AlZ-6q-LXF"; */
+"AlZ-6q-LXF.title" = " ";
 
 /* Class = "UILabel"; text = "Add a Debit Card (Recommended)"; ObjectID = "BEz-tN-VDA"; */
 "BEz-tN-VDA.text" = "Add a Debit Card (Recommended)";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "BuL-Fd-N7C"; */
+"BuL-Fd-N7C.title" = " ";
 
 /* Class = "UIButton"; normalTitle = "8"; ObjectID = "D9r-n3-Uzv"; */
 "D9r-n3-Uzv.normalTitle" = "8";
@@ -56,11 +59,14 @@
 /* Class = "UITableViewController"; title = "Refund Account"; ObjectID = "DFe-KO-aAi"; */
 "DFe-KO-aAi.title" = "Refund Account";
 
-/* Class = "UITextField"; accessibilityLabel = "Zip Value"; ObjectID = "DIr-D4-Izq"; */
-"DIr-D4-Izq.accessibilityLabel" = "Zip Value";
+/* Class = "UITextField"; accessibilityLabel = "Zip Code"; ObjectID = "DIr-D4-Izq"; */
+"DIr-D4-Izq.accessibilityLabel" = "Zip Code";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "DIr-D4-Izq"; */
 "DIr-D4-Izq.placeholder" = "Required";
+
+/* Class = "UIView"; accessibilityLabel = "Next Step Loading"; ObjectID = "DTM-oA-e2E"; */
+"DTM-oA-e2E.accessibilityLabel" = "Next Step Loading";
 
 /* Class = "UITableViewSection"; headerTitle = "ACCOUNT TYPE"; ObjectID = "E0b-nZ-aTD"; */
 "E0b-nZ-aTD.headerTitle" = "ACCOUNT TYPE";
@@ -68,8 +74,8 @@
 /* Class = "UITableViewController"; title = "Deposit Account"; ObjectID = "E5Y-pP-Gh7"; */
 "E5Y-pP-Gh7.title" = "Deposit Account";
 
-/* Class = "UITextField"; accessibilityLabel = "Expiry Value"; ObjectID = "EEM-LU-IaJ"; */
-"EEM-LU-IaJ.accessibilityLabel" = "Expiry Value";
+/* Class = "UITextField"; accessibilityLabel = "Expiry"; ObjectID = "EEM-LU-IaJ"; */
+"EEM-LU-IaJ.accessibilityLabel" = "Expiry";
 
 /* Class = "UITextField"; placeholder = "MM/YYYY"; ObjectID = "EEM-LU-IaJ"; */
 "EEM-LU-IaJ.placeholder" = "MM/YYYY";
@@ -77,32 +83,32 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "EO7-1j-Rn4"; */
 "EO7-1j-Rn4.text" = "Label";
 
-/* Class = "UITextField"; accessibilityLabel = "Routing Value"; ObjectID = "ERl-IA-fx7"; */
-"ERl-IA-fx7.accessibilityLabel" = "Routing Value";
+/* Class = "UITextField"; accessibilityLabel = "Routing Number"; ObjectID = "ERl-IA-fx7"; */
+"ERl-IA-fx7.accessibilityLabel" = "Routing Number";
 
 /* Class = "UITextField"; placeholder = "Routing No."; ObjectID = "ERl-IA-fx7"; */
 "ERl-IA-fx7.placeholder" = "Routing No.";
 
-/* Class = "UITextField"; accessibilityLabel = "First Last Name Value"; ObjectID = "EZY-tr-BUJ"; */
-"EZY-tr-BUJ.accessibilityLabel" = "First Last Name Value";
+/* Class = "UITextField"; accessibilityLabel = "First and Last Name"; ObjectID = "EZY-tr-BUJ"; */
+"EZY-tr-BUJ.accessibilityLabel" = "First and Last Name";
 
 /* Class = "UITextField"; placeholder = "First and last name"; ObjectID = "EZY-tr-BUJ"; */
 "EZY-tr-BUJ.placeholder" = "First and last name";
 
-/* Class = "UINavigationItem"; title = "Title"; ObjectID = "GRn-ea-WHV"; */
-"GRn-ea-WHV.title" = "Title";
+/* Class = "UIButton"; accessibilityLabel = "More info about buyer's fee and commission"; ObjectID = "F26-Yd-5Y2"; */
+"F26-Yd-5Y2.accessibilityLabel" = "More info about buyer's fee and commission";
+
+/* Class = "UINavigationItem"; title = "Add Deposit Account"; ObjectID = "GRn-ea-WHV"; */
+"GRn-ea-WHV.title" = "Add Deposit Account";
 
 /* Class = "UIButton"; normalTitle = "4"; ObjectID = "Ham-FJ-XZ4"; */
 "Ham-FJ-XZ4.normalTitle" = "4";
 
-/* Class = "UITextField"; accessibilityLabel = "Credit Card Value"; ObjectID = "Hcf-ee-YoO"; */
-"Hcf-ee-YoO.accessibilityLabel" = "Credit Card Value";
+/* Class = "UITextField"; accessibilityLabel = "Credit Card Number"; ObjectID = "Hcf-ee-YoO"; */
+"Hcf-ee-YoO.accessibilityLabel" = "Credit Card Number";
 
 /* Class = "UITextField"; placeholder = "•••• •••• •••• ••••"; ObjectID = "Hcf-ee-YoO"; */
 "Hcf-ee-YoO.placeholder" = "•••• •••• •••• ••••";
-
-/* Class = "UILabel"; text = "Add Refund Account"; ObjectID = "IBs-rF-sda"; */
-"IBs-rF-sda.text" = "Add Refund Account";
 
 /* Class = "UILabel"; text = "Account #"; ObjectID = "IY4-qo-lE7"; */
 "IY4-qo-lE7.text" = "Account #";
@@ -110,38 +116,41 @@
 /* Class = "UILabel"; text = "Payout per ticket"; ObjectID = "If2-Dg-ZMm"; */
 "If2-Dg-ZMm.text" = "Payout per ticket";
 
+/* Class = "UIView"; accessibilityLabel = "Next Step Loading"; ObjectID = "Iyb-Mn-YQe"; */
+"Iyb-Mn-YQe.accessibilityLabel" = "Next Step Loading";
+
 /* Class = "UILabel"; text = "Address"; ObjectID = "Jcp-ne-xxA"; */
 "Jcp-ne-xxA.text" = "Address";
 
-/* Class = "UILabel"; text = "Visa****2345"; ObjectID = "Jl2-EY-nAG"; */
-"Jl2-EY-nAG.text" = "Visa****2345";
-
-/* Class = "UITextField"; accessibilityLabel = "City Value"; ObjectID = "K14-rP-U45"; */
-"K14-rP-U45.accessibilityLabel" = "City Value";
+/* Class = "UITextField"; accessibilityLabel = "City"; ObjectID = "K14-rP-U45"; */
+"K14-rP-U45.accessibilityLabel" = "City";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "K14-rP-U45"; */
 "K14-rP-U45.placeholder" = "Required";
 
-/* Class = "UITextField"; accessibilityLabel = "State Value"; ObjectID = "Ktk-Q6-tOj"; */
-"Ktk-Q6-tOj.accessibilityLabel" = "State Value";
+/* Class = "UITextField"; accessibilityLabel = "State"; ObjectID = "Ktk-Q6-tOj"; */
+"Ktk-Q6-tOj.accessibilityLabel" = "State";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "Ktk-Q6-tOj"; */
 "Ktk-Q6-tOj.placeholder" = "Required";
 
-/* Class = "UILabel"; text = "Original ticket price $40"; ObjectID = "L1O-Xd-4ja"; */
-"L1O-Xd-4ja.text" = "Original ticket price $40";
+/* Class = "UILabel"; text = "Your purchased price $40"; ObjectID = "L1O-Xd-4ja"; */
+"L1O-Xd-4ja.text" = "Your purchased price $40";
 
 /* Class = "UIButton"; normalTitle = "2"; ObjectID = "M7h-t3-BtO"; */
 "M7h-t3-BtO.normalTitle" = "2";
 
-/* Class = "UILabel"; text = "{{PRICE_DETAIL}}"; ObjectID = "MYf-sg-Dml"; */
-"MYf-sg-Dml.text" = "{{PRICE_DETAIL}}";
+/* Class = "UINavigationItem"; title = "Add Deposit Account"; ObjectID = "MVb-eW-Uo0"; */
+"MVb-eW-Uo0.title" = "Add Deposit Account";
 
 /* Class = "UILabel"; text = "Remove Account"; ObjectID = "NaJ-BM-MeJ"; */
 "NaJ-BM-MeJ.text" = "Remove Account";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "OF2-61-1we"; */
-"OF2-61-1we.text" = "Label";
+/* Class = "UIButton"; accessibilityLabel = "Cancel selling"; ObjectID = "O5a-O5-hNU"; */
+"O5a-O5-hNU.accessibilityLabel" = "Cancel selling";
+
+/* Class = "UIBarButtonItem"; title = "  "; ObjectID = "PAd-LT-Qb5"; */
+"PAd-LT-Qb5.title" = "  ";
 
 /* Class = "UIButton"; normalTitle = "7"; ObjectID = "PTR-Ua-NYn"; */
 "PTR-Ua-NYn.normalTitle" = "7";
@@ -152,14 +161,14 @@
 /* Class = "UILabel"; text = "Debit Card"; ObjectID = "Pfs-ql-hwu"; */
 "Pfs-ql-hwu.text" = "Debit Card";
 
-/* Class = "UILabel"; text = "PRICE YOUR TICKET"; ObjectID = "SE3-5o-ejo"; */
-"SE3-5o-ejo.text" = "PRICE YOUR TICKET";
+/* Class = "UILabel"; text = "\"PRICE YOUR TICKET\""; ObjectID = "SE3-5o-ejo"; */
+"SE3-5o-ejo.text" = "\"PRICE YOUR TICKET\"";
 
-/* Class = "UILabel"; text = "AMEX****3456"; ObjectID = "Sae-LK-rjz"; */
-"Sae-LK-rjz.text" = "AMEX****3456";
+/* Class = "UINavigationItem"; title = "Add Deposit Account"; ObjectID = "Sdn-SH-8Cq"; */
+"Sdn-SH-8Cq.title" = "Add Deposit Account";
 
-/* Class = "UITextField"; accessibilityLabel = "Account Value"; ObjectID = "Snw-zj-BC9"; */
-"Snw-zj-BC9.accessibilityLabel" = "Account Value";
+/* Class = "UITextField"; accessibilityLabel = "Account Number"; ObjectID = "Snw-zj-BC9"; */
+"Snw-zj-BC9.accessibilityLabel" = "Account Number";
 
 /* Class = "UITextField"; placeholder = "Account No."; ObjectID = "Snw-zj-BC9"; */
 "Snw-zj-BC9.placeholder" = "Account No.";
@@ -167,8 +176,8 @@
 /* Class = "UILabel"; text = "Routing #"; ObjectID = "TJn-tf-BQi"; */
 "TJn-tf-BQi.text" = "Routing #";
 
-/* Class = "UILabel"; text = "Visa****2345"; ObjectID = "TPe-oR-GAu"; */
-"TPe-oR-GAu.text" = "Visa****2345";
+/* Class = "UINavigationItem"; title = "Refund Account"; ObjectID = "UEe-We-fze"; */
+"UEe-We-fze.title" = "Refund Account";
 
 /* Class = "UILabel"; text = "Checking"; ObjectID = "Usb-FE-vAH"; */
 "Usb-FE-vAH.text" = "Checking";
@@ -179,23 +188,14 @@
 /* Class = "UITableViewSection"; headerTitle = "CARD DETAILS"; ObjectID = "Vg1-la-B35"; */
 "Vg1-la-B35.headerTitle" = "CARD DETAILS";
 
-/* Class = "UIButton"; normalTitle = "PAYMENT"; ObjectID = "VkH-RW-JGA"; */
-"VkH-RW-JGA.normalTitle" = "PAYMENT";
+/* Class = "UIButton"; normalTitle = "PAYOUT METHOD"; ObjectID = "VkH-RW-JGA"; */
+"VkH-RW-JGA.normalTitle" = "PAYOUT METHOD";
 
-/* Class = "UILabel"; text = "Add Refund Account"; ObjectID = "X4X-v9-Bat"; */
-"X4X-v9-Bat.text" = "Add Refund Account";
+/* Class = "UILabel"; text = "PRICE YOUR TICKET"; ObjectID = "Wof-9C-WOd"; */
+"Wof-9C-WOd.text" = "PRICE YOUR TICKET";
 
 /* Class = "UILabel"; text = "Card #"; ObjectID = "XRp-c3-o4e"; */
 "XRp-c3-o4e.text" = "Card #";
-
-/* Class = "UILabel"; text = "AMEX****3456"; ObjectID = "XSg-OQ-rhi"; */
-"XSg-OQ-rhi.text" = "AMEX****3456";
-
-/* Class = "UILabel"; text = "Add Refund Account"; ObjectID = "Xp2-Wd-skQ"; */
-"Xp2-Wd-skQ.text" = "Add Refund Account";
-
-/* Class = "UILabel"; text = "VISA ****1234"; ObjectID = "ZCn-x4-YFM"; */
-"ZCn-x4-YFM.text" = "VISA ****1234";
 
 /* Class = "UILabel"; text = "Savings"; ObjectID = "ZTM-My-6xf"; */
 "ZTM-My-6xf.text" = "Savings";
@@ -203,11 +203,17 @@
 /* Class = "UILabel"; text = "Country"; ObjectID = "ZdD-Gz-yLu"; */
 "ZdD-Gz-yLu.text" = "Country";
 
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "c8b-2f-0K7"; */
+"c8b-2f-0K7.title" = " ";
+
 /* Class = "UILabel"; text = "Name"; ObjectID = "cPD-t1-gdF"; */
 "cPD-t1-gdF.text" = "Name";
 
 /* Class = "UITableViewSection"; headerTitle = "BILLING INFORMATION"; ObjectID = "d6y-Nu-RW4"; */
 "d6y-Nu-RW4.headerTitle" = "BILLING INFORMATION";
+
+/* Class = "UILabel"; text = "Similar tickets are selling for $45.00"; ObjectID = "dFs-9W-9bf"; */
+"dFs-9W-9bf.text" = "Similar tickets are selling for $45.00";
 
 /* Class = "UIButton"; normalTitle = "SET PRICE"; ObjectID = "eFb-JF-Ow0"; */
 "eFb-JF-Ow0.normalTitle" = "SET PRICE";
@@ -218,20 +224,14 @@
 /* Class = "UIButton"; normalTitle = "9"; ObjectID = "ekF-mN-jk9"; */
 "ekF-mN-jk9.normalTitle" = "9";
 
-/* Class = "UIButton"; accessibilityLabel = "Sell Button"; ObjectID = "f33-Pb-LLm"; */
-"f33-Pb-LLm.accessibilityLabel" = "Sell Button";
-
-/* Class = "UIButton"; normalTitle = " Sell 0 Tickets"; ObjectID = "f33-Pb-LLm"; */
-"f33-Pb-LLm.normalTitle" = " Sell 0 Tickets";
-
-/* Class = "UILabel"; text = "3 of 4"; ObjectID = "fEy-yv-xw4"; */
-"fEy-yv-xw4.text" = "3 of 4";
-
 /* Class = "UILabel"; text = "Phone"; ObjectID = "fXM-Aj-so7"; */
 "fXM-Aj-so7.text" = "Phone";
 
-/* Class = "UILabel"; text = "Add Deposit Account"; ObjectID = "kPV-j5-GIN"; */
-"kPV-j5-GIN.text" = "Add Deposit Account";
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "gcC-sM-bYR"; */
+"gcC-sM-bYR.title" = " ";
+
+/* Class = "UILabel"; text = "$0"; ObjectID = "igN-TU-Phs"; */
+"igN-TU-Phs.text" = "$0";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "kz9-zL-5zv"; */
 "kz9-zL-5zv.normalTitle" = "Done";
@@ -248,9 +248,6 @@
 /* Class = "UILabel"; text = "Apt./Suite"; ObjectID = "lCZ-P9-yfJ"; */
 "lCZ-P9-yfJ.text" = "Apt./Suite";
 
-/* Class = "UILabel"; text = "{{EARN_DETAIL}}"; ObjectID = "lWh-0U-J5l"; */
-"lWh-0U-J5l.text" = "{{EARN_DETAIL}}";
-
 /* Class = "UILabel"; text = "$0"; ObjectID = "lZa-x2-YxZ"; */
 "lZa-x2-YxZ.text" = "$0";
 
@@ -263,17 +260,17 @@
 /* Class = "UIButton"; normalTitle = "6"; ObjectID = "mmD-s7-59S"; */
 "mmD-s7-59S.normalTitle" = "6";
 
-/* Class = "UIButton"; normalTitle = "CONFIRM"; ObjectID = "mxm-jM-Yyx"; */
-"mxm-jM-Yyx.normalTitle" = "CONFIRM";
-
 /* Class = "UILabel"; text = "ADD REFUND ACCOUNT"; ObjectID = "oSq-5j-wSx"; */
 "oSq-5j-wSx.text" = "ADD REFUND ACCOUNT";
 
-/* Class = "UITableViewCell"; accessibilityLabel = "Checking Account"; ObjectID = "otx-hF-IN2"; */
-"otx-hF-IN2.accessibilityLabel" = "Checking Account";
+/* Class = "UIButton"; normalTitle = "PAYOUT METHOD"; ObjectID = "oik-fP-CDh"; */
+"oik-fP-CDh.normalTitle" = "PAYOUT METHOD";
 
-/* Class = "UITextField"; accessibilityLabel = "First Last Name Value"; ObjectID = "pQc-bk-pSA"; */
-"pQc-bk-pSA.accessibilityLabel" = "First Last Name Value";
+/* Class = "UITableViewCell"; accessibilityLabel = "Checking Account Selected"; ObjectID = "otx-hF-IN2"; */
+"otx-hF-IN2.accessibilityLabel" = "Checking Account Selected";
+
+/* Class = "UITextField"; accessibilityLabel = "First and Last Name"; ObjectID = "pQc-bk-pSA"; */
+"pQc-bk-pSA.accessibilityLabel" = "First and Last Name";
 
 /* Class = "UITextField"; placeholder = "First and last name"; ObjectID = "pQc-bk-pSA"; */
 "pQc-bk-pSA.placeholder" = "First and last name";
@@ -281,8 +278,8 @@
 /* Class = "UILabel"; text = "ZIP Code"; ObjectID = "pbD-9F-YU3"; */
 "pbD-9F-YU3.text" = "ZIP Code";
 
-/* Class = "UITextField"; accessibilityLabel = "Country Value"; ObjectID = "q3p-8g-TfX"; */
-"q3p-8g-TfX.accessibilityLabel" = "Country Value";
+/* Class = "UITextField"; accessibilityLabel = "Country"; ObjectID = "q3p-8g-TfX"; */
+"q3p-8g-TfX.accessibilityLabel" = "Country";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "q3p-8g-TfX"; */
 "q3p-8g-TfX.placeholder" = "Required";
@@ -290,26 +287,23 @@
 /* Class = "UITextField"; text = "United States"; ObjectID = "q3p-8g-TfX"; */
 "q3p-8g-TfX.text" = "United States";
 
-/* Class = "UILabel"; text = "{{DATE_VENUE}}"; ObjectID = "q83-aT-TfB"; */
-"q83-aT-TfB.text" = "{{DATE_VENUE}}";
+/* Class = "UIButton"; normalTitle = " BACK"; ObjectID = "rBU-QX-ksB"; */
+"rBU-QX-ksB.normalTitle" = " BACK";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rBy-i1-aP0"; */
 "rBy-i1-aP0.normalTitle" = "Button";
 
-/* Class = "UIButton"; normalTitle = " "; ObjectID = "sin-NR-dZ0"; */
-"sin-NR-dZ0.normalTitle" = " ";
+/* Class = "UIButton"; normalTitle = " BACK"; ObjectID = "sin-NR-dZ0"; */
+"sin-NR-dZ0.normalTitle" = " BACK";
+
+/* Class = "UIButton"; accessibilityLabel = "Decimal"; ObjectID = "tbF-ub-yXI"; */
+"tbF-ub-yXI.accessibilityLabel" = "Decimal";
 
 /* Class = "UIButton"; normalTitle = "."; ObjectID = "tbF-ub-yXI"; */
 "tbF-ub-yXI.normalTitle" = ".";
 
-/* Class = "UILabel"; text = "PAYMENT"; ObjectID = "te0-my-Cab"; */
-"te0-my-Cab.text" = "PAYMENT";
-
 /* Class = "UIButton"; normalTitle = "3"; ObjectID = "tr6-eV-L7l"; */
 "tr6-eV-L7l.normalTitle" = "3";
-
-/* Class = "UIButton"; normalTitle = " "; ObjectID = "uVW-Wf-d09"; */
-"uVW-Wf-d09.normalTitle" = " ";
 
 /* Class = "UILabel"; text = "SEAT 8"; ObjectID = "uyH-xA-BWf"; */
 "uyH-xA-BWf.text" = "SEAT 8";
@@ -317,17 +311,23 @@
 /* Class = "UILabel"; text = "Add a Bank Account"; ObjectID = "wfC-f1-dd5"; */
 "wfC-f1-dd5.text" = "Add a Bank Account";
 
-/* Class = "UITextField"; accessibilityLabel = "Zip Value"; ObjectID = "xrd-T6-dBZ"; */
-"xrd-T6-dBZ.accessibilityLabel" = "Zip Value";
+/* Class = "UINavigationItem"; title = "Deposit Account"; ObjectID = "xbJ-cb-kFy"; */
+"xbJ-cb-kFy.title" = "Deposit Account";
+
+/* Class = "UITextField"; accessibilityLabel = "Zip Code"; ObjectID = "xrd-T6-dBZ"; */
+"xrd-T6-dBZ.accessibilityLabel" = "Zip Code";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "xrd-T6-dBZ"; */
 "xrd-T6-dBZ.placeholder" = "Required";
 
+/* Class = "UIButton"; accessibilityLabel = "Delete"; ObjectID = "yIq-7d-sYe"; */
+"yIq-7d-sYe.accessibilityLabel" = "Delete";
+
 /* Class = "UIButton"; normalTitle = "⌫"; ObjectID = "yIq-7d-sYe"; */
 "yIq-7d-sYe.normalTitle" = "⌫";
 
-/* Class = "UILabel"; text = "{{EVENT_NAME}}"; ObjectID = "yMK-wu-jFX"; */
-"yMK-wu-jFX.text" = "{{EVENT_NAME}}";
+/* Class = "UITextView"; text = "Tickets are automatically listed at the original standard price on Fan-to-Fan Ticket Exchange."; ObjectID = "ySz-la-hgP"; */
+"ySz-la-hgP.text" = "Tickets are automatically listed at the original standard price on Fan-to-Fan Ticket Exchange.";
 
 /* Class = "UITableViewSection"; footerTitle = "Get paid to this account when your tickets sell."; ObjectID = "yai-4o-7i6"; */
 "yai-4o-7i6.footerTitle" = "Get paid to this account when your tickets sell.";

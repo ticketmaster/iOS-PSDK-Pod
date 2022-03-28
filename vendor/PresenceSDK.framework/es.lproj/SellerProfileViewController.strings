@@ -1,0 +1,78 @@
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "2QD-7H-MgG"; */
+"2QD-7H-MgG.placeholder" = "Required";
+
+/* Class = "UILabel"; accessibilityLabel = "Home Phone"; ObjectID = "4gR-An-Qep"; */
+"4gR-An-Qep.accessibilityLabel" = "Home Phone";
+
+/* Class = "UILabel"; text = "Home #"; ObjectID = "4gR-An-Qep"; */
+"4gR-An-Qep.text" = "Home #";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "66n-yb-2yZ"; */
+"66n-yb-2yZ.placeholder" = "Required";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "8qJ-vj-pdF"; */
+"8qJ-vj-pdF.placeholder" = "Required";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "9Rf-fV-g8c"; */
+"9Rf-fV-g8c.text" = "City";
+
+/* Class = "UILabel"; text = "Address 2"; ObjectID = "9ee-1W-riq"; */
+"9ee-1W-riq.text" = "Address 2";
+
+/* Class = "UILabel"; text = "ZIP Code"; ObjectID = "EFh-Sh-vPa"; */
+"EFh-Sh-vPa.text" = "ZIP Code";
+
+/* Class = "UINavigationItem"; title = "Seller Profile"; ObjectID = "EjB-Kg-81b"; */
+"EjB-Kg-81b.title" = "Seller Profile";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "PiO-xB-96x"; */
+"PiO-xB-96x.title" = "Edit";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "Ugd-xD-pAt"; */
+"Ugd-xD-pAt.title" = "Save";
+
+/* Class = "UITableViewSection"; headerTitle = "CONTACT INFORMATION"; ObjectID = "eZK-ju-5iH"; */
+"eZK-ju-5iH.headerTitle" = "CONTACT INFORMATION";
+
+/* Class = "UILabel"; accessibilityLabel = "Mobile Phone"; ObjectID = "g1k-jQ-j1g"; */
+"g1k-jQ-j1g.accessibilityLabel" = "Mobile Phone";
+
+/* Class = "UILabel"; text = "Mobile #"; ObjectID = "g1k-jQ-j1g"; */
+"g1k-jQ-j1g.text" = "Mobile #";
+
+/* Class = "UILabel"; text = "Last Name"; ObjectID = "gjf-KJ-ulI"; */
+"gjf-KJ-ulI.text" = "Last Name";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "glS-KT-t60"; */
+"glS-KT-t60.placeholder" = "Required";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "haK-Ku-dvv"; */
+"haK-Ku-dvv.placeholder" = "Required";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "jvP-va-6KI"; */
+"jvP-va-6KI.text" = "Address";
+
+/* Class = "UITableViewSection"; headerTitle = "BILLING INFORMATION"; ObjectID = "llY-Yq-kxP"; */
+"llY-Yq-kxP.headerTitle" = "BILLING INFORMATION";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "mor-PC-7ZM"; */
+"mor-PC-7ZM.placeholder" = "Required";
+
+/* Class = "UILabel"; text = "State"; ObjectID = "n86-1S-zX5"; */
+"n86-1S-zX5.text" = "State";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "sP0-Kr-LBk"; */
+"sP0-Kr-LBk.text" = "First Name";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "sqx-N6-nt8"; */
+"sqx-N6-nt8.placeholder" = "Required";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "wDy-Pv-5Wy"; */
+"wDy-Pv-5Wy.placeholder" = "Required";
+
+/* Class = "UILabel"; text = "Country"; ObjectID = "wXr-0d-yb6"; */
+"wXr-0d-yb6.text" = "Country";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "xik-5X-Ihq"; */
+"xik-5X-Ihq.placeholder" = "Required";
