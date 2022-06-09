@@ -1,6 +1,6 @@
 [![Version](https://img.shields.io/cocoapods/v/TM-PSDK.svg?style=flat)](http://cocoapods.org/pods/TM-PSDK)
-![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=flat)
-![iOS](https://img.shields.io/badge/iOS-11-green.svg?style=flat)
+![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg?style=flat)
+![iOS](https://img.shields.io/badge/iOS-13-green.svg?style=flat)
 [![License](https://img.shields.io/cocoapods/l/TM-PSDK.svg?style=flat)](http://cocoapods.org/pods/TM-PSDK)
 [![Platform](https://img.shields.io/cocoapods/p/TM-PSDK.svg?style=flat)](https://cocoapods.org/pods/TM-PSDK)
 
