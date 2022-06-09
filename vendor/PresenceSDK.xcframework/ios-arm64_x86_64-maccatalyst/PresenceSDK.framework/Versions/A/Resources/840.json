@@ -1,0 +1,314 @@
+	{
+	  "regions" : [
+	    {
+	      "name" : "Alabama",
+	      "id" : 1,
+	      "abbrev" : "AL"
+	    },
+	    {
+	      "name" : "Alaska",
+	      "id" : 2,
+	      "abbrev" : "AK"
+	    },
+	    {
+	      "name" : "American Samoa",
+	      "id" : 3,
+	      "abbrev" : "AS"
+	    },
+	    {
+	      "name" : "Arizona",
+	      "id" : 4,
+	      "abbrev" : "AZ"
+	    },
+	    {
+	      "name" : "Arkansas",
+	      "id" : 5,
+	      "abbrev" : "AR"
+	    },
+	    {
+	      "name" : "Armed Forces Other",
+	      "id" : 6,
+	      "abbrev" : "AE"
+	    },
+	    {
+	      "name" : "Armed Forces Americas",
+	      "id" : 7,
+	      "abbrev" : "AA"
+	    },
+	    {
+	      "name" : "Armed Forces Pacific",
+	      "id" : 11,
+	      "abbrev" : "AP"
+	    },
+	    {
+	      "name" : "California",
+	      "id" : 12,
+	      "abbrev" : "CA"
+	    },
+	    {
+	      "name" : "Colorado",
+	      "id" : 13,
+	      "abbrev" : "CO"
+	    },
+	    {
+	      "name" : "Connecticut",
+	      "id" : 14,
+	      "abbrev" : "CT"
+	    },
+	    {
+	      "name" : "Delaware",
+	      "id" : 15,
+	      "abbrev" : "DE"
+	    },
+	    {
+	      "name" : "District Of Columbia",
+	      "id" : 16,
+	      "abbrev" : "DC"
+	    },
+	    {
+	      "name" : "Federated States Of Micronesia",
+	      "id" : 17,
+	      "abbrev" : "FM"
+	    },
+	    {
+	      "name" : "Florida",
+	      "id" : 18,
+	      "abbrev" : "FL"
+	    },
+	    {
+	      "name" : "Georgia",
+	      "id" : 19,
+	      "abbrev" : "GA"
+	    },
+	    {
+	      "name" : "Guam",
+	      "id" : 20,
+	      "abbrev" : "GU"
+	    },
+	    {
+	      "name" : "Hawaii",
+	      "id" : 21,
+	      "abbrev" : "HI"
+	    },
+	    {
+	      "name" : "Idaho",
+	      "id" : 22,
+	      "abbrev" : "ID"
+	    },
+	    {
+	      "name" : "Illinois",
+	      "id" : 23,
+	      "abbrev" : "IL"
+	    },
+	    {
+	      "name" : "Indiana",
+	      "id" : 24,
+	      "abbrev" : "IN"
+	    },
+	    {
+	      "name" : "Iowa",
+	      "id" : 25,
+	      "abbrev" : "IA"
+	    },
+	    {
+	      "name" : "Kansas",
+	      "id" : 26,
+	      "abbrev" : "KS"
+	    },
+	    {
+	      "name" : "Kentucky",
+	      "id" : 27,
+	      "abbrev" : "KY"
+	    },
+	    {
+	      "name" : "Louisiana",
+	      "id" : 28,
+	      "abbrev" : "LA"
+	    },
+	    {
+	      "name" : "Maine",
+	      "id" : 29,
+	      "abbrev" : "ME"
+	    },
+	    {
+	      "name" : "Marshall Islands",
+	      "id" : 30,
+	      "abbrev" : "MH"
+	    },
+	    {
+	      "name" : "Maryland",
+	      "id" : 31,
+	      "abbrev" : "MD"
+	    },
+	    {
+	      "name" : "Massachusetts",
+	      "id" : 32,
+	      "abbrev" : "MA"
+	    },
+	    {
+	      "name" : "Michigan",
+	      "id" : 33,
+	      "abbrev" : "MI"
+	    },
+	    {
+	      "name" : "Minnesota",
+	      "id" : 34,
+	      "abbrev" : "MN"
+	    },
+	    {
+	      "name" : "Mississippi",
+	      "id" : 35,
+	      "abbrev" : "MS"
+	    },
+	    {
+	      "name" : "Missouri",
+	      "id" : 36,
+	      "abbrev" : "MO"
+	    },
+	    {
+	      "name" : "Montana",
+	      "id" : 37,
+	      "abbrev" : "MT"
+	    },
+	    {
+	      "name" : "Nebraska",
+	      "id" : 38,
+	      "abbrev" : "NE"
+	    },
+	    {
+	      "name" : "Nevada",
+	      "id" : 39,
+	      "abbrev" : "NV"
+	    },
+	    {
+	      "name" : "New Hampshire",
+	      "id" : 40,
+	      "abbrev" : "NH"
+	    },
+	    {
+	      "name" : "New Jersey",
+	      "id" : 41,
+	      "abbrev" : "NJ"
+	    },
+	    {
+	      "name" : "New Mexico",
+	      "id" : 42,
+	      "abbrev" : "NM"
+	    },
+	    {
+	      "name" : "New York",
+	      "id" : 43,
+	      "abbrev" : "NY"
+	    },
+	    {
+	      "name" : "North Carolina",
+	      "id" : 44,
+	      "abbrev" : "NC"
+	    },
+	    {
+	      "name" : "North Dakota",
+	      "id" : 45,
+	      "abbrev" : "ND"
+	    },
+	    {
+	      "name" : "Northern Mariana Islands",
+	      "id" : 46,
+	      "abbrev" : "MP"
+	    },
+	    {
+	      "name" : "Ohio",
+	      "id" : 47,
+	      "abbrev" : "OH"
+	    },
+	    {
+	      "name" : "Oklahoma",
+	      "id" : 48,
+	      "abbrev" : "OK"
+	    },
+	    {
+	      "name" : "Oregon",
+	      "id" : 49,
+	      "abbrev" : "OR"
+	    },
+	    {
+	      "name" : "Palau",
+	      "id" : 50,
+	      "abbrev" : "PW"
+	    },
+	    {
+	      "name" : "Pennsylvania",
+	      "id" : 51,
+	      "abbrev" : "PA"
+	    },
+	    {
+	      "name" : "Puerto Rico",
+	      "id" : 52,
+	      "abbrev" : "PR"
+	    },
+	    {
+	      "name" : "Rhode Island",
+	      "id" : 53,
+	      "abbrev" : "RI"
+	    },
+	    {
+	      "name" : "South Carolina",
+	      "id" : 54,
+	      "abbrev" : "SC"
+	    },
+	    {
+	      "name" : "South Dakota",
+	      "id" : 55,
+	      "abbrev" : "SD"
+	    },
+	    {
+	      "name" : "Tennessee",
+	      "id" : 56,
+	      "abbrev" : "TN"
+	    },
+	    {
+	      "name" : "Texas",
+	      "id" : 57,
+	      "abbrev" : "TX"
+	    },
+	    {
+	      "name" : "Utah",
+	      "id" : 58,
+	      "abbrev" : "UT"
+	    },
+	    {
+	      "name" : "Vermont",
+	      "id" : 59,
+	      "abbrev" : "VT"
+	    },
+	    {
+	      "name" : "Virgin Islands",
+	      "id" : 60,
+	      "abbrev" : "VI"
+	    },
+	    {
+	      "name" : "Virginia",
+	      "id" : 61,
+	      "abbrev" : "VA"
+	    },
+	    {
+	      "name" : "Washington",
+	      "id" : 62,
+	      "abbrev" : "WA"
+	    },
+	    {
+	      "name" : "West Virginia",
+	      "id" : 63,
+	      "abbrev" : "WV"
+	    },
+	    {
+	      "name" : "Wisconsin",
+	      "id" : 64,
+	      "abbrev" : "WI"
+	    },
+	    {
+	      "name" : "Wyoming",
+	      "id" : 65,
+	      "abbrev" : "WY"
+	    }
+	  ]
+	}

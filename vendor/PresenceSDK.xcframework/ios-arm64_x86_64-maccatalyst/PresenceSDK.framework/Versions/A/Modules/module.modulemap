@@ -1,0 +1,11 @@
+framework module PresenceSDK {
+  umbrella header "PresenceSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module PresenceSDK.Swift {
+    header "PresenceSDK-Swift.h"
+    requires objc
+}

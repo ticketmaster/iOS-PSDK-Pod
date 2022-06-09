@@ -1,0 +1,98 @@
+html,body {
+    color: rgba(255,255,255,0.6);
+    background-color: #026cdf;
+    background-image: linear-gradient(220deg, #026CDF 0%, #026CDF 40%, #575DC6 90%, #575DC6 100%);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+    box-shadow: none;
+    height: 100%;
+}
+
+.logo, .verified-tickets {
+    display: none;
+}
+
+h1,h2,h3,h4,h5 {
+    color: rgba(255,255,255,0.8);
+}
+
+a {
+    color: #fff;
+}
+
+a:hover, a:active {
+    color: rgba(255,255,255,0.8);
+}
+
+.row div.six:nth-child(2) .button {
+    color: #fff;
+    border-color: #fff;
+}
+
+input[type="submit"].button-primary, button.button-primary {
+    background-color: #fff;
+    color: #026cdf;
+}
+
+::-webkit-input-placeholder {
+    color: #fff;
+    opacity: 0.6;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #fff;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #fff;
+}
+
+:-ms-input-placeholder {
+    color: #fff;
+}
+
+input#email,input#password {
+    color: #fff;
+    box-shadow:0 1px 0 #fff;
+    margin-bottom:1em;
+    padding-left:0;
+    padding-right:0
+}
+
+input#password {
+    margin-bottom:1.5em
+}
+
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+    color: #026cdf;
+    background-color: rgba(255,255,255,0.8);
+}
+
+
+input#email:focus,input#password:focus,input#email:active,input#password:active {
+    box-shadow:0 2px 0 #fff;
+}
+
+html p, li, p.permissions-title, .authorize form p, .authorize small:before {
+    color: rgba(255,255,255,0.8);
+}
+
+ul.permissions-list {
+    box-shadow: 0px -1px 0px rgba(255,255,255,.2);
+}
+
+ul.permissions-list li {
+    box-shadow: 0px 1px 0px rgba(255,255,255,.2);
+    color:inherit;
+}

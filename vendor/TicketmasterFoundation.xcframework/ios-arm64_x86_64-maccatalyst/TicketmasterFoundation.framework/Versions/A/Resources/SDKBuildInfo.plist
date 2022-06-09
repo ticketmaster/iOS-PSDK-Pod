@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildDate</key>
+	<string>Sat Jun  4 09:43:28 PDT 2022</string>
+	<key>BuildHost</key>
+	<string>USHOLJBA1-ML</string>
+	<key>GITBranch</key>
+	<string>master</string>
+	<key>GITComment</key>
+	<string>Fixed TicketmasterOAuthDelegate protocol</string>
+	<key>GITDate</key>
+	<string>Sat Jun 4 09:42:28 2022 -0700</string>
+	<key>GITRevision</key>
+	<string>d7ff987f8f091eedd61bb96ab8ca7adf7534cde5</string>
+	<key>MarketingVersion</key>
+	<string>0.7.2</string>
+</dict>
+</plist>

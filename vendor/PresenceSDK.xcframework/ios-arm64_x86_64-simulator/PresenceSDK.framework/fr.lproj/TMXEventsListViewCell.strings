@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; accessibilityLabel = "eventVenueLabel"; ObjectID = "3AM-Pn-SjG"; */
+"3AM-Pn-SjG.accessibilityLabel" = "eventVenueLabel";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3AM-Pn-SjG"; */
+"3AM-Pn-SjG.text" = "Label";
+
+/* Class = "UIImageView"; accessibilityLabel = "eventBlankImage"; ObjectID = "Bc8-y2-Inj"; */
+"Bc8-y2-Inj.accessibilityLabel" = "eventBlankImage";
+
+/* Class = "UIImageView"; accessibilityLabel = "ticketCountIcon"; ObjectID = "PJi-k4-dgl"; */
+"PJi-k4-dgl.accessibilityLabel" = "ticketCountIcon";
+
+/* Class = "UILabel"; accessibilityLabel = "transferCountLabel"; ObjectID = "R5Z-JN-fvJ"; */
+"R5Z-JN-fvJ.accessibilityLabel" = "transferCountLabel";
+
+/* Class = "UILabel"; text = "1 sent, 2 pending"; ObjectID = "R5Z-JN-fvJ"; */
+"R5Z-JN-fvJ.text" = "1 sent, 2 pending";
+
+/* Class = "UILabel"; accessibilityLabel = "ticketCountLabel"; ObjectID = "XbN-Hm-Fzh"; */
+"XbN-Hm-Fzh.accessibilityLabel" = "ticketCountLabel";
+
+/* Class = "UILabel"; text = "0 tickets"; ObjectID = "XbN-Hm-Fzh"; */
+"XbN-Hm-Fzh.text" = "0 billets";
+
+/* Class = "UILabel"; accessibilityLabel = "Event Name Label"; ObjectID = "eML-sb-dGa"; */
+"eML-sb-dGa.accessibilityLabel" = "Event Name Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eML-sb-dGa"; */
+"eML-sb-dGa.text" = "Label";
+
+/* Class = "UILabel"; accessibilityLabel = "eventDateLabel"; ObjectID = "pe7-bG-aMD"; */
+"pe7-bG-aMD.accessibilityLabel" = "eventDateLabel";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pe7-bG-aMD"; */
+"pe7-bG-aMD.text" = "Label";
+
+/* Class = "UILabel"; accessibilityLabel = "resaleCountLabel"; ObjectID = "qql-qK-ukp"; */
+"qql-qK-ukp.accessibilityLabel" = "resaleCountLabel";
+
+/* Class = "UILabel"; text = "4 listed, 2 sold"; ObjectID = "qql-qK-ukp"; */
+"qql-qK-ukp.text" = "4 listed, 2 sold";
+
+/* Class = "UIView"; accessibilityLabel = "Past Event Overlay"; ObjectID = "spC-dP-eze"; */
+"spC-dP-eze.accessibilityLabel" = "Past Event Overlay";
+
+/* Class = "UIImageView"; accessibilityLabel = "eventImage"; ObjectID = "uxG-MK-YtC"; */
+"uxG-MK-YtC.accessibilityLabel" = "eventImage";
+
+/* Class = "UIImageView"; accessibilityLabel = "transferCountIcon"; ObjectID = "zPA-sl-EZH"; */
+"zPA-sl-EZH.accessibilityLabel" = "transferCountIcon";
+
+/* Class = "UIImageView"; accessibilityLabel = "resaleCountIcon"; ObjectID = "znJ-CG-wa8"; */
+"znJ-CG-wa8.accessibilityLabel" = "resaleCountIcon";

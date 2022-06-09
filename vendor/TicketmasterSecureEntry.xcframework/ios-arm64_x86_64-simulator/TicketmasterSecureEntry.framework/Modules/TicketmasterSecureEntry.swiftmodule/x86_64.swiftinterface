@@ -1,0 +1,330 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TicketmasterSecureEntry
+import Darwin
+import Foundation
+import ImageIO
+import LocalAuthentication
+import Security
+import Swift
+@_exported import TicketmasterSecureEntry
+import UIKit
+import _Concurrency
+extension Swift.FixedWidthInteger {
+  @inlinable internal func bytes(totalBytes: Swift.Int = MemoryLayout<Self>.size) -> Swift.Array<Swift.UInt8> {
+    arrayOfBytes(value: self.littleEndian, length: totalBytes)
+    // TODO: adjust bytes order
+    // var value = self.littleEndian
+    // return withUnsafeBytes(of: &value, Array.init).reversed()
+  }
+}
+extension Swift.Array {
+  @inlinable internal init(reserveCapacity: Swift.Int) {
+    self = Array<Element>()
+    self.reserveCapacity(reserveCapacity)
+  }
+  @inlinable internal var slice: Swift.ArraySlice<Element> {
+    get {
+    self[self.startIndex ..< self.endIndex]
+  }
+  }
+}
+extension TicketmasterSecureEntry.SecureEntryView {
+  @_Concurrency.MainActor(unsafe) public static func syncTime(force: Swift.Bool = false, timePool: Swift.String? = nil, completion: ((_ synced: Swift.Bool) -> Swift.Void)? = nil)
+  @available(*, deprecated, renamed: "syncTime(force:completion:)")
+  @_Concurrency.MainActor(unsafe) public static func syncTime(completed: ((_ synced: Swift.Bool) -> Swift.Void)?)
+}
+extension TicketmasterSecureEntry.SecureEntryView {
+  @available(*, deprecated, message: "Use brandingColor property instead")
+  @_Concurrency.MainActor(unsafe) final public func setBrandingColor(color: UIKit.UIColor)
+  @available(*, deprecated, message: "Use pdf417Subtitle property instead")
+  @_Concurrency.MainActor(unsafe) final public func setPdf417Subtitle(subtitleText: Swift.String)
+  @available(*, deprecated, message: "setQrCodeSubtitle has been deprecated and no longer has any functionality")
+  @_Concurrency.MainActor(unsafe) final public func setQrCodeSubtitle(subtitleText: Swift.String)
+  @available(*, deprecated, message: "Use isSubtitleBrandingEnabled property instead")
+  @_Concurrency.MainActor(unsafe) final public func enableBrandedSubtitle(enable: Swift.Bool)
+  @available(*, deprecated, renamed: "showError(message:icon:)")
+  @_Concurrency.MainActor(unsafe) final public func showError(text: Swift.String?, icon: UIKit.UIImage? = nil)
+  @available(*, deprecated, message: "Use token and errorMessage properties instead")
+  @_Concurrency.MainActor(unsafe) final public func setToken(token: Swift.String!, errorText: Swift.String? = nil)
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) final public func startAnimation()
+  @available(*, deprecated, message: "Use SecureEntryView.syncTime() instead")
+  @_Concurrency.MainActor(unsafe) final public func syncTime(completed: ((_ synced: Swift.Bool) -> Swift.Void)? = nil)
+}
+extension TicketmasterSecureEntry.SecureEntryView {
+  @available(*, unavailable)
+  @objc @_Concurrency.MainActor(unsafe) final public var livePreview: Swift.Bool {
+    @objc get
+  }
+  @available(*, unavailable)
+  @objc @_Concurrency.MainActor(unsafe) final public var staticPreview: Swift.Bool {
+    @objc get
+  }
+  @available(*, unavailable)
+  @objc @_Concurrency.MainActor(unsafe) final public var qrBarcodeSubtitle: Swift.String {
+    @objc get
+  }
+  @available(*, unavailable)
+  @objc @_Concurrency.MainActor(unsafe) final public var pdf417BarcodeSubtitle: Swift.String {
+    @objc get
+    @objc set
+  }
+  @available(*, unavailable)
+  @objc @_Concurrency.MainActor(unsafe) final public var brandSubtitleText: Swift.Bool {
+    @objc get
+  }
+  @available(*, deprecated, message: "qrSubtitle has been deprecated and no longer has any functionality")
+  @objc @_Concurrency.MainActor(unsafe) final public var qrSubtitle: Swift.String {
+    @objc get
+  }
+  @available(*, deprecated, message: "brandingColor has been deprecated and no longer has any functionality")
+  @objc @_Concurrency.MainActor(unsafe) final public var brandingColor: UIKit.UIColor {
+    @objc get
+  }
+  @available(*, deprecated, message: "isSubtitleBrandingEnabled has been deprecated and no longer has any functionality")
+  @objc @_Concurrency.MainActor(unsafe) final public var isSubtitleBrandingEnabled: Swift.Bool {
+    @objc get
+  }
+}
+@_specialize(exported: false, kind: full, where T == Swift.Int)
+@_specialize(exported: false, kind: full, where T == Swift.UInt)
+@_specialize(exported: false, kind: full, where T == Swift.UInt8)
+@_specialize(exported: false, kind: full, where T == Swift.UInt16)
+@_specialize(exported: false, kind: full, where T == Swift.UInt32)
+@_specialize(exported: false, kind: full, where T == Swift.UInt64)
+@inlinable internal func arrayOfBytes<T>(value: T, length totalBytes: Swift.Int = MemoryLayout<T>.size) -> Swift.Array<Swift.UInt8> where T : Swift.FixedWidthInteger {
+  let valuePointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
+  valuePointer.pointee = value
+
+  let bytesPointer = UnsafeMutablePointer<UInt8>(OpaquePointer(valuePointer))
+  var bytes = Array<UInt8>(repeating: 0, count: totalBytes)
+  for j in 0..<min(MemoryLayout<T>.size, totalBytes) {
+    bytes[totalBytes - 1 - j] = (bytesPointer + j).pointee
+  }
+
+  valuePointer.deinitialize(count: 1)
+  valuePointer.deallocate()
+
+  return bytes
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt8, by: Swift.UInt8) -> Swift.UInt8 {
+  ((value << by) & 0xff) | (value >> (8 - by))
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt16, by: Swift.UInt16) -> Swift.UInt16 {
+  ((value << by) & 0xffff) | (value >> (16 - by))
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt32, by: Swift.UInt32) -> Swift.UInt32 {
+  ((value << by) & 0xffffffff) | (value >> (32 - by))
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt64, by: Swift.UInt64) -> Swift.UInt64 {
+  (value << by) | (value >> (64 - by))
+}
+@inlinable internal func rotateRight(_ value: Swift.UInt16, by: Swift.UInt16) -> Swift.UInt16 {
+  (value >> by) | (value << (16 - by))
+}
+@inlinable internal func rotateRight(_ value: Swift.UInt32, by: Swift.UInt32) -> Swift.UInt32 {
+  (value >> by) | (value << (32 - by))
+}
+@inlinable internal func rotateRight(_ value: Swift.UInt64, by: Swift.UInt64) -> Swift.UInt64 {
+  ((value >> by) | (value << (64 - by)))
+}
+@inlinable internal func reversed(_ uint8: Swift.UInt8) -> Swift.UInt8 {
+  var v = uint8
+  v = (v & 0xf0) >> 4 | (v & 0x0f) << 4
+  v = (v & 0xcc) >> 2 | (v & 0x33) << 2
+  v = (v & 0xaa) >> 1 | (v & 0x55) << 1
+  return v
+}
+@inlinable internal func reversed(_ uint32: Swift.UInt32) -> Swift.UInt32 {
+  var v = uint32
+  v = ((v >> 1) & 0x55555555) | ((v & 0x55555555) << 1)
+  v = ((v >> 2) & 0x33333333) | ((v & 0x33333333) << 2)
+  v = ((v >> 4) & 0x0f0f0f0f) | ((v & 0x0f0f0f0f) << 4)
+  v = ((v >> 8) & 0x00ff00ff) | ((v & 0x00ff00ff) << 8)
+  v = ((v >> 16) & 0xffff) | ((v & 0xffff) << 16)
+  return v
+}
+@inlinable internal func xor<T, V>(_ left: T, _ right: V) -> Swift.ArraySlice<Swift.UInt8> where T : Swift.RandomAccessCollection, V : Swift.RandomAccessCollection, T.Element == Swift.UInt8, T.Index == Swift.Int, V.Element == Swift.UInt8, V.Index == Swift.Int {
+  return xor(left, right).slice
+}
+@inlinable internal func xor<T, V>(_ left: T, _ right: V) -> Swift.Array<Swift.UInt8> where T : Swift.RandomAccessCollection, V : Swift.RandomAccessCollection, T.Element == Swift.UInt8, T.Index == Swift.Int, V.Element == Swift.UInt8, V.Index == Swift.Int {
+  let length = Swift.min(left.count, right.count)
+
+  let buf = UnsafeMutablePointer<UInt8>.allocate(capacity: length)
+  buf.initialize(repeating: 0, count: length)
+  defer {
+    buf.deinitialize(count: length)
+    buf.deallocate()
+  }
+
+  // xor
+  for i in 0..<length {
+    buf[i] = left[left.startIndex.advanced(by: i)] ^ right[right.startIndex.advanced(by: i)]
+  }
+
+  return Array(UnsafeBufferPointer(start: buf, count: length))
+}
+@inline(__always) @inlinable internal func bitPadding(to data: inout Swift.Array<Swift.UInt8>, blockSize: Swift.Int, allowance: Swift.Int = 0) {
+  let msgLength = data.count
+  // Step 1. Append Padding Bits
+  // append one bit (UInt8 with one bit) to message
+  data.append(0x80)
+
+  // Step 2. append "0" bit until message length in bits ≡ 448 (mod 512)
+  let max = blockSize - allowance // 448, 986
+  if msgLength % blockSize < max { // 448
+    data += Array<UInt8>(repeating: 0, count: max - 1 - (msgLength % blockSize))
+  } else {
+    data += Array<UInt8>(repeating: 0, count: blockSize + max - 1 - (msgLength % blockSize))
+  }
+}
+@usableFromInline
+internal struct BatchedCollectionIndex<Base> where Base : Swift.Collection {
+}
+extension TicketmasterSecureEntry.BatchedCollectionIndex : Swift.Comparable {
+  @usableFromInline
+  internal static func == <Base>(lhs: TicketmasterSecureEntry.BatchedCollectionIndex<Base>, rhs: TicketmasterSecureEntry.BatchedCollectionIndex<Base>) -> Swift.Bool where Base : Swift.Collection
+  @usableFromInline
+  internal static func < <Base>(lhs: TicketmasterSecureEntry.BatchedCollectionIndex<Base>, rhs: TicketmasterSecureEntry.BatchedCollectionIndex<Base>) -> Swift.Bool where Base : Swift.Collection
+}
+@usableFromInline
+internal struct BatchedCollection<Base> : Swift.Collection where Base : Swift.Collection {
+  @usableFromInline
+  internal init(base: Base, size: Swift.Int)
+  @usableFromInline
+  internal typealias Index = TicketmasterSecureEntry.BatchedCollectionIndex<Base>
+  @usableFromInline
+  internal var startIndex: TicketmasterSecureEntry.BatchedCollection<Base>.Index {
+    get
+  }
+  @usableFromInline
+  internal var endIndex: TicketmasterSecureEntry.BatchedCollection<Base>.Index {
+    get
+  }
+  @usableFromInline
+  internal func index(after idx: TicketmasterSecureEntry.BatchedCollection<Base>.Index) -> TicketmasterSecureEntry.BatchedCollection<Base>.Index
+  @usableFromInline
+  internal subscript(idx: TicketmasterSecureEntry.BatchedCollection<Base>.Index) -> Base.SubSequence {
+    get
+  }
+  @usableFromInline
+  internal typealias Element = Base.SubSequence
+  @usableFromInline
+  internal typealias Indices = Swift.DefaultIndices<TicketmasterSecureEntry.BatchedCollection<Base>>
+  @usableFromInline
+  internal typealias Iterator = Swift.IndexingIterator<TicketmasterSecureEntry.BatchedCollection<Base>>
+  @usableFromInline
+  internal typealias SubSequence = Swift.Slice<TicketmasterSecureEntry.BatchedCollection<Base>>
+}
+extension Swift.Collection {
+  @inlinable internal func batched(by size: Swift.Int) -> TicketmasterSecureEntry.BatchedCollection<Self> {
+    BatchedCollection(base: self, size: size)
+  }
+}
+extension Swift.UInt64 {
+  @_specialize(exported: false, kind: full, where T == Swift.ArraySlice<Swift.UInt8>)
+  @inlinable internal init<T>(bytes: T, fromIndex index: T.Index) where T : Swift.Collection, T.Element == Swift.UInt8, T.Index == Swift.Int {
+    if bytes.isEmpty {
+      self = 0
+      return
+    }
+
+    let count = bytes.count
+
+    let val0 = count > 0 ? UInt64(bytes[index.advanced(by: 0)]) << 56 : 0
+    let val1 = count > 1 ? UInt64(bytes[index.advanced(by: 1)]) << 48 : 0
+    let val2 = count > 2 ? UInt64(bytes[index.advanced(by: 2)]) << 40 : 0
+    let val3 = count > 3 ? UInt64(bytes[index.advanced(by: 3)]) << 32 : 0
+    let val4 = count > 4 ? UInt64(bytes[index.advanced(by: 4)]) << 24 : 0
+    let val5 = count > 5 ? UInt64(bytes[index.advanced(by: 5)]) << 16 : 0
+    let val6 = count > 6 ? UInt64(bytes[index.advanced(by: 6)]) << 8 : 0
+    let val7 = count > 7 ? UInt64(bytes[index.advanced(by: 7)]) : 0
+
+    self = val0 | val1 | val2 | val3 | val4 | val5 | val6 | val7
+  }
+}
+extension Swift.Collection where Self.Element == Swift.UInt8, Self.Index == Swift.Int {
+  @inlinable internal func toUInt32Array() -> Swift.Array<Swift.UInt32> {
+    guard !isEmpty else {
+      return []
+    }
+
+    let c = strideCount(from: startIndex, to: endIndex, by: 4)
+    return Array<UInt32>(unsafeUninitializedCapacity: c) { buf, count in
+      var counter = 0
+      for idx in stride(from: startIndex, to: endIndex, by: 4) {
+        let val = UInt32(bytes: self, fromIndex: idx).bigEndian
+        buf[counter] = val
+        counter += 1
+      }
+      count = counter
+      assert(counter == c)
+    }
+  }
+  @inlinable internal func toUInt64Array() -> Swift.Array<Swift.UInt64> {
+    guard !isEmpty else {
+      return []
+    }
+
+    let c = strideCount(from: startIndex, to: endIndex, by: 8)
+    return Array<UInt64>(unsafeUninitializedCapacity: c) { buf, count in
+      var counter = 0
+      for idx in stride(from: startIndex, to: endIndex, by: 8) {
+        let val = UInt64(bytes: self, fromIndex: idx).bigEndian
+        buf[counter] = val
+        counter += 1
+      }
+      count = counter
+      assert(counter == c)
+    }
+  }
+}
+@usableFromInline
+internal func strideCount(from: Swift.Int, to: Swift.Int, by: Swift.Int) -> Swift.Int
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) final public class SecureEntryView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public static var version: Swift.String {
+    get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public var pdf417Subtitle: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public var errorMessage: Swift.String {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) final public var token: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc override final public func awakeFromNib()
+  @objc override final public func prepareForInterfaceBuilder()
+}
+extension TicketmasterSecureEntry.SecureEntryView {
+  @_Concurrency.MainActor(unsafe) final public func showError(message: Swift.String, icon: UIKit.UIImage? = nil)
+}
+extension Swift.UInt32 {
+  @_specialize(exported: false, kind: full, where T == Swift.ArraySlice<Swift.UInt8>)
+  @inlinable internal init<T>(bytes: T, fromIndex index: T.Index) where T : Swift.Collection, T.Element == Swift.UInt8, T.Index == Swift.Int {
+    if bytes.isEmpty {
+      self = 0
+      return
+    }
+
+    let count = bytes.count
+
+    let val0 = count > 0 ? UInt32(bytes[index.advanced(by: 0)]) << 24 : 0
+    let val1 = count > 1 ? UInt32(bytes[index.advanced(by: 1)]) << 16 : 0
+    let val2 = count > 2 ? UInt32(bytes[index.advanced(by: 2)]) << 8 : 0
+    let val3 = count > 3 ? UInt32(bytes[index.advanced(by: 3)]) : 0
+
+    self = val0 | val1 | val2 | val3
+  }
+}

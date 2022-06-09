@@ -1,0 +1,72 @@
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "2QD-7H-MgG"; */
+"2QD-7H-MgG.placeholder" = "Requis";
+
+/* Class = "UILabel"; text = "Home #"; ObjectID = "4gR-An-Qep"; */
+"4gR-An-Qep.text" = "# domicile";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "66n-yb-2yZ"; */
+"66n-yb-2yZ.placeholder" = "Requis";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "8qJ-vj-pdF"; */
+"8qJ-vj-pdF.placeholder" = "Requis";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "9Rf-fV-g8c"; */
+"9Rf-fV-g8c.text" = "Ville";
+
+/* Class = "UILabel"; text = "Address 2"; ObjectID = "9ee-1W-riq"; */
+"9ee-1W-riq.text" = "Adresse 2";
+
+/* Class = "UILabel"; text = "ZIP Code"; ObjectID = "EFh-Sh-vPa"; */
+"EFh-Sh-vPa.text" = "Code postal";
+
+/* Class = "UINavigationItem"; title = "Seller Profile"; ObjectID = "EjB-Kg-81b"; */
+"EjB-Kg-81b.title" = "Profil vendeur";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "PiO-xB-96x"; */
+"PiO-xB-96x.title" = "Modifier";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "Ugd-xD-pAt"; */
+"Ugd-xD-pAt.title" = "Sauvegarder";
+
+/* Class = "UITableViewSection"; headerTitle = "CONTACT INFORMATION"; ObjectID = "eZK-ju-5iH"; */
+"eZK-ju-5iH.headerTitle" = "INFORMATIONS DE CONTACT";
+
+/* Class = "UILabel"; text = "Mobile #"; ObjectID = "g1k-jQ-j1g"; */
+"g1k-jQ-j1g.text" = "# cellulaire";
+
+/* Class = "UILabel"; text = "Last Name"; ObjectID = "gjf-KJ-ulI"; */
+"gjf-KJ-ulI.text" = "Nom";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "glS-KT-t60"; */
+"glS-KT-t60.placeholder" = "Requis";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "haK-Ku-dvv"; */
+"haK-Ku-dvv.placeholder" = "Requis";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "jvP-va-6KI"; */
+"jvP-va-6KI.text" = "Adresse";
+
+/* Class = "UITableViewSection"; headerTitle = "BILLING INFORMATION"; ObjectID = "llY-Yq-kxP"; */
+"llY-Yq-kxP.headerTitle" = "INFORMATIONS DE FACTURATION";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "mor-PC-7ZM"; */
+"mor-PC-7ZM.placeholder" = "Requis";
+
+/* Class = "UILabel"; text = "State"; ObjectID = "n86-1S-zX5"; */
+"n86-1S-zX5.text" = "Province";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "sP0-Kr-LBk"; */
+"sP0-Kr-LBk.text" = "Prénom";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "sqx-N6-nt8"; */
+"sqx-N6-nt8.placeholder" = "Requis";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "wDy-Pv-5Wy"; */
+"wDy-Pv-5Wy.placeholder" = "Requis";
+
+/* Class = "UILabel"; text = "Country"; ObjectID = "wXr-0d-yb6"; */
+"wXr-0d-yb6.text" = "Pays";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "xik-5X-Ihq"; */
+"xik-5X-Ihq.placeholder" = "Requis";

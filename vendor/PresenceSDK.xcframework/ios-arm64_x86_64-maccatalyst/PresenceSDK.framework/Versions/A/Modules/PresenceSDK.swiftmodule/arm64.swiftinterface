@@ -1,0 +1,784 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target arm64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PresenceSDK
+import AuthenticationServices
+import Contacts
+import ContactsUI
+import Darwin
+import Foundation
+import LocalAuthentication
+import MapKit
+import MessageUI
+import PassKit
+@_exported import PresenceSDK
+import SafariServices
+import Security
+import Swift
+import SystemConfiguration
+import TicketmasterFoundation
+import TicketmasterSecureEntry
+import UIKit
+import WebKit
+extension PresenceSDK.PSDK {
+  @available(*, deprecated, message: "Renamed to start(presenceView: PresenceView, ...)")
+  @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: PresenceSDK.PresenceLoginDelegate? = nil, orderDelegate: PresenceSDK.PresenceOrderDelegate? = nil, venueDelegate: PresenceSDK.PresenceVenueDelegate? = nil)
+  @objc final public func start(presenceView: PresenceSDK.PresenceView?, loginDelegate: PresenceSDK.PresenceLoginDelegate? = nil, orderDelegate: PresenceSDK.PresenceOrderDelegate? = nil, venueDelegate: PresenceSDK.PresenceVenueDelegate? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class PSDK : ObjectiveC.NSObject {
+  public static let shared: PresenceSDK.PSDK
+  weak final public var loginDelegate: PresenceSDK.PresenceLoginDelegate?
+  weak final public var orderDelegate: PresenceSDK.PresenceOrderDelegate?
+  weak final public var venueDelegate: PresenceSDK.PresenceVenueDelegate?
+  weak final public var moduleDelegate: PresenceSDK.PresenceModuleDelegate?
+  final public var eventsView: PresenceSDK.PresenceView? {
+    get
+  }
+  final public let oauthProvider: PresenceSDK.PresenceOAuthProvider
+  final public var hostLoginQueryParams: [Swift.String : Swift.String]
+  final public var archticsLoginQueryParams: [Swift.String : Swift.String]
+  final public var sportXRLoginQueryParams: [Swift.String : Swift.String]
+  public typealias ConfigSuccessHandler = () -> Swift.Void
+  public typealias ConfigFailureHandler = (_ error: Swift.Error?) -> Swift.Void
+  public typealias AccessTokenSuccessCompletionHandler = (_ token: Swift.String) -> Swift.Void
+  public typealias AccessTokenFailureCompletionHandler = (_ error: Swift.Error?, _ canceled: Swift.Bool) -> Swift.Void
+  @objc deinit
+}
+extension PresenceSDK.PSDK {
+  @objc final public func jumpToOrderOrEvent(id: Swift.String)
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType)
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType)
+  final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType = .any, action: PresenceSDK.PSDK.ActionType? = nil)
+  @available(*, deprecated, message: "Use jumpToOrderOrEvent(id:type:action:) and set orderDelegate directly on PSDK.shared")
+  @objc final public func jumpToOrderOrEvent(id: Swift.String, type: PresenceSDK.PSDK.IdType, action: PresenceSDK.PSDK.ActionType, orderDelegate: PresenceSDK.PresenceOrderDelegate?)
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt8, by: Swift.UInt8) -> Swift.UInt8 {
+  ((value << by) & 0xff) | (value >> (8 - by))
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt16, by: Swift.UInt16) -> Swift.UInt16 {
+  ((value << by) & 0xffff) | (value >> (16 - by))
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt32, by: Swift.UInt32) -> Swift.UInt32 {
+  ((value << by) & 0xffffffff) | (value >> (32 - by))
+}
+@inlinable internal func rotateLeft(_ value: Swift.UInt64, by: Swift.UInt64) -> Swift.UInt64 {
+  (value << by) | (value >> (64 - by))
+}
+@inlinable internal func rotateRight(_ value: Swift.UInt16, by: Swift.UInt16) -> Swift.UInt16 {
+  (value >> by) | (value << (16 - by))
+}
+@inlinable internal func rotateRight(_ value: Swift.UInt32, by: Swift.UInt32) -> Swift.UInt32 {
+  (value >> by) | (value << (32 - by))
+}
+@inlinable internal func rotateRight(_ value: Swift.UInt64, by: Swift.UInt64) -> Swift.UInt64 {
+  ((value >> by) | (value << (64 - by)))
+}
+@inlinable internal func reversed(_ uint8: Swift.UInt8) -> Swift.UInt8 {
+  var v = uint8
+  v = (v & 0xf0) >> 4 | (v & 0x0f) << 4
+  v = (v & 0xcc) >> 2 | (v & 0x33) << 2
+  v = (v & 0xaa) >> 1 | (v & 0x55) << 1
+  return v
+}
+@inlinable internal func reversed(_ uint32: Swift.UInt32) -> Swift.UInt32 {
+  var v = uint32
+  v = ((v >> 1) & 0x55555555) | ((v & 0x55555555) << 1)
+  v = ((v >> 2) & 0x33333333) | ((v & 0x33333333) << 2)
+  v = ((v >> 4) & 0x0f0f0f0f) | ((v & 0x0f0f0f0f) << 4)
+  v = ((v >> 8) & 0x00ff00ff) | ((v & 0x00ff00ff) << 8)
+  v = ((v >> 16) & 0xffff) | ((v & 0xffff) << 16)
+  return v
+}
+@inlinable internal func xor<T, V>(_ left: T, _ right: V) -> Swift.ArraySlice<Swift.UInt8> where T : Swift.RandomAccessCollection, V : Swift.RandomAccessCollection, T.Element == Swift.UInt8, T.Index == Swift.Int, V.Element == Swift.UInt8, V.Index == Swift.Int {
+  return xor(left, right).slice
+}
+@inlinable internal func xor<T, V>(_ left: T, _ right: V) -> Swift.Array<Swift.UInt8> where T : Swift.RandomAccessCollection, V : Swift.RandomAccessCollection, T.Element == Swift.UInt8, T.Index == Swift.Int, V.Element == Swift.UInt8, V.Index == Swift.Int {
+  let length = Swift.min(left.count, right.count)
+
+  let buf = UnsafeMutablePointer<UInt8>.allocate(capacity: length)
+  buf.initialize(repeating: 0, count: length)
+  defer {
+    buf.deinitialize(count: length)
+    buf.deallocate()
+  }
+
+  // xor
+  for i in 0..<length {
+    buf[i] = left[left.startIndex.advanced(by: i)] ^ right[right.startIndex.advanced(by: i)]
+  }
+
+  return Array(UnsafeBufferPointer(start: buf, count: length))
+}
+@inline(__always) @inlinable internal func bitPadding(to data: inout Swift.Array<Swift.UInt8>, blockSize: Swift.Int, allowance: Swift.Int = 0) {
+  let msgLength = data.count
+  // Step 1. Append Padding Bits
+  // append one bit (UInt8 with one bit) to message
+  data.append(0x80)
+
+  // Step 2. append "0" bit until message length in bits ≡ 448 (mod 512)
+  let max = blockSize - allowance // 448, 986
+  if msgLength % blockSize < max { // 448
+    data += Array<UInt8>(repeating: 0, count: max - 1 - (msgLength % blockSize))
+  } else {
+    data += Array<UInt8>(repeating: 0, count: blockSize + max - 1 - (msgLength % blockSize))
+  }
+}
+extension PresenceSDK.PSDK {
+  @objc final public func setTicketsActionButtonText(title: Swift.String?)
+}
+extension PresenceSDK.PSDK {
+  @objc final public func getMemberInfo(backendName: PresenceSDK.PSDK.BackendName, completion: @escaping (_ member: PresenceSDK.PresenceMember?, _ error: Swift.Error?) -> Swift.Void)
+}
+extension Swift.Collection where Self.Element == Swift.UInt8, Self.Index == Swift.Int {
+  @inlinable internal func toUInt32Array() -> Swift.Array<Swift.UInt32> {
+    guard !isEmpty else {
+      return []
+    }
+
+    let c = strideCount(from: startIndex, to: endIndex, by: 4)
+    return Array<UInt32>(unsafeUninitializedCapacity: c) { buf, count in
+      var counter = 0
+      for idx in stride(from: startIndex, to: endIndex, by: 4) {
+        let val = UInt32(bytes: self, fromIndex: idx).bigEndian
+        buf[counter] = val
+        counter += 1
+      }
+      count = counter
+      assert(counter == c)
+    }
+  }
+  @inlinable internal func toUInt64Array() -> Swift.Array<Swift.UInt64> {
+    guard !isEmpty else {
+      return []
+    }
+
+    let c = strideCount(from: startIndex, to: endIndex, by: 8)
+    return Array<UInt64>(unsafeUninitializedCapacity: c) { buf, count in
+      var counter = 0
+      for idx in stride(from: startIndex, to: endIndex, by: 8) {
+        let val = UInt64(bytes: self, fromIndex: idx).bigEndian
+        buf[counter] = val
+        counter += 1
+      }
+      count = counter
+      assert(counter == c)
+    }
+  }
+}
+@usableFromInline
+internal func strideCount(from: Swift.Int, to: Swift.Int, by: Swift.Int) -> Swift.Int
+extension PresenceSDK.PSDK {
+  public static let errorDomain: Swift.String
+  public static let errorDomainMFA: Swift.String
+  public static let errorDomainTMX: Swift.String
+  public static let configurationNotSetError: Foundation.NSError
+  public static let configurationNotMatchedError: Foundation.NSError
+  public static let configurationServiceNotSetError: Foundation.NSError
+  public static let configurationInvalidForOperationError: Foundation.NSError
+  public static let featureDisabledByApigeeError: Foundation.NSError
+  public static let emptyResponseError: Foundation.NSError
+  public static let unexpectedReponseError: Foundation.NSError
+  public static let userNotLoggedInError: Foundation.NSError
+  public static let userCanceledLoginError: Foundation.NSError
+  public static let loginWindowAlreadyPresentError: Foundation.NSError
+  public static let loginWindowMissingError: Foundation.NSError
+  public static let missingOAuthTokensError: Foundation.NSError
+  public static let delegateNotImplementedError: Foundation.NSError
+}
+public protocol PresenceModuleDelegate : AnyObject {
+  func addCustomModules(order: PresenceSDK.PresenceOrder, completion: @escaping (_ customModuleArray: [PresenceSDK.PSDKTicketsModule]?) -> Swift.Void)
+  func handleModuleButtonAction(moduleIdentifier: Swift.String, page: PresenceSDK.PSDK.PresencePage, buttonTitle: Swift.String, order: PresenceSDK.PresenceOrder?, callbackValue: Swift.String)
+}
+extension Swift.FixedWidthInteger {
+  @inlinable internal func bytes(totalBytes: Swift.Int = MemoryLayout<Self>.size) -> Swift.Array<Swift.UInt8> {
+    arrayOfBytes(value: self.littleEndian, length: totalBytes)
+    // TODO: adjust bytes order
+    // var value = self.littleEndian
+    // return withUnsafeBytes(of: &value, Array.init).reversed()
+  }
+}
+extension PresenceSDK.PSDK {
+  @objc final public func login(to backendName: PresenceSDK.PSDK.BackendName, completion: ((_ success: Swift.Bool) -> Swift.Void)? = nil)
+}
+extension PresenceSDK.PSDK {
+  @objc final public func resetPasswordForHost(success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler, token: Swift.String? = nil)
+  @objc final public var loginButton: PresenceSDK.PSDK.LoginButtons {
+    @objc get
+    @objc set
+  }
+}
+extension PresenceSDK.PSDK {
+  @objc final public func getAccessToken(backendName: PresenceSDK.PSDK.BackendName, success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler)
+  @objc final public func getAccessToken(backendName: PresenceSDK.PSDK.BackendName, presentLoginUI: Swift.Bool = true, success: @escaping PresenceSDK.PSDK.AccessTokenSuccessCompletionHandler, failure: @escaping PresenceSDK.PSDK.AccessTokenFailureCompletionHandler)
+}
+extension PresenceSDK.PSDK {
+  @available(*, deprecated, message: "Use logout(completion:) instead for proper OAuth2 logout handling")
+  @objc final public func logOut()
+  @objc final public func logOut(forceLogout: Swift.Bool = false, completion: @escaping (_ hostSuccess: Swift.Bool, _ hostError: Swift.Error?, _ teamSuccess: Swift.Bool, _ teamError: Swift.Error?, _ sportXRSuccess: Swift.Bool, _ sportXRError: Swift.Error?) -> Swift.Void = { _, _, _, _, _, _ in })
+  @objc final public func logOutHost(forceLogout: Swift.Bool = false, success: @escaping () -> Swift.Void = { }, failure: @escaping (_ error: Swift.Error) -> Swift.Void = { _ in })
+  @objc final public func logOutTeam(forceLogout: Swift.Bool = false, success: @escaping () -> Swift.Void = { }, failure: @escaping (_ error: Swift.Error) -> Swift.Void = { _ in })
+  @objc final public func logOutSportXR(forceLogout: Swift.Bool = false, success: @escaping () -> Swift.Void = { }, failure: @escaping (_ error: Swift.Error) -> Swift.Void = { _ in })
+}
+extension PresenceSDK.PSDK {
+  @objc final public func isLoggedIn() -> Swift.Bool
+  @objc final public func isLoggedIntoHost() -> Swift.Bool
+  @objc final public func isLoggedIntoTeam() -> Swift.Bool
+  @objc final public func isLoggedIntoSportXR() -> Swift.Bool
+  @objc final public func hasUserSignedIn() -> Swift.Bool
+  @objc final public func hasUserSignedInHost() -> Swift.Bool
+  @objc final public func hasUserSignedInTeam() -> Swift.Bool
+  @objc final public func hasUserSignedInSportXR() -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers @objc public class PresenceOrder : ObjectiveC.NSObject, Swift.Codable {
+  final public let eventIdentifier: Swift.String?
+  final public let venueIdentifier: Swift.String?
+  final public let orderIdentifiers: [Swift.String]?
+  final public let tickets: [PresenceSDK.PresenceOrder.PresenceTicket]?
+  @_hasMissingDesignatedInitializers @objc public class PresenceTicket : ObjectiveC.NSObject, Swift.Codable {
+    final public let section: Swift.String
+    final public let row: Swift.String
+    final public let seat: Swift.String
+    final public let quantity: Swift.Int
+    final public let isGeneralAdmission: Swift.Bool
+    @objc deinit
+    public func encode(to encoder: Swift.Encoder) throws
+    required public init(from decoder: Swift.Decoder) throws
+  }
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public protocol PresenceVenueDelegate {
+  @objc optional func venueConcessionsSdkIdentifier(forIdentifier identifier: Swift.String, completion: @escaping (_ sdkIdentifier: Swift.String?, _ error: Swift.Error?) -> Swift.Void)
+  @objc optional func venue(identifier: Swift.String, sdkIdentifier: Swift.String, concessionsButtonPressed: PresenceSDK.PSDK.VenueConcessionsButtonType)
+  @objc optional func venueSeatUpgrades(forIdentifier identifier: Swift.String, completion: @escaping (_ clientID: Swift.String?, _ clientRedirectURL: Swift.String?, _ backendName: PresenceSDK.PSDK.BackendName) -> Swift.Void)
+}
+extension PresenceSDK.PSDK {
+  @objc public enum BackendName : Swift.Int, Swift.CustomStringConvertible {
+    case host
+    case accountManager
+    case sportXR
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum LoginMethod : Swift.Int, Swift.CustomStringConvertible {
+    case conventional
+    case automatic
+    case fingerprint
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum HostEnvironment : Swift.Int, Swift.CustomStringConvertible {
+    case US = 0
+    case UK
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum SDKEnvironment : Swift.Int, Swift.CustomStringConvertible {
+    case Production = 0
+    case Staging
+    case PreProduction
+    case Development
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum SDKTheme : Swift.Int, Swift.CustomStringConvertible {
+    case Light
+    case Dark
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum VenueConcessionsButtonType : Swift.Int, Swift.CustomStringConvertible {
+    case order = 0
+    case wallet
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum IdType : Swift.Int, Swift.CustomStringConvertible {
+    case event
+    case order
+    case any
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum ActionType : Swift.Int, Swift.CustomStringConvertible {
+    case posting
+    case transfer
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum LoginButtons : Swift.Int, Swift.CustomStringConvertible {
+    case forgotPassword
+    case createAccount
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public enum PresencePage : Swift.Int, Swift.CustomStringConvertible {
+    case none
+    case myEvents
+    case myTickets
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @_inheritsConvenienceInitializers @objc public class BrandingColors : ObjectiveC.NSObject {
+    @objc public init(navBarColor: UIKit.UIColor, ticketColor: UIKit.UIColor, buttonColor: UIKit.UIColor)
+    @objc public init(oneColor: UIKit.UIColor)
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  @objc public enum IdentityTheme : Swift.Int, Swift.CustomStringConvertible {
+    case ticketmaster
+    case ticketmasterNew
+    case livenation
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+extension Swift.Array {
+  @inlinable internal init(reserveCapacity: Swift.Int) {
+    self = Array<Element>()
+    self.reserveCapacity(reserveCapacity)
+  }
+  @inlinable internal var slice: Swift.ArraySlice<Element> {
+    get {
+    self[self.startIndex ..< self.endIndex]
+  }
+  }
+}
+extension PresenceSDK.PSDK {
+  final public var version: Swift.String {
+    get
+  }
+  final public var secureEntryVersion: Swift.String {
+    get
+  }
+  @objc final public func setConfig(consumerKey: Swift.String, hostEnvironment: PresenceSDK.PSDK.HostEnvironment = .US, sdkEnvironment: PresenceSDK.PSDK.SDKEnvironment = .Production, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = true, disableModernAccounts: Swift.Bool = false, quickLogin: Swift.Bool = true, autoLogin: Swift.Bool = true)
+  @objc final public func setConfiguration(_ configuration: PresenceSDK.PSDK.Configuration)
+  @objc final public func checkConfig(success: @escaping PresenceSDK.PSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PSDK.ConfigFailureHandler)
+  @objc final public func setBrandingColors(_ brandingColors: PresenceSDK.PSDK.BrandingColors)
+  @objc final public func setLogo(_ image: UIKit.UIImage?)
+  @objc final public func setTheme(theme: PresenceSDK.PSDK.SDKTheme)
+}
+extension PresenceSDK.PSDK {
+  @objc public class Configuration : ObjectiveC.NSObject {
+    final public let consumerKey: Swift.String
+    final public let hostEnvironment: PresenceSDK.PSDK.HostEnvironment
+    final public let sdkEnvironment: PresenceSDK.PSDK.SDKEnvironment
+    final public let displayName: Swift.String?
+    final public let useNewAccountsManager: Swift.Bool
+    final public let disableModernAccounts: Swift.Bool
+    final public let quickLogin: Swift.Bool
+    final public let autoLogin: Swift.Bool
+    @objc public init(consumerKey: Swift.String, hostEnvironment: PresenceSDK.PSDK.HostEnvironment = .US, sdkEnvironment: PresenceSDK.PSDK.SDKEnvironment = .Production, displayName: Swift.String? = nil, useNewAccountsManager: Swift.Bool = true, disableModernAccounts: Swift.Bool = false, quickLogin: Swift.Bool = true, autoLogin: Swift.Bool = true)
+    @objc deinit
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class PresenceEventAnalytics : ObjectiveC.NSObject {
+  @objc @_inheritsConvenienceInitializers @objcMembers final public class Action : ObjectiveC.NSObject {
+    @objc public static let ACTION_MYTICKETSCREENSHOWED: Swift.String
+    @objc public static let ACTION_MANAGETICKETSCREENSHOWED: Swift.String
+    @objc public static let ACTION_ADDPAYMENTINFOSCREENSHOWED: Swift.String
+    @objc public static let ACTION_MYTICKETBARCODESCREENSHOWED: Swift.String
+    @objc public static let ACTION_TICKETDETAILSSCREENSHOWED: Swift.String
+    @objc public static let ACTION_FINDNEWTICKETSPRESSED: Swift.String
+    @objc public static let ACTION_MYTICKETBARCODESCREENSHOT: Swift.String
+    @objc public static let ACTION_HEALTH_CHECK_MORE_INFO_CLICK: Swift.String
+    @objc public static let ACTION_HEALTH_CHECK_LEARN_MORE_CLICK: Swift.String
+    @objc public static let ACTION_HEALTH_CHECK_GOT_IT_CLICK: Swift.String
+    @objc public static let ACTION_TRANSFERINITIATED: Swift.String
+    @objc public static let ACTION_TRANSFERCANCELLED: Swift.String
+    @objc public static let MIXPANEL_ACTION_TRANSFERINITIATED: Swift.String
+    @objc public static let MIXPANEL_ACTION_TRANSFERCANCELLED: Swift.String
+    @objc public static let ACTION_RESALEINITIATED: Swift.String
+    @objc public static let ACTION_RESALECANCELLED: Swift.String
+    @objc public static let ACTION_RESALEEDITED: Swift.String
+    @objc public static let MIXPANEL_ACTION_RESALEINITIATED: Swift.String
+    @objc public static let MIXPANEL_ACTION_RESALECANCELLED: Swift.String
+    @objc public static let MIXPANEL_ACTION_RESALEEDITED: Swift.String
+    @objc public static let ACTION_FED_LOGIN_SCREEN_DISMISSED_AFTER_SUCCESS_LOGIN_NO_LINK: Swift.String
+    @objc public static let ACTION_FED_LOGIN_LINK_ACCOUNTS_SCREEN_SHOWED: Swift.String
+    @objc public static let ACTION_FED_LOGIN_LINK_ACCOUNTS_SCREEN_DISMISSED: Swift.String
+    @objc public static let ACTION_GAME_DAY_MODAL_SHOWED: Swift.String
+    @objc public static let ACTION_GAME_DAY_FLOW_REJECTED: Foundation.Notification.Name
+    @objc public static let ACTION_GAME_DAY_FLOW_ACCEPTED: Swift.String
+    @objc public static let ACTION_FED_LOGIN_NO_THANKS_BUTTON_PRESSED: Swift.String
+    @objc public static let ACTION_FED_LOGIN_LINK_ACCOUNTS_BUTTON_PRESSED: Swift.String
+    @objc public static let ACTION_ADD_TO_WALLET_INITIATE: Swift.String
+    @objc public static let ACTION_ADD_TO_WALLET_CANCEL: Swift.String
+    @objc public static let ACTION_ADD_TO_WALLET_FINISH: Swift.String
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  @objc @_inheritsConvenienceInitializers @objcMembers final public class Data : ObjectiveC.NSObject {
+    @objc public static let EVENT_ID: Swift.String
+    @objc public static let EVENT_NAME: Swift.String
+    @objc public static let EVENT_DATE: Swift.String
+    @objc public static let EVENT_IMAGE_URL: Swift.String
+    @objc public static let EVENT_ORDER_ID: Swift.String
+    @objc public static let VENUE_NAME: Swift.String
+    @objc public static let VENUE_ID: Swift.String
+    @objc public static let CURRENT_TICKET_COUNT: Swift.String
+    @objc public static let ARTIST_NAME: Swift.String
+    @objc public static let ARTIST_ID: Swift.String
+    @objc public static let SECTION: Swift.String
+    @objc public static let ROW: Swift.String
+    @objc public static let SEAT: Swift.String
+    @objc public static let INITIATE_TRANSFER_TICKET_COUNT: Swift.String
+    @objc public static let INITIATE_TRANSFER_TICKET_FACEVALUE: Swift.String
+    @objc public static let CANCEL_TRANSFER_ID: Swift.String
+    @objc public static let CANCEL_TRANSFER_ORDER_ID: Swift.String
+    @objc public static let INITIATE_RESALE_TICKET_COUNT: Swift.String
+    @objc public static let INITIATE_RESALE_PRICE: Swift.String
+    @objc public static let TICKET_COUNT: Swift.String
+    @objc public static let POSTING_ID: Swift.String
+    @objc public static let PAYMENT_METHOD: Swift.String
+    @objc public static let REFUND_METHOD: Swift.String
+    @objc public static let LISTING_PRICE: Swift.String
+    @objc public static let UPDATE_RESALE_POSTING_ID: Swift.String
+    @objc public static let UPDATE_RESALE_PRICE: Swift.String
+    @objc public static let RESALE_BUYER_FEES: Swift.String
+    @objc public static let RESALE_ORIGINAL_FACE_VALUE: Swift.String
+    @objc public static let RESALE_SELLER_PAYOUT: Swift.String
+    @objc public static let RESALE_SELLER_FEES: Swift.String
+    @objc public static let CANCEL_RESALE_POSTING_ID: Swift.String
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension PresenceSDK.PSDK {
+  @objc final public func startMFAValidation(on controller: UIKit.UIViewController, additionalProperties: [Swift.String : Any] = [String: Any](), success: @escaping (_ token: Swift.String) -> Swift.Void, failure: @escaping (_ error: Foundation.NSError) -> Swift.Void)
+}
+@objc public protocol PresenceMember {
+  @objc var id: Swift.String { get }
+  @objc var firstName: Swift.String { get }
+  @objc var lastName: Swift.String { get }
+  @objc var email: Swift.String { get }
+  @objc var postalCode: Swift.String { get }
+  @objc var language: Swift.String { get }
+  @objc var market: Swift.String { get }
+  @objc var country: PresenceSDK.PresenceCountry? { get }
+  @objc var hmacId: Swift.String { get }
+  @objc var doNotSellFlag: Swift.Bool { get }
+  @objc var idToken: Swift.String { get }
+}
+@objc public protocol PresenceCountry {
+  @objc var id: Swift.Int { get }
+  @objc var standard: Swift.String? { get }
+  @objc var code: Swift.String? { get }
+  @objc var name: Swift.String? { get }
+}
+extension Swift.UInt64 {
+  @_specialize(exported: false, kind: full, where T == Swift.ArraySlice<Swift.UInt8>)
+  @inlinable internal init<T>(bytes: T, fromIndex index: T.Index) where T : Swift.Collection, T.Element == Swift.UInt8, T.Index == Swift.Int {
+    if bytes.isEmpty {
+      self = 0
+      return
+    }
+
+    let count = bytes.count
+
+    let val0 = count > 0 ? UInt64(bytes[index.advanced(by: 0)]) << 56 : 0
+    let val1 = count > 1 ? UInt64(bytes[index.advanced(by: 1)]) << 48 : 0
+    let val2 = count > 2 ? UInt64(bytes[index.advanced(by: 2)]) << 40 : 0
+    let val3 = count > 3 ? UInt64(bytes[index.advanced(by: 3)]) << 32 : 0
+    let val4 = count > 4 ? UInt64(bytes[index.advanced(by: 4)]) << 24 : 0
+    let val5 = count > 5 ? UInt64(bytes[index.advanced(by: 5)]) << 16 : 0
+    let val6 = count > 6 ? UInt64(bytes[index.advanced(by: 6)]) << 8 : 0
+    let val7 = count > 7 ? UInt64(bytes[index.advanced(by: 7)]) : 0
+
+    self = val0 | val1 | val2 | val3 | val4 | val5 | val6 | val7
+  }
+}
+@objc @_inheritsConvenienceInitializers public class PresenceOAuthProvider : ObjectiveC.NSObject, TicketmasterFoundation.TicketmasterOAuthDelegate {
+  public func fetchLoginToken(for object: Swift.AnyObject, success: @escaping (_ userToken: TicketmasterFoundation.TicketmasterOAuthToken) -> Swift.Void, failure: @escaping () -> Swift.Void)
+  public func fetchLoginTokenOrPresentUI(for object: Swift.AnyObject, success: @escaping (_ userToken: TicketmasterFoundation.TicketmasterOAuthToken) -> Swift.Void, failure: @escaping () -> Swift.Void)
+  public func logoutThenPresentLoginUI(for object: Swift.AnyObject, options: [Swift.String : Any]?, success: @escaping (_ userToken: TicketmasterFoundation.TicketmasterOAuthToken) -> Swift.Void, failure: @escaping () -> Swift.Void)
+  public func updateLoginToken(for object: Swift.AnyObject, success: @escaping (_ userToken: TicketmasterFoundation.TicketmasterOAuthToken) -> Swift.Void, failure: @escaping () -> Swift.Void)
+  public func removeLoginToken(for object: Swift.AnyObject, success: @escaping () -> Swift.Void, failure: @escaping (_ userToken: TicketmasterFoundation.TicketmasterOAuthToken?) -> Swift.Void)
+  public func fetch2FADeviceToken(for object: Swift.AnyObject, options: [Swift.String : Any], success: @escaping (_ mfaToken: Swift.String) -> Swift.Void, failure: @escaping (_ error: Foundation.NSError?) -> Swift.Void)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class PSDKTicketsModule : ObjectiveC.NSObject, Swift.Comparable {
+  final public let identifier: Swift.String
+  final public let headerDisplay: PresenceSDK.PSDKTicketsModule.HeaderDisplay?
+  public var actionButtons: [PresenceSDK.PSDKTicketsModule.ActionButton]
+  public init(identifier: Swift.String, headerDisplay: PresenceSDK.PSDKTicketsModule.HeaderDisplay? = nil, actionButtons: [PresenceSDK.PSDKTicketsModule.ActionButton])
+  public static func < (lhs: PresenceSDK.PSDKTicketsModule, rhs: PresenceSDK.PSDKTicketsModule) -> Swift.Bool
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc public class HeaderDisplay : ObjectiveC.NSObject {
+    final public let image: UIKit.UIImage?
+    final public let view: UIKit.UIView?
+    public init(image: UIKit.UIImage)
+    public init(view: UIKit.UIView)
+    @objc deinit
+  }
+  @objc public class ActionButton : ObjectiveC.NSObject {
+    final public let title: Swift.String
+    final public let webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings?
+    final public let callbackValue: Swift.String?
+    public var enabled: Swift.Bool
+    public init(title: Swift.String, callbackValue: Swift.String? = nil)
+    public init(title: Swift.String, webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings)
+    @objc deinit
+  }
+  @objc public class WebpageSettings : ObjectiveC.NSObject {
+    public var pageTitle: Swift.String
+    public var urlRequest: Foundation.URLRequest
+    public var openExternalURL: Swift.Bool
+    public var internalPresentationStyle: UIKit.UIModalPresentationStyle?
+    public var reloadTicketInfo: Swift.Bool
+    public var oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings?
+    public var ufcEnabled: Swift.Bool
+    public init(pageTitle: Swift.String, urlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, ufcEnabled: Swift.Bool = false)
+    @objc deinit
+  }
+  @objc public class OAuthCookieSettings : ObjectiveC.NSObject {
+    public var name: Swift.String
+    public var webDomains: [Swift.String]
+    public var backend: PresenceSDK.PSDK.BackendName
+    public init(name: Swift.String, webDomains: [Swift.String], backend: PresenceSDK.PSDK.BackendName)
+    @objc deinit
+  }
+  @objc deinit
+}
+extension PresenceSDK.PSDKTicketsModule.ActionButton {
+  convenience public init?(title: Swift.String, webUrlString: Swift.String, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, ufcEnabled: Swift.Bool = false)
+  convenience public init(title: Swift.String, webUrlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, ufcEnabled: Swift.Bool = false)
+}
+extension Swift.String : Swift.Error {
+}
+@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "Renamed to PresenceView")
+@objcMembers @IBDesignable final public class PresenceSDKView : PresenceSDK.PresenceView {
+  @objc override dynamic public init(frame rect: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers @IBDesignable public class PresenceView : UIKit.UIView {
+  @objc override dynamic public init(frame rect: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic public func awakeFromNib()
+  @objc override dynamic public func willMove(toWindow newWindow: UIKit.UIWindow?)
+  @objc override dynamic public func didMoveToWindow()
+  @objc public func refreshView()
+  @objc deinit
+}
+@objc public protocol PresenceLoginDelegate {
+  @objc optional func onLoginWindowDidDisplay(backendName: PresenceSDK.PSDK.BackendName)
+  @objc optional func onLoginForgotPasswordClicked(backendName: PresenceSDK.PSDK.BackendName)
+  @objc optional func onLoginMethodUsed(backendName: PresenceSDK.PSDK.BackendName, loginMethod: PresenceSDK.PSDK.LoginMethod)
+  @objc optional func onLoginSuccessful(backendName: PresenceSDK.PSDK.BackendName, accessToken: Swift.String)
+  @objc optional func onLoginCancelled(backendName: PresenceSDK.PSDK.BackendName)
+  @objc optional func onLoginFailed(backendName: PresenceSDK.PSDK.BackendName, error: Foundation.NSError)
+  @objc optional func onTokenRefreshed(backendName: PresenceSDK.PSDK.BackendName, accessToken: Swift.String)
+  @objc optional func onRefreshTokenFailed(backendName: PresenceSDK.PSDK.BackendName)
+  @objc optional func onRefreshTokenExpired(backendName: PresenceSDK.PSDK.BackendName)
+  @objc optional func onLogoutSuccessful(backendName: PresenceSDK.PSDK.BackendName)
+  @objc optional func onLogoutFailed(backendName: PresenceSDK.PSDK.BackendName, error: Swift.Error)
+  @objc optional func onLogoutAllSuccessful()
+  @objc optional func onMemberUpdated(backendName: PresenceSDK.PSDK.BackendName, member: PresenceSDK.PresenceMember)
+  @objc optional func onCacheCleared()
+}
+extension Swift.UInt32 {
+  @_specialize(exported: false, kind: full, where T == Swift.ArraySlice<Swift.UInt8>)
+  @inlinable internal init<T>(bytes: T, fromIndex index: T.Index) where T : Swift.Collection, T.Element == Swift.UInt8, T.Index == Swift.Int {
+    if bytes.isEmpty {
+      self = 0
+      return
+    }
+
+    let count = bytes.count
+
+    let val0 = count > 0 ? UInt32(bytes[index.advanced(by: 0)]) << 24 : 0
+    let val1 = count > 1 ? UInt32(bytes[index.advanced(by: 1)]) << 16 : 0
+    let val2 = count > 2 ? UInt32(bytes[index.advanced(by: 2)]) << 8 : 0
+    let val3 = count > 3 ? UInt32(bytes[index.advanced(by: 3)]) : 0
+
+    self = val0 | val1 | val2 | val3
+  }
+}
+@_specialize(exported: false, kind: full, where T == Swift.Int)
+@_specialize(exported: false, kind: full, where T == Swift.UInt)
+@_specialize(exported: false, kind: full, where T == Swift.UInt8)
+@_specialize(exported: false, kind: full, where T == Swift.UInt16)
+@_specialize(exported: false, kind: full, where T == Swift.UInt32)
+@_specialize(exported: false, kind: full, where T == Swift.UInt64)
+@inlinable internal func arrayOfBytes<T>(value: T, length totalBytes: Swift.Int = MemoryLayout<T>.size) -> Swift.Array<Swift.UInt8> where T : Swift.FixedWidthInteger {
+  let valuePointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
+  valuePointer.pointee = value
+
+  let bytesPointer = UnsafeMutablePointer<UInt8>(OpaquePointer(valuePointer))
+  var bytes = Array<UInt8>(repeating: 0, count: totalBytes)
+  for j in 0..<min(MemoryLayout<T>.size, totalBytes) {
+    bytes[totalBytes - 1 - j] = (bytesPointer + j).pointee
+  }
+
+  valuePointer.deinitialize(count: 1)
+  valuePointer.deallocate()
+
+  return bytes
+}
+extension UIKit.UIViewController : AuthenticationServices.ASWebAuthenticationPresentationContextProviding {
+  @objc dynamic public func presentationAnchor(for session: AuthenticationServices.ASWebAuthenticationSession) -> AuthenticationServices.ASPresentationAnchor
+}
+@objc @_inheritsConvenienceInitializers public class PresenceViewController : UIKit.UIViewController {
+  @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public protocol PresenceOrderDelegate {
+  @objc optional func presentArtistDetailsPage(with artistId: Swift.String)
+  @objc optional func presentEventDetailsPage(with eventId: Swift.String)
+  @objc optional func presentVenueDetailsPage(with venueId: Swift.String)
+  @objc optional func didUpdateOrderedEvents()
+  @objc optional func didUpdateTickets(eventId: Swift.String)
+  @objc optional func handleBarButtonAction(page: PresenceSDK.PSDK.PresencePage, buttonTitle: Swift.String, order: PresenceSDK.PresenceOrder?)
+}
+@usableFromInline
+internal struct BatchedCollectionIndex<Base> where Base : Swift.Collection {
+}
+extension PresenceSDK.BatchedCollectionIndex : Swift.Comparable {
+  @usableFromInline
+  internal static func == <Base>(lhs: PresenceSDK.BatchedCollectionIndex<Base>, rhs: PresenceSDK.BatchedCollectionIndex<Base>) -> Swift.Bool where Base : Swift.Collection
+  @usableFromInline
+  internal static func < <Base>(lhs: PresenceSDK.BatchedCollectionIndex<Base>, rhs: PresenceSDK.BatchedCollectionIndex<Base>) -> Swift.Bool where Base : Swift.Collection
+}
+@usableFromInline
+internal struct BatchedCollection<Base> : Swift.Collection where Base : Swift.Collection {
+  @usableFromInline
+  internal init(base: Base, size: Swift.Int)
+  @usableFromInline
+  internal typealias Index = PresenceSDK.BatchedCollectionIndex<Base>
+  @usableFromInline
+  internal var startIndex: PresenceSDK.BatchedCollection<Base>.Index {
+    get
+  }
+  @usableFromInline
+  internal var endIndex: PresenceSDK.BatchedCollection<Base>.Index {
+    get
+  }
+  @usableFromInline
+  internal func index(after idx: PresenceSDK.BatchedCollection<Base>.Index) -> PresenceSDK.BatchedCollection<Base>.Index
+  @usableFromInline
+  internal subscript(idx: PresenceSDK.BatchedCollection<Base>.Index) -> Base.SubSequence {
+    get
+  }
+  @usableFromInline
+  internal typealias Element = Base.SubSequence
+  @usableFromInline
+  internal typealias Indices = Swift.DefaultIndices<PresenceSDK.BatchedCollection<Base>>
+  @usableFromInline
+  internal typealias Iterator = Swift.IndexingIterator<PresenceSDK.BatchedCollection<Base>>
+  @usableFromInline
+  internal typealias SubSequence = Swift.Slice<PresenceSDK.BatchedCollection<Base>>
+}
+extension Swift.Collection {
+  @inlinable internal func batched(by size: Swift.Int) -> PresenceSDK.BatchedCollection<Self> {
+    BatchedCollection(base: self, size: size)
+  }
+}
+extension PresenceSDK.PSDK.IdentityTheme : Swift.Equatable {}
+extension PresenceSDK.PSDK.IdentityTheme : Swift.Hashable {}
+extension PresenceSDK.PSDK.IdentityTheme : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.LoginButtons : Swift.Equatable {}
+extension PresenceSDK.PSDK.LoginButtons : Swift.Hashable {}
+extension PresenceSDK.PSDK.LoginButtons : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.SDKEnvironment : Swift.Equatable {}
+extension PresenceSDK.PSDK.SDKEnvironment : Swift.Hashable {}
+extension PresenceSDK.PSDK.SDKEnvironment : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.BackendName : Swift.Equatable {}
+extension PresenceSDK.PSDK.BackendName : Swift.Hashable {}
+extension PresenceSDK.PSDK.BackendName : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.LoginMethod : Swift.Equatable {}
+extension PresenceSDK.PSDK.LoginMethod : Swift.Hashable {}
+extension PresenceSDK.PSDK.LoginMethod : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.HostEnvironment : Swift.Equatable {}
+extension PresenceSDK.PSDK.HostEnvironment : Swift.Hashable {}
+extension PresenceSDK.PSDK.HostEnvironment : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.SDKTheme : Swift.Equatable {}
+extension PresenceSDK.PSDK.SDKTheme : Swift.Hashable {}
+extension PresenceSDK.PSDK.SDKTheme : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.VenueConcessionsButtonType : Swift.Equatable {}
+extension PresenceSDK.PSDK.VenueConcessionsButtonType : Swift.Hashable {}
+extension PresenceSDK.PSDK.VenueConcessionsButtonType : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.IdType : Swift.Equatable {}
+extension PresenceSDK.PSDK.IdType : Swift.Hashable {}
+extension PresenceSDK.PSDK.IdType : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.ActionType : Swift.Equatable {}
+extension PresenceSDK.PSDK.ActionType : Swift.Hashable {}
+extension PresenceSDK.PSDK.ActionType : Swift.RawRepresentable {}
+extension PresenceSDK.PSDK.PresencePage : Swift.Equatable {}
+extension PresenceSDK.PSDK.PresencePage : Swift.Hashable {}
+extension PresenceSDK.PSDK.PresencePage : Swift.RawRepresentable {}

@@ -1,0 +1,16 @@
+{
+  "regions" : [
+    {
+      "name" : "United States",
+      "id" : 840,
+      "abbrev" : "US",
+      "abbrev2": "USA"
+    },
+    {
+      "name" : "Canada",
+      "id" : 124,
+      "abbrev" : "CA",
+      "abbrev2": "CAN"
+    }
+  ]
+}

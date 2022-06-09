@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "SELECT YOUR PAYOUT METHOD"; ObjectID = "Oe2-Gk-ixI"; */
+"Oe2-Gk-ixI.text" = "SELECT YOUR PAYOUT METHOD";
+
+/* Class = "UILabel"; text = "Seller Credit"; ObjectID = "j00-5E-QQU"; */
+"j00-5E-QQU.text" = "Seller Credit";
+
+/* Class = "UILabel"; text = "Personal Check"; ObjectID = "jVt-3m-ZU3"; */
+"jVt-3m-ZU3.text" = "Personal Check";
+
+/* Class = "UILabel"; text = "Deposit Account"; ObjectID = "w74-ZN-p7X"; */
+"w74-ZN-p7X.text" = "Deposit Account";
+
+/* Class = "UILabel"; text = "AMEX****4567"; ObjectID = "xEo-fq-wF3"; */
+"xEo-fq-wF3.text" = "AMEX****4567";

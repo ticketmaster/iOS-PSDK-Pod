@@ -1,0 +1,56 @@
+{
+    "version": "1.0.2",
+    "keys": [
+        "resale_seating_message",
+        "transfer_seating_message",
+        "team_quick_launch_title",
+        "team_quick_launch_subtitle",
+        "team_quick_launch_info_title",
+        "team_quick_launch_info_body",
+        "host_quick_launch_title",
+        "host_quick_launch_subtitle",
+        "host_quick_launch_info_title",
+        "host_quick_launch_info_body"
+    ],
+    "localisations": [
+        {
+            "lang": "en",
+            "strings": {
+                "resale_seating_message": "We suggest selling your seats together as a group in order to ensure fans stay safe and socially distanced.",
+                "transfer_seating_message": "Only transfer tickets to people you know and trust to ensure everyone stays safe and socially distanced.",
+                "team_quick_launch_title": "Sign In",
+                "team_quick_launch_subtitle": "Access and manage all the tickets you own with ease.",
+                "team_quick_launch_info_title": "Important Account Info",
+                "team_quick_launch_info_body": "You can now use the same email and password for both your %s ticket account and your Ticketmaster account. <b><a href=https://help.ticketmaster.com/s/article/The-New-Sign-In-Experience?language=en_US>Learn More </a></b><br><br><b>%s ticket holder?</b> Use your existing email to sign in and update your password if prompted.<br><br><b>New here?</b> Use your Ticketmaster email and password.",
+                "host_quick_launch_title": "Sign In",
+                "host_quick_launch_subtitle": "Access and manage all the tickets you own with ease.",
+                "host_quick_launch_info_title": "",
+                "host_quick_launch_info_body": ""
+            },
+            "regions": [
+                {
+                    "region": "au",
+                    "strings": {
+                        "transfer_seating_message": "Only forward tickets to people you know and trust to ensure everyone’s safety."
+                    }
+                }
+            ]
+        },
+        {
+            "lang": "fr-ca",
+            "strings": {
+                "resale_seating_message": "Nous vous conseillons de vendre vos sièges en bloc afin d’assurer la sécurité des fans et de favoriser la distanciation sociale.",
+                "transfer_seating_message": "Ne transférez des billets qu’aux personnes que vous connaissez et en qui vous avez confiance. Vous assurerez ainsi la sécurité de chacun et favoriserez la distanciation sociale.",
+                "team_quick_launch_title": "Se connecter",
+                "team_quick_launch_subtitle": "Accédez et gérez facilement vos billets.",
+                "team_quick_launch_info_title": "Informations importantes sur votre compte",
+                "team_quick_launch_info_body": "Vous pouvez désormais utiliser la même adresse courriel et le même mot de passe pour votre compte %s et votre compte Ticketmaster. <b><a href=https://help.ticketmaster.com/s/article/The-New-Sign-In-Experience?language=en_US>En savoir plus </a></b><br><br><b>Détenteur d’un compte %s?</b> Utilisez votre adresse courriel pour vous connecter et mettez à jour votre mot de passe si vous y êtes invité.<br><br><b>Nouvel utilisateur?</b> Utilisez votre adresse courriel et mot de passe Ticketmaster.",
+                "host_quick_launch_title": "Se connecter",
+                "host_quick_launch_subtitle": "Accédez et gérez facilement vos billets.",
+                "host_quick_launch_info_title": "",
+                "host_quick_launch_info_body": ""
+            },
+            "regions": null
+        }
+    ]
+}

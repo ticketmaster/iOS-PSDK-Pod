@@ -1,0 +1,11 @@
+framework module TicketmasterSecureEntry {
+  umbrella header "TicketmasterSecureEntry.h"
+
+  export *
+  module * { export * }
+}
+
+module TicketmasterSecureEntry.Swift {
+    header "TicketmasterSecureEntry-Swift.h"
+    requires objc
+}

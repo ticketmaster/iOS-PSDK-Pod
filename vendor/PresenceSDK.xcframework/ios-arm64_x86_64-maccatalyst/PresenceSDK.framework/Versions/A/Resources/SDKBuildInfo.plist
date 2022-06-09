@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildDate</key>
+	<string>Tue Jun  7 08:39:53 PDT 2022</string>
+	<key>BuildHost</key>
+	<string>USHOLJBA1-ML</string>
+	<key>GITBranch</key>
+	<string>master</string>
+	<key>GITComment</key>
+	<string>Added comment on reason why PresenceOAuthProvider exists as a separate class</string>
+	<key>GITDate</key>
+	<string>Mon Jun 6 17:51:51 2022 -0700</string>
+	<key>GITRevision</key>
+	<string>4b9305b50b4c9e9bee22a80e35bffaffb5cb075b</string>
+	<key>MarketingVersion</key>
+	<string>2.11.0</string>
+</dict>
+</plist>

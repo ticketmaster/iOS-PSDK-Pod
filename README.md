@@ -16,9 +16,9 @@ Have a question about Presence SDK? [Contact us!](https://developer.ticketmaster
 
 ### CocoaPods
 
-Swift 5.3.0+:
+Swift 5.5.0+:
 ```ruby
-pod 'TM-PSDK', '~> 5.3.0-2.10.0'
+pod 'TM-PSDK', '~> 5.5.0-2.11.0'
 ```
 
 ## Integration Guide
