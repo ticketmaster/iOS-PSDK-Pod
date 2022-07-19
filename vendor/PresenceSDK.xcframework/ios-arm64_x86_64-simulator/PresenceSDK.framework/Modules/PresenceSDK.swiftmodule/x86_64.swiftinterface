@@ -186,8 +186,8 @@ extension PresenceSDK.PSDK {
   public static let delegateNotImplementedError: Foundation.NSError
 }
 public protocol PresenceModuleDelegate : AnyObject {
-  func addCustomModules(order: PresenceSDK.PresenceOrder, completion: @escaping (_ customModuleArray: [PresenceSDK.PSDKTicketsModule]?) -> Swift.Void)
-  func handleModuleButtonAction(moduleIdentifier: Swift.String, page: PresenceSDK.PSDK.PresencePage, buttonTitle: Swift.String, order: PresenceSDK.PresenceOrder?, callbackValue: Swift.String)
+  func addCustomModules(eventOrders: PresenceSDK.PresenceEventOrders, completion: @escaping (_ customModuleArray: [PresenceSDK.PSDKTicketsModule]?) -> Swift.Void)
+  func handleModuleButtonAction(moduleIdentifier: Swift.String, buttonTitle: Swift.String, callbackValue: Swift.String, eventOrders: PresenceSDK.PresenceEventOrders, completion: @escaping (_ openWebpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings?) -> Swift.Void)
 }
 extension Swift.FixedWidthInteger {
   @inlinable internal func bytes(totalBytes: Swift.Int = MemoryLayout<Self>.size) -> Swift.Array<Swift.UInt8> {
@@ -215,6 +215,7 @@ extension PresenceSDK.PSDK {
   @available(*, deprecated, message: "Use logout(completion:) instead for proper OAuth2 logout handling")
   @objc final public func logOut()
   @objc final public func logOut(forceLogout: Swift.Bool = false, completion: @escaping (_ hostSuccess: Swift.Bool, _ hostError: Swift.Error?, _ teamSuccess: Swift.Bool, _ teamError: Swift.Error?, _ sportXRSuccess: Swift.Bool, _ sportXRError: Swift.Error?) -> Swift.Void = { _, _, _, _, _, _ in })
+  @objc final public func logout(backendName: PresenceSDK.PSDK.BackendName, forceLogout: Swift.Bool = false, success: @escaping () -> Swift.Void = { }, failure: @escaping (_ error: Swift.Error) -> Swift.Void = { _ in })
   @objc final public func logOutHost(forceLogout: Swift.Bool = false, success: @escaping () -> Swift.Void = { }, failure: @escaping (_ error: Swift.Error) -> Swift.Void = { _ in })
   @objc final public func logOutTeam(forceLogout: Swift.Bool = false, success: @escaping () -> Swift.Void = { }, failure: @escaping (_ error: Swift.Error) -> Swift.Void = { _ in })
   @objc final public func logOutSportXR(forceLogout: Swift.Bool = false, success: @escaping () -> Swift.Void = { }, failure: @escaping (_ error: Swift.Error) -> Swift.Void = { _ in })
@@ -229,21 +230,11 @@ extension PresenceSDK.PSDK {
   @objc final public func hasUserSignedInTeam() -> Swift.Bool
   @objc final public func hasUserSignedInSportXR() -> Swift.Bool
 }
-@_hasMissingDesignatedInitializers @objc public class PresenceOrder : ObjectiveC.NSObject, Swift.Codable {
-  final public let eventIdentifier: Swift.String?
-  final public let venueIdentifier: Swift.String?
-  final public let orderIdentifiers: [Swift.String]?
-  final public let tickets: [PresenceSDK.PresenceOrder.PresenceTicket]?
-  @_hasMissingDesignatedInitializers @objc public class PresenceTicket : ObjectiveC.NSObject, Swift.Codable {
-    final public let section: Swift.String
-    final public let row: Swift.String
-    final public let seat: Swift.String
-    final public let quantity: Swift.Int
-    final public let isGeneralAdmission: Swift.Bool
-    @objc deinit
-    public func encode(to encoder: Swift.Encoder) throws
-    required public init(from decoder: Swift.Decoder) throws
-  }
+@objc @_hasMissingDesignatedInitializers public class PresenceOrder : ObjectiveC.NSObject, Swift.Codable {
+  final public let orderIdentifier: Swift.String
+  final public let displayableOrderIdentifier: Swift.String
+  final public let encodedOrderIdentifier: Swift.String?
+  final public let tickets: [PresenceSDK.PresenceTicket]
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -252,6 +243,161 @@ extension PresenceSDK.PSDK {
   @objc optional func venueConcessionsSdkIdentifier(forIdentifier identifier: Swift.String, completion: @escaping (_ sdkIdentifier: Swift.String?, _ error: Swift.Error?) -> Swift.Void)
   @objc optional func venue(identifier: Swift.String, sdkIdentifier: Swift.String, concessionsButtonPressed: PresenceSDK.PSDK.VenueConcessionsButtonType)
   @objc optional func venueSeatUpgrades(forIdentifier identifier: Swift.String, completion: @escaping (_ clientID: Swift.String?, _ clientRedirectURL: Swift.String?, _ backendName: PresenceSDK.PSDK.BackendName) -> Swift.Void)
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceEvent : ObjectiveC.NSObject, Swift.Codable {
+  final public let identifier: Swift.String?
+  final public let uniqueIdentifier: Swift.String?
+  final public let hostIdentifier: Swift.String?
+  final public let discoveryIdentifier: Swift.String?
+  final public let childEventIDs: [Swift.String]?
+  final public let relatedIdentifiers: [Swift.String]?
+  final public let name: Swift.String?
+  final public let eventDescription: Swift.String?
+  final public let imageInfo: PresenceSDK.PresenceImageInfo?
+  final public let url: Foundation.URL?
+  final public let code: Swift.String?
+  final public let typeName: Swift.String?
+  final public let status: Swift.String?
+  final public let color: Swift.String?
+  final public let dateInfo: PresenceSDK.PresenceDateInfo?
+  final public let isPastEvent: Swift.Bool?
+  final public let isHostEvent: Swift.Bool?
+  final public let isSeriesMaster: Swift.Bool?
+  final public let isSeriesChild: Swift.Bool?
+  final public let isThirdPartyResale: Swift.Bool?
+  final public let isStreaming: Swift.Bool?
+  final public let isSportXREvent: Swift.Bool?
+  final public let promoterBranding: PresenceSDK.PresencePromoterBranding?
+  final public let healthCheck: PresenceSDK.PresenceHealthCheck?
+  final public let venue: PresenceSDK.PresenceVenue?
+  final public let attraction: PresenceSDK.PresenceAttraction?
+  final public let hostOrderInfos: [PresenceSDK.PresenceOrderInfo]?
+  final public let hostOrderIDs: [Swift.String]?
+  final public let encodedHostOrderIDs: [Swift.String]?
+  final public let orderStatus: Swift.String?
+  final public let isF2FExchangeEnabled: Swift.Bool?
+  final public let ticketManagement: PresenceSDK.PresenceTicketManagement?
+  final public let isOrdersAPI: Swift.Bool?
+  final public let useTmtt: Swift.Bool?
+  final public let isRetEnabled: Swift.Bool?
+  final public let isLarge: Swift.Bool?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceVenue : ObjectiveC.NSObject, Swift.Codable {
+  final public let identifier: Swift.String?
+  final public let name: Swift.String?
+  final public let timezone: Swift.String?
+  final public let address: PresenceSDK.PresenceVenue.Address?
+  final public let geolocation: PresenceSDK.PresenceVenue.Location?
+  @objc @_hasMissingDesignatedInitializers public class Address : ObjectiveC.NSObject, Swift.Codable {
+    final public let line1: Swift.String?
+    final public let city: Swift.String?
+    final public let region: Swift.String?
+    final public let postalCode: Swift.String?
+    final public let country: Swift.String?
+    @objc deinit
+    public func encode(to encoder: Swift.Encoder) throws
+    required public init(from decoder: Swift.Decoder) throws
+  }
+  @objc @_hasMissingDesignatedInitializers public class Location : ObjectiveC.NSObject, Swift.Codable {
+    final public let latitude: Swift.String?
+    final public let longitude: Swift.String?
+    public var coordinate: CoreLocation.CLLocationCoordinate2D? {
+      get
+    }
+    @objc deinit
+    public func encode(to encoder: Swift.Encoder) throws
+    required public init(from decoder: Swift.Decoder) throws
+  }
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceAttraction : ObjectiveC.NSObject, Swift.Codable {
+  final public let identifier: Swift.String?
+  final public let name: Swift.String?
+  final public let type: Swift.String?
+  final public let url: Foundation.URL?
+  final public let locale: Swift.String?
+  final public let test: Swift.Bool?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceOrderInfo : ObjectiveC.NSObject, Swift.Codable {
+  final public let orderId: Swift.String?
+  final public let displayOrderId: Swift.String?
+  final public let legacyOrderId: Swift.String?
+  final public let encodedOrderId: Swift.String?
+  final public let orderStatus: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceDateInfo : ObjectiveC.NSObject, Swift.Codable {
+  final public let isMultiDay: Swift.Bool
+  final public let dateAtVenueString: Swift.String?
+  final public let endDateAtVenueString: Swift.String?
+  final public let dateTimeAtVenueString: Swift.String?
+  final public let dateTimeUTCString: Swift.String?
+  final public let dateTimeUTC: Foundation.Date?
+  final public let timezone: Foundation.TimeZone?
+  final public let hasDateOverride: Swift.Bool
+  final public let dateOverrideText: Swift.String?
+  final public let hasTimeOverride: Swift.Bool
+  final public let timeOverrideText: Swift.String?
+  final public let displayDateTimeText: Swift.String?
+  final public let actualDisplayDateTimeText: Swift.String
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceImageInfo : ObjectiveC.NSObject, Swift.Codable {
+  final public let identifier: Swift.String?
+  final public let name: Swift.String?
+  final public let url: Foundation.URL?
+  final public let height: CoreGraphics.CGFloat?
+  final public let width: CoreGraphics.CGFloat?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresencePromoterBranding : ObjectiveC.NSObject, Swift.Codable {
+  final public let colorString: Swift.String
+  final public let logo1xUrl: Foundation.URL?
+  final public let logo2xUrl: Foundation.URL?
+  final public let logo3xUrl: Foundation.URL?
+  public func color() -> UIKit.UIColor?
+  public func logoForScreenScale() -> Foundation.URL?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceHealthCheck : ObjectiveC.NSObject, Swift.Codable {
+  final public let provider: Swift.String?
+  final public let smallIcon: Foundation.URL?
+  final public let largeIcon: Foundation.URL?
+  final public let summary: Swift.String?
+  final public let checkDescription: Swift.String?
+  final public let learnMoreUrl: Foundation.URL?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceTicketManagement : ObjectiveC.NSObject, Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceEventOrders : ObjectiveC.NSObject, Swift.Codable {
+  final public let event: PresenceSDK.PresenceEvent
+  final public let orders: [PresenceSDK.PresenceOrder]?
+  public var selectedOrder: PresenceSDK.PresenceOrder?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 extension PresenceSDK.PSDK {
   @objc public enum BackendName : Swift.Int, Swift.CustomStringConvertible {
@@ -410,6 +556,121 @@ extension Swift.Array {
     self[self.startIndex ..< self.endIndex]
   }
   }
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceTicket : ObjectiveC.NSObject, Swift.Codable {
+  final public let identifier: Swift.String?
+  final public let uniqueEventIdentifier: Swift.String?
+  final public let eventIdentifier: Swift.String?
+  final public let externalEventIdentifier: Swift.String?
+  final public let eventName: Swift.String?
+  final public let eventCode: Swift.String?
+  final public let paramRef: Swift.String?
+  final public let ticketType: Swift.String?
+  final public let extendedTicketType: Swift.String?
+  final public let ticketDescription: Swift.String?
+  final public let productType: Swift.String?
+  final public let isHostTicket: Swift.Bool?
+  final public let isStreamingTicket: Swift.Bool?
+  final public let isThirdPartyResale: Swift.Bool?
+  final public let ticketSource: Swift.String?
+  final public let ticketTextLines: [Swift.String]?
+  final public let termsAndConditions: Swift.String?
+  final public let hostBranding: PresenceSDK.PresenceHostBranding?
+  final public let vipColor: PresenceSDK.PresenceColor?
+  final public let vipText: Swift.String?
+  final public let entryGate: Swift.String?
+  final public let sectionName: Swift.String?
+  final public let rowName: Swift.String?
+  final public let seatName: Swift.String?
+  final public let seatType: Swift.String?
+  final public let seatFrom: Swift.String?
+  final public let seatThru: Swift.String?
+  final public let deliveryInfo: PresenceSDK.PresenceDelivery?
+  final public let deliveryServiceType: Swift.String?
+  final public let barcodeRenderStatus: Swift.String?
+  final public let ticketStatus: Swift.String?
+  final public let transferAvailabilityStatus: Swift.String?
+  final public let resaleAvailabilityStatus: Swift.String?
+  final public let orderIdentifier: Swift.String?
+  final public let displayOrderIdentifier: Swift.String?
+  final public let isOrdersApi: Swift.Bool?
+  final public let orderStatus: Swift.String?
+  final public let purchaseDate: Foundation.Date?
+  final public let ticketFees: [PresenceSDK.PresenceTicketFee]?
+  final public let originalTicketPrice: Swift.Double?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceTicketFee : ObjectiveC.NSObject, Swift.Codable {
+  final public let feeDescription: Swift.String?
+  final public let type: Swift.String?
+  final public let amount: Swift.Double?
+  final public let currency: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceDelivery : ObjectiveC.NSObject, Swift.Codable {
+  final public let status: Swift.String?
+  final public let source: PresenceSDK.PresenceDelivery.DeliverySource?
+  final public let deliveryDate: Foundation.Date?
+  final public let segmentType: PresenceSDK.PresenceDelivery.DeliverySegmentType?
+  final public let descriptionLine1: Swift.String?
+  final public let descriptionLine2: Swift.String?
+  final public let descriptionLine3: Swift.String?
+  final public let displayMessage: Swift.String?
+  public enum DeliverySource : Swift.Equatable, Swift.Codable {
+    case flash
+    case ups
+    case willCall
+    case mobileTransfer
+    case unknown
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: PresenceSDK.PresenceDelivery.DeliverySource, b: PresenceSDK.PresenceDelivery.DeliverySource) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public enum DeliverySegmentType : Swift.Equatable, Swift.Codable {
+    case barcode
+    case nfc
+    case rotatingSymbology
+    case nfcRotatingSymbology
+    case unknown
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: PresenceSDK.PresenceDelivery.DeliverySegmentType, b: PresenceSDK.PresenceDelivery.DeliverySegmentType) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
+    public init(from decoder: Swift.Decoder) throws
+  }
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc @_hasMissingDesignatedInitializers public class PresenceHostBranding : ObjectiveC.NSObject, Swift.Codable {
+  final public let headerImageUrl: Foundation.URL?
+  final public let sponsorImageUrl: Foundation.URL?
+  final public let termsTitle: Swift.String?
+  final public let labelColor: PresenceSDK.PresenceColor?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class PresenceColor : ObjectiveC.NSObject, Swift.Codable, Swift.LosslessStringConvertible {
+  final public let color: UIKit.UIColor
+  public init?(color: UIKit.UIColor?)
+  required public init?(_ hexString: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
 }
 extension PresenceSDK.PSDK {
   final public var version: Swift.String {
@@ -585,9 +846,10 @@ extension Swift.UInt64 {
     final public let title: Swift.String
     final public let webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings?
     final public let callbackValue: Swift.String?
+    final public let requiresSpecificOrder: Swift.Bool
     public var enabled: Swift.Bool
-    public init(title: Swift.String, callbackValue: Swift.String? = nil)
-    public init(title: Swift.String, webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings)
+    public init(title: Swift.String, callbackValue: Swift.String? = nil, requiresSpecificOrder: Swift.Bool = false, enabled: Swift.Bool = true)
+    public init(title: Swift.String, webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings, enabled: Swift.Bool = true)
     @objc deinit
   }
   @objc public class WebpageSettings : ObjectiveC.NSObject {
@@ -597,8 +859,7 @@ extension Swift.UInt64 {
     public var internalPresentationStyle: UIKit.UIModalPresentationStyle?
     public var reloadTicketInfo: Swift.Bool
     public var oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings?
-    public var ufcEnabled: Swift.Bool
-    public init(pageTitle: Swift.String, urlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, ufcEnabled: Swift.Bool = false)
+    public init(pageTitle: Swift.String, urlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil)
     @objc deinit
   }
   @objc public class OAuthCookieSettings : ObjectiveC.NSObject {
@@ -611,8 +872,8 @@ extension Swift.UInt64 {
   @objc deinit
 }
 extension PresenceSDK.PSDKTicketsModule.ActionButton {
-  convenience public init?(title: Swift.String, webUrlString: Swift.String, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, ufcEnabled: Swift.Bool = false)
-  convenience public init(title: Swift.String, webUrlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, ufcEnabled: Swift.Bool = false)
+  convenience public init?(title: Swift.String, pageTitle: Swift.String? = nil, webUrlString: Swift.String, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, enabled: Swift.Bool = true)
+  convenience public init(title: Swift.String, pageTitle: Swift.String? = nil, webUrlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, enabled: Swift.Bool = true)
 }
 extension Swift.String : Swift.Error {
 }
@@ -705,7 +966,7 @@ extension UIKit.UIViewController : AuthenticationServices.ASWebAuthenticationPre
   @objc optional func presentVenueDetailsPage(with venueId: Swift.String)
   @objc optional func didUpdateOrderedEvents()
   @objc optional func didUpdateTickets(eventId: Swift.String)
-  @objc optional func handleBarButtonAction(page: PresenceSDK.PSDK.PresencePage, buttonTitle: Swift.String, order: PresenceSDK.PresenceOrder?)
+  @objc optional func handleBarButtonAction(page: PresenceSDK.PSDK.PresencePage, buttonTitle: Swift.String, eventOrders: PresenceSDK.PresenceEventOrders?)
 }
 @usableFromInline
 internal struct BatchedCollectionIndex<Base> where Base : Swift.Collection {
@@ -783,3 +1044,5 @@ extension PresenceSDK.PSDK.ActionType : Swift.RawRepresentable {}
 extension PresenceSDK.PSDK.PresencePage : Swift.Equatable {}
 extension PresenceSDK.PSDK.PresencePage : Swift.Hashable {}
 extension PresenceSDK.PSDK.PresencePage : Swift.RawRepresentable {}
+extension PresenceSDK.PresenceDelivery.DeliverySource : Swift.Hashable {}
+extension PresenceSDK.PresenceDelivery.DeliverySegmentType : Swift.Hashable {}

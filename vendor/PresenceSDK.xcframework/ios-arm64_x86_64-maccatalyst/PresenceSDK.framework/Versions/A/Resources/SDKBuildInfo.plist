@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Tue Jun  7 08:39:53 PDT 2022</string>
+	<string>Mon Jul 18 12:46:18 PDT 2022</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>master</string>
+	<string>release/2.12.0</string>
 	<key>GITComment</key>
-	<string>Added comment on reason why PresenceOAuthProvider exists as a separate class</string>
+	<string>Updated version to 2.12.2</string>
 	<key>GITDate</key>
-	<string>Mon Jun 6 17:51:51 2022 -0700</string>
+	<string>Fri Jul 15 16:15:47 2022 -0700</string>
 	<key>GITRevision</key>
-	<string>4b9305b50b4c9e9bee22a80e35bffaffb5cb075b</string>
+	<string>16638bcf49aee9b767bba5d77ae217e1a551c983</string>
 	<key>MarketingVersion</key>
-	<string>2.11.0</string>
+	<string>2.12.2</string>
 </dict>
 </plist>

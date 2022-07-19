@@ -223,6 +223,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
 /// Main class for the SDK.
 /// <h2>Accessing the PresenceSDK</h2>
 /// All public methods are accessible by calling the PresenceSDK class singleton:
@@ -311,23 +312,7 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 @end
 
 
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-@end
-
 @class NSString;
-enum HostEnvironment : NSInteger;
-enum SDKEnvironment : NSInteger;
-@class NSNumber;
-
-SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
-@interface Configuration : NSObject
-- (nonnull instancetype)initWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// present an Action Button in the top-right Navbar on the Tickets page
@@ -339,21 +324,34 @@ SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
 @end
 
 
-enum BackendName : NSInteger;
-@protocol PresenceMember;
+
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to get the logged in user’s information.
-/// \param backendName The specified backend name where the SDK will retrive member information from.
-///
-/// \param completion 
-///
-/// \param member An optional PresenceMember object returned in the completion block callback.
-///
-/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
-///
-- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
 @end
+
+enum HostEnvironment : NSInteger;
+enum SDKEnvironment : NSInteger;
+@class NSNumber;
+
+SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
+@interface Configuration : NSObject
+- (nonnull instancetype)initWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum BackendName : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to login via Webview Login
+/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
+/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
+///
+/// \param completion success: Bool, login was completed successfully
+///
+- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+@end
+
 
 @class UIViewController;
 @class NSError;
@@ -376,18 +374,21 @@ enum BackendName : NSInteger;
 @end
 
 
+
+@protocol PresenceMember;
+
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to login via Webview Login
-/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
-/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
+/// Method to get the logged in user’s information.
+/// \param backendName The specified backend name where the SDK will retrive member information from.
 ///
-/// \param completion success: Bool, login was completed successfully
+/// \param completion 
 ///
-- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+/// \param member An optional PresenceMember object returned in the completion block callback.
+///
+/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
+///
+- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
 @end
-
-
-
 
 
 @class PresenceSDKView;
@@ -428,9 +429,10 @@ enum LoginButtons : NSInteger;
 @end
 
 
+
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method for getting a valid OAUTH Access Token. Note that this will present login UI if the user is not logged in.
-/// \param backendName Token for Host or AccountManager
+/// \param backendName Token for Host, AccountManager, or SportXR
 ///
 /// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
 ///
@@ -438,7 +440,7 @@ enum LoginButtons : NSInteger;
 ///
 - (void)getAccessTokenWithBackendName:(enum BackendName)backendName success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
 /// Method for getting a valid OAUTH Access Token.
-/// \param backendName Token for Host or AccountManager
+/// \param backendName Token for Host, AccountManager, or SportXR
 ///
 /// \param presentLoginUI upon failure (not logged in or refresh token expired), automatically present login UI to user
 ///
@@ -451,6 +453,23 @@ enum LoginButtons : NSInteger;
 
 
 
+enum IdType : NSInteger;
+enum ActionType : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate SWIFT_DEPRECATED_MSG("Use jumpToOrderOrEvent(id:type:action:) and set orderDelegate directly on PSDK.shared");
+@end
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -474,6 +493,21 @@ enum LoginButtons : NSInteger;
 /// \param sportXRError Error, error logging out of SportXR
 ///
 - (void)logOutWithForceLogout:(BOOL)forceLogout completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
+/// Method to log out user from specific logged-in accounts
+/// \param backendName logout on Host, AccountManager, or SportXR
+///
+/// \param forceLogout true = logout locally, regardless of response from server
+///
+/// \param success This block will be called when logout was completed successfully.
+///
+/// \param failure This block will be called when there is some error logging out.
+/// <ul>
+///   <li>
+///     error: Logout error
+///   </li>
+/// </ul>
+///
+- (void)logoutWithBackendName:(enum BackendName)backendName forceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 /// Method to log out user from Ticketmaster account
 /// \param forceLogout true = logout locally, regardless of response from server
 ///
@@ -504,24 +538,6 @@ enum LoginButtons : NSInteger;
 /// \param error Logout error
 ///
 - (void)logOutSportXRWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
-enum IdType : NSInteger;
-enum ActionType : NSInteger;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate SWIFT_DEPRECATED_MSG("Use jumpToOrderOrEvent(id:type:action:) and set orderDelegate directly on PSDK.shared");
 @end
 
 
@@ -740,6 +756,23 @@ SWIFT_CLASS("_TtC11PresenceSDK17PSDKTicketsModule")
 
 
 
+SWIFT_CLASS("_TtC11PresenceSDK18PresenceAttraction")
+@interface PresenceAttraction : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// a UIColor Codable
+SWIFT_CLASS("_TtC11PresenceSDK13PresenceColor")
+@interface PresenceColor : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 /// Country protocol representing country of currently logged in user
 SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
 @protocol PresenceCountry
@@ -754,11 +787,69 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
 @end
 
 
+SWIFT_CLASS("_TtC11PresenceSDK16PresenceDateInfo")
+@interface PresenceDateInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK16PresenceDelivery")
+@interface PresenceDelivery : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// an Event purchased by the user
+SWIFT_CLASS("_TtC11PresenceSDK13PresenceEvent")
+@interface PresenceEvent : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
 /// Presence SDK Analytics class for tracking user activity
 SWIFT_CLASS("_TtC11PresenceSDK22PresenceEventAnalytics")
 @interface PresenceEventAnalytics : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+/// a list of Orders user has purchased for a particular Event
+SWIFT_CLASS("_TtC11PresenceSDK19PresenceEventOrders")
+@interface PresenceEventOrders : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK19PresenceHealthCheck")
+@interface PresenceHealthCheck : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK20PresenceHostBranding")
+@interface PresenceHostBranding : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK17PresenceImageInfo")
+@interface PresenceImageInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 
 /// optional delegate to report status of user login
@@ -855,18 +946,13 @@ SWIFT_CLASS("_TtC11PresenceSDK21PresenceOAuthProvider")
 @end
 
 
+/// a specific order for an Event
 SWIFT_CLASS("_TtC11PresenceSDK13PresenceOrder")
 @interface PresenceOrder : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-
-SWIFT_CLASS("_TtCC11PresenceSDK13PresenceOrder14PresenceTicket")
-@interface PresenceTicket : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 
 
@@ -899,8 +985,24 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 ///
 /// \param order contextual order info (if any)
 ///
-- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle order:(PresenceOrder * _Nullable)order;
+- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventOrders:(PresenceEventOrders * _Nullable)eventOrders;
 @end
+
+
+SWIFT_CLASS("_TtC11PresenceSDK17PresenceOrderInfo")
+@interface PresenceOrderInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK24PresencePromoterBranding")
+@interface PresencePromoterBranding : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 @class NSCoder;
 @class UIWindow;
@@ -924,6 +1026,38 @@ SWIFT_CLASS("_TtC11PresenceSDK15PresenceSDKView") SWIFT_DEPRECATED_MSG("Renamed 
 @interface PresenceSDKView : PresenceView
 - (nonnull instancetype)initWithFrame:(CGRect)rect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// This public struct represents a ticket.
+SWIFT_CLASS("_TtC11PresenceSDK14PresenceTicket")
+@interface PresenceTicket : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK17PresenceTicketFee")
+@interface PresenceTicketFee : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK24PresenceTicketManagement")
+@interface PresenceTicketManagement : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK13PresenceVenue")
+@interface PresenceVenue : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -988,6 +1122,7 @@ SWIFT_CLASS("_TtC11PresenceSDK22PresenceViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 
@@ -1268,6 +1403,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
 /// Main class for the SDK.
 /// <h2>Accessing the PresenceSDK</h2>
 /// All public methods are accessible by calling the PresenceSDK class singleton:
@@ -1356,23 +1492,7 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 @end
 
 
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-@end
-
 @class NSString;
-enum HostEnvironment : NSInteger;
-enum SDKEnvironment : NSInteger;
-@class NSNumber;
-
-SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
-@interface Configuration : NSObject
-- (nonnull instancetype)initWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// present an Action Button in the top-right Navbar on the Tickets page
@@ -1384,21 +1504,34 @@ SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
 @end
 
 
-enum BackendName : NSInteger;
-@protocol PresenceMember;
+
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to get the logged in user’s information.
-/// \param backendName The specified backend name where the SDK will retrive member information from.
-///
-/// \param completion 
-///
-/// \param member An optional PresenceMember object returned in the completion block callback.
-///
-/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
-///
-- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
 @end
+
+enum HostEnvironment : NSInteger;
+enum SDKEnvironment : NSInteger;
+@class NSNumber;
+
+SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
+@interface Configuration : NSObject
+- (nonnull instancetype)initWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum BackendName : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to login via Webview Login
+/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
+/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
+///
+/// \param completion success: Bool, login was completed successfully
+///
+- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+@end
+
 
 @class UIViewController;
 @class NSError;
@@ -1421,18 +1554,21 @@ enum BackendName : NSInteger;
 @end
 
 
+
+@protocol PresenceMember;
+
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to login via Webview Login
-/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
-/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
+/// Method to get the logged in user’s information.
+/// \param backendName The specified backend name where the SDK will retrive member information from.
 ///
-/// \param completion success: Bool, login was completed successfully
+/// \param completion 
 ///
-- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+/// \param member An optional PresenceMember object returned in the completion block callback.
+///
+/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
+///
+- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
 @end
-
-
-
 
 
 @class PresenceSDKView;
@@ -1473,9 +1609,10 @@ enum LoginButtons : NSInteger;
 @end
 
 
+
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method for getting a valid OAUTH Access Token. Note that this will present login UI if the user is not logged in.
-/// \param backendName Token for Host or AccountManager
+/// \param backendName Token for Host, AccountManager, or SportXR
 ///
 /// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
 ///
@@ -1483,7 +1620,7 @@ enum LoginButtons : NSInteger;
 ///
 - (void)getAccessTokenWithBackendName:(enum BackendName)backendName success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
 /// Method for getting a valid OAUTH Access Token.
-/// \param backendName Token for Host or AccountManager
+/// \param backendName Token for Host, AccountManager, or SportXR
 ///
 /// \param presentLoginUI upon failure (not logged in or refresh token expired), automatically present login UI to user
 ///
@@ -1496,6 +1633,23 @@ enum LoginButtons : NSInteger;
 
 
 
+enum IdType : NSInteger;
+enum ActionType : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
+/// Display modally a View Controller with order/event information for the given identifier.
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action;
+/// Display modally a View Controller with order/event information for the given identifier and perform the action
+/// Shows events if the particular order/event is not found.
+- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate SWIFT_DEPRECATED_MSG("Use jumpToOrderOrEvent(id:type:action:) and set orderDelegate directly on PSDK.shared");
+@end
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -1519,6 +1673,21 @@ enum LoginButtons : NSInteger;
 /// \param sportXRError Error, error logging out of SportXR
 ///
 - (void)logOutWithForceLogout:(BOOL)forceLogout completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable, BOOL, NSError * _Nullable, BOOL, NSError * _Nullable))completion;
+/// Method to log out user from specific logged-in accounts
+/// \param backendName logout on Host, AccountManager, or SportXR
+///
+/// \param forceLogout true = logout locally, regardless of response from server
+///
+/// \param success This block will be called when logout was completed successfully.
+///
+/// \param failure This block will be called when there is some error logging out.
+/// <ul>
+///   <li>
+///     error: Logout error
+///   </li>
+/// </ul>
+///
+- (void)logoutWithBackendName:(enum BackendName)backendName forceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 /// Method to log out user from Ticketmaster account
 /// \param forceLogout true = logout locally, regardless of response from server
 ///
@@ -1549,24 +1718,6 @@ enum LoginButtons : NSInteger;
 /// \param error Logout error
 ///
 - (void)logOutSportXRWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
-enum IdType : NSInteger;
-enum ActionType : NSInteger;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id;
-/// Display modally a View Controller with order/event information for the given identifier.
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action;
-/// Display modally a View Controller with order/event information for the given identifier and perform the action
-/// Shows events if the particular order/event is not found.
-- (void)jumpToOrderOrEventWithId:(NSString * _Nonnull)id type:(enum IdType)type action:(enum ActionType)action orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate SWIFT_DEPRECATED_MSG("Use jumpToOrderOrEvent(id:type:action:) and set orderDelegate directly on PSDK.shared");
 @end
 
 
@@ -1785,6 +1936,23 @@ SWIFT_CLASS("_TtC11PresenceSDK17PSDKTicketsModule")
 
 
 
+SWIFT_CLASS("_TtC11PresenceSDK18PresenceAttraction")
+@interface PresenceAttraction : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// a UIColor Codable
+SWIFT_CLASS("_TtC11PresenceSDK13PresenceColor")
+@interface PresenceColor : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 /// Country protocol representing country of currently logged in user
 SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
 @protocol PresenceCountry
@@ -1799,11 +1967,69 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK15PresenceCountry_")
 @end
 
 
+SWIFT_CLASS("_TtC11PresenceSDK16PresenceDateInfo")
+@interface PresenceDateInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK16PresenceDelivery")
+@interface PresenceDelivery : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// an Event purchased by the user
+SWIFT_CLASS("_TtC11PresenceSDK13PresenceEvent")
+@interface PresenceEvent : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
 /// Presence SDK Analytics class for tracking user activity
 SWIFT_CLASS("_TtC11PresenceSDK22PresenceEventAnalytics")
 @interface PresenceEventAnalytics : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+/// a list of Orders user has purchased for a particular Event
+SWIFT_CLASS("_TtC11PresenceSDK19PresenceEventOrders")
+@interface PresenceEventOrders : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK19PresenceHealthCheck")
+@interface PresenceHealthCheck : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK20PresenceHostBranding")
+@interface PresenceHostBranding : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK17PresenceImageInfo")
+@interface PresenceImageInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 
 /// optional delegate to report status of user login
@@ -1900,18 +2126,13 @@ SWIFT_CLASS("_TtC11PresenceSDK21PresenceOAuthProvider")
 @end
 
 
+/// a specific order for an Event
 SWIFT_CLASS("_TtC11PresenceSDK13PresenceOrder")
 @interface PresenceOrder : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-
-SWIFT_CLASS("_TtCC11PresenceSDK13PresenceOrder14PresenceTicket")
-@interface PresenceTicket : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 
 
@@ -1944,8 +2165,24 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 ///
 /// \param order contextual order info (if any)
 ///
-- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle order:(PresenceOrder * _Nullable)order;
+- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventOrders:(PresenceEventOrders * _Nullable)eventOrders;
 @end
+
+
+SWIFT_CLASS("_TtC11PresenceSDK17PresenceOrderInfo")
+@interface PresenceOrderInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK24PresencePromoterBranding")
+@interface PresencePromoterBranding : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 @class NSCoder;
 @class UIWindow;
@@ -1969,6 +2206,38 @@ SWIFT_CLASS("_TtC11PresenceSDK15PresenceSDKView") SWIFT_DEPRECATED_MSG("Renamed 
 @interface PresenceSDKView : PresenceView
 - (nonnull instancetype)initWithFrame:(CGRect)rect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// This public struct represents a ticket.
+SWIFT_CLASS("_TtC11PresenceSDK14PresenceTicket")
+@interface PresenceTicket : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK17PresenceTicketFee")
+@interface PresenceTicketFee : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK24PresenceTicketManagement")
+@interface PresenceTicketManagement : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC11PresenceSDK13PresenceVenue")
+@interface PresenceVenue : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -2033,6 +2302,7 @@ SWIFT_CLASS("_TtC11PresenceSDK22PresenceViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 
