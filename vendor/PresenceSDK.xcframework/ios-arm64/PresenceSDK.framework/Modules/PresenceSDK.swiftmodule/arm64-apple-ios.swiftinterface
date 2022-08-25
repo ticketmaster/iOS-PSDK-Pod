@@ -593,6 +593,7 @@ extension Swift.Array {
   final public let resaleAvailabilityStatus: Swift.String?
   final public let orderIdentifier: Swift.String?
   final public let displayOrderIdentifier: Swift.String?
+  final public let encodedOrderIdentifier: Swift.String?
   final public let isOrdersApi: Swift.Bool?
   final public let orderStatus: Swift.String?
   final public let purchaseDate: Foundation.Date?
@@ -616,6 +617,7 @@ extension Swift.Array {
   final public let source: PresenceSDK.PresenceDelivery.DeliverySource?
   final public let deliveryDate: Foundation.Date?
   final public let segmentType: PresenceSDK.PresenceDelivery.DeliverySegmentType?
+  final public let trackingNumber: Swift.String?
   final public let descriptionLine1: Swift.String?
   final public let descriptionLine2: Swift.String?
   final public let descriptionLine3: Swift.String?
@@ -685,6 +687,7 @@ extension PresenceSDK.PSDK {
   @objc final public func setBrandingColors(_ brandingColors: PresenceSDK.PSDK.BrandingColors)
   @objc final public func setLogo(_ image: UIKit.UIImage?)
   @objc final public func setTheme(theme: PresenceSDK.PSDK.SDKTheme)
+  @objc final public func setUserTracking(enabled: Swift.Bool)
 }
 extension PresenceSDK.PSDK {
   @objc public class Configuration : ObjectiveC.NSObject {

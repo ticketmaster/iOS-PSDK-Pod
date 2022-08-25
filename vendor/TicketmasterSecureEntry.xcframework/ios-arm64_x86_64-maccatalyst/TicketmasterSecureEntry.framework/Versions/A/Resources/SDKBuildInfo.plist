@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Thu May 19 17:47:36 PDT 2022</string>
+	<string>Tue Aug  9 13:31:57 PDT 2022</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
 	<string>master</string>
 	<key>GITComment</key>
-	<string>Fixed SwiftLint warnings</string>
+	<string>Added localization check, fixed warning</string>
 	<key>GITDate</key>
-	<string>Thu May 12 17:04:59 2022 -0700</string>
+	<string>Mon Jul 25 13:40:54 2022 -0700</string>
 	<key>GITRevision</key>
-	<string>9c46c0b701836a8a37b9057a44f155763ef085b5</string>
+	<string>c212b8201b7ad441cbc5cf3354959b9277f01a3a</string>
 	<key>MarketingVersion</key>
-	<string>1.4.2</string>
+	<string>1.4.3</string>
 </dict>
 </plist>

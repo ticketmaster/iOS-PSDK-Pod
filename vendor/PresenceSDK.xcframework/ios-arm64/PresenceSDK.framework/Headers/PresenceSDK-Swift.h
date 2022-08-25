@@ -583,55 +583,6 @@ enum ActionType : NSInteger;
 - (BOOL)hasUserSignedInSportXR SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class BrandingColors;
-@class UIImage;
-enum SDKTheme : NSInteger;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method for configuring PresenceSDK.
-/// \param consumerKey The Consumer Key associated with your App on developer.ticketmaster.com
-///
-/// \param hostEnvironment Account and Ticket source backend server stack, default = .US
-///
-/// \param sdkEnvironment Production or other test build environments, default = .Production
-///
-/// \param displayName Team/App name that will be displayed on the login page in the SDK
-///
-/// \param useNewAccountsManager Use new Team AccountsManager: true (am.ticketmaster.com), false (oss.ticketmaster.com), default = true
-///
-/// \param disableModernAccounts Manually disable ModernAccounts login, default = false
-///
-/// \param quickLogin Use the new, quick login screen (ModernAccounts only), default = true
-///
-/// \param autoLogin Automatically present login prompt (quickLogin only, ModernAccounts only), default = true
-///
-- (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin;
-/// Method for configuring PresenceSDK.
-/// \param configuration PSDK.Configuration object containing various integrator-customizable settings
-///
-- (void)setConfiguration:(Configuration * _Nonnull)configuration;
-/// Method for checking configuration of PresenceSDK for Teams
-/// \param success Called if configuration was readed from cache or returned from Apigee, main queue. The <code>start(presenceView:)</code> method should be called in this success block.
-///
-/// \param failure Called if configuration failed (e.g. no Internet on first launch), Should be taken into account during SDK integration.
-///
-- (void)checkConfigWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nullable))failure;
-/// Method for configuring Team Apps branding colors in PresenceSDK. These branding colors will be used
-/// on various UI elements of the SDK to provide a custom look for Team apps.
-/// \param brandingColors Customize colors by overriding properties of the <code>BrandingColors</code> class.
-///
-- (void)setBrandingColors:(BrandingColors * _Nonnull)brandingColors;
-/// Method for configuring Team Apps logo in PresenceSDK.
-/// \param image Image to be used in the SDK as logo.
-///
-- (void)setLogo:(UIImage * _Nullable)image;
-/// Method for configuring Team Apps theme color in PresenceSDK. This theme color will be used
-/// on various UI elements of the SDK to provide a custom look for Team apps.
-/// \param theme Theme to be used in the SDK.
-///
-- (void)setThemeWithTheme:(enum SDKTheme)theme;
-@end
-
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 @end
@@ -740,6 +691,56 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
   IdentityThemeTicketmasterNew = 1,
   IdentityThemeLivenation = 2,
 };
+
+@class UIImage;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method for configuring PresenceSDK.
+/// \param consumerKey The Consumer Key associated with your App on developer.ticketmaster.com
+///
+/// \param hostEnvironment Account and Ticket source backend server stack, default = .US
+///
+/// \param sdkEnvironment Production or other test build environments, default = .Production
+///
+/// \param displayName Team/App name that will be displayed on the login page in the SDK
+///
+/// \param useNewAccountsManager Use new Team AccountsManager: true (am.ticketmaster.com), false (oss.ticketmaster.com), default = true
+///
+/// \param disableModernAccounts Manually disable ModernAccounts login, default = false
+///
+/// \param quickLogin Use the new, quick login screen (ModernAccounts only), default = true
+///
+/// \param autoLogin Automatically present login prompt (quickLogin only, ModernAccounts only), default = true
+///
+- (void)setConfigWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin;
+/// Method for configuring PresenceSDK.
+/// \param configuration PSDK.Configuration object containing various integrator-customizable settings
+///
+- (void)setConfiguration:(Configuration * _Nonnull)configuration;
+/// Method for checking configuration of PresenceSDK for Teams
+/// \param success Called if configuration was readed from cache or returned from Apigee, main queue. The <code>start(presenceView:)</code> method should be called in this success block.
+///
+/// \param failure Called if configuration failed (e.g. no Internet on first launch), Should be taken into account during SDK integration.
+///
+- (void)checkConfigWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nullable))failure;
+/// Method for configuring Team Apps branding colors in PresenceSDK. These branding colors will be used
+/// on various UI elements of the SDK to provide a custom look for Team apps.
+/// \param brandingColors Customize colors by overriding properties of the <code>BrandingColors</code> class.
+///
+- (void)setBrandingColors:(BrandingColors * _Nonnull)brandingColors;
+/// Method for configuring Team Apps logo in PresenceSDK.
+/// \param image Image to be used in the SDK as logo.
+///
+- (void)setLogo:(UIImage * _Nullable)image;
+/// Method for configuring Team Apps theme color in PresenceSDK. This theme color will be used
+/// on various UI elements of the SDK to provide a custom look for Team apps.
+/// \param theme Theme to be used in the SDK.
+///
+- (void)setThemeWithTheme:(enum SDKTheme)theme;
+/// Method to enable or disable User Tracking in PresenceSDK.
+/// Default: enabled (controlled by PresenceMember.doNotSell flag)
+- (void)setUserTrackingWithEnabled:(BOOL)enabled;
+@end
 
 
 
@@ -981,7 +982,7 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 ///
 /// \param buttonTitle title of button pressed
 ///
-/// \param order contextual order info (if any)
+/// \param eventOrders current Event and purchased Orders being viewed (if any)
 ///
 - (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventOrders:(PresenceEventOrders * _Nullable)eventOrders;
 @end

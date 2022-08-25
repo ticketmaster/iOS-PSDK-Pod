@@ -159,6 +159,8 @@ extension Foundation.URL {
   public var analyticsReporter: TicketmasterFoundation.UALAnalyticsReporter?
   public func registerWebViewUALMessagesForHandling(contentController: WebKit.WKUserContentController)
   public func registerWebViewUALMessagesForHandling(contentController: WebKit.WKUserContentController, delegate: TicketmasterFoundation.UALWebViewMessageHandlerDelegate)
+  public func registerUALContractMessages(_ contentController: WebKit.WKUserContentController, scriptMessageHandler: WebKit.WKScriptMessageHandler? = nil)
+  public func unregisterUALContractMessages(_ contentController: WebKit.WKUserContentController)
   @objc deinit
 }
 extension TicketmasterFoundation.UALMessageHandler : WebKit.WKScriptMessageHandler {
@@ -375,6 +377,12 @@ extension Foundation.Notification {
   @objc dynamic public var userNotificationDictionary: TicketmasterFoundation.NotificationDictionary? {
     @objc get
   }
+}
+extension Dispatch.DispatchQueue {
+  public static func dispatchOnMainIfNeeded(_ work: @escaping @convention(block) () -> Swift.Void)
+}
+extension Foundation.Thread {
+  public static func dispatchOnMainIfNeeded(_ work: @escaping @convention(block) () -> Swift.Void)
 }
 public protocol TMPixelConfig {
   var enableTMPixel: Swift.Bool { get }
@@ -1253,6 +1261,10 @@ extension Swift.String {
 }
 extension TicketmasterFoundation.UFCMessageHandler : TicketmasterFoundation.UFCWebViewMessageHandler {
   final public func registerWebViewUFCMessagesForHandling(delegate: TicketmasterFoundation.UFCWebViewMessageHandlerDelegate)
+}
+extension TicketmasterFoundation.UFCMessageHandler {
+  final public func registerUFCContractMessages(_ contentController: WebKit.WKUserContentController, scriptMessageHandler: WebKit.WKScriptMessageHandler? = nil)
+  final public func unregisterUFCContractMessages(_ contentController: WebKit.WKUserContentController)
 }
 extension TicketmasterFoundation.UFCMessageHandler : WebKit.WKScriptMessageHandler {
   @objc final public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)

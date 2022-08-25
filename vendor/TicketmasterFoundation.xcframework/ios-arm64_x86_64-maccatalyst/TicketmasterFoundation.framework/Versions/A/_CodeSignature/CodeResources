@@ -6,15 +6,15 @@
 	<dict>
 		<key>Resources/Assets.car</key>
 		<data>
-		s4uq8iJmGqeqCsx65sCujRWzC+Y=
+		srJtTDeazIklDqfiUg1sZUiaXKk=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		TMgaPdeZO3lcmyTzxeUOpJNsG0k=
+		AY5H9U1D6ouITn5mgLpp6w3fbkw=
 		</data>
 		<key>Resources/SDKBuildInfo.plist</key>
 		<data>
-		1lCnIZ/lelcL/12Dt1KPVTMkgcI=
+		9MQ+AyyZO9cEZYsfMpIDeac5MF8=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -23,7 +23,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FESR9hX3TbUqoKJRT/OMihpPWTbl+W5hdax2iFV+jrI=
+			1uHxZspAL1xUWi9xx6bZiSPnoxn7qh8RAFzrDxaG41g=
 			</data>
 		</dict>
 		<key>Headers/TicketmasterFoundation.h</key>
@@ -37,84 +37,84 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DV3E7o2ts/uaWst0efLsTgFp0UQ7MXkBRLrBF+METhg=
+			I+cQFePJYe4/EygiWemwmuDnNdtbfa8VgwBnDQukwzA=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64-apple-ios-macabi.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BI+PC9h6I/+KGtoGj+OYyuLNIA1VENK9wlyl7Q5ehxo=
+			N5LhApud5cFoD8pUGz0SQGNNHz7zmQBHsO5WMHN5UyQ=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64-apple-ios-macabi.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9PNPUXd0BTXhdefY2qv5Qsz+lvOeotlRZ4XGxSyvMRE=
+			/31zMkkqvvrXzT9tcDANn0Z2n0nN44PzR0zU2lNa4fc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DV3E7o2ts/uaWst0efLsTgFp0UQ7MXkBRLrBF+METhg=
+			I+cQFePJYe4/EygiWemwmuDnNdtbfa8VgwBnDQukwzA=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BI+PC9h6I/+KGtoGj+OYyuLNIA1VENK9wlyl7Q5ehxo=
+			N5LhApud5cFoD8pUGz0SQGNNHz7zmQBHsO5WMHN5UyQ=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9PNPUXd0BTXhdefY2qv5Qsz+lvOeotlRZ4XGxSyvMRE=
+			/31zMkkqvvrXzT9tcDANn0Z2n0nN44PzR0zU2lNa4fc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZY1rAypAmoJU5daIt3eK9aLgjoa/fvNOacMcrm0AQ1M=
+			SF7ZhiWmPKlbSN/hYx6Qso0wYxY5Ge4ZtS7XxPvk5CA=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-macabi.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CnNpTLZ82Lubc1EaXlBv0MNoFmyV0r41WpqMzmQnKYU=
+			leVx6fDJM8rl2DZEpxJXfEm+wkgwkh6Cn+awipn2Mvo=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-macabi.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ASIgYa/TzduToEHDZBB3NaaTayY+HdJBKv5aSU61isk=
+			ruh7Q2UW7zIUz0mE9rIv8bM2Pt07CeGzSSJb8C8Asnc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZY1rAypAmoJU5daIt3eK9aLgjoa/fvNOacMcrm0AQ1M=
+			SF7ZhiWmPKlbSN/hYx6Qso0wYxY5Ge4ZtS7XxPvk5CA=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CnNpTLZ82Lubc1EaXlBv0MNoFmyV0r41WpqMzmQnKYU=
+			leVx6fDJM8rl2DZEpxJXfEm+wkgwkh6Cn+awipn2Mvo=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ASIgYa/TzduToEHDZBB3NaaTayY+HdJBKv5aSU61isk=
+			ruh7Q2UW7zIUz0mE9rIv8bM2Pt07CeGzSSJb8C8Asnc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -128,21 +128,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			G5ZyulndSyQ98SBNfYCaKVgHt4eOageDV3okGUCZg3k=
+			ceq08eilMtAAErIPx/l8O4ZJWHZ7Qpy9TK6jie0jjd0=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G2+jo3oOqt0sNo02zguONRME6BZqtmE3x1tG9POloGU=
+			BglZEZyUErc1rZyyczchc+F4+B48kB0MTakeyymWCGU=
 			</data>
 		</dict>
 		<key>Resources/SDKBuildInfo.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1TjQAPCCJP9YCJpJe00a0i1wI0y4P39YZxmB894dB1g=
+			tmqms01CGjO2kqAhL/YQVlGYi8LDNklm65GJlutZVfI=
 			</data>
 		</dict>
 	</dict>

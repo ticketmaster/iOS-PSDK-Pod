@@ -214,6 +214,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
 /// Provides all possible date information relative to an event.
 SWIFT_CLASS("_TtC22TicketmasterFoundation9EventDate")
 @interface EventDate : NSObject
@@ -651,6 +652,7 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation6TMUser")
 @end
 
 
+
 SWIFT_CLASS("_TtC22TicketmasterFoundation22TicketmasterOAuthToken")
 @interface TicketmasterOAuthToken : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -732,6 +734,7 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation17UFCMessageHandler")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 @interface UFCMessageHandler (SWIFT_EXTENSION(TicketmasterFoundation)) <WKScriptMessageHandler>
@@ -1032,6 +1035,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
 /// Provides all possible date information relative to an event.
 SWIFT_CLASS("_TtC22TicketmasterFoundation9EventDate")
 @interface EventDate : NSObject
@@ -1469,6 +1473,7 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation6TMUser")
 @end
 
 
+
 SWIFT_CLASS("_TtC22TicketmasterFoundation22TicketmasterOAuthToken")
 @interface TicketmasterOAuthToken : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -1550,6 +1555,7 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation17UFCMessageHandler")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 @interface UFCMessageHandler (SWIFT_EXTENSION(TicketmasterFoundation)) <WKScriptMessageHandler>
