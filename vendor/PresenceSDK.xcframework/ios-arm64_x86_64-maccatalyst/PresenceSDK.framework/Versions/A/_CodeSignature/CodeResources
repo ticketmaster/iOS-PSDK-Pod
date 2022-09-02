@@ -34,7 +34,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		yk8ihyQdQalxi/Ox+ixOs2/Zxt8=
+		eWtQ1DI8XUeYkZvgyk4VLS60aV0=
 		</data>
 		<key>Resources/Averta-Light.otf</key>
 		<data>
@@ -298,7 +298,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		8hA0A0uEWJenHvfzRrSaejvfvC4=
+		WW1uhV+tZD2DYdNz2pMc+X3KWuQ=
 		</data>
 		<key>Resources/InputAccessoryView.nib</key>
 		<data>
@@ -319,6 +319,10 @@
 		<key>Resources/ModernAccounts.QuickHost.View.nib</key>
 		<data>
 		yWpzTtvCmu9YXt0PdFX9EviVfv8=
+		</data>
+		<key>Resources/ModernAccounts.QuickSportXR.View.nib</key>
+		<data>
+		Ux+k9OFX8+me8Hh7BlEaK7/c7uM=
 		</data>
 		<key>Resources/ModernAccounts.QuickTeam.View.nib</key>
 		<data>
@@ -346,7 +350,7 @@
 		</data>
 		<key>Resources/SDKBuildInfo.plist</key>
 		<data>
-		pF4quxqbxHU9S8u2rPe0mJs+7pA=
+		ISgNQ0jHAn7/UTa8pNLTtU8M9jI=
 		</data>
 		<key>Resources/SeatingMessageCell.nib</key>
 		<data>
@@ -486,7 +490,7 @@
 		</data>
 		<key>Resources/TicketCard.nib</key>
 		<data>
-		Dqapu75RQzl8zteFD0tlxlyeJ3o=
+		ifBLoxfj/RF20wOtcxnRLlyu2w0=
 		</data>
 		<key>Resources/TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -556,7 +560,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vRSNvylxBR7IzgJd0Xyg7czxqKA=
+			gmCy7LPPVbBtgoJFJiAnGNRURnk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -610,7 +614,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2gDlOQTvWp5TFvpJt6Cu/Kj7vgo=
+			gMxhm63jFNYdHEyvL982rtaVo3g=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -699,7 +703,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			StQ1901gADDDRnAIZ+Rh+z9tMtViIwfvLkAvQ9kgM+o=
+			K2j8tpNpdVzQdbV6GthiJNSazScnVGhSg4SgZXZjtLY=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftdoc</key>
@@ -720,7 +724,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			StQ1901gADDDRnAIZ+Rh+z9tMtViIwfvLkAvQ9kgM+o=
+			K2j8tpNpdVzQdbV6GthiJNSazScnVGhSg4SgZXZjtLY=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
@@ -741,7 +745,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8C7QRkMpasIL1VXZVOR6ChxwK/3eLUjghmCmRf0xgC0=
+			FTjoKRbYjd+3HhrhU79tCmfqiI+45KFPYfh12Voxy9s=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -762,7 +766,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8C7QRkMpasIL1VXZVOR6ChxwK/3eLUjghmCmRf0xgC0=
+			FTjoKRbYjd+3HhrhU79tCmfqiI+45KFPYfh12Voxy9s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -825,7 +829,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wlr2hUTHCYPKe+JGZVstAQ73lWXaBRQuHN/UGFkqEq8=
+			ZGkWOfN/0RlfimDMVUsTSUJplmc6SlI49rJPTQ9l/yo=
 			</data>
 		</dict>
 		<key>Resources/Averta-Light.otf</key>
@@ -1287,7 +1291,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AHith1ZtB7eB+ksto+FWa/AVa5UIHCmBCmWstGXVkBA=
+			Z5T7oGH8kbLmYIzfXxsNgjrlqPGWjZYEjk7OECRVct8=
 			</data>
 		</dict>
 		<key>Resources/InputAccessoryView.nib</key>
@@ -1323,6 +1327,13 @@
 			<key>hash2</key>
 			<data>
 			uh5geYj1DhrnnThs8HfioY6ThRjbkN2lIZnoSiPKnCA=
+			</data>
+		</dict>
+		<key>Resources/ModernAccounts.QuickSportXR.View.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IuEVYOOaCWTq27EYYWGk+JfeKgzsaCzkr+rXXFmjNL0=
 			</data>
 		</dict>
 		<key>Resources/ModernAccounts.QuickTeam.View.nib</key>
@@ -1371,7 +1382,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+DpLQelW23rO+l35fetoKE/u2Z1gHzeP6UEqxjbj5BY=
+			iUyr8SsCOErROI5m4nf2rH5ZwRRBkwmb9uHW7xUgJG8=
 			</data>
 		</dict>
 		<key>Resources/SeatingMessageCell.nib</key>
@@ -1616,7 +1627,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			89U+2aQUH/70sC2wy7XB1I4qa+j18gUhHL78oxod0Vo=
+			L3CgLZ2lec6xYrb+vh4UAo40GTWUghE0HsXYyAhfVFw=
 			</data>
 		</dict>
 		<key>Resources/TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
@@ -1735,7 +1746,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			b6GkxG8PAbNFR8CzlNWxoOyM42HgcZ9+OFED4q1g9TY=
+			Ja/+6Yd1Pa8vpPm+yezGj+HpY4tOtRQf6OhSLlXbtV4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1789,7 +1800,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5S7gIJ0FaMFj8qnTef6bDZ1yO1sXqkhkIHDoXiLWkLI=
+			hGWrKQ1+ZmEz3CeX/cBSXpW+OXgvc9C6QmOoOC5cCzU=
 			</data>
 			<key>optional</key>
 			<true/>

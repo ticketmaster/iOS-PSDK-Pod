@@ -34,7 +34,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		VdZdmtce6XzM/vnSkPlDMWhCVsc=
+		Z8z45djj7pSg1WekMgciEotJIDg=
 		</data>
 		<key>Averta-Light.otf</key>
 		<data>
@@ -306,7 +306,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Ql2k7dia0GFpG/0mKu4M++Dk33I=
+		BBBHdWs4l5df6irziQ6iQo2vUwg=
 		</data>
 		<key>InputAccessoryView.nib</key>
 		<data>
@@ -328,6 +328,10 @@
 		<data>
 		cdugOlsw0sEbtb93wTf4nZQmjEI=
 		</data>
+		<key>ModernAccounts.QuickSportXR.View.nib</key>
+		<data>
+		l06GvnjZcFT9i6RKg/lGqAnfAUY=
+		</data>
 		<key>ModernAccounts.QuickTeam.View.nib</key>
 		<data>
 		kqo0p1ok3pXhu6lu2rAwKm0zSzc=
@@ -342,7 +346,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		XkGRtG6Lv6+/qnbbpkZ0DTWB4Qk=
+		wOKDpbeETBhvbc7FTYPDlng5+lE=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -354,7 +358,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		XkGRtG6Lv6+/qnbbpkZ0DTWB4Qk=
+		wOKDpbeETBhvbc7FTYPDlng5+lE=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -366,7 +370,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Hq1c7R9EwSvgZSn9vjLP6/Rt+/Y=
+		T1p5cLa3OM14iZxo8U4eMkCabPU=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -378,7 +382,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Hq1c7R9EwSvgZSn9vjLP6/Rt+/Y=
+		T1p5cLa3OM14iZxo8U4eMkCabPU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -406,7 +410,7 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		XG2dopVdOCwaBrEWxbG1W6w5bb4=
+		5sH8A1whxT86+W2nwiwUoNMu8WI=
 		</data>
 		<key>SeatingMessageCell.nib</key>
 		<data>
@@ -546,7 +550,7 @@
 		</data>
 		<key>TicketCard.nib</key>
 		<data>
-		RtzKxtx0HFtoPtZqTLD9p2/5T2Q=
+		+zdWMe1KvY3hYXutpsb1zwFIZmc=
 		</data>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -616,7 +620,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VdYnMCu85OHIxT/1JE+7ekaagXo=
+			ICeNZBw6jDe9D27i6UqHckU92Ls=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -670,7 +674,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7Iut8bYB5HSs1B4UTKN2g0WWQxQ=
+			gs3gDOjFYuxlyCBeYXjW7OB8LtE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -780,7 +784,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			r35fHGWp7CALyaabdabuP1hag4lO7HOoTo+76+5fLcM=
+			sM5Vzvt6OR4RzS66hPscuyFWOZGwj9Ck7krxXBdYLoo=
 			</data>
 		</dict>
 		<key>Averta-Light.otf</key>
@@ -1287,6 +1291,13 @@
 			kMZAtBKiEiOQkOg2ETvq8MRS6uIgP37otnYOFB4ORa0=
 			</data>
 		</dict>
+		<key>ModernAccounts.QuickSportXR.View.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OwI8bSR0O+xsiMwGyfB4qKTeaeMLZGhWhaPtuQZ4cV0=
+			</data>
+		</dict>
 		<key>ModernAccounts.QuickTeam.View.nib</key>
 		<dict>
 			<key>hash2</key>
@@ -1312,7 +1323,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			waCerEr8N8r3rWNbWKkpNtHmogfpHzyP/HVt+Gacj5M=
+			aOUBaegz5icFmunOvRc1worKVRfYqqZETxhV0t+Uzec=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftdoc</key>
@@ -1333,7 +1344,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			waCerEr8N8r3rWNbWKkpNtHmogfpHzyP/HVt+Gacj5M=
+			aOUBaegz5icFmunOvRc1worKVRfYqqZETxhV0t+Uzec=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -1354,7 +1365,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/2jTnSvd/YTH7ZV+gBnTwwXLcMXqErDtABccJnwLto=
+			7NG5hTz6M91r5P7UFskMCKAYKbmQYgzPycutIlX/QmU=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -1375,7 +1386,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/2jTnSvd/YTH7ZV+gBnTwwXLcMXqErDtABccJnwLto=
+			7NG5hTz6M91r5P7UFskMCKAYKbmQYgzPycutIlX/QmU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1424,7 +1435,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fG/cFlie1tClr7XY+DwFfpKiTjqwP6GIz/ZEIyjYtVQ=
+			IBbqQkqg1oEe0C39GUclxhZwklOE1Re0Gb2ZUzPiDkM=
 			</data>
 		</dict>
 		<key>SeatingMessageCell.nib</key>
@@ -1669,7 +1680,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			25m6oFOBmZn16cSxoR5ZLVs8WRs29D3WhjJeOsB0qQE=
+			wMeoM7zfDaHAr3Iq63oZCVXp5u4NJevNecE8RI/C0JU=
 			</data>
 		</dict>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
@@ -1788,7 +1799,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			o5y99cTI2RdwS0/mXg8D63l+fBdUHM4JR5VqhqOCrEc=
+			34ned2bZP+kLDpoSDMdalQlXCdcO/rPMyd1C6OGo2fA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1842,7 +1853,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pZZCjOUKXC0y3RYl5J44+MyJj6W7CfbizQDPzCO0dKQ=
+			wjwI9AgVEHK0On1OTTi08Syue1VfBR4awQ/xLw6DWkA=
 			</data>
 			<key>optional</key>
 			<true/>
