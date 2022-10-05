@@ -118,6 +118,7 @@ extension TicketmasterFoundation.MarketLocation {
   public static func Canada_Saskatchewan() -> TicketmasterFoundation.MarketLocation
 }
 public typealias JSONDictionary = [Swift.String : Any]
+public typealias JSONDictionaryArray = [TicketmasterFoundation.JSONDictionary]
 public typealias JSONStringDictionary = [Swift.String : Swift.String]
 public protocol InitJSONThrowable {
   init(jsonDictionary: TicketmasterFoundation.JSONDictionary) throws
@@ -141,6 +142,17 @@ extension Swift.Dictionary {
     get
   }
   public func transformedWith(keyPrefix: Swift.String) -> TicketmasterFoundation.JSONDictionary
+}
+extension Swift.Array {
+  public var jsonData: Foundation.Data? {
+    get
+  }
+  public var jsonString: Swift.String? {
+    get
+  }
+  public var prettyJsonString: Swift.String? {
+    get
+  }
 }
 extension TicketmasterFoundation.UFCCookieManager {
   final public func addToAllTMDomains(cookie: Foundation.HTTPCookie, completion: (() -> Swift.Void)? = nil)
@@ -166,6 +178,33 @@ extension Foundation.URL {
 }
 extension TicketmasterFoundation.UALMessageHandler : WebKit.WKScriptMessageHandler {
   @objc dynamic public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)
+}
+extension UIKit.UIApplication {
+  @_Concurrency.MainActor(unsafe) public func topViewController(base: UIKit.UIViewController? = nil) -> UIKit.UIViewController?
+}
+open class UserDefaultsStringEnum<E> where E : Swift.CaseIterable, E : Swift.RawRepresentable, E.RawValue == Swift.String {
+  public init()
+  public func remove(_ key: E)
+  public func removeAll()
+  public func set(_ value: Swift.String, forKey key: E)
+  public func string(_ key: E) -> Swift.String?
+  public func set(_ value: Swift.Bool, forKey key: E)
+  public func bool(_ key: E) -> Swift.Bool?
+  public func set(_ value: Swift.Int, forKey key: E)
+  public func int(_ key: E) -> Swift.Int?
+  public func set(_ value: Swift.Double, forKey key: E)
+  public func double(_ key: E) -> Swift.Double?
+  public func set(_ value: TicketmasterFoundation.JSONDictionary, forKey key: E)
+  public func jsonDictionary(_ key: E) -> TicketmasterFoundation.JSONDictionary?
+  public func set(_ value: TicketmasterFoundation.JSONDictionaryArray, forKey key: E)
+  public func jsonDictionaryArray(_ key: E) -> TicketmasterFoundation.JSONDictionaryArray?
+  public func set(_ value: Any, forKey key: E)
+  public func object(_ key: E) -> Any?
+  public func set(_ value: [Any], forKey key: E)
+  public func objectArray(_ key: E) -> [Any]?
+  public func set(_ value: Foundation.Data, forKey key: E)
+  public func data(_ key: E) -> Foundation.Data?
+  @objc deinit
 }
 extension Foundation.URLRequest {
   public mutating func applyBasicAuth(username: Swift.String, password: Swift.String)
@@ -778,6 +817,16 @@ extension Swift.String {
   public static let outputPrefix: Swift.String
   @objc deinit
 }
+extension UIKit.UIAlertController {
+  @_Concurrency.MainActor(unsafe) public static func presentAlert(title: Swift.String? = nil, message: Swift.String? = nil, okButtonText: Swift.String? = "OK", completion: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public static func alert(title: Swift.String? = nil, message: Swift.String? = nil, okButtonText: Swift.String? = "OK", completion: @escaping () -> Swift.Void) -> UIKit.UIAlertController
+  @_Concurrency.MainActor(unsafe) public static func presentAlert(title: Swift.String? = nil, message: Swift.String? = nil, okButtonText: Swift.String? = "OK", cancelButtonText: Swift.String? = "Cancel", ok: @escaping () -> Swift.Void, cancel: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public static func alert(title: Swift.String? = nil, message: Swift.String? = nil, okButtonText: Swift.String? = "OK", cancelButtonText: Swift.String? = "Cancel", ok: @escaping () -> Swift.Void, cancel: @escaping () -> Swift.Void) -> UIKit.UIAlertController
+  @_Concurrency.MainActor(unsafe) public static func presentAlert(title: Swift.String? = nil, message: Swift.String? = nil, destructiveButtonText: Swift.String, cancelButtonText: Swift.String? = "Cancel", destroy: @escaping () -> Swift.Void, cancel: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public static func alert(title: Swift.String? = nil, message: Swift.String? = nil, destructiveButtonText: Swift.String, cancelButtonText: Swift.String? = "Cancel", destroy: @escaping () -> Swift.Void, cancel: @escaping () -> Swift.Void) -> UIKit.UIAlertController
+  @_Concurrency.MainActor(unsafe) public static func presentAlert(title: Swift.String? = nil, message: Swift.String? = nil, action1Name: Swift.String, action2Name: Swift.String, action1: @escaping () -> Swift.Void, action2: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public static func alert(title: Swift.String? = nil, message: Swift.String? = nil, action1Name: Swift.String, action2Name: Swift.String, action1: @escaping () -> Swift.Void, action2: @escaping () -> Swift.Void) -> UIKit.UIAlertController
+}
 @objc extension UIKit.UIColor {
   @objc dynamic public func color(betweenColor color: UIKit.UIColor) -> UIKit.UIColor
   @objc dynamic public func color(byAdjustingBrightnessPercentage percentage: CoreGraphics.CGFloat) -> UIKit.UIColor
@@ -1012,7 +1061,7 @@ extension Swift.String {
 extension UIKit.UIView {
   @_Concurrency.MainActor(unsafe) public func constrainToEqualHeightAndWidth(of length: CoreGraphics.CGFloat)
   @_Concurrency.MainActor(unsafe) public func constrainToEdgesOfSuperview()
-  @_Concurrency.MainActor(unsafe) public func constrainToCenterOfSuperview()
+  @_Concurrency.MainActor(unsafe) public func constrainToCenterOfSuperview(xOffset: CoreGraphics.CGFloat? = nil, yOffset: CoreGraphics.CGFloat? = nil)
 }
 public typealias URLQueryParameter = TicketmasterFoundation.ElementValue<Swift.String, Swift.String>
 public typealias URLQueryParameters = [Swift.String : Swift.String]
@@ -1043,13 +1092,6 @@ extension Swift.Array {
 extension UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) public func dismissSelf(animated: Swift.Bool, completion: (() -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func dismissViewControllersOnTopOfSelf(animated: Swift.Bool, completion: (() -> Swift.Void)?)
-}
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class LoadingView : UIKit.UIImageView {
-  @objc dynamic public init()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @_Concurrency.MainActor(unsafe) public static func loadAnimatedImage(completion: (() -> Swift.Void)? = nil)
-  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class TMPixelDivolte : TicketmasterFoundation.NetworkService {
   @objc deinit
@@ -1244,6 +1286,14 @@ extension TicketmasterFoundation.TMDateFormatter {
   @objc public init(email: Swift.String, firstName: Swift.String?, lastName: Swift.String?, memberID: Swift.String?, hmacID: Swift.String, countryCode: Swift.String, deviceID: Swift.String?, accessToken: Swift.String?)
   @objc deinit
 }
+extension Swift.Decodable where Self : UIKit.UIColor {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Swift.Encodable where Self : UIKit.UIColor {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension UIKit.UIColor : Swift.Codable {
+}
 extension Swift.String {
   public func base64URLEncodedSHA256String() -> Swift.String?
   public func sha256Data() -> Foundation.Data?
@@ -1360,9 +1410,17 @@ extension Foundation.Data {
   public func encrypted(withKey: Swift.String?) -> Foundation.Data?
   public func decrypted(withKey: Swift.String?) -> Foundation.Data?
 }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class LoadingView : UIKit.UIView {
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) public func startAnimating()
+  @_Concurrency.MainActor(unsafe) public func stopAnimating()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
 public typealias ArrayResponse = TicketmasterFoundation.APIResponse<[Any]>
 public typealias DataResponse = TicketmasterFoundation.APIResponse<Foundation.Data>
 public typealias JSONResponse = TicketmasterFoundation.APIResponse<TicketmasterFoundation.JSONDictionary>
+public typealias JSONArrayResponse = TicketmasterFoundation.APIResponse<TicketmasterFoundation.JSONDictionaryArray>
 public typealias ImageResponse = TicketmasterFoundation.APIResponse<UIKit.UIImage>
 @frozen public enum APIResponse<T> {
   case success(response: T)
@@ -1485,6 +1543,8 @@ open class NetworkService {
   public init(connectionDriver: TicketmasterFoundation.ConnectionDriver)
   open func defaultHttpHeadersForRequest() -> TicketmasterFoundation.URLQueryParameters?
   final public func urlRequest(httpMethod: TicketmasterFoundation.HTTPMethod = .GET, path: Swift.String, queryParameters: TicketmasterFoundation.URLQueryParameters? = nil, alwaysEncodeCharacters: Swift.String = "", pathHttpHeaders: TicketmasterFoundation.URLQueryParameters? = nil, requestBody: Foundation.Data? = nil, cachePolicy: Foundation.URLRequest.CachePolicy = .useProtocolCachePolicy) -> TicketmasterFoundation.APIResponse<Foundation.URLRequest>
+  @discardableResult
+  final public func sendJSONArray(request: Foundation.URLRequest, completion: @escaping (_ response: TicketmasterFoundation.JSONArrayResponse) -> Swift.Void) -> Foundation.URLSessionTask?
   @discardableResult
   final public func sendJSON(request: Foundation.URLRequest, completion: @escaping (_ response: TicketmasterFoundation.JSONResponse) -> Swift.Void) -> Foundation.URLSessionTask?
   @discardableResult
@@ -1659,6 +1719,8 @@ open class ConnectionDriver {
   open func hostString(for environment: TicketmasterFoundation.ConnectionEnvironment) -> Swift.String?
   @discardableResult
   open func sendBase(request: Foundation.URLRequest, completion: @escaping (_ data: Foundation.Data?, _ response: Foundation.HTTPURLResponse?, _ error: Swift.Error?) -> Swift.Void) -> Foundation.URLSessionTask?
+  @discardableResult
+  final public func sendJSONArray(request: Foundation.URLRequest, completion: @escaping (_ jsonArray: TicketmasterFoundation.JSONDictionaryArray?, _ responseHeaderFields: [Swift.AnyHashable : Any]?, _ error: TicketmasterFoundation.ConnectionError?) -> Swift.Void) -> Foundation.URLSessionTask?
   @discardableResult
   final public func sendJSON(request: Foundation.URLRequest, completion: @escaping (_ jsonDictionary: TicketmasterFoundation.JSONDictionary?, _ responseHeaderFields: [Swift.AnyHashable : Any]?, _ error: TicketmasterFoundation.ConnectionError?) -> Swift.Void) -> Foundation.URLSessionTask?
   @discardableResult

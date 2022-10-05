@@ -34,19 +34,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		SY7UN0Op/hY5ztNHQnS6NSX03Fw=
-		</data>
-		<key>Averta-Light.otf</key>
-		<data>
-		rAHlG89zdcNAXwf7fh78uRwJUjM=
-		</data>
-		<key>Averta-Regular.otf</key>
-		<data>
-		+ZXeurgXTuwUb8mlZknvInXbEt0=
-		</data>
-		<key>Averta-Semibold.otf</key>
-		<data>
-		GItQkGs3KIgGmVA7LKTAoVoieIA=
+		Ee8XXIPyaS145gRe0XLU2bxScno=
 		</data>
 		<key>BarcodeCell.DeliveryView.nib</key>
 		<data>
@@ -54,11 +42,11 @@
 		</data>
 		<key>BarcodeCell.nib</key>
 		<data>
-		ztTUpJZ6bHBRvc8wvTsSPmk4fro=
+		ofhgNqipGFvudXMysBxPb1pCWa0=
 		</data>
 		<key>Base.lproj/Localizable.strings</key>
 		<data>
-		zqbfYbErEmD3AWfp+yDy3rVXh9M=
+		1Fp9ZCqKfmy1jI2zZZ7WoLya4fM=
 		</data>
 		<key>Base.lproj/PayoutMethodViewController.storyboardc/Info.plist</key>
 		<data>
@@ -90,11 +78,11 @@
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/4bM-5v-sqO-view-6Nq-f8-gJu.nib</key>
 		<data>
-		GpiNivfOPoKzwZ7dd0z+8rbokC4=
+		hvW5ijwnxHdFoVVZ+tK9FAvIY1c=
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/6zg-d3-5WR-view-Ecf-KN-okQ.nib</key>
 		<data>
-		D6SZ7mlbPx5LQCYuSjfM6cWY0DI=
+		diMxWcoQ5THUMAenFynktKAADfU=
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/8xB-sW-zpp-view-QQ3-nu-Xh7.nib</key>
 		<data>
@@ -102,11 +90,11 @@
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/DFe-KO-aAi-view-naW-Ru-y3N.nib</key>
 		<data>
-		z+PWAeJT8HagXDfLFtrqXrCzc9k=
+		s979H8/Jr0O6MkASFUT1umWIxDY=
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/E5Y-pP-Gh7-view-QWl-Rt-m7e.nib</key>
 		<data>
-		Jl6mzYA+pw4ZD5MwQQLs+O99CqI=
+		2Tn+5S+aLUDZ1zwSRCB5V1azE5Y=
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/Info.plist</key>
 		<data>
@@ -154,7 +142,7 @@
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/eeq-1R-wuv-view-dhE-CI-MIV.nib</key>
 		<data>
-		RK1h23I4ItIuYR6IhzEZ5t3q7s8=
+		qMGuRwgpUnJXuN3WRgrt0Pn9wLA=
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/lCk-JS-vFE-view-Mtl-rI-MPY.nib</key>
 		<data>
@@ -170,7 +158,7 @@
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/tbx-ch-KlS-view-Vth-ka-L26.nib</key>
 		<data>
-		6eiFF10pPcf3NSy1MKt6vdB+FKQ=
+		C5si5IhGKHh1W6LnLvd7W8ZRntI=
 		</data>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/ticketPosting.nib</key>
 		<data>
@@ -294,7 +282,7 @@
 		</data>
 		<key>Headers/PresenceSDK-Swift.h</key>
 		<data>
-		oGlBO4EaxDMOenbny4ZwTYdmV20=
+		KLMmnke40VQgDabFknIdTBsp4C4=
 		</data>
 		<key>Headers/PresenceSDK.h</key>
 		<data>
@@ -306,7 +294,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Ea6Bo454NneEQLbuNDBcR6C1wGE=
+		oV2y0WQjROizmtiTj8VMkltd84c=
 		</data>
 		<key>InputAccessoryView.nib</key>
 		<data>
@@ -338,27 +326,27 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		ugPfsk15odWUCTA8w+9dbDzCbYg=
+		xuZMDIqsgi7InUk1i50Hl0V4nvI=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		44jxgazmlW4Vdyu3GRHzThw1zoA=
+		/nQbav8N1vMKrRizwavbxftIMY8=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		sKYKouUfmFdoVpvClzZxLacqGBY=
+		WT/SvtCRDgI38LWU8gTv5pQZAUQ=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		ugPfsk15odWUCTA8w+9dbDzCbYg=
+		xuZMDIqsgi7InUk1i50Hl0V4nvI=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		44jxgazmlW4Vdyu3GRHzThw1zoA=
+		/nQbav8N1vMKrRizwavbxftIMY8=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		sKYKouUfmFdoVpvClzZxLacqGBY=
+		WT/SvtCRDgI38LWU8gTv5pQZAUQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -368,13 +356,13 @@
 		<data>
 		vZci7XWRmJjFKI3NbXtKO5wYz9U=
 		</data>
-		<key>OrderUpsellsView.nib</key>
-		<data>
-		ht6uK9oGAxYJYMqaymOkHiTzNeU=
-		</data>
 		<key>PagesView.nib</key>
 		<data>
 		ifDhljwH4yUnmFwDIG/IRcEM5ds=
+		</data>
+		<key>PresenceModuleHeaderView.nib</key>
+		<data>
+		BrJpbbxQb3cvaNYW+++xBvLV7hM=
 		</data>
 		<key>ResaleEligibilityView.nib</key>
 		<data>
@@ -386,7 +374,7 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		5UmD6fFwmpbiWhjEG+Gam1v4Hsw=
+		EL/t6AxSa5orbQSq8G7kq2etXlg=
 		</data>
 		<key>SeatingMessageCell.nib</key>
 		<data>
@@ -526,7 +514,7 @@
 		</data>
 		<key>TicketCard.nib</key>
 		<data>
-		0eKpw4SoffND79pGe2cGwjxoZCQ=
+		gPdbUc/BTmn5aBpF9clPPGZ7yVM=
 		</data>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -580,13 +568,9 @@
 		<data>
 		kYCpA60l4ea3wkeweA7GM5oQDM8=
 		</data>
-		<key>VenueConcessionsView.nib</key>
-		<data>
-		7KChohq3s3JfivnDnu6p6F8R2lM=
-		</data>
 		<key>WillCallCell.nib</key>
 		<data>
-		shrIk/wzYrE4xpiVkQzqSSTHG4M=
+		c7ZoEV4MebS+qJ2+pby+dGKmeWs=
 		</data>
 		<key>countries.json</key>
 		<data>
@@ -596,7 +580,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ICeNZBw6jDe9D27i6UqHckU92Ls=
+			txclL4iEzvxOv/whAY7HJb8Fq50=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -650,7 +634,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gs3gDOjFYuxlyCBeYXjW7OB8LtE=
+			42cr7AyAH1X92xMlM8WKC5waDoo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -760,28 +744,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XxglO5/oww07mz2H00P/YhPJjgoV0xBHqPkesoDOxCE=
-			</data>
-		</dict>
-		<key>Averta-Light.otf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ln6kzYg88Y/KDDjjZLIZ+gf5aFK7wM6uqw3AVo/jGwc=
-			</data>
-		</dict>
-		<key>Averta-Regular.otf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			WJ/r0rYOmsGupexnrg6motX/IEm4AnusbNzjBDzHLhw=
-			</data>
-		</dict>
-		<key>Averta-Semibold.otf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			lESSV0OkdrHThj7GgUCxrWg+NvOBofthoQGASynRPLw=
+			Oj9b9jUEeti2ltbs/8i9F4NDdCLY31LjkKi7cPPzwLQ=
 			</data>
 		</dict>
 		<key>BarcodeCell.DeliveryView.nib</key>
@@ -795,14 +758,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sz/O0rFQ/7ZHqYFzLt/5UOMteRYpuTDoQqjilOwjsNA=
+			lpmRHlOJI4SeaC4vPI5prmjKbbsr3KRWifYCzz8i+ww=
 			</data>
 		</dict>
 		<key>Base.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yPzWnXGDArqgTvQN2ySQJXPOlPf/1/GpzyvoVImRi6o=
+			27cExlu4a9Z5+CQiCH3OCuUUC7xWTi7hIew5IT0tFvU=
 			</data>
 		</dict>
 		<key>Base.lproj/PayoutMethodViewController.storyboardc/Info.plist</key>
@@ -858,14 +821,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Nu41AVWmzVUGy7AiWWHxsYJWxkubzmOB+6nV21M5FoY=
+			ndpoa7Ke0ABjN+xBzzJaRcxpBOWK6IzuGlocoZN4kL4=
 			</data>
 		</dict>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/6zg-d3-5WR-view-Ecf-KN-okQ.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NQrThtHOiDL66npfFVUyaAOQ/XrN/aG1aGmDgSDihUM=
+			Tcld9Dr0+qWa5sH6stKQGUgZ8u14RslI5k3DXlCC0kk=
 			</data>
 		</dict>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/8xB-sW-zpp-view-QQ3-nu-Xh7.nib</key>
@@ -879,14 +842,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gpP2bj3lsrbPwRNFXErU/t2quOj5aw38+N7qeQfH7+k=
+			KUGXX2FAQHxCGB6t3JsxRrAr41VMrNokx4SjOs7tMq4=
 			</data>
 		</dict>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/E5Y-pP-Gh7-view-QWl-Rt-m7e.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HSuE5gj1jqpcABniC6nwp0Ww3I9kyBbM7BApfHi8w6w=
+			hq4Jy4gT248Pchm0NXDq2cOvDSPUyDdj64q+5s5Ayps=
 			</data>
 		</dict>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/Info.plist</key>
@@ -970,7 +933,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			70QQWY3LNqG+CdkhK78OeHl6GwZe637Teef20bJkx4A=
+			3nalyQnXPIK2JWwVAc2uQUx3VrJKMH8NerDzOkvlorg=
 			</data>
 		</dict>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/lCk-JS-vFE-view-Mtl-rI-MPY.nib</key>
@@ -998,7 +961,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XcRSKdI83drUNQTLGPPP69LH5LLPbCqlTYn+QvIgtX8=
+			fij/zge0LzsGqxjpkwx2P7HdREYyXIidUKGZ5ZE+dTE=
 			</data>
 		</dict>
 		<key>Base.lproj/SpecificSeatsResaleFlow.storyboardc/ticketPosting.nib</key>
@@ -1215,7 +1178,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6o+FJdbyr4Pda/O18/wDK8Nz/hs0EJ3ZgssgkhKY7ps=
+			MqL9wWpRfF8owJlre12WA/1toign3L7ZnAXsb4v5f3c=
 			</data>
 		</dict>
 		<key>Headers/PresenceSDK.h</key>
@@ -1285,42 +1248,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uGJEqKR3wIcdS2S1iBTC8x19KXVDPxU21zsDaAWH4tg=
+			0kVCwcfO+YCKYfM4tLa09z+MyoS7U62XhnoKdb4ZK5k=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			o05bQ+Ae5PcrZUtDaRtDPcGgd0N+WnUAvnGKGagzRYk=
+			Oz1JgOX1OCiMIetvZPZz78W/cUcgAWMOJWyuojWstzM=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2h3wbs5SxowetV6wH9yEY2i0ZJhpkMpYU8XeAvV/iuE=
+			wmqFvM9zpbnyByaH++uQ2L60qNgX6fBRqqdxOwlMfuQ=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uGJEqKR3wIcdS2S1iBTC8x19KXVDPxU21zsDaAWH4tg=
+			0kVCwcfO+YCKYfM4tLa09z+MyoS7U62XhnoKdb4ZK5k=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			o05bQ+Ae5PcrZUtDaRtDPcGgd0N+WnUAvnGKGagzRYk=
+			Oz1JgOX1OCiMIetvZPZz78W/cUcgAWMOJWyuojWstzM=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2h3wbs5SxowetV6wH9yEY2i0ZJhpkMpYU8XeAvV/iuE=
+			wmqFvM9zpbnyByaH++uQ2L60qNgX6fBRqqdxOwlMfuQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1337,18 +1300,18 @@
 			e1d6QLrEGa6iFQHPGebfU5X9BHJyun/uXYUA6kIj+Xg=
 			</data>
 		</dict>
-		<key>OrderUpsellsView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			29j6HwRbhgbg+6RqMmQ9s+4kT6oPk9unyQXKjd816S8=
-			</data>
-		</dict>
 		<key>PagesView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			mS0TRTwhEQ1sNQhuAke8eqLZPWBMjJdc2Trtrpt2ix4=
+			</data>
+		</dict>
+		<key>PresenceModuleHeaderView.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			D2O5pD2MMngFXXzz89rAn5jca+TcfCAxcfVdLfzu7L8=
 			</data>
 		</dict>
 		<key>ResaleEligibilityView.nib</key>
@@ -1369,7 +1332,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eFdJyjI20HyLbX9qmi66+rhfJd6uxmQG9rWazO+mTXM=
+			iNw2DIlbAo9twCsTJCpLdrEtr7hrNr2NpOqSsE0wK2Q=
 			</data>
 		</dict>
 		<key>SeatingMessageCell.nib</key>
@@ -1614,7 +1577,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			y3STHTGDaKh2qPlCUrdn63XQhhL2PnrLaC6+Mtvdjkg=
+			cLpCs7Haca2lw12w2itWbauUJVIecN1YyFKhdYN68Zo=
 			</data>
 		</dict>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
@@ -1708,18 +1671,11 @@
 			X224JxBV7qmxZUeA8jt98GFDgd9mjLx9trEMLmewQc4=
 			</data>
 		</dict>
-		<key>VenueConcessionsView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			+kCkXiQEzkCTrnthKcKmh3lbU3wHzNW4mt/l+zc6odY=
-			</data>
-		</dict>
 		<key>WillCallCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TD7hrkRJAUV21uZ9s7RQ0+Gu/a0vkaQWSGHJwVgRq2M=
+			dwhCkxD6VbnQty72GxkDFp3aXXkd3TxZ5SnVJ80MSws=
 			</data>
 		</dict>
 		<key>countries.json</key>
@@ -1733,7 +1689,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			34ned2bZP+kLDpoSDMdalQlXCdcO/rPMyd1C6OGo2fA=
+			lR1tzmp3Lh8fZjhCnVCZKwTpe7vJ0D5C4Noil3eTnpM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1787,7 +1743,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wjwI9AgVEHK0On1OTTi08Syue1VfBR4awQ/xLw6DWkA=
+			AaNMyDrfwG/OGEDko02Zys82rBIk1bUFQ8TdzccqroE=
 			</data>
 			<key>optional</key>
 			<true/>

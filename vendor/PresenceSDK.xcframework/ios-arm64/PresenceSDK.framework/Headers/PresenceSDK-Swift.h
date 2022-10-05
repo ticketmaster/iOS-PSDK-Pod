@@ -222,6 +222,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
 /// Main class for the SDK.
 /// <h2>Accessing the PresenceSDK</h2>
 /// All public methods are accessible by calling the PresenceSDK class singleton:
@@ -309,49 +310,26 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-
-@class NSString;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// present an Action Button in the top-right Navbar on the Tickets page
-/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
-/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
-/// \param title title of Action Button, <code>nil</code> = no button (default)
-///
-- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
-@end
-
-
-
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-@end
-
-enum HostEnvironment : NSInteger;
-enum SDKEnvironment : NSInteger;
-@class NSNumber;
-
-SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
-@interface Configuration : NSObject
-- (nonnull instancetype)initWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
 enum BackendName : NSInteger;
+@protocol PresenceMember;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to login via Webview Login
-/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
-/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
+/// Method to get the logged in user’s information.
+/// \param backendName The specified backend name where the SDK will retrive member information from.
 ///
-/// \param completion success: Bool, login was completed successfully
+/// \param completion 
 ///
-- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+/// \param member An optional PresenceMember object returned in the completion block callback.
+///
+/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
+///
+- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
 @end
+
 
 
 @class UIViewController;
+@class NSString;
 @class NSError;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -372,42 +350,51 @@ enum BackendName : NSInteger;
 @end
 
 
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// present an Action Button in the top-right Navbar on the Tickets page
+/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
+/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
+/// \param title title of Action Button, <code>nil</code> = no button (default)
+///
+- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
+@end
 
-@protocol PresenceMember;
+
+@class NSNumber;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to get the logged in user’s information.
-/// \param backendName The specified backend name where the SDK will retrive member information from.
+/// Method to login via Webview Login
+/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
+/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
 ///
-/// \param completion 
+/// \param completion success: Bool, login was completed successfully
 ///
-/// \param member An optional PresenceMember object returned in the completion block callback.
-///
-/// \param error If PresenceSDK failed to retrive member information, an error will returned in the completion block callback.
-///
-- (void)getMemberInfoWithBackendName:(enum BackendName)backendName completion:(void (^ _Nonnull)(id <PresenceMember> _Nullable, NSError * _Nullable))completion;
+- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+@end
+
+
+
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+@end
+
+enum HostEnvironment : NSInteger;
+enum SDKEnvironment : NSInteger;
+
+SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
+@interface Configuration : NSObject
+- (nonnull instancetype)initWithConsumerKey:(NSString * _Nonnull)consumerKey hostEnvironment:(enum HostEnvironment)hostEnvironment sdkEnvironment:(enum SDKEnvironment)sdkEnvironment displayName:(NSString * _Nullable)displayName useNewAccountsManager:(BOOL)useNewAccountsManager disableModernAccounts:(BOOL)disableModernAccounts quickLogin:(BOOL)quickLogin autoLogin:(BOOL)autoLogin OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 @class PresenceSDKView;
 @protocol PresenceLoginDelegate;
 @protocol PresenceOrderDelegate;
-@protocol PresenceVenueDelegate;
-@class PresenceView;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate SWIFT_DEPRECATED_MSG("Renamed to start(presenceView: PresenceView, ...)");
-/// Method for initializing and launching PresenceSDK.
-/// Note that you may also set these delegates directly on <code>PSDK.shared</code>
-/// \param presenceView Reference to main <code>PresenceView</code> which will display user tickets.
-///
-/// \param loginDelegate optional delegate to report status of user login
-///
-/// \param orderDelegate optional delegate to report order status or handle event / artist / venue related actions
-///
-/// \param venueDelegate optional delegate to handle Venue Upgrades and Concessions integration
-///
-- (void)startWithPresenceView:(PresenceView * _Nullable)presenceView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate venueDelegate:(id <PresenceVenueDelegate> _Nullable)venueDelegate;
+- (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate SWIFT_DEPRECATED_MSG("Renamed to start(presenceView: PresenceView, ...)");
 @end
 
 enum LoginButtons : NSInteger;
@@ -425,7 +412,6 @@ enum LoginButtons : NSInteger;
 /// Default value is LoginButtons.forgotPassword
 @property (nonatomic) enum LoginButtons loginButton;
 @end
-
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -448,6 +434,7 @@ enum LoginButtons : NSInteger;
 ///
 - (void)getAccessTokenWithBackendName:(enum BackendName)backendName presentLoginUI:(BOOL)presentLoginUI success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
 @end
+
 
 
 
@@ -745,12 +732,26 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
 
 
 
+/// quickly build a PresenceModule Header UIView
+/// <ul>
+///   <li>
+///     Example Usage:
+///   </li>
+/// </ul>
+/// <code>let headerView = PresenceModuleHeaderView.build()</code>
+/// <code>headerView.configure(...)</code>
+/// <code>let header = PSDKTicketsModule.HeaderDisplay(view: headerView)</code>
+/// <code>let action1 = PSDKTicketsModule.ActionButton(title: "Action1")</code>
+/// <code>let action2 = PSDKTicketsModule.ActionButton(title: "Action2")</code>
+/// <code>let module = PSDKTicketsModule(identifier: "com.myApp.myModule", headerDisplay: header, actionButtons: [action1, action2])</code>
 SWIFT_CLASS("_TtC11PresenceSDK17PSDKTicketsModule")
 @interface PSDKTicketsModule : NSObject
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
 
 
 
@@ -824,6 +825,8 @@ SWIFT_CLASS("_TtC11PresenceSDK19PresenceEventOrders")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
 
 
 
@@ -937,6 +940,39 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK14PresenceMember_")
 @property (nonatomic, readonly, copy) NSString * _Nonnull idToken;
 @end
 
+@class UIImageView;
+@class MKMapView;
+@class UILabel;
+@class NSCoder;
+
+/// quickly build a PresenceModule Header UIView
+/// example usage:
+/// <code>// build module header</code>
+/// <code>let headerView = PresenceModuleHeaderView.build()</code>
+/// <code>headerView.configure(...)</code>
+/// <code>let header = PSDKTicketsModule.HeaderDisplay(view: headerView)</code>
+/// <code>// build module actions</code>
+/// <code>let action1 = PSDKTicketsModule.ActionButton(title: "Action1")</code>
+/// <code>let action2 = PSDKTicketsModule.ActionButton(title: "Action2")</code>
+/// <code>// build module</code>
+/// <code>let module = PSDKTicketsModule(identifier: "com.my.DemoModule", headerDisplay: header, actionButtons: [action1, action2])</code>
+SWIFT_CLASS("_TtC11PresenceSDK24PresenceModuleHeaderView")
+@interface PresenceModuleHeaderView : UIView
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified colorView;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+@property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified topLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified centerLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified bottomLabel;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified barcodeBackgroundView;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
 
 /// this class provides an working implementation of <code>TicketmasterOAuthDelegate</code>
 SWIFT_CLASS("_TtC11PresenceSDK21PresenceOAuthProvider")
@@ -971,12 +1007,20 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 /// \param venueId Identidier of the venue to be launched inVADP.
 ///
 - (void)presentVenueDetailsPageWith:(NSString * _Nonnull)venueId;
+/// Method is invoked when the list of event change for a particular event ID
+/// \param eventOrdersArray array of current Events being viewed, will NOT contain Order or Ticket data
+///
+- (void)didUpdateEventsWithEventOrdersArray:(NSArray<PresenceEventOrders *> * _Nonnull)eventOrdersArray;
+/// Method is invoked when the list of tickets change for a particular event ID
+/// \param eventOrders current Event and purchased Orders being viewed, contains Order and Ticket data
+///
+- (void)didUpdateTicketsWithEventOrders:(PresenceEventOrders * _Nonnull)eventOrders;
 /// Method is invoked when the list of events changes
-- (void)didUpdateOrderedEvents;
+- (void)didUpdateOrderedEvents SWIFT_DEPRECATED_MSG("Renamed didUpdateEvents(eventOrdersArray: [PresenceEventOrders])");
 /// Method is invoked when the list of tickets change for a particular event ID
 /// \param eventId Identifier of the event with ticket updates.
 ///
-- (void)didUpdateTicketsWithEventId:(NSString * _Nonnull)eventId;
+- (void)didUpdateTicketsWithEventId:(NSString * _Nonnull)eventId SWIFT_DEPRECATED_MSG("Renamed didUpdateTickets(eventOrders: PresenceEventOrders)");
 /// Method is invoked if the client app needs to handle the bar button action
 /// \param page events or tickets page
 ///
@@ -1003,7 +1047,6 @@ SWIFT_CLASS("_TtC11PresenceSDK24PresencePromoterBranding")
 @end
 
 
-@class NSCoder;
 @class UIWindow;
 
 /// Main UIView class for embedding and displaying user tickets from PresenceSDK. Your UIView that is going to display PresenceSDK should be
@@ -1059,53 +1102,6 @@ SWIFT_CLASS("_TtC11PresenceSDK13PresenceVenue")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-
-
-/// optional delegate to handle Venue Upgrades and Concessions integration
-SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceVenueDelegate_")
-@protocol PresenceVenueDelegate
-@optional
-/// Method is invoked when an Event is opened (the “My Tickets” page)
-/// <ul>
-///   <li>
-///     Task: fetch and return venue concessions SDK Identifier (if any)
-///   </li>
-/// </ul>
-/// \param identifier venue identifier (from Ticketmaster)
-///
-/// \param completion 
-///
-/// \param sdkIdentifier venue identifier (from venue concessions SDK)
-///
-/// \param error an error occured
-///
-- (void)venueConcessionsSdkIdentifierForIdentifier:(NSString * _Nonnull)identifier completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
-/// Method is invoked if the user presses a Venue Concessions button
-/// \param identifier venue identifier (from Ticketmaster)
-///
-/// \param sdkIdentifier venue identifier (from venue concessions SDK)
-///
-/// \param concessionsButtonPressed User pressed <code>Orders</code> or <code>Wallet</code> button
-///
-- (void)venueWithIdentifier:(NSString * _Nonnull)identifier sdkIdentifier:(NSString * _Nonnull)sdkIdentifier concessionsButtonPressed:(enum VenueConcessionsButtonType)concessionsButtonPressed;
-/// Method is invoked when an Event is opened (the “My Tickets” page)
-/// <ul>
-///   <li>
-///     Task: fetch and return account manager venue seat upgrade settings (if any)
-///   </li>
-/// </ul>
-/// \param identifier venue identifier (from Ticketmaster)
-///
-/// \param completion 
-///
-/// \param clientID path to client endpoint (example: “lnnca2”), nil = not supported
-///
-/// \param clientRedirectURL buy page redirect URL (example: “ShorlineCSU”), optional
-///
-/// \param backend webpage uses token for <code>Host</code> or <code>AccountManager</code>?
-///
-- (void)venueSeatUpgradesForIdentifier:(NSString * _Nonnull)identifier completion:(void (^ _Nonnull)(NSString * _Nullable, NSString * _Nullable, enum BackendName))completion;
-@end
 
 
 
@@ -1165,6 +1161,7 @@ SWIFT_CLASS("_TtC11PresenceSDK22PresenceViewController")
 @interface UIViewController (SWIFT_EXTENSION(PresenceSDK)) <ASWebAuthenticationPresentationContextProviding>
 - (ASPresentationAnchor _Nonnull)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession * _Nonnull)session SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 

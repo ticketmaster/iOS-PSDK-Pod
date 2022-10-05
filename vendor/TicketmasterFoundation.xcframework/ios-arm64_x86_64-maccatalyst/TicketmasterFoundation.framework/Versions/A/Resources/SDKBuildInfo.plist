@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Thu Aug  4 14:25:32 PDT 2022</string>
+	<string>Wed Aug 31 21:09:30 PDT 2022</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
 	<string>master</string>
 	<key>GITComment</key>
-	<string>Allow scriptMessageHandler unregistering to fix retain cycle bugs</string>
+	<string>Fixed JSON Data issue (again), v0.7.7</string>
 	<key>GITDate</key>
-	<string>Thu Aug 4 14:22:05 2022 -0700</string>
+	<string>Wed Aug 31 21:06:53 2022 -0700</string>
 	<key>GITRevision</key>
-	<string>c8a02a11dcff1b37ccf9d0c932ebcea2d1e54cd2</string>
+	<string>3e286443b4a883f31f306b0a08cff9beadb515f2</string>
 	<key>MarketingVersion</key>
-	<string>0.7.4</string>
+	<string>0.7.7</string>
 </dict>
 </plist>

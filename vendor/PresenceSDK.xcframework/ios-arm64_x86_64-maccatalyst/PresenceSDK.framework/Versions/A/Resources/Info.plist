@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>21G83</string>
+	<string>21G115</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.14.0</string>
+	<string>2.15.1</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -44,11 +44,6 @@
 	<string>10.15</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© Ticketmaster 2022</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Averta-Regular.otf</string>
-		<string>Averta-Semibold.otf</string>
-	</array>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>2</integer>

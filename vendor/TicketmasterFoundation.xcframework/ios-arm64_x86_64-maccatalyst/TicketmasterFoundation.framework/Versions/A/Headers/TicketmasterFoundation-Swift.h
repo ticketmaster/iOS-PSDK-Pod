@@ -273,13 +273,11 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation16ImageRequestTask")
 @class NSCoder;
 
 SWIFT_CLASS("_TtC22TicketmasterFoundation11LoadingView")
-@interface LoadingView : UIImageView
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@interface LoadingView : UIView
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nullable)image SWIFT_UNAVAILABLE;
-- (nonnull instancetype)initWithImage:(UIImage * _Nullable)image highlightedImage:(UIImage * _Nullable)highlightedImage SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 /// ideally, we want a Swift String enum, but we need a ObjectiveC Int enum
 /// so we’ll create an Int enum with some String enum methods
@@ -746,6 +744,9 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation17UFCMessageHandler")
 
 
 
+
+
+
 @interface UIColor (SWIFT_EXTENSION(TicketmasterFoundation))
 - (UIColor * _Nonnull)colorWithBetweenColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (UIColor * _Nonnull)colorByAdjustingBrightnessPercentage:(CGFloat)percentage SWIFT_WARN_UNUSED_RESULT;
@@ -758,7 +759,6 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation17UFCMessageHandler")
 + (UIColor * _Nonnull)tmBlue SWIFT_WARN_UNUSED_RESULT;
 + (UIColor * _Nonnull)popoverPurple SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 
 @interface UIImageView (SWIFT_EXTENSION(TicketmasterFoundation))
@@ -1094,13 +1094,11 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation16ImageRequestTask")
 @class NSCoder;
 
 SWIFT_CLASS("_TtC22TicketmasterFoundation11LoadingView")
-@interface LoadingView : UIImageView
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@interface LoadingView : UIView
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithImage:(UIImage * _Nullable)image SWIFT_UNAVAILABLE;
-- (nonnull instancetype)initWithImage:(UIImage * _Nullable)image highlightedImage:(UIImage * _Nullable)highlightedImage SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 /// ideally, we want a Swift String enum, but we need a ObjectiveC Int enum
 /// so we’ll create an Int enum with some String enum methods
@@ -1567,6 +1565,9 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation17UFCMessageHandler")
 
 
 
+
+
+
 @interface UIColor (SWIFT_EXTENSION(TicketmasterFoundation))
 - (UIColor * _Nonnull)colorWithBetweenColor:(UIColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (UIColor * _Nonnull)colorByAdjustingBrightnessPercentage:(CGFloat)percentage SWIFT_WARN_UNUSED_RESULT;
@@ -1579,7 +1580,6 @@ SWIFT_CLASS("_TtC22TicketmasterFoundation17UFCMessageHandler")
 + (UIColor * _Nonnull)tmBlue SWIFT_WARN_UNUSED_RESULT;
 + (UIColor * _Nonnull)popoverPurple SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 
 @interface UIImageView (SWIFT_EXTENSION(TicketmasterFoundation))

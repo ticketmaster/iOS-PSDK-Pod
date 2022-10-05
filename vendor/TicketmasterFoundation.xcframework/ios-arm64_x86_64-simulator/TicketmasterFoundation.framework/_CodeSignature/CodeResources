@@ -4,13 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Assets.car</key>
-		<data>
-		53Do03O2zK9zg7quuvM9SjW2wwM=
-		</data>
 		<key>Headers/TicketmasterFoundation-Swift.h</key>
 		<data>
-		UoaQcQ4jyOTY2HMm26ij6RLuJIA=
+		TujJ1v9HgoMTYX+r3dCd7GtDOrk=
 		</data>
 		<key>Headers/TicketmasterFoundation.h</key>
 		<data>
@@ -18,55 +14,55 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		BMhwz54RlIGOmd0rVeb/60MAggg=
+		ExZm/XgvSiJ9q2jMKdwmVDf86T4=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		exqH6JYTugDvMO2xplrUlkPY2kQ=
+		AprTCvYLrtIjD86RIbDs5JzYYPU=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		7wIA6AfFM9aXeWcnR9YHvzn2Khk=
+		1qFc4/RnhpjH6Es8kgGKtfMwwRA=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		5A85qiCCBrnLbDMN9q8wYb62lfo=
+		LEaJudaGg6GJvQvAOhyI0pmRcW4=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		exqH6JYTugDvMO2xplrUlkPY2kQ=
+		AprTCvYLrtIjD86RIbDs5JzYYPU=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		7wIA6AfFM9aXeWcnR9YHvzn2Khk=
+		1qFc4/RnhpjH6Es8kgGKtfMwwRA=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		5A85qiCCBrnLbDMN9q8wYb62lfo=
+		LEaJudaGg6GJvQvAOhyI0pmRcW4=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		o06+/TVnGc5s3aNaTlZE47L1o70=
+		0juWh2r9l2JaM9GZHk8GU8mrUUA=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		vTdt0UwFiME+C/ofpc1jMe64mWw=
+		eUtRMQX/qYGI/Ap6ji1LP1PXKGg=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		FOphvOBWeIHnRsCe5D3YUTflG90=
+		g39s5iegd6oPTHJYtFeB2DocrS8=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		o06+/TVnGc5s3aNaTlZE47L1o70=
+		0juWh2r9l2JaM9GZHk8GU8mrUUA=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		vTdt0UwFiME+C/ofpc1jMe64mWw=
+		eUtRMQX/qYGI/Ap6ji1LP1PXKGg=
 		</data>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		FOphvOBWeIHnRsCe5D3YUTflG90=
+		g39s5iegd6oPTHJYtFeB2DocrS8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -74,23 +70,16 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		VsKjMDrz3LJVj6b8Q3xrNC2fXY0=
+		5nYqhYTkd9vtCC/4XkfQYWCjyis=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Assets.car</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			lbfD0UAlLXwW+iBADKTFS1eyaLOYpG9xl4h8CPUNMqo=
-			</data>
-		</dict>
 		<key>Headers/TicketmasterFoundation-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1uHxZspAL1xUWi9xx6bZiSPnoxn7qh8RAFzrDxaG41g=
+			VsF7E18j5CsWpFaOguMDlGJvuYUlxn7UkVpLtNtWc6c=
 			</data>
 		</dict>
 		<key>Headers/TicketmasterFoundation.h</key>
@@ -104,84 +93,84 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0lLR61g5zbXAs1yssaU+i88uW5xTStR8AJqGDwBwK5s=
+			a9T5oGhyrowwcZDbcSGzWZzVQwGcy3AabUyXqvxXtRI=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EkpBwmH+QB6jVg3X9cRa00klGN9v3lm2W3d+0s6F/Bc=
+			mNqSEvNlD8Y6ThB0WDpHgOYM2ubilcM3zuPn/Pme938=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wk1g8m+NzJ76dQidqw7TRP8vc6FPWfD+sZ3QwqJodk8=
+			PszqmVuTzVrsVczp3/ARIEkpynP5c0D0OPd1Ak8nwV4=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0lLR61g5zbXAs1yssaU+i88uW5xTStR8AJqGDwBwK5s=
+			a9T5oGhyrowwcZDbcSGzWZzVQwGcy3AabUyXqvxXtRI=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EkpBwmH+QB6jVg3X9cRa00klGN9v3lm2W3d+0s6F/Bc=
+			mNqSEvNlD8Y6ThB0WDpHgOYM2ubilcM3zuPn/Pme938=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wk1g8m+NzJ76dQidqw7TRP8vc6FPWfD+sZ3QwqJodk8=
+			PszqmVuTzVrsVczp3/ARIEkpynP5c0D0OPd1Ak8nwV4=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4SvNPeHSJQ3Lfhwb4Gr+JZrJaJLC5vUobDfuWpPwgl8=
+			XiX+xe/AvPVUV8KrrAU10Hyluauyat6vsOz2OPK+GOY=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RuRTxhUuhky8kXSlPHtXIDZr9lpe1RZgxpNaVMK5xO8=
+			vSzP7U7D+QkomDJ5T/Mi9D7S3ONiy21Gpi9spq80fkQ=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MZttIt0WigPRy7FvR9OSrtv9MGl/Jtv6CTjUaX/2I5c=
+			z+gqcpGfVwxNZFAg0ypCwM4DV8x3BmosYknJQwHqzfs=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4SvNPeHSJQ3Lfhwb4Gr+JZrJaJLC5vUobDfuWpPwgl8=
+			XiX+xe/AvPVUV8KrrAU10Hyluauyat6vsOz2OPK+GOY=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RuRTxhUuhky8kXSlPHtXIDZr9lpe1RZgxpNaVMK5xO8=
+			vSzP7U7D+QkomDJ5T/Mi9D7S3ONiy21Gpi9spq80fkQ=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterFoundation.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MZttIt0WigPRy7FvR9OSrtv9MGl/Jtv6CTjUaX/2I5c=
+			z+gqcpGfVwxNZFAg0ypCwM4DV8x3BmosYknJQwHqzfs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -195,7 +184,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PoZSRmhJs4fklLoBvzkN541akV9WmP14DjZDvfNu90c=
+			JlCrAL0eeZitFkKvU6td1hfpbSLFRHm7kJTCRAYuPe8=
 			</data>
 		</dict>
 	</dict>

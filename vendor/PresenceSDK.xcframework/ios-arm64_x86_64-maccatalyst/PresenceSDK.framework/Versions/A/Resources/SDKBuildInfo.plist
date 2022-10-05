@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Sep  2 10:29:12 PDT 2022</string>
+	<string>Tue Oct  4 15:32:59 PDT 2022</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.14.0</string>
+	<string>release/2.15.0</string>
 	<key>GITComment</key>
-	<string>Updated version to 2.14.0</string>
+	<string>Merge branch master of git.tmaws.io:tmx/iOS-PresenceSDK into release/2.15.0</string>
 	<key>GITDate</key>
-	<string>Wed Aug 31 15:02:10 2022 -0700</string>
+	<string>Tue Oct 4 13:51:00 2022 -0700</string>
 	<key>GITRevision</key>
-	<string>878bb2cda0e6ac1593537b9cb1388002bb4ca498</string>
+	<string>159614f205277d0474e47b1473ecc9ee34624638</string>
 	<key>MarketingVersion</key>
-	<string>2.14.0</string>
+	<string>2.15.1</string>
 </dict>
 </plist>

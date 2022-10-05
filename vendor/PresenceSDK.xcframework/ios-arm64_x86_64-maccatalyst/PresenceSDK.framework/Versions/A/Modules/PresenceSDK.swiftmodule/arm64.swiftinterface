@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
 // swift-module-flags: -target arm64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PresenceSDK
+import AVFoundation
 import AuthenticationServices
 import Contacts
 import ContactsUI
@@ -21,14 +22,13 @@ import UIKit
 import WebKit
 extension PresenceSDK.PSDK {
   @available(*, deprecated, message: "Renamed to start(presenceView: PresenceView, ...)")
-  @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: PresenceSDK.PresenceLoginDelegate? = nil, orderDelegate: PresenceSDK.PresenceOrderDelegate? = nil, venueDelegate: PresenceSDK.PresenceVenueDelegate? = nil)
-  @objc final public func start(presenceView: PresenceSDK.PresenceView?, loginDelegate: PresenceSDK.PresenceLoginDelegate? = nil, orderDelegate: PresenceSDK.PresenceOrderDelegate? = nil, venueDelegate: PresenceSDK.PresenceVenueDelegate? = nil)
+  @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: PresenceSDK.PresenceLoginDelegate? = nil, orderDelegate: PresenceSDK.PresenceOrderDelegate? = nil)
+  final public func start(presenceView: PresenceSDK.PresenceView?, loginDelegate: PresenceSDK.PresenceLoginDelegate? = nil, orderDelegate: PresenceSDK.PresenceOrderDelegate? = nil, moduleDelegate: PresenceSDK.PresenceModuleDelegate? = nil)
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class PSDK : ObjectiveC.NSObject {
   public static let shared: PresenceSDK.PSDK
   weak final public var loginDelegate: PresenceSDK.PresenceLoginDelegate?
   weak final public var orderDelegate: PresenceSDK.PresenceOrderDelegate?
-  weak final public var venueDelegate: PresenceSDK.PresenceVenueDelegate?
   weak final public var moduleDelegate: PresenceSDK.PresenceModuleDelegate?
   final public var eventsView: PresenceSDK.PresenceView? {
     get
@@ -122,6 +122,29 @@ extension PresenceSDK.PSDK {
     data += Array<UInt8>(repeating: 0, count: blockSize + max - 1 - (msgLength % blockSize))
   }
 }
+@objc @_inheritsConvenienceInitializers final public class PresenceModuleHeaderView : UIKit.UIView {
+  @objc @IBOutlet weak final public var colorView: UIKit.UIView!
+  @objc @IBOutlet weak final public var imageView: UIKit.UIImageView!
+  @objc @IBOutlet weak final public var mapView: MapKit.MKMapView!
+  @objc @IBOutlet weak final public var topLabel: UIKit.UILabel!
+  @objc @IBOutlet weak final public var centerLabel: UIKit.UILabel!
+  @objc @IBOutlet weak final public var bottomLabel: UIKit.UILabel!
+  @objc @IBOutlet weak final public var barcodeBackgroundView: UIKit.UIView!
+  public static func build() -> PresenceSDK.PresenceModuleHeaderView
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension PresenceSDK.PresenceModuleHeaderView {
+  final public func configure(topLabelText: Swift.String? = nil, topLabelTextAlignment: UIKit.NSTextAlignment? = .left, centerLabelText: Swift.String? = nil, centerLabelTextAlignment: UIKit.NSTextAlignment? = .center, bottomLabelText: Swift.String? = nil, bottomLabelTextAlignment: UIKit.NSTextAlignment? = .right, gradientAlpha: CoreGraphics.CGFloat? = 0.0, image: UIKit.UIImage)
+  final public func configure(topLabelText: Swift.String? = nil, topLabelTextAlignment: UIKit.NSTextAlignment? = .left, centerLabelText: Swift.String? = nil, centerLabelTextAlignment: UIKit.NSTextAlignment? = .center, bottomLabelText: Swift.String? = nil, bottomLabelTextAlignment: UIKit.NSTextAlignment? = .right, gradientAlpha: CoreGraphics.CGFloat? = 0.0, backgroundColor: UIKit.UIColor)
+  final public func configure(topLabelText: Swift.String? = nil, topLabelTextAlignment: UIKit.NSTextAlignment? = .left, centerLabelText: Swift.String? = nil, centerLabelTextAlignment: UIKit.NSTextAlignment? = .center, bottomLabelText: Swift.String? = nil, bottomLabelTextAlignment: UIKit.NSTextAlignment? = .right, gradientAlpha: CoreGraphics.CGFloat? = 0.0, mapCoordinateRegion: MapKit.MKCoordinateRegion, annotation: MapKit.MKAnnotation? = nil)
+  final public func configure(topLabelText: Swift.String? = nil, topLabelTextAlignment: UIKit.NSTextAlignment? = .left, centerLabelText: Swift.String? = nil, centerLabelTextAlignment: UIKit.NSTextAlignment? = .center, bottomLabelText: Swift.String? = nil, bottomLabelTextAlignment: UIKit.NSTextAlignment? = .right, gradientAlpha: CoreGraphics.CGFloat? = 0.0, backgroundImage: UIKit.UIImage? = nil, qrCodeValue: Swift.String)
+  final public func configure(topLabelText: Swift.String? = nil, topLabelTextAlignment: UIKit.NSTextAlignment? = .left, centerLabelText: Swift.String? = nil, centerLabelTextAlignment: UIKit.NSTextAlignment? = .center, bottomLabelText: Swift.String? = nil, bottomLabelTextAlignment: UIKit.NSTextAlignment? = .right, gradientAlpha: CoreGraphics.CGFloat? = 0.0, backgroundImage: UIKit.UIImage? = nil, barcode2DValue: Swift.String)
+  final public func configure(topLabelText: Swift.String? = nil, topLabelTextAlignment: UIKit.NSTextAlignment? = .left, centerLabelText: Swift.String? = nil, centerLabelTextAlignment: UIKit.NSTextAlignment? = .center, bottomLabelText: Swift.String? = nil, bottomLabelTextAlignment: UIKit.NSTextAlignment? = .right, gradientAlpha: CoreGraphics.CGFloat? = 0.0, avContentURL: Foundation.URL, disableLoopingContent: Swift.Bool = false, disableAVAudio: Swift.Bool = false)
+  final public func playAVContent()
+  final public func pauseAVContent()
+}
 extension PresenceSDK.PSDK {
   @objc final public func setTicketsActionButtonText(title: Swift.String?)
 }
@@ -186,7 +209,46 @@ extension PresenceSDK.PSDK {
 }
 public protocol PresenceModuleDelegate : AnyObject {
   func addCustomModules(eventOrders: PresenceSDK.PresenceEventOrders, completion: @escaping (_ customModuleArray: [PresenceSDK.PSDKTicketsModule]?) -> Swift.Void)
-  func handleModuleButtonAction(moduleIdentifier: Swift.String, buttonTitle: Swift.String, callbackValue: Swift.String, eventOrders: PresenceSDK.PresenceEventOrders, completion: @escaping (_ openWebpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings?) -> Swift.Void)
+  func handleModuleActionButton(moduleIdentifier: Swift.String, buttonTitle: Swift.String, callbackValue: Swift.String, eventOrders: PresenceSDK.PresenceEventOrders, completion: @escaping (_ openWebpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings?) -> Swift.Void)
+  func userDidPressActionButton(moduleIdentifier: Swift.String, buttonTitle: Swift.String, callbackValue: Swift.String, eventOrders: PresenceSDK.PresenceEventOrders)
+}
+extension PresenceSDK.PSDKTicketsModule {
+  public enum PrebuiltModuleName : Swift.String, Swift.CaseIterable {
+    case accountManagerSeatUpgrades
+    case venueDirectionsViaAppleMaps
+    case venueConcessions
+    case accountManagerMoreTicketActions
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [PresenceSDK.PSDKTicketsModule.PrebuiltModuleName]
+    public typealias RawValue = Swift.String
+    public static var allCases: [PresenceSDK.PSDKTicketsModule.PrebuiltModuleName] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum PrebuiltButtonCallbackName : Swift.String, Swift.CaseIterable {
+    case moreTicketActions
+    case seatUpgrades
+    case getDirections
+    case rideShare
+    case order
+    case wallet
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [PresenceSDK.PSDKTicketsModule.PrebuiltButtonCallbackName]
+    public typealias RawValue = Swift.String
+    public static var allCases: [PresenceSDK.PSDKTicketsModule.PrebuiltButtonCallbackName] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public static func accountManagerSeatUpgrades(eventOrders: PresenceSDK.PresenceEventOrders, clientID: Swift.String? = nil, clientRedirect: Swift.String? = nil) -> PresenceSDK.PSDKTicketsModule?
+  public static func accountManagerMoreTicketActions(eventOrders: PresenceSDK.PresenceEventOrders, clientID: Swift.String? = nil, clientRedirect: Swift.String? = nil) -> PresenceSDK.PSDKTicketsModule?
+  public static func venueDirectionsViaAppleMaps(eventOrders: PresenceSDK.PresenceEventOrders) -> PresenceSDK.PSDKTicketsModule?
+  public static func venueConcessions(eventOrders: PresenceSDK.PresenceEventOrders, showWalletButton: Swift.Bool) -> PresenceSDK.PSDKTicketsModule?
 }
 extension Swift.FixedWidthInteger {
   @inlinable internal func bytes(totalBytes: Swift.Int = MemoryLayout<Self>.size) -> Swift.Array<Swift.UInt8> {
@@ -238,13 +300,8 @@ extension PresenceSDK.PSDK {
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-@objc public protocol PresenceVenueDelegate {
-  @objc optional func venueConcessionsSdkIdentifier(forIdentifier identifier: Swift.String, completion: @escaping (_ sdkIdentifier: Swift.String?, _ error: Swift.Error?) -> Swift.Void)
-  @objc optional func venue(identifier: Swift.String, sdkIdentifier: Swift.String, concessionsButtonPressed: PresenceSDK.PSDK.VenueConcessionsButtonType)
-  @objc optional func venueSeatUpgrades(forIdentifier identifier: Swift.String, completion: @escaping (_ clientID: Swift.String?, _ clientRedirectURL: Swift.String?, _ backendName: PresenceSDK.PSDK.BackendName) -> Swift.Void)
-}
 @objc @_hasMissingDesignatedInitializers public class PresenceEvent : ObjectiveC.NSObject, Swift.Codable {
-  final public let identifier: Swift.String?
+  final public let identifier: Swift.String
   final public let uniqueIdentifier: Swift.String?
   final public let hostIdentifier: Swift.String?
   final public let discoveryIdentifier: Swift.String?
@@ -280,6 +337,7 @@ extension PresenceSDK.PSDK {
   final public let useTmtt: Swift.Bool?
   final public let isRetEnabled: Swift.Bool?
   final public let isLarge: Swift.Bool?
+  final public let changeStatus: Swift.String?
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -598,6 +656,9 @@ extension Swift.Array {
   final public let purchaseDate: Foundation.Date?
   final public let ticketFees: [PresenceSDK.PresenceTicketFee]?
   final public let originalTicketPrice: Swift.Double?
+  final public let orderSource: Swift.String?
+  final public let printStatus: Swift.String?
+  final public let printEligibility: Swift.String?
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -621,6 +682,7 @@ extension Swift.Array {
   final public let descriptionLine2: Swift.String?
   final public let descriptionLine3: Swift.String?
   final public let displayMessage: Swift.String?
+  final public let methods: [Swift.String]?
   public enum DeliverySource : Swift.Equatable, Swift.Codable {
     case flash
     case ups
@@ -833,8 +895,8 @@ extension Swift.UInt64 {
 @objc public class PSDKTicketsModule : ObjectiveC.NSObject, Swift.Comparable {
   final public let identifier: Swift.String
   final public let headerDisplay: PresenceSDK.PSDKTicketsModule.HeaderDisplay?
-  public var actionButtons: [PresenceSDK.PSDKTicketsModule.ActionButton]
-  public init(identifier: Swift.String, headerDisplay: PresenceSDK.PSDKTicketsModule.HeaderDisplay? = nil, actionButtons: [PresenceSDK.PSDKTicketsModule.ActionButton])
+  public var actionButtons: [PresenceSDK.PSDKTicketsModule.ActionButton]?
+  public init(identifier: Swift.String, headerDisplay: PresenceSDK.PSDKTicketsModule.HeaderDisplay? = nil, actionButtons: [PresenceSDK.PSDKTicketsModule.ActionButton]? = nil)
   public static func < (lhs: PresenceSDK.PSDKTicketsModule, rhs: PresenceSDK.PSDKTicketsModule) -> Swift.Bool
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @objc public class HeaderDisplay : ObjectiveC.NSObject {
@@ -846,12 +908,12 @@ extension Swift.UInt64 {
   }
   @objc public class ActionButton : ObjectiveC.NSObject {
     final public let title: Swift.String
+    final public let callbackValue: Swift.String
     final public let webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings?
-    final public let callbackValue: Swift.String?
     final public let requiresSpecificOrder: Swift.Bool
     public var enabled: Swift.Bool
-    public init(title: Swift.String, callbackValue: Swift.String? = nil, requiresSpecificOrder: Swift.Bool = false, enabled: Swift.Bool = true)
-    public init(title: Swift.String, webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings, enabled: Swift.Bool = true)
+    public init(title: Swift.String, callbackValue: Swift.String? = nil, requiresSpecificOrder: Swift.Bool? = false, enabled: Swift.Bool? = true)
+    public init(title: Swift.String, callbackValue: Swift.String? = nil, webpageSettings: PresenceSDK.PSDKTicketsModule.WebpageSettings, requiresSpecificOrder: Swift.Bool? = false, enabled: Swift.Bool? = true)
     @objc deinit
   }
   @objc public class WebpageSettings : ObjectiveC.NSObject {
@@ -861,21 +923,19 @@ extension Swift.UInt64 {
     public var internalPresentationStyle: UIKit.UIModalPresentationStyle?
     public var reloadTicketInfo: Swift.Bool
     public var oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings?
-    public init(pageTitle: Swift.String, urlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil)
+    public init(pageTitle: Swift.String, urlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool? = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool? = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil)
     @objc deinit
   }
   @objc public class OAuthCookieSettings : ObjectiveC.NSObject {
     public var name: Swift.String
+    public var value: Swift.String?
     public var webDomains: [Swift.String]
-    public var backend: PresenceSDK.PSDK.BackendName
+    public var backend: PresenceSDK.PSDK.BackendName?
     public init(name: Swift.String, webDomains: [Swift.String], backend: PresenceSDK.PSDK.BackendName)
+    public init(name: Swift.String, value: Swift.String?, webDomains: [Swift.String])
     @objc deinit
   }
   @objc deinit
-}
-extension PresenceSDK.PSDKTicketsModule.ActionButton {
-  convenience public init?(title: Swift.String, pageTitle: Swift.String? = nil, webUrlString: Swift.String, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, enabled: Swift.Bool = true)
-  convenience public init(title: Swift.String, pageTitle: Swift.String? = nil, webUrlRequest: Foundation.URLRequest, openExternalURL: Swift.Bool = false, internalPresentationStyle: UIKit.UIModalPresentationStyle? = nil, reloadTicketInfo: Swift.Bool = false, oauthCookieSettings: PresenceSDK.PSDKTicketsModule.OAuthCookieSettings? = nil, enabled: Swift.Bool = true)
 }
 extension Swift.String : Swift.Error {
 }
@@ -893,6 +953,9 @@ extension Swift.String : Swift.Error {
   @objc override dynamic public func didMoveToWindow()
   @objc public func refreshView()
   @objc deinit
+}
+extension PresenceSDK.PSDKTicketsModule {
+  public static func moduleArray(jsonDict: [Swift.String : Any]) -> [PresenceSDK.PSDKTicketsModule]?
 }
 @objc public protocol PresenceLoginDelegate {
   @objc optional func onLoginWindowDidDisplay(backendName: PresenceSDK.PSDK.BackendName)
@@ -966,7 +1029,11 @@ extension UIKit.UIViewController : AuthenticationServices.ASWebAuthenticationPre
   @objc optional func presentArtistDetailsPage(with artistId: Swift.String)
   @objc optional func presentEventDetailsPage(with eventId: Swift.String)
   @objc optional func presentVenueDetailsPage(with venueId: Swift.String)
+  @objc optional func didUpdateEvents(eventOrdersArray: [PresenceSDK.PresenceEventOrders])
+  @objc optional func didUpdateTickets(eventOrders: PresenceSDK.PresenceEventOrders)
+  @available(*, deprecated, message: "Renamed didUpdateEvents(eventOrdersArray: [PresenceEventOrders])")
   @objc optional func didUpdateOrderedEvents()
+  @available(*, deprecated, message: "Renamed didUpdateTickets(eventOrders: PresenceEventOrders)")
   @objc optional func didUpdateTickets(eventId: Swift.String)
   @objc optional func handleBarButtonAction(page: PresenceSDK.PSDK.PresencePage, buttonTitle: Swift.String, eventOrders: PresenceSDK.PresenceEventOrders?)
 }
@@ -1022,6 +1089,12 @@ extension PresenceSDK.PSDK.LoginButtons : Swift.RawRepresentable {}
 extension PresenceSDK.PSDK.SDKEnvironment : Swift.Equatable {}
 extension PresenceSDK.PSDK.SDKEnvironment : Swift.Hashable {}
 extension PresenceSDK.PSDK.SDKEnvironment : Swift.RawRepresentable {}
+extension PresenceSDK.PSDKTicketsModule.PrebuiltModuleName : Swift.Equatable {}
+extension PresenceSDK.PSDKTicketsModule.PrebuiltModuleName : Swift.Hashable {}
+extension PresenceSDK.PSDKTicketsModule.PrebuiltModuleName : Swift.RawRepresentable {}
+extension PresenceSDK.PSDKTicketsModule.PrebuiltButtonCallbackName : Swift.Equatable {}
+extension PresenceSDK.PSDKTicketsModule.PrebuiltButtonCallbackName : Swift.Hashable {}
+extension PresenceSDK.PSDKTicketsModule.PrebuiltButtonCallbackName : Swift.RawRepresentable {}
 extension PresenceSDK.PSDK.BackendName : Swift.Equatable {}
 extension PresenceSDK.PSDK.BackendName : Swift.Hashable {}
 extension PresenceSDK.PSDK.BackendName : Swift.RawRepresentable {}
