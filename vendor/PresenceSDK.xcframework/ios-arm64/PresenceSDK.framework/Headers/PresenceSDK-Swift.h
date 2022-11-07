@@ -457,6 +457,7 @@ enum ActionType : NSInteger;
 @end
 
 
+
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
 - (void)logOut SWIFT_DEPRECATED_MSG("Use logout(completion:) instead for proper OAuth2 logout handling");
@@ -524,7 +525,6 @@ enum ActionType : NSInteger;
 ///
 - (void)logOutSportXRWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
-
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -750,6 +750,7 @@ SWIFT_CLASS("_TtC11PresenceSDK17PSDKTicketsModule")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 

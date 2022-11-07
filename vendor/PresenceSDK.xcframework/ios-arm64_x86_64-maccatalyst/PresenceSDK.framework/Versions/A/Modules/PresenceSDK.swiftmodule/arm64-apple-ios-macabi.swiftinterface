@@ -214,9 +214,9 @@ public protocol PresenceModuleDelegate : AnyObject {
 }
 extension PresenceSDK.PSDKTicketsModule {
   public enum PrebuiltModuleName : Swift.String, Swift.CaseIterable {
-    case accountManagerSeatUpgrades
     case venueDirectionsViaAppleMaps
     case venueConcessions
+    case accountManagerSeatUpgrades
     case accountManagerMoreTicketActions
     public init?(rawValue: Swift.String)
     public typealias AllCases = [PresenceSDK.PSDKTicketsModule.PrebuiltModuleName]
@@ -245,8 +245,8 @@ extension PresenceSDK.PSDKTicketsModule {
       get
     }
   }
-  public static func accountManagerSeatUpgrades(eventOrders: PresenceSDK.PresenceEventOrders, clientID: Swift.String? = nil, clientRedirect: Swift.String? = nil) -> PresenceSDK.PSDKTicketsModule?
-  public static func accountManagerMoreTicketActions(eventOrders: PresenceSDK.PresenceEventOrders, clientID: Swift.String? = nil, clientRedirect: Swift.String? = nil) -> PresenceSDK.PSDKTicketsModule?
+  public static func accountManagerSeatUpgrades(eventOrders: PresenceSDK.PresenceEventOrders) -> PresenceSDK.PSDKTicketsModule?
+  public static func accountManagerMoreTicketActions(eventOrders: PresenceSDK.PresenceEventOrders) -> PresenceSDK.PSDKTicketsModule?
   public static func venueDirectionsViaAppleMaps(eventOrders: PresenceSDK.PresenceEventOrders) -> PresenceSDK.PSDKTicketsModule?
   public static func venueConcessions(eventOrders: PresenceSDK.PresenceEventOrders, showWalletButton: Swift.Bool) -> PresenceSDK.PSDKTicketsModule?
 }
@@ -776,6 +776,7 @@ extension PresenceSDK.PSDK {
     @objc public static let ACTION_HEALTH_CHECK_MORE_INFO_CLICK: Swift.String
     @objc public static let ACTION_HEALTH_CHECK_LEARN_MORE_CLICK: Swift.String
     @objc public static let ACTION_HEALTH_CHECK_GOT_IT_CLICK: Swift.String
+    @objc public static let ACTION_MODULEBUTTONPRESSED: Swift.String
     @objc public static let ACTION_TRANSFERINITIATED: Swift.String
     @objc public static let ACTION_TRANSFERCANCELLED: Swift.String
     @objc public static let MIXPANEL_ACTION_TRANSFERINITIATED: Swift.String

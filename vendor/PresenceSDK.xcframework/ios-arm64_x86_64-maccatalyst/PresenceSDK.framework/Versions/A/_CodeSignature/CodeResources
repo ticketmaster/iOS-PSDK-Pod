@@ -34,7 +34,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		od/wMiwPgGP+T1bj5xZ00NJ/dJ0=
+		frFPndjoo+8NXvG0i2ZRgrsXbYc=
 		</data>
 		<key>Resources/BarcodeCell.DeliveryView.nib</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Resources/BarcodeCell.nib</key>
 		<data>
-		g4M4n3wC6SWrYXIezqWvOeuc40E=
+		400guUXhd3VCsvmBhBmHIe4/iyY=
 		</data>
 		<key>Resources/Base.lproj/Localizable.strings</key>
 		<data>
@@ -286,7 +286,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		ugHKSAquWi23ZEhjBls9Tac4F+E=
+		nL0msP6SdXIEJRta+4pcPfIyX/I=
 		</data>
 		<key>Resources/InputAccessoryView.nib</key>
 		<data>
@@ -306,15 +306,15 @@
 		</data>
 		<key>Resources/ModernAccounts.QuickHost.View.nib</key>
 		<data>
-		yWpzTtvCmu9YXt0PdFX9EviVfv8=
+		biTMFfD9RMjgep6fCCr8L+8wqDI=
 		</data>
 		<key>Resources/ModernAccounts.QuickSportXR.View.nib</key>
 		<data>
-		Ux+k9OFX8+me8Hh7BlEaK7/c7uM=
+		E3AmP+SV3t85j2z83HuAQ7Koni8=
 		</data>
 		<key>Resources/ModernAccounts.QuickTeam.View.nib</key>
 		<data>
-		pItnV1pqeY7wV0/s0VBObuEeMOc=
+		Lt/IACT277kq8orQl7j12r+qdgg=
 		</data>
 		<key>Resources/MoreInfoView.nib</key>
 		<data>
@@ -338,7 +338,7 @@
 		</data>
 		<key>Resources/SDKBuildInfo.plist</key>
 		<data>
-		3TW80Zw/k08g+hLFMh8cmtjBmc0=
+		uoHQAW9Z044FHz2yfd/rjVcaa8o=
 		</data>
 		<key>Resources/SeatingMessageCell.nib</key>
 		<data>
@@ -354,7 +354,7 @@
 		</data>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/Hsp-fv-Ohn-view-tJf-si-uuI.nib</key>
 		<data>
-		JP7RqGhNVCVWv36avuRPeGbisZs=
+		ezppx3QWfdZ8I3IRaha+PQplauQ=
 		</data>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/Info.plist</key>
 		<data>
@@ -362,7 +362,7 @@
 		</data>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/TDj-Ba-KZ2-view-4nt-4K-M45.nib</key>
 		<data>
-		loZL9GhhFxc9ee1h5Dhbn7oCNCw=
+		IfEqY9G/ITX0AKRPDD5DCyWFATE=
 		</data>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/UIViewController-TDj-Ba-KZ2.nib</key>
 		<data>
@@ -374,7 +374,7 @@
 		</data>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/bfc-Ro-dWi-view-d0f-mN-Jkz.nib</key>
 		<data>
-		kiVsGIVYr1BziLiwe43DQjRkF2g=
+		hmF26y3m9zKNnOEHtnlJVyDXnNg=
 		</data>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/selectSeatsForTransfer.nib</key>
 		<data>
@@ -478,7 +478,7 @@
 		</data>
 		<key>Resources/TicketCard.nib</key>
 		<data>
-		yQbAUrtHdXiknCozuY9PspMjt/o=
+		wxjIoQ2QgGWmNU9MjO+dIPCDJeU=
 		</data>
 		<key>Resources/TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -544,7 +544,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hrp4Y1rAnzA59L+qPEKeL+fafaw=
+			CvfWnN57HhGbHl+V3VREwT4/GRI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -598,7 +598,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			J8JGeLRS2sGyQxzBE9gv07PsQk8=
+			5QdLUqg6gVqlrleECbTzsgO+rx8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -659,7 +659,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			C0LQEqAOuambXB81E24QIoxqXDA2eK49ML2D2JVEmqI=
+			HVfmGTmDEQBJs0yyHeVZlIDhWhibPHNZgD29sfknT7s=
 			</data>
 		</dict>
 		<key>Headers/PresenceSDK.h</key>
@@ -680,14 +680,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			C/rH/y8pQVOdoYeJvepe/EQb993XLum9nm9rx4+3nnc=
+			jg4FIB2350NT76wdZIlSoGO/QndgiZD4CMLLj73aF5g=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-macabi.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			w0Tm2VPZOVda8QwJk3BVTKGsp+i8C4oE6fzJdK35icQ=
+			SH+EOG0apTqcV5v4PTPDGsBHh+VjLCTyev6z9628JSc=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftdoc</key>
@@ -701,14 +701,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			C/rH/y8pQVOdoYeJvepe/EQb993XLum9nm9rx4+3nnc=
+			jg4FIB2350NT76wdZIlSoGO/QndgiZD4CMLLj73aF5g=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			w0Tm2VPZOVda8QwJk3BVTKGsp+i8C4oE6fzJdK35icQ=
+			SH+EOG0apTqcV5v4PTPDGsBHh+VjLCTyev6z9628JSc=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
@@ -722,14 +722,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lGBxC4Qb2AcepID0+rImWDY3d2OXaDErOT5GepBj3/I=
+			eQkjHOqkmBZCDBcz8XLiElnfpNu/IIE9gBiPCxuqysk=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-macabi.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8NYZ8sXJp0ae1PhhrLeQJLjRrej8kh0MqWCgb9uEZ/Y=
+			mQSubJEZkvDmwLLTbfkxiw8FP65RqqoHOzMg3oVxz00=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -743,14 +743,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lGBxC4Qb2AcepID0+rImWDY3d2OXaDErOT5GepBj3/I=
+			eQkjHOqkmBZCDBcz8XLiElnfpNu/IIE9gBiPCxuqysk=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8NYZ8sXJp0ae1PhhrLeQJLjRrej8kh0MqWCgb9uEZ/Y=
+			mQSubJEZkvDmwLLTbfkxiw8FP65RqqoHOzMg3oVxz00=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -813,7 +813,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xLoBNoCnJz5QueB2rKDlbYZsg7dnZinQqfmosWfTTak=
+			AQ1B+G2la+K3opXN8Q1KCtplHguW4FdfgiaaulAqOnA=
 			</data>
 		</dict>
 		<key>Resources/BarcodeCell.DeliveryView.nib</key>
@@ -827,7 +827,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZD09K2YvmW9gZGpcnTslEtFa5VqwjHvcssq25JucNJ4=
+			2sWJKGVgKfs2A8FBR2urMUDjB8E9flLNRpTYrBV2Nx4=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Localizable.strings</key>
@@ -1254,7 +1254,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			J/I7eO/NN+BgF18QA9Rd2NC4dAEbbrya4zjc2gJUGxw=
+			pcjEdS/q32GoDdSO676HFitDpYA0kwQkRMhZirbQ8Jo=
 			</data>
 		</dict>
 		<key>Resources/InputAccessoryView.nib</key>
@@ -1289,21 +1289,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uh5geYj1DhrnnThs8HfioY6ThRjbkN2lIZnoSiPKnCA=
+			ESY6c0X20tRnp84rzDXukrLceqwNjKtC/e/67TNq6Ko=
 			</data>
 		</dict>
 		<key>Resources/ModernAccounts.QuickSportXR.View.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IuEVYOOaCWTq27EYYWGk+JfeKgzsaCzkr+rXXFmjNL0=
+			/fU8iB6nOtE70lxgKSY3P3dRvDcS+QB5nawEjVXUr9U=
 			</data>
 		</dict>
 		<key>Resources/ModernAccounts.QuickTeam.View.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			u1lQlKwccRbrVtxnT0J53sZsCCxWKVKO6w3t1mjxRno=
+			E0qbLxPeEZUA6aJuywknGGCS6SvHm5amTBfHhqDj5AI=
 			</data>
 		</dict>
 		<key>Resources/MoreInfoView.nib</key>
@@ -1345,7 +1345,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yTKKUt7zaYdUGY5IIW8CQdxR7VxGydi1qfxKcOt97Hk=
+			elxMk0AtnZtw+0R//MuMuZCfEntEcQ/Tpx8I8OHD0Ww=
 			</data>
 		</dict>
 		<key>Resources/SeatingMessageCell.nib</key>
@@ -1373,7 +1373,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0l5oOQVyWTupuIS7JyrhMIi2hQUw6N374pw8VrA2gWE=
+			wWMvIRGwGJUC/PMcGJeAKzrhaNwy6V5YEklbXjQ4kIs=
 			</data>
 		</dict>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/Info.plist</key>
@@ -1387,7 +1387,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rqnCtkSiyxgO6kCor4zeTWPM4LXaQCGz/e9MnVAa+Zw=
+			bG/XZ3vMDuyibEGUgFpXOgcl9qSg1C3EBM6DYXGFO6g=
 			</data>
 		</dict>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/UIViewController-TDj-Ba-KZ2.nib</key>
@@ -1408,7 +1408,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ejtd3DDVKRtD7mShLc5ueGn98kSO9jwtyYXBVvl7deI=
+			WIL5kAAJk/U7M6HY80ertSV3vsx6JC7V85U7x6M/uxI=
 			</data>
 		</dict>
 		<key>Resources/SpecificSeatTransferFlow.storyboardc/selectSeatsForTransfer.nib</key>
@@ -1590,7 +1590,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/X3a4oRx3yMo2Rmljw5lXtmdEJrhBfl7TsFXKvboGuM=
+			MxMQn0jTxGJsDqjEfixkLO6Z+YS/udSeY69OBygN+EM=
 			</data>
 		</dict>
 		<key>Resources/TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
@@ -1702,7 +1702,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MpKUDwR5KIOSZ4pabbWiVBlfk/KC4xvQ2lGxhbBuOHM=
+			uNTGtWND6SgF05/KZbnAXsI6aFQ3jhueAkh0JCyj8j8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1756,7 +1756,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			d0IozD2UujvQjx5MB711wuPBF2T5pzZbLWvOect6QgA=
+			nvd+Zo3N5jt8lCkqXo7uaSqzBDd3iRcQdKerXJfkUpA=
 			</data>
 			<key>optional</key>
 			<true/>
