@@ -636,6 +636,7 @@ extension Swift.Array {
   final public let hostBranding: PresenceSDK.PresenceHostBranding?
   final public let vipColor: PresenceSDK.PresenceColor?
   final public let vipText: Swift.String?
+  final public let isMfaOnViewBarcodeEnabled: Swift.Bool?
   final public let entryGate: Swift.String?
   final public let sectionName: Swift.String?
   final public let rowName: Swift.String?
@@ -660,6 +661,7 @@ extension Swift.Array {
   final public let orderSource: Swift.String?
   final public let printStatus: Swift.String?
   final public let printEligibility: Swift.String?
+  final public let eventCPRStatus: Swift.String?
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -1031,6 +1033,7 @@ extension UIKit.UIViewController : AuthenticationServices.ASWebAuthenticationPre
   @objc optional func presentArtistDetailsPage(with artistId: Swift.String)
   @objc optional func presentEventDetailsPage(with eventId: Swift.String)
   @objc optional func presentVenueDetailsPage(with venueId: Swift.String)
+  @objc optional func presentClientAppPage(with deeplink: Swift.String)
   @objc optional func didUpdateEvents(eventOrdersArray: [PresenceSDK.PresenceEventOrders])
   @objc optional func didUpdateTickets(eventOrders: PresenceSDK.PresenceEventOrders)
   @available(*, deprecated, message: "Renamed didUpdateEvents(eventOrdersArray: [PresenceEventOrders])")

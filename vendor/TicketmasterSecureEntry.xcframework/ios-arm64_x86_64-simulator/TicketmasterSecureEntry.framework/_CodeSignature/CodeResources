@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		A/DcIw6dS0WqCo8P6GIWrJwJKjM=
+		Mx6RI5x2B07TGxpoVq9a6Cb0xyU=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		D0ljYKkZdS27rqBroH1FLY9M4tA=
+		622LA8BiPZ5mN8dA+ND+6rjBMpU=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		D0ljYKkZdS27rqBroH1FLY9M4tA=
+		622LA8BiPZ5mN8dA+ND+6rjBMpU=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		RTdh1Lo+TPI4QMzZI6us3y7BU98=
+		dFzyEs20vMvmWYiUDXAC8U76FGA=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		RTdh1Lo+TPI4QMzZI6us3y7BU98=
+		dFzyEs20vMvmWYiUDXAC8U76FGA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		ftMlI6uRigmqgS5YwAOWM245A0w=
+		9TnSaFaICogOY50pI2uFk67M6aQ=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -118,7 +118,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h48uhT5JIm+nnsED48uOJ9CachzPkVygdvYPWsRzs7Q=
+			7LtycPgc7S0s8jrtbuZGRvxDO9vi/Fs4XAKYF5cIP+I=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64.swiftdoc</key>
@@ -139,7 +139,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h48uhT5JIm+nnsED48uOJ9CachzPkVygdvYPWsRzs7Q=
+			7LtycPgc7S0s8jrtbuZGRvxDO9vi/Fs4XAKYF5cIP+I=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -160,7 +160,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			U8bNnwJsGq+qUd8pAyySNyq0b/LHr1RPWWab7suS3+0=
+			t1eQRP3LfOm5ob/wfh9oBuNefuhugLZ0GM1zwLbxybo=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64.swiftdoc</key>
@@ -181,7 +181,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			U8bNnwJsGq+qUd8pAyySNyq0b/LHr1RPWWab7suS3+0=
+			t1eQRP3LfOm5ob/wfh9oBuNefuhugLZ0GM1zwLbxybo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -195,7 +195,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1hdk6ew6RpLBP2TuO3ceeFY2lIcW/nwdeTNQvE/BXxs=
+			l6RI/sroiytSUqw0kWOoRZghP798eU7nitI1/pscyCg=
 			</data>
 		</dict>
 	</dict>

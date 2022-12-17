@@ -459,7 +459,6 @@ enum ActionType : NSInteger;
 @end
 
 
-
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
 - (void)logOut SWIFT_DEPRECATED_MSG("Use logout(completion:) instead for proper OAuth2 logout handling");
@@ -527,6 +526,7 @@ enum ActionType : NSInteger;
 ///
 - (void)logOutSportXRWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
+
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -1010,6 +1010,10 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 /// \param venueId Identidier of the venue to be launched inVADP.
 ///
 - (void)presentVenueDetailsPageWith:(NSString * _Nonnull)venueId;
+/// Method is invoked if the client app needs to display some specific page
+/// \param deeplink Identifier of the client app native page to be launched.
+///
+- (void)presentClientAppPageWith:(NSString * _Nonnull)deeplink;
 /// Method is invoked when the list of event change for a particular event ID
 /// \param eventOrdersArray array of current Events being viewed, will NOT contain Order or Ticket data
 ///
@@ -1638,7 +1642,6 @@ enum ActionType : NSInteger;
 @end
 
 
-
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// Method to log out user from all the logged-in accounts (w/o parameters for objc compatibility)
 - (void)logOut SWIFT_DEPRECATED_MSG("Use logout(completion:) instead for proper OAuth2 logout handling");
@@ -1706,6 +1709,7 @@ enum ActionType : NSInteger;
 ///
 - (void)logOutSportXRWithForceLogout:(BOOL)forceLogout success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
+
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -2189,6 +2193,10 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 /// \param venueId Identidier of the venue to be launched inVADP.
 ///
 - (void)presentVenueDetailsPageWith:(NSString * _Nonnull)venueId;
+/// Method is invoked if the client app needs to display some specific page
+/// \param deeplink Identifier of the client app native page to be launched.
+///
+- (void)presentClientAppPageWith:(NSString * _Nonnull)deeplink;
 /// Method is invoked when the list of event change for a particular event ID
 /// \param eventOrdersArray array of current Events being viewed, will NOT contain Order or Ticket data
 ///
