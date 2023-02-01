@@ -292,11 +292,12 @@ extension PresenceSDK.PSDK {
   @objc final public func hasUserSignedInTeam() -> Swift.Bool
   @objc final public func hasUserSignedInSportXR() -> Swift.Bool
 }
-@objc @_hasMissingDesignatedInitializers public class PresenceOrder : ObjectiveC.NSObject, Swift.Codable {
+@objc @_hasMissingDesignatedInitializers public class PresenceOrder : ObjectiveC.NSObject, Swift.Codable, Swift.Comparable {
   final public let orderIdentifier: Swift.String
   final public let displayableOrderIdentifier: Swift.String
   final public let encodedOrderIdentifier: Swift.String?
   final public let tickets: [PresenceSDK.PresenceTicket]
+  public static func < (lhs: PresenceSDK.PresenceOrder, rhs: PresenceSDK.PresenceOrder) -> Swift.Bool
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -575,6 +576,9 @@ extension PresenceSDK.PSDK {
     case none
     case myEvents
     case myTickets
+    case myTicketDetail
+    case module
+    case viewBarcode
     public var description: Swift.String {
       get
     }
@@ -749,6 +753,7 @@ extension PresenceSDK.PSDK {
   @objc final public func setConfiguration(_ configuration: PresenceSDK.PSDK.Configuration)
   @objc final public func checkConfig(success: @escaping PresenceSDK.PSDK.ConfigSuccessHandler, failure: @escaping PresenceSDK.PSDK.ConfigFailureHandler)
   @objc final public func setBrandingColors(_ brandingColors: PresenceSDK.PSDK.BrandingColors)
+  @objc final public func enableTMBrandingColorOverride()
   @objc final public func setLogo(_ image: UIKit.UIImage?)
   @objc final public func setTheme(theme: PresenceSDK.PSDK.SDKTheme)
   @objc final public func setUserTracking(enabled: Swift.Bool)
@@ -1040,7 +1045,11 @@ extension UIKit.UIViewController : AuthenticationServices.ASWebAuthenticationPre
   @objc optional func didUpdateOrderedEvents()
   @available(*, deprecated, message: "Renamed didUpdateTickets(eventOrders: PresenceEventOrders)")
   @objc optional func didUpdateTickets(eventId: Swift.String)
+  @objc optional func handleBarButtonAction(page: PresenceSDK.PSDK.PresencePage, screenTitleName: Swift.String?, eventOrders: PresenceSDK.PresenceEventOrders?)
+  @available(*, deprecated, message: "Renamed handleBarButtonAction(page:screenTitleName:eventOrders:)")
   @objc optional func handleBarButtonAction(page: PresenceSDK.PSDK.PresencePage, buttonTitle: Swift.String, eventOrders: PresenceSDK.PresenceEventOrders?)
+  @objc optional func didPresentEventList()
+  @objc optional func didPresentTicketList()
 }
 @usableFromInline
 internal struct BatchedCollectionIndex<Base> where Base : Swift.Collection {

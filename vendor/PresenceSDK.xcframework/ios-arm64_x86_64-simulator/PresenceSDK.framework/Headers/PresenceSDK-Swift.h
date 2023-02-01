@@ -246,6 +246,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 /// \code
 /// PSDK.shared.setTheme(theme: PSDK.SDKTheme.Dark)
 ///
+/// \endcodeMethod to override normal branding colors with Ticketmaster blue on certain buttons (Login, Transfer, Sell, Orders, Modules)
+/// \code
+/// PSDK.shared.enableTMBrandingColorOverride()
+///
 /// \endcode<h2>Viewing Orders and Tickets</h2>
 /// Present the <code>PresenceView</code> somewhere in your UI, then start the PresenceSDK can be done by calling:
 /// \code
@@ -297,7 +301,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 /// PSDK.shared.setTicketsActionButtonText(title: "Help")
 /// PSDK.shared.orderDelegate = self
 ///
-/// \endcodeBy conforming to the <code>PresenceOrderDelegate.handleBarButtonAction</code> you will be informed if the user pressed the action button and which Event/Order they pressed it on.
+/// \endcodeBy conforming to the <code>PresenceOrderDelegate.handleBarButtonAction</code> you will be informed if the user pressed the action button, in which screen it was pressed and which Event/Order they pressed it on.
 /// <h2>Venue Concessions</h2>
 /// If your app implements venue concessions, you present an upsell module right inside the “My Tickets” view by conforming to the <code>PresenceVenueDelegate</code>:
 /// \code
@@ -354,7 +358,7 @@ enum BackendName : NSInteger;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// present an Action Button in the top-right Navbar on the Tickets page
-/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
+/// When the button is pressed, <code>orderDelegate.handleBarButtonAction(page:screenTitleName:eventOrders:)</code> will be called.
 /// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
 /// \param title title of Action Button, <code>nil</code> = no button (default)
 ///
@@ -662,6 +666,9 @@ typedef SWIFT_ENUM(NSInteger, PresencePage, open) {
   PresencePageNone = 0,
   PresencePageMyEvents = 1,
   PresencePageMyTickets = 2,
+  PresencePageMyTicketDetail = 3,
+  PresencePageModule = 4,
+  PresencePageViewBarcode = 5,
 };
 
 @class UIColor;
@@ -680,6 +687,7 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
   IdentityThemeTicketmasterNew = 1,
   IdentityThemeLivenation = 2,
 };
+
 
 @class UIImage;
 
@@ -717,6 +725,8 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
 /// \param brandingColors Customize colors by overriding properties of the <code>BrandingColors</code> class.
 ///
 - (void)setBrandingColors:(BrandingColors * _Nonnull)brandingColors;
+/// Method to override normal branding colors with Ticketmaster blue on certain buttons (Login, Transfer, Sell, Orders, Modules)
+- (void)enableTMBrandingColorOverride;
 /// Method for configuring Team Apps logo in PresenceSDK.
 /// \param image Image to be used in the SDK as logo.
 ///
@@ -730,7 +740,6 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
 /// Default: enabled (controlled by PresenceMember.doNotSell flag)
 - (void)setUserTrackingWithEnabled:(BOOL)enabled;
 @end
-
 
 
 
@@ -1029,13 +1038,18 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 ///
 - (void)didUpdateTicketsWithEventId:(NSString * _Nonnull)eventId SWIFT_DEPRECATED_MSG("Renamed didUpdateTickets(eventOrders: PresenceEventOrders)");
 /// Method is invoked if the client app needs to handle the bar button action
-/// \param page events or tickets page
+/// \param page PSDK page where button was pressed
 ///
-/// \param buttonTitle title of button pressed
+/// \param screenTitleName title of screen where button was pressed
 ///
 /// \param eventOrders current Event and purchased Orders being viewed (if any)
 ///
-- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventOrders:(PresenceEventOrders * _Nullable)eventOrders;
+- (void)handleBarButtonActionWithPage:(enum PresencePage)page screenTitleName:(NSString * _Nullable)screenTitleName eventOrders:(PresenceEventOrders * _Nullable)eventOrders;
+- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventOrders:(PresenceEventOrders * _Nullable)eventOrders SWIFT_DEPRECATED_MSG("Renamed handleBarButtonAction(page:screenTitleName:eventOrders:)");
+/// Method is invoked when the list of events is presented
+- (void)didPresentEventList;
+/// Method is invoked when the list of tickets for a particular event ID is presented
+- (void)didPresentTicketList;
 @end
 
 
@@ -1429,6 +1443,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 /// \code
 /// PSDK.shared.setTheme(theme: PSDK.SDKTheme.Dark)
 ///
+/// \endcodeMethod to override normal branding colors with Ticketmaster blue on certain buttons (Login, Transfer, Sell, Orders, Modules)
+/// \code
+/// PSDK.shared.enableTMBrandingColorOverride()
+///
 /// \endcode<h2>Viewing Orders and Tickets</h2>
 /// Present the <code>PresenceView</code> somewhere in your UI, then start the PresenceSDK can be done by calling:
 /// \code
@@ -1480,7 +1498,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 /// PSDK.shared.setTicketsActionButtonText(title: "Help")
 /// PSDK.shared.orderDelegate = self
 ///
-/// \endcodeBy conforming to the <code>PresenceOrderDelegate.handleBarButtonAction</code> you will be informed if the user pressed the action button and which Event/Order they pressed it on.
+/// \endcodeBy conforming to the <code>PresenceOrderDelegate.handleBarButtonAction</code> you will be informed if the user pressed the action button, in which screen it was pressed and which Event/Order they pressed it on.
 /// <h2>Venue Concessions</h2>
 /// If your app implements venue concessions, you present an upsell module right inside the “My Tickets” view by conforming to the <code>PresenceVenueDelegate</code>:
 /// \code
@@ -1537,7 +1555,7 @@ enum BackendName : NSInteger;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 /// present an Action Button in the top-right Navbar on the Tickets page
-/// When the button is pressed, <code>orderDelegate.handleBarButtonAction()</code> will be called.
+/// When the button is pressed, <code>orderDelegate.handleBarButtonAction(page:screenTitleName:eventOrders:)</code> will be called.
 /// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
 /// \param title title of Action Button, <code>nil</code> = no button (default)
 ///
@@ -1845,6 +1863,9 @@ typedef SWIFT_ENUM(NSInteger, PresencePage, open) {
   PresencePageNone = 0,
   PresencePageMyEvents = 1,
   PresencePageMyTickets = 2,
+  PresencePageMyTicketDetail = 3,
+  PresencePageModule = 4,
+  PresencePageViewBarcode = 5,
 };
 
 @class UIColor;
@@ -1863,6 +1884,7 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
   IdentityThemeTicketmasterNew = 1,
   IdentityThemeLivenation = 2,
 };
+
 
 @class UIImage;
 
@@ -1900,6 +1922,8 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
 /// \param brandingColors Customize colors by overriding properties of the <code>BrandingColors</code> class.
 ///
 - (void)setBrandingColors:(BrandingColors * _Nonnull)brandingColors;
+/// Method to override normal branding colors with Ticketmaster blue on certain buttons (Login, Transfer, Sell, Orders, Modules)
+- (void)enableTMBrandingColorOverride;
 /// Method for configuring Team Apps logo in PresenceSDK.
 /// \param image Image to be used in the SDK as logo.
 ///
@@ -1913,7 +1937,6 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
 /// Default: enabled (controlled by PresenceMember.doNotSell flag)
 - (void)setUserTrackingWithEnabled:(BOOL)enabled;
 @end
-
 
 
 
@@ -2212,13 +2235,18 @@ SWIFT_PROTOCOL("_TtP11PresenceSDK21PresenceOrderDelegate_")
 ///
 - (void)didUpdateTicketsWithEventId:(NSString * _Nonnull)eventId SWIFT_DEPRECATED_MSG("Renamed didUpdateTickets(eventOrders: PresenceEventOrders)");
 /// Method is invoked if the client app needs to handle the bar button action
-/// \param page events or tickets page
+/// \param page PSDK page where button was pressed
 ///
-/// \param buttonTitle title of button pressed
+/// \param screenTitleName title of screen where button was pressed
 ///
 /// \param eventOrders current Event and purchased Orders being viewed (if any)
 ///
-- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventOrders:(PresenceEventOrders * _Nullable)eventOrders;
+- (void)handleBarButtonActionWithPage:(enum PresencePage)page screenTitleName:(NSString * _Nullable)screenTitleName eventOrders:(PresenceEventOrders * _Nullable)eventOrders;
+- (void)handleBarButtonActionWithPage:(enum PresencePage)page buttonTitle:(NSString * _Nonnull)buttonTitle eventOrders:(PresenceEventOrders * _Nullable)eventOrders SWIFT_DEPRECATED_MSG("Renamed handleBarButtonAction(page:screenTitleName:eventOrders:)");
+/// Method is invoked when the list of events is presented
+- (void)didPresentEventList;
+/// Method is invoked when the list of tickets for a particular event ID is presented
+- (void)didPresentTicketList;
 @end
 
 
