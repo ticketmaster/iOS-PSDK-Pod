@@ -248,6 +248,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 /// \code
 /// PSDK.shared.enableTMBrandingColorOverride()
 ///
+/// \endcodeMethod to let PSDK know it shouldn’t brand navigation bar on start. Needs to get called before PSDK.shared.setConfiguration(:)
+/// \code
+/// PSDK.shared.doNotBrandNavBar()
+///
 /// \endcode<h2>Viewing Orders and Tickets</h2>
 /// Present the <code>PresenceView</code> somewhere in your UI, then start the PresenceSDK can be done by calling:
 /// \code
@@ -314,6 +318,18 @@ SWIFT_CLASS("_TtC11PresenceSDK4PSDK")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class NSString;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// present an Action Button in the top-right Navbar on the Tickets page
+/// When the button is pressed, <code>orderDelegate.handleBarButtonAction(page:screenTitleName:eventOrders:)</code> will be called.
+/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
+/// \param title title of Action Button, <code>nil</code> = no button (default)
+///
+- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
+@end
+
+
 enum BackendName : NSInteger;
 @protocol PresenceMember;
 
@@ -332,8 +348,20 @@ enum BackendName : NSInteger;
 
 
 
+@class NSNumber;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to login via Webview Login
+/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
+/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
+///
+/// \param completion success: Bool, login was completed successfully
+///
+- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
+@end
+
+
 @class UIViewController;
-@class NSString;
 @class NSError;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
@@ -355,31 +383,6 @@ enum BackendName : NSInteger;
 
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// present an Action Button in the top-right Navbar on the Tickets page
-/// When the button is pressed, <code>orderDelegate.handleBarButtonAction(page:screenTitleName:eventOrders:)</code> will be called.
-/// Along with some basic info about the Page, Event, and Order the user is viewing on the Tickets page.
-/// \param title title of Action Button, <code>nil</code> = no button (default)
-///
-- (void)setTicketsActionButtonTextWithTitle:(NSString * _Nullable)title;
-@end
-
-
-@class NSNumber;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to login via Webview Login
-/// You can receive updates for the login process by confirming to PresenceLoginDelegate protocol
-/// \param backendName <code>Host</code>, <code>AccountManager</code> or <code>SportXR</code>
-///
-/// \param completion success: Bool, login was completed successfully
-///
-- (void)loginTo:(enum BackendName)backendName completion:(void (^ _Nullable)(BOOL))completion;
-@end
-
-
-
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 @end
 
 enum HostEnvironment : NSInteger;
@@ -393,28 +396,13 @@ SWIFT_CLASS("_TtCC11PresenceSDK4PSDK13Configuration")
 @end
 
 
+
 @class PresenceSDKView;
 @protocol PresenceLoginDelegate;
 @protocol PresenceOrderDelegate;
 
 @interface PSDK (SWIFT_EXTENSION(PresenceSDK))
 - (void)startWithPresenceSDKView:(PresenceSDKView * _Nullable)presenceSDKView loginDelegate:(id <PresenceLoginDelegate> _Nullable)loginDelegate orderDelegate:(id <PresenceOrderDelegate> _Nullable)orderDelegate SWIFT_DEPRECATED_MSG("Renamed to start(presenceView: PresenceView, ...)");
-@end
-
-enum LoginButtons : NSInteger;
-
-@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
-/// Method to reser password for a Host Account
-/// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
-///
-/// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
-///
-/// \param token Password reset token (if any), used to quickly identify which account is being reset
-///
-- (void)resetPasswordForHostWithSuccess:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure token:(NSString * _Nullable)token;
-/// Property to choose an available action button for Team account on the Login Screen.
-/// Default value is LoginButtons.forgotPassword
-@property (nonatomic) enum LoginButtons loginButton;
 @end
 
 
@@ -437,6 +425,22 @@ enum LoginButtons : NSInteger;
 /// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
 ///
 - (void)getAccessTokenWithBackendName:(enum BackendName)backendName presentLoginUI:(BOOL)presentLoginUI success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure;
+@end
+
+enum LoginButtons : NSInteger;
+
+@interface PSDK (SWIFT_EXTENSION(PresenceSDK))
+/// Method to reser password for a Host Account
+/// \param success This block will be called when a valid token is fetched successfully, the success block will provide a valid access token.
+///
+/// \param failure This block will be called when there is some error fetching the token, the failure block will provide an error object.
+///
+/// \param token Password reset token (if any), used to quickly identify which account is being reset
+///
+- (void)resetPasswordForHostWithSuccess:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nullable, BOOL))failure token:(NSString * _Nullable)token;
+/// Property to choose an available action button for Team account on the Login Screen.
+/// Default value is LoginButtons.forgotPassword
+@property (nonatomic) enum LoginButtons loginButton;
 @end
 
 
@@ -725,6 +729,8 @@ typedef SWIFT_ENUM(NSInteger, IdentityTheme, open) {
 - (void)setBrandingColors:(BrandingColors * _Nonnull)brandingColors;
 /// Method to override normal branding colors with Ticketmaster blue on certain buttons (Login, Transfer, Sell, Orders, Modules)
 - (void)enableTMBrandingColorOverride;
+/// Method to let PSDK know it shouldn’t brand navigation bar on start. Needs to get called before PSDK.shared.setConfiguration(:)
+- (void)doNotBrandNavBar;
 /// Method for configuring Team Apps logo in PresenceSDK.
 /// \param image Image to be used in the SDK as logo.
 ///
@@ -759,6 +765,7 @@ SWIFT_CLASS("_TtC11PresenceSDK17PSDKTicketsModule")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 

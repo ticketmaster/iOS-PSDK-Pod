@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Thu Dec 15 15:00:36 PST 2022</string>
+	<string>Wed Mar  8 15:52:29 EST 2023</string>
 	<key>BuildHost</key>
-	<string>USHOLJBA1-ML</string>
+	<string>USNEWAPE1-ML</string>
 	<key>GITBranch</key>
-	<string>master</string>
+	<string>release/2.19.0</string>
 	<key>GITComment</key>
-	<string>PSDK-7455 Add boolean control for showing animation on QR (hard-coded off for now)</string>
+	<string>added UIColor hex conversion extension</string>
 	<key>GITDate</key>
-	<string>Thu Dec 15 12:12:33 2022 -0800</string>
+	<string>Wed Mar 8 15:50:52 2023 -0500</string>
 	<key>GITRevision</key>
-	<string>53cb4ee856d03b4a924398d7780ffd1c3fe163bb</string>
+	<string>e547468d3d2dca39411d1dfd4cc908e530c520c4</string>
 	<key>MarketingVersion</key>
-	<string>1.4.5</string>
+	<string>1.4.6</string>
 </dict>
 </plist>

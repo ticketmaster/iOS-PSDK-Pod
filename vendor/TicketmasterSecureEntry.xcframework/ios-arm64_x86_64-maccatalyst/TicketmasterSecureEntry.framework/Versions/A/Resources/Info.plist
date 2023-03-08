@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.5</string>
+	<string>1.4.6</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -43,7 +43,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.15</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© Ticketmaster 2022</string>
+	<string>© Ticketmaster 2023</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>2</integer>
