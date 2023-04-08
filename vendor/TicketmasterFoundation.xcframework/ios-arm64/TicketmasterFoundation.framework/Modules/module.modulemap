@@ -6,6 +6,6 @@ framework module TicketmasterFoundation {
 }
 
 module TicketmasterFoundation.Swift {
-    header "TicketmasterFoundation-Swift.h"
-    requires objc
+  header "TicketmasterFoundation-Swift.h"
+  requires objc
 }

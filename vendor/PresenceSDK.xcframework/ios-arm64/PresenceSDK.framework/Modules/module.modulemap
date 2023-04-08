@@ -6,6 +6,6 @@ framework module PresenceSDK {
 }
 
 module PresenceSDK.Swift {
-    header "PresenceSDK-Swift.h"
-    requires objc
+  header "PresenceSDK-Swift.h"
+  requires objc
 }

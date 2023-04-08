@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Wed Aug 31 21:09:30 PDT 2022</string>
+	<string>Fri Apr  7 13:40:14 PDT 2023</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
 	<string>master</string>
 	<key>GITComment</key>
-	<string>Fixed JSON Data issue (again), v0.7.7</string>
+	<string>Fixed Xcode 14.3 project warnings</string>
 	<key>GITDate</key>
-	<string>Wed Aug 31 21:06:53 2022 -0700</string>
+	<string>Fri Apr 7 13:38:04 2023 -0700</string>
 	<key>GITRevision</key>
-	<string>3e286443b4a883f31f306b0a08cff9beadb515f2</string>
+	<string>81972b1b9cfbb22ba1aae098ecfbd268cee7c8b5</string>
 	<key>MarketingVersion</key>
-	<string>0.7.7</string>
+	<string>0.8.1</string>
 </dict>
 </plist>

@@ -7,7 +7,7 @@
 
 Pod::Spec.new do |spec|
   spec.name             = 'TM-PSDK'
-  spec.version          = '5.5.0-2.19.0'
+  spec.version          = '5.8.0-2.20.0'
   spec.summary          = 'PresenceSDK is the ticket management SDK supplied by Ticketmaster.'
   spec.description      = 'Ticket management SDK provided by Ticketmaster. Used to manage tickets for your team accounts or Ticketmaster account.'
   spec.homepage         = 'https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/'
@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   spec.source           = { :git => 'https://github.com/ticketmaster/iOS-PSDK-Pod.git', :tag => spec.version.to_s }
 
   spec.platform = :ios
-  spec.ios.deployment_target = '13.0'
-  spec.swift_version = '5.5.0'
+  spec.ios.deployment_target = '14.0'
+  spec.swift_version = '5.8.0'
 
   spec.vendored_frameworks = 'vendor/*.xcframework'
 end

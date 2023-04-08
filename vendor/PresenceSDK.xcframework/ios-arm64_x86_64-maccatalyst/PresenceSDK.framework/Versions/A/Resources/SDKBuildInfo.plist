@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Wed Mar  8 16:09:00 EST 2023</string>
+	<string>Fri Apr  7 16:03:53 PDT 2023</string>
 	<key>BuildHost</key>
-	<string>USNEWAPE1-ML</string>
+	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.19.0</string>
+	<string>release/2.20.0</string>
 	<key>GITComment</key>
-	<string>Fixed team provisioning</string>
+	<string>Updated TicketmasterFoundation for Xcode 14.3</string>
 	<key>GITDate</key>
-	<string>Wed Mar 8 16:05:13 2023 -0500</string>
+	<string>Fri Apr 7 15:43:29 2023 -0700</string>
 	<key>GITRevision</key>
-	<string>21e6254c580d77ee294d15229f84776a28a3e914</string>
+	<string>02fe70964cb65e3ab918a9384963d3c2a50670ac</string>
 	<key>MarketingVersion</key>
-	<string>2.19.0</string>
+	<string>2.20.0</string>
 </dict>
 </plist>

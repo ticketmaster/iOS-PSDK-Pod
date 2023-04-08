@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Wed Mar  8 15:52:29 EST 2023</string>
+	<string>Fri Apr  7 15:48:18 PDT 2023</string>
 	<key>BuildHost</key>
-	<string>USNEWAPE1-ML</string>
+	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.19.0</string>
+	<string>master</string>
 	<key>GITComment</key>
-	<string>added UIColor hex conversion extension</string>
+	<string>Xcode 14.3</string>
 	<key>GITDate</key>
-	<string>Wed Mar 8 15:50:52 2023 -0500</string>
+	<string>Fri Apr 7 15:42:45 2023 -0700</string>
 	<key>GITRevision</key>
-	<string>e547468d3d2dca39411d1dfd4cc908e530c520c4</string>
+	<string>2ab36e89ed0ae800a74d5cff14684f6d08389c41</string>
 	<key>MarketingVersion</key>
-	<string>1.4.6</string>
+	<string>1.5.1</string>
 </dict>
 </plist>
