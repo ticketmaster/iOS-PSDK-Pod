@@ -27,6 +27,39 @@ pod 'TM-PSDK', '~> 5.8.0-2.21.0'
 
 See our [integration guide and demo project](https://developer.ticketmaster.com/products-and-docs/tutorials/sample-apps/presenceSDK_sampleApp/iOS/) for insight on how to properly integrate the Presence SDK.
 
+### Sample TMPresenceView
+```Swift
+import SwiftUI
+import PresenceSDK
+
+struct TMPresenceView: UIViewControllerRepresentable {
+    
+    typealias UIViewControllerType = PresenceViewController
+    
+    func makeUIViewController(context: Context) -> PresenceViewController {
+        let presenceConfig = PSDK.Configuration(consumerKey: "<Consumer Key>",
+                                                hostEnvironment: .US/.UK,
+                                                displayName: "<Display Name>")
+        
+        PSDK.shared.setConfiguration(presenceConfig)
+        
+        let vc = PresenceViewController()
+        return vc
+    }
+    
+    func updateUIViewController(_ uiViewController: PresenceViewController, context: Context) {
+        
+    }
+}
+
+struct TMPresenceView_Previews: PreviewProvider {
+    static var previews: some View {
+        TMPresenceView()
+    }
+}
+
+```
+
 ## License
 
 TM-PSDK is available under the MIT license. See the LICENSE file for more info.
