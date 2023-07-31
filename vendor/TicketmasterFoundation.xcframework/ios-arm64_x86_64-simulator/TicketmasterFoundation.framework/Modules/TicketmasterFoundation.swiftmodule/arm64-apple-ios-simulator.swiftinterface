@@ -882,6 +882,113 @@ public typealias PathPattern = Swift.String
 extension Swift.String {
   public func matches(with pathComponents: [Swift.String]) -> Swift.Bool
 }
+public struct GoogleAnalyticsEvent {
+  public let hitType: TicketmasterFoundation.GoogleAnalyticsHitType
+  public var dataSource: Swift.String?
+  public var currency: TicketmasterFoundation.CurrencyCodeISO4217?
+  public var pageURL: Foundation.URL?
+  public var pageTitle: Swift.String?
+  public var screenName: Swift.String?
+  public var eventCategory: Swift.String?
+  public var eventAction: Swift.String?
+  public var eventLabel: Swift.String?
+  public var eventValue: Swift.UInt?
+  public var transactionID: Swift.String?
+  public var transactionAffiliation: Swift.String?
+  public var transactionRevenue: Foundation.NSDecimalNumber?
+  public var transactionShipping: Foundation.NSDecimalNumber?
+  public var transactionTax: Foundation.NSDecimalNumber?
+  public var itemName: Swift.String?
+  public var itemPrice: Foundation.NSDecimalNumber?
+  public var itemQuantity: Swift.UInt?
+  public var itemCode: Swift.String?
+  public var socialNetwork: Swift.String?
+  public var socialAction: Swift.String?
+  public var socialURLString: Swift.String?
+  public var timingCategory: Swift.String?
+  public var timingVariable: Swift.String?
+  public var timingMilliseconds: Swift.UInt?
+  public var timingLabel: Swift.String?
+  public var timingPageLoadMilliseconds: Swift.UInt?
+  public var timingDNSLookupMilliseconds: Swift.UInt?
+  public var timingPageDownloadMilliseconds: Swift.UInt?
+  public var timingRedirectResponseMilliseconds: Swift.UInt?
+  public var timingTCPConnectMilliseconds: Swift.UInt?
+  public var timingServerResponseMilliseconds: Swift.UInt?
+  public var timingDOMInteractiveMilliseconds: Swift.UInt?
+  public var timingContentLoadMilliseconds: Swift.UInt?
+  public var exceptionDescription: Swift.String?
+  public var exceptionIsFatal: Swift.Bool?
+  public var productAction: TicketmasterFoundation.GoogleAnalyticsProductAction?
+  public var products: [TicketmasterFoundation.GoogleAnalyticsProduct]?
+  public var campaignName: Swift.String?
+  public var campaignSource: Swift.String?
+  public var campaignMedium: Swift.String?
+  public var campaignKeyword: Swift.String?
+  public var campaignContent: Swift.String?
+  public var campaignID: Swift.String?
+  public var googleAdsID: Swift.String?
+  public var googleDisplayAdsID: Swift.String?
+  public var customDimension1: Swift.String?
+  public var customDimension2: Swift.String?
+  public var customDimension4: Swift.String?
+  public var customDimension6: Swift.String?
+  public var customDimension7: Swift.String?
+  public var customDimension12: Swift.String?
+  public var customDimension13: Swift.String?
+  public var customDimension14: Swift.String?
+  public var customDimension15: Swift.String?
+  public var customDimension17: Swift.String?
+  public var customDimension19: Swift.String?
+  public var customDimension22: Swift.String?
+  public var customDimension23: Swift.String?
+  public var customMetric1: Swift.String?
+  public var loginStatus: Swift.String?
+  public init(hitType: TicketmasterFoundation.GoogleAnalyticsHitType)
+}
+extension TicketmasterFoundation.GoogleAnalyticsEvent {
+  public var asQueryParameters: TicketmasterFoundation.URLQueryParameters {
+    get
+  }
+}
+public struct GoogleAnalyticsProduct {
+  public let ID: Swift.String?
+  public let name: Swift.String?
+  public let brand: Swift.String?
+  public let category: Swift.String?
+  public let variant: Swift.String?
+  public let unitPrice: Foundation.NSDecimalNumber?
+  public let quantity: Swift.UInt?
+  public let couponCode: Swift.String?
+  public let position: Swift.UInt?
+  public let customDimension1: Swift.String?
+  public let customMetric1: Swift.UInt?
+  public init(ID: Swift.String? = nil, name: Swift.String? = nil, brand: Swift.String? = nil, category: Swift.String? = nil, variant: Swift.String? = nil, unitPrice: Foundation.NSDecimalNumber? = nil, quantity: Swift.UInt? = nil, couponCode: Swift.String? = nil, position: Swift.UInt? = nil, customDimension1: Swift.String? = nil, customMetric1: Swift.UInt? = nil)
+}
+public enum GoogleAnalyticsHitType : Swift.String {
+  case pageview, screenview, event, transaction, item, social, exception, timing
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum GoogleAnalyticsProductAction : Swift.String {
+  case detail, click, add, remove, checkout, checkout_option, purchase, refund
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CurrencyCodeISO4217 : Swift.String {
+  case usd, cad, eur, gbp, aud, nzd, mxn
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 extension Foundation.URLRequest {
   public mutating func replace(queryParameters: TicketmasterFoundation.URLQueryParameters?)
   public mutating func replace(queryItems: [Foundation.URLQueryItem]?)
@@ -924,6 +1031,12 @@ extension UIKit.UIAlertController {
   @objc public static func blackPearl() -> UIKit.UIColor
   @objc public static func tmBlue() -> UIKit.UIColor
   @objc public static func popoverPurple() -> UIKit.UIColor
+}
+@_inheritsConvenienceInitializers open class GoogleAnalyticsService : TicketmasterFoundation.NetworkService {
+  convenience public init(applicationName: Swift.String, applicationID: Swift.String? = nil, applicationVersion: Swift.String? = nil, applicationInstallerID: Swift.String? = nil, propertyID: Swift.String)
+  public func report(_ event: TicketmasterFoundation.GoogleAnalyticsEvent)
+  override public init(connectionDriver: TicketmasterFoundation.ConnectionDriver)
+  @objc deinit
 }
 extension WebKit.WKWebView {
   @_Concurrency.MainActor(unsafe) public func reloadFirstPage()
@@ -1604,7 +1717,7 @@ extension Swift.String : TicketmasterFoundation.ConvertibleToUTF8Data {
   }
 }
 @_hasMissingDesignatedInitializers public class PiecemealEventDateFormatter {
-  public class func stringForMonthDay(from eventDate: TicketmasterFoundation.EventDate) -> Swift.String?
+  public class func stringForMonthDay(from eventDate: TicketmasterFoundation.EventDate, locale: Foundation.Locale? = nil) -> Swift.String?
   public class func stringForDayOfWeek(from eventDate: TicketmasterFoundation.EventDate) -> Swift.String?
   public class func stringForTime(from eventDate: TicketmasterFoundation.EventDate) -> Swift.String?
   @objc deinit
@@ -1646,15 +1759,21 @@ extension WebKit.WKWebView {
 }
 extension Swift.Dictionary where Key == Swift.String, Value == Any {
   public func dictionary(_ key: Swift.String) -> TicketmasterFoundation.JSONDictionary?
+  public func dictionaryNonEmpty(_ key: Swift.String) -> TicketmasterFoundation.JSONDictionary?
   public func dictionary(path: Swift.String) -> TicketmasterFoundation.JSONDictionary?
+  public func dictionaryNonEmpty(path: Swift.String) -> TicketmasterFoundation.JSONDictionary?
   public func dictionaryArray(_ key: Swift.String) -> [TicketmasterFoundation.JSONDictionary]?
+  public func dictionaryArrayNonEmpty(_ key: Swift.String) -> [TicketmasterFoundation.JSONDictionary]?
   public func dictionaryArray(path: Swift.String) -> [TicketmasterFoundation.JSONDictionary]?
+  public func dictionaryArrayNonEmpty(path: Swift.String) -> [TicketmasterFoundation.JSONDictionary]?
   public func string(_ key: Swift.String) -> Swift.String?
+  public func stringNonEmpty(_ key: Swift.String) -> Swift.String?
   public func string(path: Swift.String) -> Swift.String?
-  public func nonEmptyString(_ key: Swift.String) -> Swift.String?
-  public func nonEmptyString(path: Swift.String) -> Swift.String?
+  public func stringNonEmpty(path: Swift.String) -> Swift.String?
   public func stringArray(_ key: Swift.String) -> [Swift.String]?
+  public func stringArrayNonEmpty(_ key: Swift.String) -> [Swift.String]?
   public func stringArray(path: Swift.String) -> [Swift.String]?
+  public func stringArrayNonEmpty(path: Swift.String) -> [Swift.String]?
   public func stringFromInt(_ key: Swift.String) -> Swift.String?
   public func stringFromInt(path: Swift.String) -> Swift.String?
   public func stringFromDouble(_ key: Swift.String) -> Swift.String?
@@ -1672,7 +1791,9 @@ extension Swift.Dictionary where Key == Swift.String, Value == Any {
   public func objectArray<T>(_ key: Swift.String, transform: (TicketmasterFoundation.JSONDictionary) throws -> T) -> [T]?
   public func objectArray<T>(path: Swift.String, transform: (TicketmasterFoundation.JSONDictionary) throws -> T) -> [T]?
   public func bool(_ key: Swift.String) -> Swift.Bool
+  public func boolNonEmpty(_ key: Swift.String) -> Swift.Bool?
   public func bool(path: Swift.String) -> Swift.Bool
+  public func boolNonEmpty(path: Swift.String) -> Swift.Bool?
   public func uInt(_ key: Swift.String) -> Swift.UInt?
   public func uInt(path: Swift.String) -> Swift.UInt?
   public func int(_ key: Swift.String) -> Swift.Int?
@@ -2062,6 +2183,15 @@ extension TicketmasterFoundation.HTTPStatusCode : Swift.Hashable {}
 extension TicketmasterFoundation.HTTPStatusCode : Swift.RawRepresentable {}
 extension TicketmasterFoundation.ImageDownloader.DownloadPrioritization : Swift.Equatable {}
 extension TicketmasterFoundation.ImageDownloader.DownloadPrioritization : Swift.Hashable {}
+extension TicketmasterFoundation.GoogleAnalyticsHitType : Swift.Equatable {}
+extension TicketmasterFoundation.GoogleAnalyticsHitType : Swift.Hashable {}
+extension TicketmasterFoundation.GoogleAnalyticsHitType : Swift.RawRepresentable {}
+extension TicketmasterFoundation.GoogleAnalyticsProductAction : Swift.Equatable {}
+extension TicketmasterFoundation.GoogleAnalyticsProductAction : Swift.Hashable {}
+extension TicketmasterFoundation.GoogleAnalyticsProductAction : Swift.RawRepresentable {}
+extension TicketmasterFoundation.CurrencyCodeISO4217 : Swift.Equatable {}
+extension TicketmasterFoundation.CurrencyCodeISO4217 : Swift.Hashable {}
+extension TicketmasterFoundation.CurrencyCodeISO4217 : Swift.RawRepresentable {}
 extension TicketmasterFoundation.TMPixelDisclosure.Target : Swift.Equatable {}
 extension TicketmasterFoundation.TMPixelDisclosure.Target : Swift.Hashable {}
 extension TicketmasterFoundation.TMPixelDisclosure.Target : Swift.RawRepresentable {}

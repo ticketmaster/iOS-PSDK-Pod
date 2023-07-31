@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Apr  7 13:40:14 PDT 2023</string>
+	<string>Fri Jul 14 11:46:00 PDT 2023</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
 	<string>master</string>
 	<key>GITComment</key>
-	<string>Fixed Xcode 14.3 project warnings</string>
+	<string>Added dSYMs to xcframework, auto-copy to Compiled directory</string>
 	<key>GITDate</key>
-	<string>Fri Apr 7 13:38:04 2023 -0700</string>
+	<string>Fri Jul 14 11:43:33 2023 -0700</string>
 	<key>GITRevision</key>
-	<string>81972b1b9cfbb22ba1aae098ecfbd268cee7c8b5</string>
+	<string>b24904dee2ae3d7cac5c6425a7df206f78c0638e</string>
 	<key>MarketingVersion</key>
-	<string>0.8.1</string>
+	<string>0.8.6</string>
 </dict>
 </plist>

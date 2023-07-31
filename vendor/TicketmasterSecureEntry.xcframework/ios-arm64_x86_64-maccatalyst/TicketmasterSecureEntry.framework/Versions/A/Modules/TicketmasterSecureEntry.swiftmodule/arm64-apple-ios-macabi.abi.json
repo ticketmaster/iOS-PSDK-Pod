@@ -37325,225 +37325,225 @@
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
-      "kind": "FloatLiteral",
-      "offset": 2532,
-      "length": 3,
-      "value": "1.0"
+      "kind": "IntegerLiteral",
+      "offset": 2184,
+      "length": 2,
+      "value": "15"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2546,
+      "offset": 2614,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2760,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "FloatLiteral",
-      "offset": 2635,
+      "offset": 2831,
       "length": 4,
       "value": "0.25"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2953,
+      "offset": 3127,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3290,
+      "offset": 3486,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3492,
+      "offset": 3688,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "FloatLiteral",
-      "offset": 3648,
+      "offset": 3844,
       "length": 5,
       "value": "220.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "FloatLiteral",
-      "offset": 3663,
+      "offset": 3859,
       "length": 5,
       "value": "160.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "StringLiteral",
-      "offset": 4161,
+      "offset": 4373,
       "length": 274,
       "value": "\"eyJiIjoiMDg2NzM0NjQ3NjA0MTYxNmEiLCJ0IjoiQkFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFDR2tmNWxkZWZ3WEh3WmpvRmMzcnNEY0RINkpyY2pqOW0yS0liKyIsImNrIjoiNjhhZjY5YTRmOWE2NGU0YTkxZmE0NjBiZGExN2Y0MjciLCJlayI6IjA2ZWM1M2M3NDllNDQ3YTQ4ODAyNTdmNzNkYzNhYmZjIiwicnQiOiJyb3RhdGluZ19zeW1ib2xvZ3kifQ==\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4789,
+      "offset": 5001,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "StringLiteral",
-      "offset": 4803,
+      "offset": 5015,
       "length": 5,
       "value": "\"...\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "IntegerLiteral",
-      "offset": 5450,
+      "offset": 5662,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "IntegerLiteral",
-      "offset": 5514,
+      "offset": 5726,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 5819,
+      "offset": 6031,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 5909,
+      "offset": 6121,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6000,
+      "offset": 6212,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6089,
+      "offset": 6301,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6179,
+      "offset": 6391,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6262,
+      "offset": 6474,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6438,
+      "offset": 6650,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6600,
+      "offset": 6812,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6711,
+      "offset": 6923,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6822,
+      "offset": 7034,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "FloatLiteral",
-      "offset": 6947,
+      "offset": 7159,
       "length": 4,
       "value": "16.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6973,
+      "offset": 7185,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 7110,
+      "offset": 7322,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "BooleanLiteral",
-      "offset": 7191,
+      "offset": 7403,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "Array",
-      "offset": 8743,
+      "offset": 8965,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9139,
-      "length": 2,
-      "value": "15"
-    },
-    {
-      "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "StringLiteral",
-      "offset": 9605,
-      "length": 19,
+      "offset": 9796,
+      "length": 20,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "StringLiteral",
-      "offset": 9623,
+      "offset": 9815,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.swift",
       "kind": "StringLiteral",
-      "offset": 9725,
+      "offset": 9922,
       "length": 4,
       "value": "\"::\""
     },
@@ -37752,113 +37752,120 @@
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8963,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "StringLiteral",
-      "offset": 8902,
+      "offset": 9212,
       "length": 19,
       "value": "\"CIQRCodeGenerator\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "StringLiteral",
-      "offset": 8943,
+      "offset": 9253,
       "length": 22,
       "value": "\"inputCorrectionLevel\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "StringLiteral",
-      "offset": 8967,
+      "offset": 9277,
       "length": 3,
       "value": "\"Q\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "StringLiteral",
-      "offset": 8978,
+      "offset": 9288,
       "length": 14,
       "value": "\"inputMessage\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9227,
+      "offset": 9537,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9238,
+      "offset": 9548,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9251,
+      "offset": 9561,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9263,
+      "offset": 9573,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "StringLiteral",
-      "offset": 9530,
+      "offset": 9840,
       "length": 26,
       "value": "\"CIPDF417BarcodeGenerator\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "StringLiteral",
-      "offset": 9578,
+      "offset": 9888,
       "length": 27,
       "value": "\"inputPreferredAspectRatio\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9607,
+      "offset": 9917,
       "length": 3,
       "value": "4.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "StringLiteral",
-      "offset": 9630,
+      "offset": 9940,
       "length": 14,
       "value": "\"inputMessage\""
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9876,
+      "offset": 10186,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9887,
+      "offset": 10197,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9900,
+      "offset": 10210,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/anil.persaud\/Desktop\/TicketMasterApps\/PresenceSDKDevApp\/iOS-PresenseSDK\/iOS-SecureEntrySDK\/TicketmasterSecureEntry\/Source\/SecureEntryView.State.swift",
       "kind": "FloatLiteral",
-      "offset": 9912,
+      "offset": 10222,
       "length": 3,
       "value": "2.0"
     },

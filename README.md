@@ -20,7 +20,7 @@ Have a question about Presence SDK? [Contact us!](https://developer.ticketmaster
 
 Swift 5.8.0+:
 ```ruby
-pod 'TM-PSDK', '~> 5.8.0-2.21.0'
+pod 'TM-PSDK', '~> 5.8.0-2.22.0'
 ```
 
 ## Integration Guide

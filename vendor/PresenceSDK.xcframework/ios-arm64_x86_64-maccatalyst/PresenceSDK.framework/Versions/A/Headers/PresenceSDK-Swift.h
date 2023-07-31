@@ -922,6 +922,7 @@ SWIFT_CLASS("_TtC11PresenceSDK19PresenceEventOrders")
 
 
 
+
 SWIFT_CLASS("_TtC11PresenceSDK19PresenceHealthCheck")
 @interface PresenceHealthCheck : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -2200,6 +2201,7 @@ SWIFT_CLASS("_TtC11PresenceSDK19PresenceEventOrders")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
