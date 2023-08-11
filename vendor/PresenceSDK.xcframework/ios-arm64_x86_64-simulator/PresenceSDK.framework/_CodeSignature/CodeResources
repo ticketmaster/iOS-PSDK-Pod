@@ -286,7 +286,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		9xy1ctE9jJhwsd2YelXMyUsIYLQ=
+		Oe2i+aur0RbuNYhGRH9RUlND/eA=
 		</data>
 		<key>InputAccessoryView.nib</key>
 		<data>
@@ -318,7 +318,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		WOuoxvRWiJElnDPN8wZreN3tKTg=
+		OPoQeKUhD2bRiOjqH+fOITU4vm0=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -334,11 +334,11 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		CJolafMVrOFFTV6oNC8aWOngamk=
+		Nsp/v1uOd0JPAZ6W1LpMheAgMII=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		WOuoxvRWiJElnDPN8wZreN3tKTg=
+		OPoQeKUhD2bRiOjqH+fOITU4vm0=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -354,7 +354,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		cUbHwJwZvWMKwBEZnhDDmGwxIkw=
+		l/uEeosC1TdgsZ4ivecKIlkztQI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -366,7 +366,7 @@
 		</data>
 		<key>PagesView.nib</key>
 		<data>
-		r8ULraFMyEAe1jmTrs4UaaTZyig=
+		lxpTdYoDrmL1D+eu2PA19b5GYY4=
 		</data>
 		<key>PresenceModuleHeaderView.nib</key>
 		<data>
@@ -382,7 +382,7 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		BiI/NhhXXVfFch3ughJCLu5ifq8=
+		39784qIi1mBa9ZhnKSBRgdhigr0=
 		</data>
 		<key>SeatingMessageCell.nib</key>
 		<data>
@@ -522,7 +522,7 @@
 		</data>
 		<key>TicketCard.nib</key>
 		<data>
-		dtxFA9SY3nHuerusqycVBzTV1Z8=
+		6JkT2YSt5AsxkHwsCFhtaP+aoz8=
 		</data>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -1242,7 +1242,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xgoB7aUsWw0rWHuv8pGjpgOUtSqK5q7iE1yETlnWqXg=
+			bq02ejU42smJK6meqeJX2l0IKbJquZ/5S70GCjea1h4=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -1270,14 +1270,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			alQGKK/yjkAH2DJB3EfoTd1RdHwKlfaW+MqEyWbgY6s=
+			/47EKzTFwt6fErvBJJMZzjG6ueAzpbVyCGkoRK/YLFo=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xgoB7aUsWw0rWHuv8pGjpgOUtSqK5q7iE1yETlnWqXg=
+			bq02ejU42smJK6meqeJX2l0IKbJquZ/5S70GCjea1h4=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -1305,7 +1305,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uPJJzgoyldL0nLfrWYjC3gzWMfdORUJIKa/NqQ9WzUE=
+			lR6y1upsHVcfyWMBfd2sX+RP9Pi7gUjyMduFqlrmqOY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1326,7 +1326,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			x7wMQj8uJzKYAhGC7WTNvhVvXStl4sdVhUt+9O17uMc=
+			6G0FhEi43vpmWDY8j9UUk5/+Qct4SKY5XFZN8aZZv4o=
 			</data>
 		</dict>
 		<key>PresenceModuleHeaderView.nib</key>
@@ -1354,7 +1354,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			c4bW0SJmPOok9oF6KV/LhC0zh1dcqafnsG5n4bxTYCU=
+			XRktQh0uTV6tmC+Pulnoqk/iyqJFJJ5W/vWdpP2kywY=
 			</data>
 		</dict>
 		<key>SeatingMessageCell.nib</key>
@@ -1599,7 +1599,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IQPjpogshm29VYSWExxTBnGyShLBOUyOregHzuYXAH0=
+			AhN+G0JKZklZVQkz7BN+oo+/2ogcCA35jE9fvResAPM=
 			</data>
 		</dict>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>

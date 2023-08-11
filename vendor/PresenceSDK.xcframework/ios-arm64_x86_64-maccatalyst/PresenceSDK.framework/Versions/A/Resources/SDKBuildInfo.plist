@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Tue Aug  1 00:21:12 IST 2023</string>
+	<string>Fri Aug 11 14:58:37 IST 2023</string>
 	<key>BuildHost</key>
 	<string>USNEWAPE1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.22.0</string>
+	<string>release/2.22.1</string>
 	<key>GITComment</key>
-	<string>Revert Added TMFoundation 0.9.0</string>
+	<string>updated to 2.22.1</string>
 	<key>GITDate</key>
-	<string>Mon Jul 31 10:05:17 2023 -0700</string>
+	<string>Fri Aug 11 06:32:24 2023 +0530</string>
 	<key>GITRevision</key>
-	<string>acd604c2c5677debd6f4a9e029107750f158a939</string>
+	<string>093b71a45d1265e07aad41417c265b67bb1f0dea</string>
 	<key>MarketingVersion</key>
-	<string>2.22.0</string>
+	<string>2.22.1</string>
 </dict>
 </plist>
