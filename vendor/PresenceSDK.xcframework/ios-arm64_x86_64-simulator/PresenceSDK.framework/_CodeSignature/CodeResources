@@ -286,7 +286,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Oe2i+aur0RbuNYhGRH9RUlND/eA=
+		Nk4Fj4hQkeXTxU406gijF1WTSoQ=
 		</data>
 		<key>InputAccessoryView.nib</key>
 		<data>
@@ -318,7 +318,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		OPoQeKUhD2bRiOjqH+fOITU4vm0=
+		wu8RpwMP4L4aS40DsV/JP1nMnQY=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -338,7 +338,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		OPoQeKUhD2bRiOjqH+fOITU4vm0=
+		wu8RpwMP4L4aS40DsV/JP1nMnQY=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -382,7 +382,7 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		39784qIi1mBa9ZhnKSBRgdhigr0=
+		JmxUFnw4hI8V7bNzZG2SDq9kDG0=
 		</data>
 		<key>SeatingMessageCell.nib</key>
 		<data>
@@ -522,7 +522,7 @@
 		</data>
 		<key>TicketCard.nib</key>
 		<data>
-		6JkT2YSt5AsxkHwsCFhtaP+aoz8=
+		KrukZmNjKhIyfmAFycHHVzkAblE=
 		</data>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -1242,7 +1242,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bq02ejU42smJK6meqeJX2l0IKbJquZ/5S70GCjea1h4=
+			tOKLnNCcR6a9JCJWYLgJwVHaUewp5I1qitW6d7ZwOsA=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -1277,7 +1277,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bq02ejU42smJK6meqeJX2l0IKbJquZ/5S70GCjea1h4=
+			tOKLnNCcR6a9JCJWYLgJwVHaUewp5I1qitW6d7ZwOsA=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -1354,7 +1354,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XRktQh0uTV6tmC+Pulnoqk/iyqJFJJ5W/vWdpP2kywY=
+			5ZPlKuQPFzYEAAmkJ3R0YXOtmM0/7yMfM74JaQpTgek=
 			</data>
 		</dict>
 		<key>SeatingMessageCell.nib</key>
@@ -1599,7 +1599,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AhN+G0JKZklZVQkz7BN+oo+/2ogcCA35jE9fvResAPM=
+			FoPtuSyCZwScH0fQb9Zb7YcXNsuXeR4p5XJm/jX7Rv8=
 			</data>
 		</dict>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>

@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Aug 11 14:58:37 IST 2023</string>
+	<string>Mon Aug 21 18:13:28 EDT 2023</string>
 	<key>BuildHost</key>
 	<string>USNEWAPE1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.22.1</string>
+	<string>release/2.22.2</string>
 	<key>GITComment</key>
-	<string>updated to 2.22.1</string>
+	<string>Merge branch Fix-PSDK-9527-Fix-user-not-getting-past-terms-popup into master</string>
 	<key>GITDate</key>
-	<string>Fri Aug 11 06:32:24 2023 +0530</string>
+	<string>Mon Aug 21 20:35:25 2023 +0000</string>
 	<key>GITRevision</key>
-	<string>093b71a45d1265e07aad41417c265b67bb1f0dea</string>
+	<string>5c77620f29dd7f3953a8e4fe569e2a4c7f4f4ec9</string>
 	<key>MarketingVersion</key>
-	<string>2.22.1</string>
+	<string>2.22.2</string>
 </dict>
 </plist>
