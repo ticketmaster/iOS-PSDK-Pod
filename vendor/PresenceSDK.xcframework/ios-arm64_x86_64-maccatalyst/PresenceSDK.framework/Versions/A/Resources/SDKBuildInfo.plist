@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Thu Dec 14 17:47:42 EST 2023</string>
+	<string>Fri Jan  5 14:29:50 PST 2024</string>
 	<key>BuildHost</key>
-	<string>USNEWAPE1-ML</string>
+	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.22.2</string>
+	<string>release/2.22.4</string>
 	<key>GITComment</key>
-	<string>Update to 2.22.3</string>
+	<string>Fixed unit tests, because I am the only person who runs unit tests…</string>
 	<key>GITDate</key>
-	<string>Thu Dec 14 15:39:29 2023 -0600</string>
+	<string>Fri Jan 5 14:17:23 2024 -0800</string>
 	<key>GITRevision</key>
-	<string>eca7ced72ce1fd42c19b409bfef152836d707121</string>
+	<string>27b95fab241fc6b4e2ae439e688af84b33050f15</string>
 	<key>MarketingVersion</key>
-	<string>2.22.3</string>
+	<string>2.22.4</string>
 </dict>
 </plist>
