@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Jan  5 14:29:50 PST 2024</string>
+	<string>Mon Jan 22 16:29:16 PST 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.22.4</string>
+	<string>release/2.22.5</string>
 	<key>GITComment</key>
-	<string>Fixed unit tests, because I am the only person who runs unit tests…</string>
+	<string>PSDK-9771 Removed TimeZone.autoupdatingCurrent</string>
 	<key>GITDate</key>
-	<string>Fri Jan 5 14:17:23 2024 -0800</string>
+	<string>Mon Jan 22 16:03:14 2024 -0800</string>
 	<key>GITRevision</key>
-	<string>27b95fab241fc6b4e2ae439e688af84b33050f15</string>
+	<string>bfda1e9ab4c0fb33c21d6fca9c9cb1c0f2837b7e</string>
 	<key>MarketingVersion</key>
-	<string>2.22.4</string>
+	<string>2.22.5</string>
 </dict>
 </plist>

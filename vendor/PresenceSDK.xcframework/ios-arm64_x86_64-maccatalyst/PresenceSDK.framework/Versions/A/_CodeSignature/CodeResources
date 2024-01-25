@@ -278,7 +278,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		9ox0mMvlTPQZoVcdAyPlmD2256I=
+		IyPIv1eeZN+L+41KJqFU/D+2Xa8=
 		</data>
 		<key>Resources/InputAccessoryView.nib</key>
 		<data>
@@ -330,7 +330,7 @@
 		</data>
 		<key>Resources/SDKBuildInfo.plist</key>
 		<data>
-		mrn4GcqWfpzog2LxRuaHsR7+JtU=
+		wPK5DQiLegvrHWWwTn//pN7+Z9c=
 		</data>
 		<key>Resources/SeatingMessageCell.nib</key>
 		<data>
@@ -470,7 +470,7 @@
 		</data>
 		<key>Resources/TicketCard.nib</key>
 		<data>
-		bou7I6tXISsUlW9gM7YKIPBswWo=
+		kZoLzRON5+8dxb2n+t/AQIzDQyA=
 		</data>
 		<key>Resources/TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -665,7 +665,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hecvXN2h6XzIT/BUp4lLrJUdOThH74jWCh6HFMOWLUg=
+			w2Cv6a9DG4U8vFI0bgb10RxhlXQB4TLmXnuSwSa81Ec=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
@@ -693,14 +693,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tOWUyAZ2yvvHpLbOJgW8O+DWzlixSpD5lLJSN1XHQZA=
+			WpAUpTGzHt75rHAq8sYBSQOakw+Njho6XzqUElHDAx0=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hecvXN2h6XzIT/BUp4lLrJUdOThH74jWCh6HFMOWLUg=
+			w2Cv6a9DG4U8vFI0bgb10RxhlXQB4TLmXnuSwSa81Ec=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
@@ -728,7 +728,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UlOHy1MrOiLkZOPkkLqxj0UHZOnsugMWB42eh4135hE=
+			ZWaCSychjkkkBQJO3OC1s/cB9pQhoY00MomABJvtUOQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1218,7 +1218,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7zn2A+E8xJrFnUu61dp7qWFVMRHVBZF0uaw0UxgXmnw=
+			7uWW4NdyH2l90rzPzfYWT/kLD/akSgG7Ma9v3hNnYdI=
 			</data>
 		</dict>
 		<key>Resources/InputAccessoryView.nib</key>
@@ -1309,7 +1309,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+eCT45EQuPh83ZunD0E/4QmFG0/6MS+U2A919p7+hPE=
+			HSVoYR6r5DXSIi/Lc4GL2/j89EwMwAYIddGvaRIez3M=
 			</data>
 		</dict>
 		<key>Resources/SeatingMessageCell.nib</key>
@@ -1554,7 +1554,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+/CPKI2jlrs9A3Sd8hbh9hCr0PrxKMHAXl4xehz/lVU=
+			SWgPXUBmHO+XVe2RyaoAJinuP+XE6pmb7ABH4yFgaIs=
 			</data>
 		</dict>
 		<key>Resources/TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
