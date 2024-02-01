@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Mon Jan 22 16:29:16 PST 2024</string>
+	<string>Fri Jan 26 12:16:34 PST 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.22.5</string>
+	<string>Feature-PSDK-10414-UKArchtics</string>
 	<key>GITComment</key>
-	<string>PSDK-9771 Removed TimeZone.autoupdatingCurrent</string>
+	<string>Updated version to 2.22.6</string>
 	<key>GITDate</key>
-	<string>Mon Jan 22 16:03:14 2024 -0800</string>
+	<string>Fri Jan 26 12:04:22 2024 -0800</string>
 	<key>GITRevision</key>
-	<string>bfda1e9ab4c0fb33c21d6fca9c9cb1c0f2837b7e</string>
+	<string>5a19ef8fecba4a5a471829a7a4036e7b87bee002</string>
 	<key>MarketingVersion</key>
-	<string>2.22.5</string>
+	<string>2.22.6</string>
 </dict>
 </plist>
