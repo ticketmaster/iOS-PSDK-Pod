@@ -286,7 +286,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		BHUoL64HXaZXgqVzID9XvRRdqwA=
+		fsLveaiz04jyXdC31s1H1Um9mE0=
 		</data>
 		<key>InputAccessoryView.nib</key>
 		<data>
@@ -318,7 +318,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		7x6TcGVsp3OLR4ZT1m+m/ojccDQ=
+		I3vlni18hPIxBzxP6hZvluKQiSg=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -334,7 +334,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		ocBkWpHDBNw2GPTVN080hFQy65U=
+		J23fnY7+NNREGRs87fv2HpapOUw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -362,7 +362,7 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		CV/x6gbQ17dPdvh1YC6pWFCnC/g=
+		n1jpxZMCiYBArcv13F/MUIlpSxc=
 		</data>
 		<key>SeatingMessageCell.nib</key>
 		<data>
@@ -502,7 +502,7 @@
 		</data>
 		<key>TicketCard.nib</key>
 		<data>
-		fnFZYA2QGa5/1t74O/MGWRH/3wo=
+		tb14T5iuixeB8XKHePXk9znqEF0=
 		</data>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>
 		<data>
@@ -1222,7 +1222,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GZ/Fnk9Jgh3VDGozlZf8GQ7mFJF+stywxUryq0Dr/VI=
+			gfDIO+siACrDt3R+DWczRBatxYuPP9g59MRr/2vc2lg=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -1250,7 +1250,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MkI9/rdp+GE3DqZ3hTtm3X/JRlqQ9gyH8LbiMEq8u48=
+			RX6Jwxr7zwMYfiXJQdesOUaiGOzVcdEyeCmzKoGTyvA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1299,7 +1299,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uQGZACLTfqBwQseY7pf6NyoGzHf7tM0PNNdymKfboik=
+			GqEWQHGXQQxKJ/xRHI8d8XIXYc0qj02XE5oEcVSQwBk=
 			</data>
 		</dict>
 		<key>SeatingMessageCell.nib</key>
@@ -1544,7 +1544,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AEn+HzWmxSnNSDsukJpe4v1A+xZ/5o7zrjQ7ZlQHtGs=
+			vQZV8GGxV1eEghJAJkJ1EzvHoLJCiFUmz5S+ci+NsOU=
 			</data>
 		</dict>
 		<key>TicketDetailsViewController.storyboardc/Cql-mn-Ysx-view-WXq-R6-M9R.nib</key>

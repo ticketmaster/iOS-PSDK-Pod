@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Jan 26 12:16:34 PST 2024</string>
+	<string>Fri Mar 22 17:24:06 PDT 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>Feature-PSDK-10414-UKArchtics</string>
+	<string>release/2.22.7</string>
 	<key>GITComment</key>
-	<string>Updated version to 2.22.6</string>
+	<string>PSDK-11201 Transfer and Sell buttons not displaying for Host US/CA region, Added support for canadian english to isCALocale flag</string>
 	<key>GITDate</key>
-	<string>Fri Jan 26 12:04:22 2024 -0800</string>
+	<string>Fri Mar 22 11:38:50 2024 -0600</string>
 	<key>GITRevision</key>
-	<string>5a19ef8fecba4a5a471829a7a4036e7b87bee002</string>
+	<string>283751db4615731531e574ef83137f8550bf64d4</string>
 	<key>MarketingVersion</key>
-	<string>2.22.6</string>
+	<string>2.22.7</string>
 </dict>
 </plist>

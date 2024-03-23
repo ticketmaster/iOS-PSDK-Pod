@@ -300,6 +300,7 @@ internal func strideCount(from: Swift.Int, to: Swift.Int, by: Swift.Int) -> Swif
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) final public func setTokenBySkippingDecoding(_ token: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc override final public var intrinsicContentSize: CoreFoundation.CGSize {
     @objc get
   }
