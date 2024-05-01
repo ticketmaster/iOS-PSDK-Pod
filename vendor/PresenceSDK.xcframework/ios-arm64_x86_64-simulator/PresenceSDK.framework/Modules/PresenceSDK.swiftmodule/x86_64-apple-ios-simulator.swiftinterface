@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PresenceSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
@@ -7,6 +7,7 @@ import AuthenticationServices
 import Contacts
 import ContactsUI
 import Darwin
+import DeveloperToolsSupport
 import Foundation
 import LocalAuthentication
 import MapKit
@@ -16,6 +17,7 @@ import PassKit
 import SafariServices
 import Security
 import Swift
+import SwiftUI
 import SystemConfiguration
 import TicketmasterFoundation
 import TicketmasterSecureEntry
@@ -23,6 +25,7 @@ import UIKit
 import WebKit
 import _Concurrency
 import _StringProcessing
+import _SwiftConcurrencyShims
 extension PresenceSDK.PSDK {
   @available(*, deprecated, message: "Renamed to start(presenceView: PresenceView, ...)")
   @objc final public func start(presenceSDKView: PresenceSDK.PresenceSDKView?, loginDelegate: (any PresenceSDK.PresenceLoginDelegate)? = nil, orderDelegate: (any PresenceSDK.PresenceOrderDelegate)? = nil)

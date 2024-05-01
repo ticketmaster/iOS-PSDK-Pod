@@ -10,7 +10,7 @@ The Ticketmaster Presence SDK provides a simple way to add Ticketmaster features
 in your 3rd party iOS apps. More information about the Presence SDK can be found
 at https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/.
 
-Requires: Xcode 14.3+, iOS 14+
+Requires: Xcode 15+, iOS 14+
 
 Have a question about Presence SDK? [Contact us!](https://developer.ticketmaster.com/products-and-docs/sdks/presence-sdk/#presence-feedback-form-anchor)
 
@@ -18,9 +18,9 @@ Have a question about Presence SDK? [Contact us!](https://developer.ticketmaster
 
 ### CocoaPods
 
-Swift 5.8.0+:
+Swift 5.9.0+:
 ```ruby
-pod 'TM-PSDK', '~> 5.8.0-2.22.7'
+pod 'TM-PSDK', '~> 5.9.0-2.23.0'
 ```
 
 ## Integration Guide

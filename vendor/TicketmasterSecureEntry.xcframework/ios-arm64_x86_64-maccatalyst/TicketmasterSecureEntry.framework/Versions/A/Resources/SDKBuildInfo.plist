@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Mar 22 17:48:54 PDT 2024</string>
+	<string>Mon Apr 29 13:15:17 PDT 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
 	<string>master</string>
 	<key>GITComment</key>
-	<string>Updated SecureEntry to 1.5.4</string>
+	<string>Updated to Xcode 15.0.1, added privacy manifest, v1.5.5</string>
 	<key>GITDate</key>
-	<string>Tue Mar 19 17:42:34 2024 -0700</string>
+	<string>Mon Apr 29 11:51:24 2024 -0700</string>
 	<key>GITRevision</key>
-	<string>9551760020211d815b89007acedda5bb67a032a8</string>
+	<string>54d8ac204abe6cc103dc82f0c7e5ff7425afbe08</string>
 	<key>MarketingVersion</key>
-	<string>1.5.4</string>
+	<string>1.5.5</string>
 </dict>
 </plist>

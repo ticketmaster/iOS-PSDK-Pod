@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		VM3FQXQZIYXlfrrW6GC4GlVIt3A=
+		Fr7bkhL9uPrrzb/nHw28OordwbM=
 		</data>
 		<key>Headers/TicketmasterSecureEntry-Swift.h</key>
 		<data>
-		l3mAAc1nF2xds0QwBLK06o2H86Y=
+		HgEcNDr6+by3uHagF8tG9O+kJI8=
 		</data>
 		<key>Headers/TicketmasterSecureEntry.h</key>
 		<data>
@@ -18,55 +18,59 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		jMEaNtwYfZ3D7Fhz1XDisSQAyhU=
+		WpPGDbvx4brPCJjbghOs92nW39s=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		IVh6zhj/FaodpUOfwx52Lqa1sp4=
+		14BS+ex/i9zJ8RjqUS1eP+OYoXM=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		G7GhRlpLRRPzF301anRRESQ1rRc=
+		ySK+7f6EArzTpGAQ0E+vaZ4KsVk=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		1YPSz7CLjHbg6qfecJ7bZSHA9CE=
+		islNid6rck2QmUzxW2qS//lH7mE=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		G7GhRlpLRRPzF301anRRESQ1rRc=
+		ySK+7f6EArzTpGAQ0E+vaZ4KsVk=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		LSXhdHbEOLDMH9CxAE1LzkgFhdY=
+		UDM4PSIXIasK/7WYrrTFVcIXnqY=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		IVh6zhj/FaodpUOfwx52Lqa1sp4=
+		14BS+ex/i9zJ8RjqUS1eP+OYoXM=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		PpeVGPXp+X7vCjt0DbYH/IP+IJE=
+		K1bWkZAHrvApIuUU4VkHmftC/YE=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		HVdrKDCmeZ5KyHZ3GJpKm/plrao=
+		Vzv4ro1328zJdvNzxxKlx7uJSTQ=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		PpeVGPXp+X7vCjt0DbYH/IP+IJE=
+		K1bWkZAHrvApIuUU4VkHmftC/YE=
 		</data>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		PT4cg2sBH0GaK3YCzm2IJSvUN54=
+		NyZVBVJSidVxUIXwg4nfqIsURgI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		o6vNw+LmsSgAUabZbmLJLZ/0xLQ=
+		jIeAHlJE19TjLXRVGMP5mflJ4bw=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		IabART4kCszbcIEan1Ex2jvK0oo=
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		c9fWaxYwn9JX3uE/vfgjQaJWUW0=
+		iczCoc4CpzA5PTdPJHvzQHDDEw8=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -75,14 +79,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4j18IFvwTAFndHgA11YE7wwicKwBZbK/5u2F9DJVgPA=
+			39OWHdkJv3UmSOyS4U3Do8dODXSceePG0B3aOu+k1BU=
 			</data>
 		</dict>
 		<key>Headers/TicketmasterSecureEntry-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rXB/A57OttMmuvwxNkcTHO4/eyJ49XuBXQsV16JIHxY=
+			DGW9SUy3hnGHwCIOVvzFySVAMWERgGoQ71igZaR2qjA=
 			</data>
 		</dict>
 		<key>Headers/TicketmasterSecureEntry.h</key>
@@ -96,84 +100,91 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			18jK0W2fVBnuBZQR3vOLdZgJB9tfv37HE8nN9UPefwI=
+			CIO7K7PsIBCHobq7i2GbTJm1liNgNiTgL67F+8a9mnc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p8cQ/O8rchEeHlbA/TI1nvBwvroKg6wIH8zDC5o0WII=
+			ak367cEg2UFVTTTwCVoOfsxNkRBLMEamXAzIMzrh2uc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hfXAtFzs4gYpwFXAD3JaQokRgET+4hhS+v1/fTVPX6o=
+			gnXZJ5KDBgCXs8y/RA8xtIMvSUpT+BdbQVqo8U34T94=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p8cQ/O8rchEeHlbA/TI1nvBwvroKg6wIH8zDC5o0WII=
+			ak367cEg2UFVTTTwCVoOfsxNkRBLMEamXAzIMzrh2uc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/5qC8dU2g6lXZXDu2ntXnZDqWeu1t7fzYNh70yeRL5c=
+			f91Z+PaHfBf6jKMDKvXwFK4CFBRRs5xYqVRhMRfqjXk=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			18jK0W2fVBnuBZQR3vOLdZgJB9tfv37HE8nN9UPefwI=
+			CIO7K7PsIBCHobq7i2GbTJm1liNgNiTgL67F+8a9mnc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/dPdInLC/2iJKbeKdwfaOyPiBD5120OpeiioBCM0vM=
+			DOR4+f5Z93gCL48aPKIO0ait3GyzEwIpJfr6mu4+xLc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ptkouHzChkUDY17nSMlLOqUj1FfLksTJz8XZQStIQJo=
+			OF+1TBf7kAchwx7i6cgPceriXJRqhdYNG4BKZLCVg2o=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7/dPdInLC/2iJKbeKdwfaOyPiBD5120OpeiioBCM0vM=
+			DOR4+f5Z93gCL48aPKIO0ait3GyzEwIpJfr6mu4+xLc=
 			</data>
 		</dict>
 		<key>Modules/TicketmasterSecureEntry.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nxBqI44WKK/VaHlQoLxpikhNzHlvo6PN9OtFudrfNH8=
+			gfb+6aoFgYfXr3aXzitiituSHbf/CX8w7MJAjssh5cQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zyLRhfEFu3D2GxysmF/vOyy6YRdE+Zn62TDjhnFmx6Q=
+			IDVAfRawM+Qe4ypkzf4dS9PhdvHykpH/Pf6GiAoa28Q=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			AQMqQmAgm6YWNYvH2wPRqm96j3wX3LHlXv9ON+7Zzc4=
 			</data>
 		</dict>
 		<key>SDKBuildInfo.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OIbYLfuW0P21UPDie+HsvO83pDTAUb0n9d5bLMlEtuM=
+			+WaS9566sb/MvD0mXfQ0Gh7mQriteB3gff4bEDwLGlM=
 			</data>
 		</dict>
 	</dict>

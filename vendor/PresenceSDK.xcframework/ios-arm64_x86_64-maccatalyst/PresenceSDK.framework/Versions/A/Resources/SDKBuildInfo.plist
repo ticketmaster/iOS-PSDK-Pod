@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Mar 22 17:24:06 PDT 2024</string>
+	<string>Tue Apr 30 09:43:19 PDT 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.22.7</string>
+	<string>release/2.23.0</string>
 	<key>GITComment</key>
-	<string>PSDK-11201 Transfer and Sell buttons not displaying for Host US/CA region, Added support for canadian english to isCALocale flag</string>
+	<string>Added login privacy settings (ie. Auth SDK settings)</string>
 	<key>GITDate</key>
-	<string>Fri Mar 22 11:38:50 2024 -0600</string>
+	<string>Tue Apr 30 09:27:55 2024 -0700</string>
 	<key>GITRevision</key>
-	<string>283751db4615731531e574ef83137f8550bf64d4</string>
+	<string>b3c1d328cb34472399abf4a9c16b35245764f99e</string>
 	<key>MarketingVersion</key>
-	<string>2.22.7</string>
+	<string>2.23.0</string>
 </dict>
 </plist>

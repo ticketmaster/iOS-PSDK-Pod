@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Fri Jul 14 11:46:00 PDT 2023</string>
+	<string>Mon Apr 29 12:29:48 PDT 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>master</string>
+	<string>release/0.8.3</string>
 	<key>GITComment</key>
-	<string>Added dSYMs to xcframework, auto-copy to Compiled directory</string>
+	<string>Added privacy</string>
 	<key>GITDate</key>
-	<string>Fri Jul 14 11:43:33 2023 -0700</string>
+	<string>Mon Apr 29 12:27:37 2024 -0700</string>
 	<key>GITRevision</key>
-	<string>b24904dee2ae3d7cac5c6425a7df206f78c0638e</string>
+	<string>acf42ac71d4fd0259753260c47f45639ea2307f3</string>
 	<key>MarketingVersion</key>
-	<string>0.8.6</string>
+	<string>0.8.3</string>
 </dict>
 </plist>

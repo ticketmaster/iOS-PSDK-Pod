@@ -1,7 +1,7 @@
 framework module PresenceSDK {
   umbrella header "PresenceSDK.h"
-
   export *
+
   module * { export * }
 }
 
