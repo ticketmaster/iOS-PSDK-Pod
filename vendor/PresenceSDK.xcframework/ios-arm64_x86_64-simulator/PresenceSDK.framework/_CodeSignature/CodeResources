@@ -286,7 +286,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Vk/juU4QBEutPceKD0h9BJQX9Fg=
+		16hpv1XQmgwODdlxrH2O/5dxZh8=
 		</data>
 		<key>InputAccessoryView.nib</key>
 		<data>
@@ -318,7 +318,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		3UAMgYfvq9EU4fwvkjqzGWCtcJw=
+		qIE0fx8j3SHHkyB+yKrQPB41dTI=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -338,7 +338,7 @@
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		3UAMgYfvq9EU4fwvkjqzGWCtcJw=
+		qIE0fx8j3SHHkyB+yKrQPB41dTI=
 		</data>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -374,7 +374,7 @@
 		</data>
 		<key>PrivacyInfo.xcprivacy</key>
 		<data>
-		v94VRz6ZdAt9lI9AXLLI96RpJP4=
+		+RkDGdL3/Ri4KeWoZq//QQ7aS7M=
 		</data>
 		<key>ResaleEligibilityView.nib</key>
 		<data>
@@ -386,7 +386,7 @@
 		</data>
 		<key>SDKBuildInfo.plist</key>
 		<data>
-		o4vslxo3BqWuQm7TAxYN4dt7/q8=
+		8wJRekjcgb+9zEuFcDFlH3PuQ4w=
 		</data>
 		<key>SeatingMessageCell.nib</key>
 		<data>
@@ -1246,7 +1246,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			40a/wPVz6SOlLwQNL3EIVtFFtkpN+HrMijq9keKLyMw=
+			efvi+t79sldEVUFXq2LK3dnKZbD/1W/rFETZQSPNhHk=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -1281,7 +1281,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			40a/wPVz6SOlLwQNL3EIVtFFtkpN+HrMijq9keKLyMw=
+			efvi+t79sldEVUFXq2LK3dnKZbD/1W/rFETZQSPNhHk=
 			</data>
 		</dict>
 		<key>Modules/PresenceSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -1344,7 +1344,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			msQmOm2q98919jk5393tWrKhFsdKCEvCCvwCg3fyR80=
+			ul+ISMJEcpgoTABBNFanNRi90znG7Md6XrchedreLt0=
 			</data>
 		</dict>
 		<key>ResaleEligibilityView.nib</key>
@@ -1365,7 +1365,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9P90J9z5FVVm9PMCzRxIEssrvHJyM12Av8nUIUqlQUc=
+			OwaJ4l8KZ06LhVWEj6wvdo+uNHgrx6VhWzWFVOkHI4M=
 			</data>
 		</dict>
 		<key>SeatingMessageCell.nib</key>

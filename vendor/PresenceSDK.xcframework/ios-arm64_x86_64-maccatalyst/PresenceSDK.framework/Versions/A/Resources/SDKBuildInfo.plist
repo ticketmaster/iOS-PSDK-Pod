@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Tue Apr 30 09:43:19 PDT 2024</string>
+	<string>Tue Jun 11 10:11:24 PDT 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
-	<string>release/2.23.0</string>
+	<string>release/2.23.1</string>
 	<key>GITComment</key>
-	<string>Added login privacy settings (ie. Auth SDK settings)</string>
+	<string>PSDK 2.23.1, updated to Xcode 15.0.1</string>
 	<key>GITDate</key>
-	<string>Tue Apr 30 09:27:55 2024 -0700</string>
+	<string>Tue Jun 11 09:20:48 2024 -0700</string>
 	<key>GITRevision</key>
-	<string>b3c1d328cb34472399abf4a9c16b35245764f99e</string>
+	<string>8086054fb18e846159e9028d8e46676acd7ec67a</string>
 	<key>MarketingVersion</key>
-	<string>2.23.0</string>
+	<string>2.23.1</string>
 </dict>
 </plist>
