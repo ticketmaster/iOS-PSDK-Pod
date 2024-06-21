@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDate</key>
-	<string>Tue Jun 11 10:11:24 PDT 2024</string>
+	<string>Fri Jun 21 10:49:16 PDT 2024</string>
 	<key>BuildHost</key>
 	<string>USHOLJBA1-ML</string>
 	<key>GITBranch</key>
 	<string>release/2.23.1</string>
 	<key>GITComment</key>
-	<string>PSDK 2.23.1, updated to Xcode 15.0.1</string>
+	<string>PSDK 2.23.2, no other changes</string>
 	<key>GITDate</key>
-	<string>Tue Jun 11 09:20:48 2024 -0700</string>
+	<string>Fri Jun 21 10:37:40 2024 -0700</string>
 	<key>GITRevision</key>
-	<string>8086054fb18e846159e9028d8e46676acd7ec67a</string>
+	<string>4c3f871fc4a47cb0bc943d9b2e84b2cf5e31ec06</string>
 	<key>MarketingVersion</key>
-	<string>2.23.1</string>
+	<string>2.23.2</string>
 </dict>
 </plist>
